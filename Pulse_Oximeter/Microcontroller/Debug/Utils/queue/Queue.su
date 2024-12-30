@@ -1,0 +1,5 @@
+../Utils/queue/Queue.cpp:9:6:bool Queue::enqueue(TaskFunction, uint32_t)	24	static
+../Utils/queue/Queue.cpp:20:6:bool Queue::dequeue(Task&)	16	static
+../Utils/queue/Queue.cpp:31:6:bool Queue::is_empty()	16	static
+../Utils/queue/Queue.cpp:34:6:bool Queue::is_full()	16	static
+../Utils/queue/Queue.cpp:37:9:uint8_t Queue::size()	16	static

@@ -1,0 +1,13 @@
+C:\Users\Facun\Documents\MCUXpressoIDE_11.10.0_3148\workspace\SPO2_HR/Utils/queue/Queue.h:12:7:Queue::Queue()	16	static
+../Drivers_LPC845/esp8266/ESP8266.cpp:14:1:ESP8266::ESP8266(serialCom*)	24	static
+../Drivers_LPC845/esp8266/ESP8266.cpp:28:6:static void ESP8266::timer_handler()	8	static
+../Drivers_LPC845/esp8266/ESP8266.cpp:35:6:void ESP8266::process_next()	32	static
+../Drivers_LPC845/esp8266/ESP8266.cpp:54:6:bool ESP8266::check_response_ok()	32	static
+../Drivers_LPC845/esp8266/ESP8266.cpp:95:6:virtual void ESP8266::callback()	16	static
+../Drivers_LPC845/esp8266/ESP8266.cpp:101:6:void ESP8266::init_module()	144	static
+../Drivers_LPC845/esp8266/ESP8266.cpp:196:6:bool ESP8266::check_wifi_connected()	16	static
+../Drivers_LPC845/esp8266/ESP8266.cpp:203:6:void ESP8266::send(uint32_t)	32	static
+../Drivers_LPC845/esp8266/ESP8266.cpp:218:6:void send_length_func(uint32_t)	32	static
+../Drivers_LPC845/esp8266/ESP8266.cpp:226:6:void ESP8266::send_length(uint8_t)	336	static
+../Drivers_LPC845/esp8266/ESP8266.cpp:239:6:void send_data_func(uint32_t)	16	static
+../Drivers_LPC845/esp8266/ESP8266.cpp:248:9:uint8_t ESP8266::size_of_digits(int32_t)	24	static

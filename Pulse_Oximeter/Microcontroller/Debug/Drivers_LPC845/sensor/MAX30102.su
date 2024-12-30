@@ -1,0 +1,23 @@
+C:/Users/Facun/Documents/MCUXpressoIDE_11.10.0_3148/workspace/SPO2_HR/Drivers_LPC845/I2C/I2C.h:45:7:constexpr I2C::I2C(const I2C&)	16	static
+../Drivers_LPC845/sensor/MAX30102.cpp:26:1:MAX30102::MAX30102(I2C_Type*, mode_t, uint8_t)	64	static
+../Drivers_LPC845/sensor/MAX30102.cpp:37:6:void MAX30102::ConfiguracionSensorMAX30102(I2C)	32	static
+../Drivers_LPC845/sensor/MAX30102.cpp:111:6:void MAX30102::readRegisterMAX30102(uint8_t, uint8_t*)	32	static
+../Drivers_LPC845/sensor/MAX30102.cpp:128:6:void MAX30102::readRegisterMAX30102NBytes(uint8_t, uint8_t)	24	static
+../Drivers_LPC845/sensor/MAX30102.cpp:142:6:void MAX30102::writeRegisterMAX30102(uint8_t, uint8_t)	24	static
+../Drivers_LPC845/sensor/MAX30102.cpp:156:6:void MAX30102::readFifoData(int32_t*)	40	static
+../Drivers_LPC845/sensor/MAX30102.cpp:215:6:bool MAX30102::continue_reading()	16	static
+../Drivers_LPC845/sensor/MAX30102.cpp:222:6:void MAX30102::reset_samples_counter()	16	static
+../Drivers_LPC845/sensor/MAX30102.cpp:227:6:void MAX30102::maxim_sort_indices_descend(int32_t*, int32_t*, int32_t)	40	static
+../Drivers_LPC845/sensor/MAX30102.cpp:244:6:void MAX30102::maxim_sort_ascend(int32_t*, int32_t)	40	static
+../Drivers_LPC845/sensor/MAX30102.cpp:262:6:void MAX30102::maxim_remove_close_peaks(int32_t*, int32_t*, int32_t*, int32_t)	48	static
+../Drivers_LPC845/sensor/MAX30102.cpp:291:6:void MAX30102::maxim_peaks_above_min_height(int32_t*, int32_t*, int32_t*, int32_t, int32_t)	40	static
+../Drivers_LPC845/sensor/MAX30102.cpp:321:6:void MAX30102::maxim_find_peaks(int32_t*, int32_t*, int32_t*, int32_t, int32_t, int32_t, int32_t)	40	static
+../Drivers_LPC845/sensor/MAX30102.cpp:336:6:void MAX30102::maxim_heart_rate_and_oxygen_saturation(uint32_t*, int32_t, uint32_t*, int32_t*, int8_t*, int32_t*, int8_t*)	216	static
+../Drivers_LPC845/sensor/MAX30102.cpp:494:9:int16_t MAX30102::available()	24	static
+../Drivers_LPC845/sensor/MAX30102.cpp:504:6:void MAX30102::nextSample()	16	static
+../Drivers_LPC845/sensor/MAX30102.cpp:514:10:uint32_t MAX30102::getFIFORed()	16	static
+../Drivers_LPC845/sensor/MAX30102.cpp:519:10:uint32_t MAX30102::getFIFOIR()	16	static
+../Drivers_LPC845/sensor/MAX30102.cpp:525:11:uint32_t* MAX30102::getArrayIRValues()	16	static
+../Drivers_LPC845/sensor/MAX30102.cpp:529:11:uint32_t* MAX30102::getArrayRValues()	16	static
+../Drivers_LPC845/sensor/MAX30102.cpp:536:6:void MAX30102::resetFifoWrite()	16	static
+../Drivers_LPC845/sensor/MAX30102.cpp:545:6:void MAX30102::getFifoReadAndWrite(uint8_t*, uint8_t*)	24	static

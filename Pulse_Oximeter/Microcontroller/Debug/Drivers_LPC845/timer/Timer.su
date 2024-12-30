@@ -1,0 +1,5 @@
+../Drivers_LPC845/timer/Timer.cpp:17:1:Timer::Timer(uint32_t, void (*)(), bool)	24	static
+../Drivers_LPC845/timer/Timer.cpp:27:1:Timer::~Timer()	16	static
+../Drivers_LPC845/timer/Timer.cpp:35:6:void Timer::start()	16	static
+../Drivers_LPC845/timer/Timer.cpp:44:6:void Timer::stop()	16	static
+../Drivers_LPC845/timer/Timer.cpp:52:6:virtual void Timer::callback()	16	static

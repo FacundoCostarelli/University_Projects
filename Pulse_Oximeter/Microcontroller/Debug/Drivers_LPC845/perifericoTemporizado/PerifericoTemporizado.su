@@ -1,0 +1,2 @@
+../Drivers_LPC845/perifericoTemporizado/PerifericoTemporizado.cpp:13:1:PerifericoTemporizado::PerifericoTemporizado()	24	static
+../Drivers_LPC845/perifericoTemporizado/PerifericoTemporizado.cpp:29:1:PerifericoTemporizado::~PerifericoTemporizado()	32	static
