@@ -1,3 +1,0 @@
-../src/MdeMAX30102.cpp:18:2:Max30102StateMachine::Max30102StateMachine(ESP8266*)	16	static
-../src/MdeMAX30102.cpp:27:6:void Max30102StateMachine::Mde_MAX30102()	72	static
-../src/MdeMAX30102.cpp:126:9:int32_t Max30102StateMachine::promediar_valores(int32_t*)	24	static

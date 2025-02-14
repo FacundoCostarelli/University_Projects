@@ -1,4 +1,0 @@
-../Drivers_LPC845/gpio/gpio_in.cpp:12:1:gpio_in::gpio_in(uint8_t, uint8_t, uint8_t)	24	static
-../Drivers_LPC845/gpio/gpio_in.cpp:32:6:void gpio_in::setDir()	24	static
-../Drivers_LPC845/gpio/gpio_in.cpp:38:6:void gpio_in::setMODE(uint8_t)	32	static
-../Drivers_LPC845/gpio/gpio_in.cpp:49:6:virtual bool gpio_in::getValor() const	16	static
