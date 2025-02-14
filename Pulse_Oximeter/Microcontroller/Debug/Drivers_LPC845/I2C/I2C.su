@@ -1,35 +1,35 @@
-../Drivers_LPC845/I2C/I2C.cpp:94:1:I2C::I2C(uint8_t, uint8_t, uint8_t, uint8_t, I2C_Type*, mode_t, uint8_t)	24	static
-../Drivers_LPC845/I2C/I2C.cpp:155:6:void I2C::ConfiguracionI2C0()	16	static
-../Drivers_LPC845/I2C/I2C.cpp:206:1:I2C::~I2C()	16	static
-../Drivers_LPC845/I2C/I2C.cpp:206:1:virtual I2C::~I2C()	16	static
-../Drivers_LPC845/I2C/I2C.cpp:212:6:void I2C::AssignPins()	24	static
-../Drivers_LPC845/I2C/I2C.cpp:247:6:void I2C::ClearPresets()	16	static
-../Drivers_LPC845/I2C/I2C.cpp:266:6:void I2C::EnableClocks()	16	static
-../Drivers_LPC845/I2C/I2C.cpp:288:6:void I2C::EnableNvicInterrupt()	16	static
-../Drivers_LPC845/I2C/I2C.cpp:302:6:void I2C::SetUpMaster()	16	static
-../Drivers_LPC845/I2C/I2C.cpp:313:6:void I2C::SetUpSlave()	16	static
-../Drivers_LPC845/I2C/I2C.cpp:331:6:void I2C::MasterWrite()	32	static
-../Drivers_LPC845/I2C/I2C.cpp:350:6:void I2C::MasterRead(bool)	24	static
-../Drivers_LPC845/I2C/I2C.cpp:369:6:void I2C::SlaveRead()	24	static
-../Drivers_LPC845/I2C/I2C.cpp:379:6:void I2C::SlaveWrite()	32	static
-../Drivers_LPC845/I2C/I2C.cpp:398:6:void I2C::StartMasterRead()	16	static
-../Drivers_LPC845/I2C/I2C.cpp:409:6:void I2C::StartMasterWrite()	16	static
-../Drivers_LPC845/I2C/I2C.cpp:420:6:void I2C::DisableMasterPendingInterrupt()	16	static
-../Drivers_LPC845/I2C/I2C.cpp:425:6:void I2C::EnableMasterPendingInterrupt()	16	static
-../Drivers_LPC845/I2C/I2C.cpp:431:6:void I2C::PushRead(uint8_t)	16	static
-../Drivers_LPC845/I2C/I2C.cpp:440:6:bool I2C::PopRead(uint8_t*)	16	static
-../Drivers_LPC845/I2C/I2C.cpp:455:6:void I2C::PushWrite(uint8_t)	16	static
-../Drivers_LPC845/I2C/I2C.cpp:465:6:bool I2C::PopWrite(uint8_t*)	16	static
-../Drivers_LPC845/I2C/I2C.cpp:482:6:void I2C::Write(void*, uint32_t)	32	static
-../Drivers_LPC845/I2C/I2C.cpp:500:6:bool I2C::TriggerReading(uint8_t)	16	static
-../Drivers_LPC845/I2C/I2C.cpp:516:7:void* I2C::Read(void*, uint32_t)	48	static
-../Drivers_LPC845/I2C/I2C.cpp:538:6:bool I2C::ReadNextByte(uint8_t*)	32	static
-../Drivers_LPC845/I2C/I2C.cpp:553:9:uint8_t I2C::read()	32	static
-../Drivers_LPC845/I2C/I2C.cpp:564:6:void I2C::writeI2CAndWait(void*, uint32_t)	24	static
-../Drivers_LPC845/I2C/I2C.cpp:574:6:void I2C::readI2CAndWait(uint8_t)	16	static
-../Drivers_LPC845/I2C/I2C.cpp:584:6:void I2C::IRQHandler()	24	static
-../Drivers_LPC845/I2C/I2C.cpp:624:6:void I2C0_IRQHandler()	8	static
-../Drivers_LPC845/I2C/I2C.cpp:629:6:bool I2C::MasterIsReading()	16	static
-../Drivers_LPC845/I2C/I2C.cpp:630:6:bool I2C::MasterIsWriting()	16	static
-../Drivers_LPC845/I2C/I2C.cpp:631:6:bool I2C::MasterIsIdle()	16	static
-../Drivers_LPC845/I2C/I2C.cpp:632:6:bool I2C::HadNACK()	16	static
+../Drivers_LPC845/I2C/I2C.cpp:149:1:I2C::I2C(uint8_t, uint8_t, uint8_t, uint8_t, I2C_Type*, mode_t, uint8_t)	24	static
+../Drivers_LPC845/I2C/I2C.cpp:245:6:void I2C::ConfiguracionI2C0()	16	static
+../Drivers_LPC845/I2C/I2C.cpp:317:1:I2C::~I2C()	16	static
+../Drivers_LPC845/I2C/I2C.cpp:317:1:virtual I2C::~I2C()	16	static
+../Drivers_LPC845/I2C/I2C.cpp:331:6:void I2C::AssignPins()	24	static
+../Drivers_LPC845/I2C/I2C.cpp:378:6:void I2C::ClearPresets()	16	static
+../Drivers_LPC845/I2C/I2C.cpp:405:6:void I2C::EnableClocks()	16	static
+../Drivers_LPC845/I2C/I2C.cpp:436:6:void I2C::EnableNvicInterrupt()	16	static
+../Drivers_LPC845/I2C/I2C.cpp:458:6:void I2C::SetUpMaster()	16	static
+../Drivers_LPC845/I2C/I2C.cpp:479:6:void I2C::SetUpSlave()	16	static
+../Drivers_LPC845/I2C/I2C.cpp:509:6:void I2C::MasterWrite()	32	static
+../Drivers_LPC845/I2C/I2C.cpp:545:6:void I2C::MasterRead(bool)	24	static
+../Drivers_LPC845/I2C/I2C.cpp:582:6:void I2C::SlaveRead()	24	static
+../Drivers_LPC845/I2C/I2C.cpp:609:6:void I2C::SlaveWrite()	32	static
+../Drivers_LPC845/I2C/I2C.cpp:640:6:void I2C::StartMasterRead()	16	static
+../Drivers_LPC845/I2C/I2C.cpp:664:6:void I2C::StartMasterWrite()	16	static
+../Drivers_LPC845/I2C/I2C.cpp:688:6:void I2C::DisableMasterPendingInterrupt()	16	static
+../Drivers_LPC845/I2C/I2C.cpp:701:6:void I2C::EnableMasterPendingInterrupt()	16	static
+../Drivers_LPC845/I2C/I2C.cpp:716:6:void I2C::PushRead(uint8_t)	16	static
+../Drivers_LPC845/I2C/I2C.cpp:737:6:bool I2C::PopRead(uint8_t*)	16	static
+../Drivers_LPC845/I2C/I2C.cpp:761:6:void I2C::PushWrite(uint8_t)	16	static
+../Drivers_LPC845/I2C/I2C.cpp:782:6:bool I2C::PopWrite(uint8_t*)	16	static
+../Drivers_LPC845/I2C/I2C.cpp:810:6:void I2C::Write(void*, uint32_t)	32	static
+../Drivers_LPC845/I2C/I2C.cpp:840:6:bool I2C::TriggerReading(uint8_t)	16	static
+../Drivers_LPC845/I2C/I2C.cpp:866:7:void* I2C::Read(void*, uint32_t)	48	static
+../Drivers_LPC845/I2C/I2C.cpp:897:6:bool I2C::ReadNextByte(uint8_t*)	32	static
+../Drivers_LPC845/I2C/I2C.cpp:927:9:uint8_t I2C::read()	32	static
+../Drivers_LPC845/I2C/I2C.cpp:945:6:void I2C::writeI2CAndWait(void*, uint32_t)	24	static
+../Drivers_LPC845/I2C/I2C.cpp:966:6:void I2C::readI2CAndWait(uint8_t)	16	static
+../Drivers_LPC845/I2C/I2C.cpp:986:6:void I2C::IRQHandler()	24	static
+../Drivers_LPC845/I2C/I2C.cpp:1041:6:void I2C0_IRQHandler()	8	static
+../Drivers_LPC845/I2C/I2C.cpp:1054:6:bool I2C::MasterIsReading()	16	static
+../Drivers_LPC845/I2C/I2C.cpp:1067:6:bool I2C::MasterIsWriting()	16	static
+../Drivers_LPC845/I2C/I2C.cpp:1080:6:bool I2C::MasterIsIdle()	16	static
+../Drivers_LPC845/I2C/I2C.cpp:1093:6:bool I2C::HadNACK()	16	static

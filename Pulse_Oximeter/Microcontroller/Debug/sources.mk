@@ -30,6 +30,7 @@ OBJS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+.metadata/.plugins/org.eclipse.cdt.make.core \
 Drivers_LPC845/I2C \
 Drivers_LPC845/SerialCom \
 Drivers_LPC845 \

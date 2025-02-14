@@ -86,11 +86,13 @@ Discarded input sections
  .group         0x00000000        0xc ./src/MdeMAX30102.o
  .group         0x00000000        0xc ./src/MdeMAX30102.o
  .group         0x00000000        0xc ./src/MdeMAX30102.o
+ .group         0x00000000        0xc ./src/MdeMAX30102.o
  .text          0x00000000        0x0 ./src/MdeMAX30102.o
  .data          0x00000000        0x0 ./src/MdeMAX30102.o
  .bss           0x00000000        0x0 ./src/MdeMAX30102.o
  .rodata._ZL14uch_spo2_table
                 0x00000000       0xb8 ./src/MdeMAX30102.o
+ .group         0x00000000        0xc ./src/main.o
  .group         0x00000000        0xc ./src/main.o
  .group         0x00000000        0xc ./src/main.o
  .group         0x00000000        0xc ./src/main.o
@@ -125,7 +127,8 @@ Discarded input sections
                 0x00000000       0xb8 ./src/main.o
  .debug_macro   0x00000000      0xbfe ./src/main.o
  .debug_macro   0x00000000     0x1c24 ./src/main.o
- .debug_macro   0x00000000       0x34 ./src/main.o
+ .debug_macro   0x00000000       0x10 ./src/main.o
+ .debug_macro   0x00000000       0x3c ./src/main.o
  .debug_macro   0x00000000      0x1f2 ./src/main.o
  .debug_macro   0x00000000       0x10 ./src/main.o
  .debug_macro   0x00000000       0xc8 ./src/main.o
@@ -149,7 +152,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x10 ./src/main.o
  .debug_macro   0x00000000       0x3c ./src/main.o
  .debug_macro   0x00000000       0x8e ./src/main.o
- .debug_macro   0x00000000       0x6a ./src/main.o
+ .debug_macro   0x00000000       0x7b ./src/main.o
  .group         0x00000000        0xc ./Utils/strings/strings.o
  .group         0x00000000        0xc ./Utils/strings/strings.o
  .text          0x00000000        0x0 ./Utils/strings/strings.o
@@ -249,7 +252,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x10 ./Drivers_LPC845/sensor/MAX30102.o
  .debug_macro   0x00000000       0x3c ./Drivers_LPC845/sensor/MAX30102.o
  .debug_macro   0x00000000       0x8e ./Drivers_LPC845/sensor/MAX30102.o
- .debug_macro   0x00000000       0x6a ./Drivers_LPC845/sensor/MAX30102.o
+ .debug_macro   0x00000000       0x7b ./Drivers_LPC845/sensor/MAX30102.o
  .group         0x00000000        0xc ./Drivers_LPC845/pinInt/PinInt.o
  .group         0x00000000        0xc ./Drivers_LPC845/pinInt/PinInt.o
  .text          0x00000000        0x0 ./Drivers_LPC845/pinInt/PinInt.o
@@ -324,7 +327,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x2e ./Drivers_LPC845/gpio/gpio_in.o
  .debug_macro   0x00000000      0xbfe ./Drivers_LPC845/gpio/gpio_in.o
  .debug_macro   0x00000000     0x1c24 ./Drivers_LPC845/gpio/gpio_in.o
- .debug_line    0x00000000      0x17b ./Drivers_LPC845/gpio/gpio_in.o
+ .debug_line    0x00000000      0x17e ./Drivers_LPC845/gpio/gpio_in.o
  .debug_str     0x00000000    0x12149 ./Drivers_LPC845/gpio/gpio_in.o
  .comment       0x00000000       0x45 ./Drivers_LPC845/gpio/gpio_in.o
  .debug_frame   0x00000000       0x90 ./Drivers_LPC845/gpio/gpio_in.o
@@ -357,7 +360,7 @@ Discarded input sections
  .debug_macro   0x00000000       0x2e ./Drivers_LPC845/gpio/gpio_out.o
  .debug_macro   0x00000000      0xbfe ./Drivers_LPC845/gpio/gpio_out.o
  .debug_macro   0x00000000     0x1c24 ./Drivers_LPC845/gpio/gpio_out.o
- .debug_line    0x00000000      0x1ff ./Drivers_LPC845/gpio/gpio_out.o
+ .debug_line    0x00000000      0x203 ./Drivers_LPC845/gpio/gpio_out.o
  .debug_str     0x00000000    0x1216a ./Drivers_LPC845/gpio/gpio_out.o
  .comment       0x00000000       0x45 ./Drivers_LPC845/gpio/gpio_out.o
  .debug_frame   0x00000000       0xb4 ./Drivers_LPC845/gpio/gpio_out.o
@@ -389,12 +392,14 @@ Discarded input sections
  .group         0x00000000        0xc ./Drivers_LPC845/esp8266/ESP8266.o
  .group         0x00000000        0xc ./Drivers_LPC845/esp8266/ESP8266.o
  .group         0x00000000        0xc ./Drivers_LPC845/esp8266/ESP8266.o
+ .group         0x00000000        0xc ./Drivers_LPC845/esp8266/ESP8266.o
  .text          0x00000000        0x0 ./Drivers_LPC845/esp8266/ESP8266.o
  .data          0x00000000        0x0 ./Drivers_LPC845/esp8266/ESP8266.o
  .bss           0x00000000        0x0 ./Drivers_LPC845/esp8266/ESP8266.o
  .debug_macro   0x00000000      0xbfe ./Drivers_LPC845/esp8266/ESP8266.o
  .debug_macro   0x00000000     0x1c24 ./Drivers_LPC845/esp8266/ESP8266.o
- .debug_macro   0x00000000       0x34 ./Drivers_LPC845/esp8266/ESP8266.o
+ .debug_macro   0x00000000       0x10 ./Drivers_LPC845/esp8266/ESP8266.o
+ .debug_macro   0x00000000       0x3c ./Drivers_LPC845/esp8266/ESP8266.o
  .group         0x00000000        0xc ./Drivers_LPC845/dr_init/DR_Init.o
  .group         0x00000000        0xc ./Drivers_LPC845/dr_init/DR_Init.o
  .text          0x00000000        0x0 ./Drivers_LPC845/dr_init/DR_Init.o
@@ -495,6 +500,21 @@ Discarded input sections
  .data          0x00000000        0x0 ./Drivers_LPC845/cr_startup_lpc84x.o
  .bss           0x00000000        0x0 ./Drivers_LPC845/cr_startup_lpc84x.o
  .debug_macro   0x00000000      0xbfe ./Drivers_LPC845/cr_startup_lpc84x.o
+ .group         0x00000000        0xc ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
+ .text          0x00000000        0x0 ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
+ .data          0x00000000        0x0 ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
+ .bss           0x00000000        0x0 ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
+ .debug_info    0x00000000       0x21 ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
+ .debug_abbrev  0x00000000       0x13 ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
+ .debug_aranges
+                0x00000000       0x18 ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
+ .debug_macro   0x00000000       0x11 ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
+ .debug_macro   0x00000000      0xab4 ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
+ .debug_line    0x00000000       0x58 ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
+ .debug_str     0x00000000     0x2ddb ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
+ .comment       0x00000000       0x45 ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
+ .ARM.attributes
+                0x00000000       0x2c ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
  .data          0x00000000        0x0 C:/nxp/MCUXpressoIDE_11.10.0_3148/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.10.0.202311280810/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp\libgcc.a(_udivsi3.o)
  .bss           0x00000000        0x0 C:/nxp/MCUXpressoIDE_11.10.0_3148/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.10.0.202311280810/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp\libgcc.a(_udivsi3.o)
  .data          0x00000000        0x0 C:/nxp/MCUXpressoIDE_11.10.0_3148/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.10.0.202311280810/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp\libgcc.a(_divsi3.o)
@@ -738,6 +758,7 @@ LOAD ./Drivers_LPC845/SerialCom/serialCom.o
 LOAD ./Drivers_LPC845/I2C/I2C.o
 LOAD ./Drivers_LPC845/cr_cpp_config.o
 LOAD ./Drivers_LPC845/cr_startup_lpc84x.o
+LOAD ./.metadata/.plugins/org.eclipse.cdt.make.core/specs.o
 START GROUP
 LOAD C:/nxp/MCUXpressoIDE_11.10.0_3148/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.10.0.202311280810/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp\libgcc.a
 LOAD C:/nxp/MCUXpressoIDE_11.10.0_3148/ide/plugins/com.nxp.mcuxpresso.tools.win32_11.10.0.202311280810/tools/bin/../lib/gcc/arm-none-eabi/13.2.1/thumb/v6-m/nofp\libc.a
@@ -1493,41 +1514,41 @@ END GROUP
 OUTPUT(SPO2_HR.axf elf32-littlearm)
 LOAD linker stubs
 
-.debug_info     0x00000000     0x8227
+.debug_info     0x00000000     0x825f
  .debug_info    0x00000000      0xc68 ./src/MdeMAX30102.o
  .debug_info    0x00000c68      0xe9b ./src/main.o
  .debug_info    0x00001b03      0x22a ./Utils/strings/strings.o
  .debug_info    0x00001d2d      0x2b1 ./Utils/queue/Queue.o
  .debug_info    0x00001fde      0x3ef ./Drivers_LPC845/timer/Timer.o
  .debug_info    0x000023cd       0xb1 ./Drivers_LPC845/systick/Systick.o
- .debug_info    0x0000247e     0x1515 ./Drivers_LPC845/sensor/MAX30102.o
- .debug_info    0x00003993      0x4b4 ./Drivers_LPC845/pinInt/PinInt.o
- .debug_info    0x00003e47      0x30b ./Drivers_LPC845/perifericoTemporizado/PerifericoTemporizado.o
- .debug_info    0x00004152      0xd65 ./Drivers_LPC845/esp8266/ESP8266.o
- .debug_info    0x00004eb7      0x622 ./Drivers_LPC845/dr_init/DR_Init.o
- .debug_info    0x000054d9      0x245 ./Drivers_LPC845/SerialCom/bufferCirc.o
- .debug_info    0x0000571e      0x7c7 ./Drivers_LPC845/SerialCom/serialCom.o
- .debug_info    0x00005ee5     0x16ef ./Drivers_LPC845/I2C/I2C.o
- .debug_info    0x000075d4      0x9f7 ./Drivers_LPC845/cr_cpp_config.o
- .debug_info    0x00007fcb      0x25c ./Drivers_LPC845/cr_startup_lpc84x.o
+ .debug_info    0x0000247e     0x1526 ./Drivers_LPC845/sensor/MAX30102.o
+ .debug_info    0x000039a4      0x4b4 ./Drivers_LPC845/pinInt/PinInt.o
+ .debug_info    0x00003e58      0x30b ./Drivers_LPC845/perifericoTemporizado/PerifericoTemporizado.o
+ .debug_info    0x00004163      0xd76 ./Drivers_LPC845/esp8266/ESP8266.o
+ .debug_info    0x00004ed9      0x622 ./Drivers_LPC845/dr_init/DR_Init.o
+ .debug_info    0x000054fb      0x245 ./Drivers_LPC845/SerialCom/bufferCirc.o
+ .debug_info    0x00005740      0x7da ./Drivers_LPC845/SerialCom/serialCom.o
+ .debug_info    0x00005f1a     0x16f2 ./Drivers_LPC845/I2C/I2C.o
+ .debug_info    0x0000760c      0x9f7 ./Drivers_LPC845/cr_cpp_config.o
+ .debug_info    0x00008003      0x25c ./Drivers_LPC845/cr_startup_lpc84x.o
 
-.debug_abbrev   0x00000000     0x2635
+.debug_abbrev   0x00000000     0x2660
  .debug_abbrev  0x00000000      0x310 ./src/MdeMAX30102.o
  .debug_abbrev  0x00000310      0x330 ./src/main.o
  .debug_abbrev  0x00000640      0x114 ./Utils/strings/strings.o
  .debug_abbrev  0x00000754      0x160 ./Utils/queue/Queue.o
  .debug_abbrev  0x000008b4      0x22c ./Drivers_LPC845/timer/Timer.o
  .debug_abbrev  0x00000ae0       0xa2 ./Drivers_LPC845/systick/Systick.o
- .debug_abbrev  0x00000b82      0x3f9 ./Drivers_LPC845/sensor/MAX30102.o
- .debug_abbrev  0x00000f7b      0x20d ./Drivers_LPC845/pinInt/PinInt.o
- .debug_abbrev  0x00001188      0x1f6 ./Drivers_LPC845/perifericoTemporizado/PerifericoTemporizado.o
- .debug_abbrev  0x0000137e      0x485 ./Drivers_LPC845/esp8266/ESP8266.o
- .debug_abbrev  0x00001803      0x179 ./Drivers_LPC845/dr_init/DR_Init.o
- .debug_abbrev  0x0000197c      0x1bb ./Drivers_LPC845/SerialCom/bufferCirc.o
- .debug_abbrev  0x00001b37      0x33e ./Drivers_LPC845/SerialCom/serialCom.o
- .debug_abbrev  0x00001e75      0x418 ./Drivers_LPC845/I2C/I2C.o
- .debug_abbrev  0x0000228d      0x26e ./Drivers_LPC845/cr_cpp_config.o
- .debug_abbrev  0x000024fb      0x13a ./Drivers_LPC845/cr_startup_lpc84x.o
+ .debug_abbrev  0x00000b82      0x3ce ./Drivers_LPC845/sensor/MAX30102.o
+ .debug_abbrev  0x00000f50      0x20d ./Drivers_LPC845/pinInt/PinInt.o
+ .debug_abbrev  0x0000115d      0x1f6 ./Drivers_LPC845/perifericoTemporizado/PerifericoTemporizado.o
+ .debug_abbrev  0x00001353      0x4ca ./Drivers_LPC845/esp8266/ESP8266.o
+ .debug_abbrev  0x0000181d      0x179 ./Drivers_LPC845/dr_init/DR_Init.o
+ .debug_abbrev  0x00001996      0x1bb ./Drivers_LPC845/SerialCom/bufferCirc.o
+ .debug_abbrev  0x00001b51      0x34f ./Drivers_LPC845/SerialCom/serialCom.o
+ .debug_abbrev  0x00001ea0      0x418 ./Drivers_LPC845/I2C/I2C.o
+ .debug_abbrev  0x000022b8      0x26e ./Drivers_LPC845/cr_cpp_config.o
+ .debug_abbrev  0x00002526      0x13a ./Drivers_LPC845/cr_startup_lpc84x.o
 
 .debug_aranges  0x00000000      0x5d8
  .debug_aranges
@@ -1581,95 +1602,96 @@ LOAD linker stubs
  .debug_ranges  0x000004b0       0x38 ./Drivers_LPC845/cr_cpp_config.o
  .debug_ranges  0x000004e8       0x50 ./Drivers_LPC845/cr_startup_lpc84x.o
 
-.debug_macro    0x00000000     0x46ab
- .debug_macro   0x00000000      0x1ff ./src/MdeMAX30102.o
- .debug_macro   0x000001ff      0xbfe ./src/MdeMAX30102.o
- .debug_macro   0x00000dfd     0x1c24 ./src/MdeMAX30102.o
- .debug_macro   0x00002a21       0x34 ./src/MdeMAX30102.o
- .debug_macro   0x00002a55      0x1f2 ./src/MdeMAX30102.o
- .debug_macro   0x00002c47       0x10 ./src/MdeMAX30102.o
- .debug_macro   0x00002c57       0xc8 ./src/MdeMAX30102.o
- .debug_macro   0x00002d1f      0x103 ./src/MdeMAX30102.o
- .debug_macro   0x00002e22      0x353 ./src/MdeMAX30102.o
- .debug_macro   0x00003175       0x22 ./src/MdeMAX30102.o
- .debug_macro   0x00003197       0x75 ./src/MdeMAX30102.o
- .debug_macro   0x0000320c       0x24 ./src/MdeMAX30102.o
- .debug_macro   0x00003230       0x94 ./src/MdeMAX30102.o
- .debug_macro   0x000032c4       0x3c ./src/MdeMAX30102.o
- .debug_macro   0x00003300       0x34 ./src/MdeMAX30102.o
- .debug_macro   0x00003334      0x197 ./src/MdeMAX30102.o
- .debug_macro   0x000034cb       0x57 ./src/MdeMAX30102.o
- .debug_macro   0x00003522      0x38c ./src/MdeMAX30102.o
- .debug_macro   0x000038ae       0x16 ./src/MdeMAX30102.o
- .debug_macro   0x000038c4       0x4a ./src/MdeMAX30102.o
- .debug_macro   0x0000390e       0x34 ./src/MdeMAX30102.o
- .debug_macro   0x00003942       0x10 ./src/MdeMAX30102.o
- .debug_macro   0x00003952       0x58 ./src/MdeMAX30102.o
- .debug_macro   0x000039aa      0x1de ./src/MdeMAX30102.o
- .debug_macro   0x00003b88       0x10 ./src/MdeMAX30102.o
- .debug_macro   0x00003b98       0x3c ./src/MdeMAX30102.o
- .debug_macro   0x00003bd4       0x8e ./src/MdeMAX30102.o
- .debug_macro   0x00003c62       0x6a ./src/MdeMAX30102.o
- .debug_macro   0x00003ccc      0x1ff ./src/main.o
- .debug_macro   0x00003ecb       0x24 ./Utils/strings/strings.o
- .debug_macro   0x00003eef       0x24 ./Utils/queue/Queue.o
- .debug_macro   0x00003f13       0x2e ./Drivers_LPC845/timer/Timer.o
- .debug_macro   0x00003f41       0x24 ./Drivers_LPC845/systick/Systick.o
- .debug_macro   0x00003f65      0x156 ./Drivers_LPC845/sensor/MAX30102.o
- .debug_macro   0x000040bb       0x24 ./Drivers_LPC845/pinInt/PinInt.o
- .debug_macro   0x000040df       0x24 ./Drivers_LPC845/perifericoTemporizado/PerifericoTemporizado.o
- .debug_macro   0x00004103       0x6d ./Drivers_LPC845/esp8266/ESP8266.o
- .debug_macro   0x00004170       0x3e ./Drivers_LPC845/dr_init/DR_Init.o
- .debug_macro   0x000041ae       0x24 ./Drivers_LPC845/SerialCom/bufferCirc.o
- .debug_macro   0x000041d2       0x2e ./Drivers_LPC845/SerialCom/serialCom.o
- .debug_macro   0x00004200       0x24 ./Drivers_LPC845/I2C/I2C.o
- .debug_macro   0x00004224      0x14d ./Drivers_LPC845/cr_cpp_config.o
- .debug_macro   0x00004371       0x10 ./Drivers_LPC845/cr_cpp_config.o
- .debug_macro   0x00004381       0x16 ./Drivers_LPC845/cr_cpp_config.o
- .debug_macro   0x00004397      0x11c ./Drivers_LPC845/cr_cpp_config.o
- .debug_macro   0x000044b3       0xa2 ./Drivers_LPC845/cr_cpp_config.o
- .debug_macro   0x00004555       0x16 ./Drivers_LPC845/cr_cpp_config.o
- .debug_macro   0x0000456b       0x29 ./Drivers_LPC845/cr_cpp_config.o
- .debug_macro   0x00004594       0x1c ./Drivers_LPC845/cr_cpp_config.o
- .debug_macro   0x000045b0       0xde ./Drivers_LPC845/cr_cpp_config.o
- .debug_macro   0x0000468e       0x1d ./Drivers_LPC845/cr_startup_lpc84x.o
+.debug_macro    0x00000000     0x46f5
+ .debug_macro   0x00000000      0x207 ./src/MdeMAX30102.o
+ .debug_macro   0x00000207      0xbfe ./src/MdeMAX30102.o
+ .debug_macro   0x00000e05     0x1c24 ./src/MdeMAX30102.o
+ .debug_macro   0x00002a29       0x10 ./src/MdeMAX30102.o
+ .debug_macro   0x00002a39       0x3c ./src/MdeMAX30102.o
+ .debug_macro   0x00002a75      0x1f2 ./src/MdeMAX30102.o
+ .debug_macro   0x00002c67       0x10 ./src/MdeMAX30102.o
+ .debug_macro   0x00002c77       0xc8 ./src/MdeMAX30102.o
+ .debug_macro   0x00002d3f      0x103 ./src/MdeMAX30102.o
+ .debug_macro   0x00002e42      0x353 ./src/MdeMAX30102.o
+ .debug_macro   0x00003195       0x22 ./src/MdeMAX30102.o
+ .debug_macro   0x000031b7       0x75 ./src/MdeMAX30102.o
+ .debug_macro   0x0000322c       0x24 ./src/MdeMAX30102.o
+ .debug_macro   0x00003250       0x94 ./src/MdeMAX30102.o
+ .debug_macro   0x000032e4       0x3c ./src/MdeMAX30102.o
+ .debug_macro   0x00003320       0x34 ./src/MdeMAX30102.o
+ .debug_macro   0x00003354      0x197 ./src/MdeMAX30102.o
+ .debug_macro   0x000034eb       0x57 ./src/MdeMAX30102.o
+ .debug_macro   0x00003542      0x38c ./src/MdeMAX30102.o
+ .debug_macro   0x000038ce       0x16 ./src/MdeMAX30102.o
+ .debug_macro   0x000038e4       0x4a ./src/MdeMAX30102.o
+ .debug_macro   0x0000392e       0x34 ./src/MdeMAX30102.o
+ .debug_macro   0x00003962       0x10 ./src/MdeMAX30102.o
+ .debug_macro   0x00003972       0x58 ./src/MdeMAX30102.o
+ .debug_macro   0x000039ca      0x1de ./src/MdeMAX30102.o
+ .debug_macro   0x00003ba8       0x10 ./src/MdeMAX30102.o
+ .debug_macro   0x00003bb8       0x3c ./src/MdeMAX30102.o
+ .debug_macro   0x00003bf4       0x8e ./src/MdeMAX30102.o
+ .debug_macro   0x00003c82       0x7b ./src/MdeMAX30102.o
+ .debug_macro   0x00003cfd      0x207 ./src/main.o
+ .debug_macro   0x00003f04       0x24 ./Utils/strings/strings.o
+ .debug_macro   0x00003f28       0x2a ./Utils/queue/Queue.o
+ .debug_macro   0x00003f52       0x2e ./Drivers_LPC845/timer/Timer.o
+ .debug_macro   0x00003f80       0x24 ./Drivers_LPC845/systick/Systick.o
+ .debug_macro   0x00003fa4      0x15a ./Drivers_LPC845/sensor/MAX30102.o
+ .debug_macro   0x000040fe       0x24 ./Drivers_LPC845/pinInt/PinInt.o
+ .debug_macro   0x00004122       0x24 ./Drivers_LPC845/perifericoTemporizado/PerifericoTemporizado.o
+ .debug_macro   0x00004146       0x74 ./Drivers_LPC845/esp8266/ESP8266.o
+ .debug_macro   0x000041ba       0x3e ./Drivers_LPC845/dr_init/DR_Init.o
+ .debug_macro   0x000041f8       0x24 ./Drivers_LPC845/SerialCom/bufferCirc.o
+ .debug_macro   0x0000421c       0x2e ./Drivers_LPC845/SerialCom/serialCom.o
+ .debug_macro   0x0000424a       0x24 ./Drivers_LPC845/I2C/I2C.o
+ .debug_macro   0x0000426e      0x14d ./Drivers_LPC845/cr_cpp_config.o
+ .debug_macro   0x000043bb       0x10 ./Drivers_LPC845/cr_cpp_config.o
+ .debug_macro   0x000043cb       0x16 ./Drivers_LPC845/cr_cpp_config.o
+ .debug_macro   0x000043e1      0x11c ./Drivers_LPC845/cr_cpp_config.o
+ .debug_macro   0x000044fd       0xa2 ./Drivers_LPC845/cr_cpp_config.o
+ .debug_macro   0x0000459f       0x16 ./Drivers_LPC845/cr_cpp_config.o
+ .debug_macro   0x000045b5       0x29 ./Drivers_LPC845/cr_cpp_config.o
+ .debug_macro   0x000045de       0x1c ./Drivers_LPC845/cr_cpp_config.o
+ .debug_macro   0x000045fa       0xde ./Drivers_LPC845/cr_cpp_config.o
+ .debug_macro   0x000046d8       0x1d ./Drivers_LPC845/cr_startup_lpc84x.o
 
-.debug_line     0x00000000     0x52ad
- .debug_line    0x00000000      0xc34 ./src/MdeMAX30102.o
- .debug_line    0x00000c34      0xb04 ./src/main.o
- .debug_line    0x00001738      0x24c ./Utils/strings/strings.o
- .debug_line    0x00001984      0x15e ./Utils/queue/Queue.o
- .debug_line    0x00001ae2      0x1f2 ./Drivers_LPC845/timer/Timer.o
- .debug_line    0x00001cd4      0x145 ./Drivers_LPC845/systick/Systick.o
- .debug_line    0x00001e19      0xee0 ./Drivers_LPC845/sensor/MAX30102.o
- .debug_line    0x00002cf9      0x380 ./Drivers_LPC845/pinInt/PinInt.o
- .debug_line    0x00003079      0x219 ./Drivers_LPC845/perifericoTemporizado/PerifericoTemporizado.o
- .debug_line    0x00003292      0x653 ./Drivers_LPC845/esp8266/ESP8266.o
- .debug_line    0x000038e5      0x25f ./Drivers_LPC845/dr_init/DR_Init.o
- .debug_line    0x00003b44      0x15d ./Drivers_LPC845/SerialCom/bufferCirc.o
- .debug_line    0x00003ca1      0x4da ./Drivers_LPC845/SerialCom/serialCom.o
- .debug_line    0x0000417b      0x9be ./Drivers_LPC845/I2C/I2C.o
- .debug_line    0x00004b39      0x663 ./Drivers_LPC845/cr_cpp_config.o
- .debug_line    0x0000519c      0x111 ./Drivers_LPC845/cr_startup_lpc84x.o
+.debug_line     0x00000000     0x52e7
+ .debug_line    0x00000000      0xc36 ./src/MdeMAX30102.o
+ .debug_line    0x00000c36      0xb04 ./src/main.o
+ .debug_line    0x0000173a      0x24c ./Utils/strings/strings.o
+ .debug_line    0x00001986      0x164 ./Utils/queue/Queue.o
+ .debug_line    0x00001aea      0x1f5 ./Drivers_LPC845/timer/Timer.o
+ .debug_line    0x00001cdf      0x146 ./Drivers_LPC845/systick/Systick.o
+ .debug_line    0x00001e25      0xef0 ./Drivers_LPC845/sensor/MAX30102.o
+ .debug_line    0x00002d15      0x386 ./Drivers_LPC845/pinInt/PinInt.o
+ .debug_line    0x0000309b      0x21a ./Drivers_LPC845/perifericoTemporizado/PerifericoTemporizado.o
+ .debug_line    0x000032b5      0x65b ./Drivers_LPC845/esp8266/ESP8266.o
+ .debug_line    0x00003910      0x260 ./Drivers_LPC845/dr_init/DR_Init.o
+ .debug_line    0x00003b70      0x15f ./Drivers_LPC845/SerialCom/bufferCirc.o
+ .debug_line    0x00003ccf      0x4de ./Drivers_LPC845/SerialCom/serialCom.o
+ .debug_line    0x000041ad      0x9c6 ./Drivers_LPC845/I2C/I2C.o
+ .debug_line    0x00004b73      0x663 ./Drivers_LPC845/cr_cpp_config.o
+ .debug_line    0x000051d6      0x111 ./Drivers_LPC845/cr_startup_lpc84x.o
 
-.debug_str      0x00000000    0x19ef0
- .debug_str     0x00000000    0x19ef0 ./src/MdeMAX30102.o
-                              0x17ef2 (size before relaxing)
- .debug_str     0x00019ef0    0x180a9 ./src/main.o
- .debug_str     0x00019ef0    0x11d24 ./Utils/strings/strings.o
- .debug_str     0x00019ef0    0x11d00 ./Utils/queue/Queue.o
- .debug_str     0x00019ef0    0x11e63 ./Drivers_LPC845/timer/Timer.o
- .debug_str     0x00019ef0    0x11c64 ./Drivers_LPC845/systick/Systick.o
- .debug_str     0x00019ef0    0x17edc ./Drivers_LPC845/sensor/MAX30102.o
- .debug_str     0x00019ef0    0x11e61 ./Drivers_LPC845/pinInt/PinInt.o
- .debug_str     0x00019ef0    0x11dc8 ./Drivers_LPC845/perifericoTemporizado/PerifericoTemporizado.o
- .debug_str     0x00019ef0    0x12642 ./Drivers_LPC845/esp8266/ESP8266.o
- .debug_str     0x00019ef0    0x1204d ./Drivers_LPC845/dr_init/DR_Init.o
- .debug_str     0x00019ef0    0x11cf4 ./Drivers_LPC845/SerialCom/bufferCirc.o
- .debug_str     0x00019ef0    0x11fb7 ./Drivers_LPC845/SerialCom/serialCom.o
- .debug_str     0x00019ef0    0x127db ./Drivers_LPC845/I2C/I2C.o
- .debug_str     0x00019ef0     0x8f63 ./Drivers_LPC845/cr_cpp_config.o
- .debug_str     0x00019ef0     0x3622 ./Drivers_LPC845/cr_startup_lpc84x.o
+.debug_str      0x00000000    0x19efa
+ .debug_str     0x00000000    0x19efa ./src/MdeMAX30102.o
+                              0x17efc (size before relaxing)
+ .debug_str     0x00019efa    0x180b3 ./src/main.o
+ .debug_str     0x00019efa    0x11d24 ./Utils/strings/strings.o
+ .debug_str     0x00019efa    0x11d0a ./Utils/queue/Queue.o
+ .debug_str     0x00019efa    0x11e63 ./Drivers_LPC845/timer/Timer.o
+ .debug_str     0x00019efa    0x11c64 ./Drivers_LPC845/systick/Systick.o
+ .debug_str     0x00019efa    0x17edc ./Drivers_LPC845/sensor/MAX30102.o
+ .debug_str     0x00019efa    0x11e61 ./Drivers_LPC845/pinInt/PinInt.o
+ .debug_str     0x00019efa    0x11dc8 ./Drivers_LPC845/perifericoTemporizado/PerifericoTemporizado.o
+ .debug_str     0x00019efa    0x1264c ./Drivers_LPC845/esp8266/ESP8266.o
+ .debug_str     0x00019efa    0x1204d ./Drivers_LPC845/dr_init/DR_Init.o
+ .debug_str     0x00019efa    0x11cf4 ./Drivers_LPC845/SerialCom/bufferCirc.o
+ .debug_str     0x00019efa    0x11fb7 ./Drivers_LPC845/SerialCom/serialCom.o
+ .debug_str     0x00019efa    0x127db ./Drivers_LPC845/I2C/I2C.o
+ .debug_str     0x00019efa     0x8f63 ./Drivers_LPC845/cr_cpp_config.o
+ .debug_str     0x00019efa     0x3622 ./Drivers_LPC845/cr_startup_lpc84x.o
 
 .comment        0x00000000       0x44
  .comment       0x00000000       0x44 ./src/MdeMAX30102.o

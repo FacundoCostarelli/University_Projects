@@ -1,19 +1,146 @@
-/***********************************************************************************************************************************
- *** MODULO
- **********************************************************************************************************************************/
+/*
+ * MAX30102.h
+ *
+ *  Created on: October 2024
+ *      Author: Facundo Costarelli & Ezequiel Lagatche
+ */
+
+/* ESP
+ * @brief Aquí tenemos los includes y la declaración de la clase `MAX30102`, la cual implementa la comunicación y configuración del sensor MAX30102
+ *        para la medición de frecuencia cardíaca (heart rate) y saturación de oxígeno (SpO2).
+ *
+ *      **Variables**
+ *
+ *      i2c:         Objeto de la clase `I2C` utilizado para realizar la comunicación I2C con el sensor MAX30102.
+ *
+ *      **Constantes**
+ *
+ *      FS:          Frecuencia de muestreo (sampling frequency), configurada por defecto a 25 Hz.
+ *      BUFFER_SIZE: Tamaño del buffer, definido como `FS * 4` (4 segundos de muestra).
+ *      MA4_SIZE:    Tamaño de la ventana de promediado móvil.
+ *      SLAVE_ADDR_MAX30102:
+ *                   Dirección I2C del sensor MAX30102 (0x57).
+ *      Varias macros adicionales para registros del sensor (e.g., `FIFO_WR_PTR`, `MODE_CONFIG`, etc.) y configuraciones.
+ *
+ *      **Métodos Privados**
+ *
+ *      void ConfiguracionSensorMAX30102(I2C i2c):
+ *                   Método que configura el sensor MAX30102 utilizando la interfaz I2C.
+ *
+ *      Métodos auxiliares de procesamiento de señales (e.g., detección de picos):
+ *      - void maxim_sort_indices_descend(int32_t *pn_x, int32_t *pn_indx, int32_t n_size)
+ *      - void maxim_sort_ascend(int32_t *pn_x, int32_t n_size)
+ *      - void maxim_remove_close_peaks(int32_t *pn_locs, int32_t *pn_npks, int32_t *pn_x, int32_t n_min_distance)
+ *      - void maxim_peaks_above_min_height(int32_t *pn_locs, int32_t *n_npks, int32_t *pn_x, int32_t n_size, int32_t n_min_height)
+ *      - void maxim_find_peaks(int32_t *pn_locs, int32_t *n_npks, int32_t *pn_x, int32_t n_size, int32_t n_min_height, int32_t n_min_distance, int32_t n_max_num)
+ *                   Métodos para procesar las señales de IR y LED rojo del sensor, incluyendo la detección de picos y la eliminación de ruido.
+ *
+ *      Métodos de lectura/escritura de registros:
+ *      - void readRegisterMAX30102(uint8_t regName, uint8_t *regValue_read)
+ *      - void readRegisterMAX30102NBytes(uint8_t regName, uint8_t size)
+ *      - void writeRegisterMAX30102(uint8_t regName, uint8_t regValue)
+ *                   Métodos para leer y escribir registros del sensor a través de I2C.
+ *
+ *      Métodos auxiliares:
+ *      - int16_t available(void): Verifica si hay datos disponibles para leer del FIFO del sensor.
+ *      - void nextSample(void): Avanza al siguiente dato en el FIFO del sensor.
+ *
+ *      **Métodos Públicos**
+ *
+ *      MAX30102(I2C_Type* m_i2c, mode_t mode, uint8_t slaveAddress):
+ *                   Constructor de la clase. Inicializa el sensor con el módulo I2C, el modo de operación y la dirección del esclavo I2C.
+ *
+ *      void maxim_heart_rate_and_oxygen_saturation(...):
+ *                   Método principal que calcula la frecuencia cardíaca y la saturación de oxígeno a partir de los datos del sensor.
+ *
+ *      Métodos relacionados con la lectura de datos FIFO:
+ *      - void readFifoData(int32_t *bytesLeftToRead): Lee los datos del FIFO del sensor.
+ *      - uint32_t getFIFORed(void): Devuelve el valor del LED rojo almacenado en el FIFO.
+ *      - uint32_t getFIFOIR(void): Devuelve el valor del LED IR almacenado en el FIFO.
+ *      - void resetFifoWrite(void): Reinicia el puntero de escritura del FIFO.
+ *      - void getFifoReadAndWrite(uint8_t *write, uint8_t *read): Obtiene los punteros de lectura y escritura del FIFO.
+ *
+ *      Métodos auxiliares para gestión de datos:
+ *      - uint32_t* getArrayIRValues(): Devuelve un puntero al array de valores de LED IR.
+ *      - uint32_t* getArrayRValues(): Devuelve un puntero al array de valores de LED rojo.
+ *      - bool continue_reading(): Indica si se debe continuar leyendo datos del sensor.
+ *      - void reset_samples_counter(): Reinicia el contador de muestras.
+ *
+ * @param Ninguno
+ */
+
+/* ENG
+ * @brief Here we have the includes and the declaration of the `MAX30102` class, which implements communication and configuration
+ *        of the MAX30102 sensor for heart rate (HR) and oxygen saturation (SpO2) measurement.
+ *
+ *      **Variables**
+ *
+ *      i2c:         Instance of the `I2C` class used to perform I2C communication with the MAX30102 sensor.
+ *
+ *      **Constants**
+ *
+ *      FS:          Sampling frequency, set to 25 Hz by default.
+ *      BUFFER_SIZE: Buffer size, defined as `FS * 4` (4 seconds of samples).
+ *      MA4_SIZE:    Moving average window size.
+ *      SLAVE_ADDR_MAX30102:
+ *                   I2C address of the MAX30102 sensor (0x57).
+ *      Various macros for sensor registers (e.g., `FIFO_WR_PTR`, `MODE_CONFIG`, etc.) and settings.
+ *
+ *      **Private Methods**
+ *
+ *      void ConfiguracionSensorMAX30102(I2C i2c):
+ *                   Method that configures the MAX30102 sensor using the I2C interface.
+ *
+ *      Signal processing helper methods (e.g., peak detection):
+ *      - void maxim_sort_indices_descend(int32_t *pn_x, int32_t *pn_indx, int32_t n_size)
+ *      - void maxim_sort_ascend(int32_t *pn_x, int32_t n_size)
+ *      - void maxim_remove_close_peaks(int32_t *pn_locs, int32_t *pn_npks, int32_t *pn_x, int32_t n_min_distance)
+ *      - void maxim_peaks_above_min_height(int32_t *pn_locs, int32_t *n_npks, int32_t *pn_x, int32_t n_size, int32_t n_min_height)
+ *      - void maxim_find_peaks(int32_t *pn_locs, int32_t *n_npks, int32_t *pn_x, int32_t n_size, int32_t n_min_height, int32_t n_min_distance, int32_t n_max_num)
+ *                   Methods for processing IR and red LED signals from the sensor, including peak detection and noise removal.
+ *
+ *      Register read/write methods:
+ *      - void readRegisterMAX30102(uint8_t regName, uint8_t *regValue_read)
+ *      - void readRegisterMAX30102NBytes(uint8_t regName, uint8_t size)
+ *      - void writeRegisterMAX30102(uint8_t regName, uint8_t regValue)
+ *                   Methods to read and write sensor registers via I2C.
+ *
+ *      Auxiliary methods:
+ *      - int16_t available(void): Checks if data is available to read from the sensor's FIFO.
+ *      - void nextSample(void): Advances to the next sample in the sensor's FIFO.
+ *
+ *      **Public Methods**
+ *
+ *      MAX30102(I2C_Type* m_i2c, mode_t mode, uint8_t slaveAddress):
+ *                   Class constructor. Initializes the sensor with the I2C module, operating mode, and I2C slave address.
+ *
+ *      void maxim_heart_rate_and_oxygen_saturation(...):
+ *                   Main method that calculates heart rate and oxygen saturation from sensor data.
+ *
+ *      Methods related to FIFO data reading:
+ *      - void readFifoData(int32_t *bytesLeftToRead): Reads data from the sensor's FIFO.
+ *      - uint32_t getFIFORed(void): Returns the red LED value stored in the FIFO.
+ *      - uint32_t getFIFOIR(void): Returns the IR LED value stored in the FIFO.
+ *      - void resetFifoWrite(void): Resets the FIFO write pointer.
+ *      - void getFifoReadAndWrite(uint8_t *write, uint8_t *read): Retrieves the FIFO read and write pointers.
+ *
+ *      Auxiliary methods for data management:
+ *      - uint32_t* getArrayIRValues(): Returns a pointer to the array of IR LED values.
+ *      - uint32_t* getArrayRValues(): Returns a pointer to the array of red LED values.
+ *      - bool continue_reading(): Indicates whether to continue reading data from the sensor.
+ *      - void reset_samples_counter(): Resets the sample counter.
+ *
+ * @param None
+ */
+
 #ifndef MAX30102_H_
 #define MAX30102_H_
 
-/***********************************************************************************************************************************
- *** INCLUDES GLOBALES
- **********************************************************************************************************************************/
-																															   #include "../Drivers_LPC845/I2C/I2C.h"
-#include <I2C/I2C.h>
-#include <cstring> // for memcpy
 
-/***********************************************************************************************************************************
- *** DEFINES GLOBALES
- **********************************************************************************************************************************/
+#include "../Drivers_LPC845/I2C/I2C.h"
+#include <I2C/I2C.h>
+#include <cstring>
+
 #define FS 25    //sampling frequency
 #define BUFFER_SIZE (FS * 4) // 4 son los segundos de muestra
 #define MA4_SIZE 4 // DONOT CHANGE
@@ -37,19 +164,8 @@
 
 #define BUFFER_LENGTH 32
 #define SAMPLES_SIZE 100
-/***********************************************************************************************************************************
- *** MACROS GLOBALES
- **********************************************************************************************************************************/
+
 #define min(x,y) ((x) < (y) ? (x) : (y));
-
-/***********************************************************************************************************************************
- *** TIPO DE DATOS GLOBALES
- **********************************************************************************************************************************/
-
-/***********************************************************************************************************************************
- *** VARIABLES GLOBALES
- **********************************************************************************************************************************/
-
 
 //uch_spo2_table is approximated as  -45.060*ratioAverage* ratioAverage + 30.354 *ratioAverage + 94.845 ;
 const uint8_t uch_spo2_table[184]={ 95, 95, 95, 96, 96, 96, 97, 97, 97, 97, 97, 98, 98, 98, 98, 98, 99, 99, 99, 99,
@@ -64,46 +180,41 @@ const uint8_t uch_spo2_table[184]={ 95, 95, 95, 96, 96, 96, 97, 97, 97, 97, 97, 
               3, 2, 1 } ;
 
 
-
-/***********************************************************************************************************************************
- *** IMPLANTACION DE LA CLASE
- **********************************************************************************************************************************/
-class MAX30102 {
-
-
+class MAX30102
+{
    private:
 		I2C i2c;
 
-      void ConfiguracionSensorMAX30102(I2C i2c);//hecha por mi
-      //Funciones de arduino hechas por SparkFun
+      void ConfiguracionSensorMAX30102(I2C i2c);
+
       void maxim_sort_indices_descend(  int32_t  *pn_x, int32_t *pn_indx, int32_t n_size);
       void maxim_sort_ascend(int32_t  *pn_x, int32_t n_size);
       void maxim_remove_close_peaks(int32_t *pn_locs, int32_t *pn_npks, int32_t *pn_x, int32_t n_min_distance);
       void maxim_peaks_above_min_height( int32_t *pn_locs, int32_t *n_npks,  int32_t  *pn_x, int32_t n_size, int32_t n_min_height );
       void maxim_find_peaks( int32_t *pn_locs, int32_t *n_npks,  int32_t  *pn_x, int32_t n_size, int32_t n_min_height, int32_t n_min_distance, int32_t n_max_num );
 
-      void readRegisterMAX30102(uint8_t regName, uint8_t *regValue_read);//hechas por mi
-	  void readRegisterMAX30102NBytes(uint8_t regName, uint8_t size);//hechas por mi
-	  void writeRegisterMAX30102(uint8_t regName, uint8_t regValue);//hechas por mi
-	  //Funciones de arduino hechas por SparkFun
+      void readRegisterMAX30102(uint8_t regName, uint8_t *regValue_read);
+	  void readRegisterMAX30102NBytes(uint8_t regName, uint8_t size);
+	  void writeRegisterMAX30102(uint8_t regName, uint8_t regValue);
+
 	  int16_t available(void);
 	  void nextSample(void);
+
    public:
+      MAX30102(I2C_Type* m_i2c, mode_t mode, uint8_t slaveAddress);
 
-      MAX30102(I2C_Type* m_i2c, mode_t mode, uint8_t slaveAddress);//hecha por mi
-
-      //Funcion de arduino hecha por SparkFun
       void maxim_heart_rate_and_oxygen_saturation(uint32_t *pun_ir_buffer, int32_t n_ir_buffer_length, uint32_t *pun_red_buffer, int32_t *pn_spo2, int8_t *pch_spo2_valid,
                            int32_t *pn_heart_rate, int8_t *pch_hr_valid);
 
-      //Funciones hechas por mi con base en arduino de Sparkfun
       void readFifoData(int32_t *bytesLeftToRead);
       uint32_t getFIFORed(void);
       uint32_t getFIFOIR(void);
       void resetFifoWrite();
       void getFifoReadAndWrite(uint8_t *write, uint8_t *read);
+
       uint32_t* getArrayIRValues();
       uint32_t* getArrayRValues();
+
       bool continue_reading();
       void reset_samples_counter();
 };

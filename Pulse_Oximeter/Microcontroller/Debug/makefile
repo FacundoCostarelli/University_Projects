@@ -22,6 +22,7 @@ RM := rm -rf
 -include Drivers_LPC845/SerialCom/subdir.mk
 -include Drivers_LPC845/I2C/subdir.mk
 -include Drivers_LPC845/subdir.mk
+-include .metadata/.plugins/org.eclipse.cdt.make.core/subdir.mk
 ifneq ($(MAKECMDGOALS),clean)
 ifneq ($(strip $(C++M_DEPS)),)
 -include $(C++M_DEPS)
