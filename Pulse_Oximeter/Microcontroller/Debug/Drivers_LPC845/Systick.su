@@ -1,2 +1,0 @@
-../Drivers_LPC845/Systick.cpp:12:6:void SysTick_Handler()	8	static
-../Drivers_LPC845/Systick.cpp:18:6:void InstallSystick(void (*)())	16	static
