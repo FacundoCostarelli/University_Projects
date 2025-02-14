@@ -1656,23 +1656,23 @@ LOAD linker stubs
  .debug_macro   0x000045fa       0xde ./Drivers_LPC845/cr_cpp_config.o
  .debug_macro   0x000046d8       0x1d ./Drivers_LPC845/cr_startup_lpc84x.o
 
-.debug_line     0x00000000     0x52e7
+.debug_line     0x00000000     0x52f0
  .debug_line    0x00000000      0xc36 ./src/MdeMAX30102.o
  .debug_line    0x00000c36      0xb04 ./src/main.o
- .debug_line    0x0000173a      0x24c ./Utils/strings/strings.o
- .debug_line    0x00001986      0x164 ./Utils/queue/Queue.o
- .debug_line    0x00001aea      0x1f5 ./Drivers_LPC845/timer/Timer.o
- .debug_line    0x00001cdf      0x146 ./Drivers_LPC845/systick/Systick.o
- .debug_line    0x00001e25      0xef0 ./Drivers_LPC845/sensor/MAX30102.o
- .debug_line    0x00002d15      0x386 ./Drivers_LPC845/pinInt/PinInt.o
- .debug_line    0x0000309b      0x21a ./Drivers_LPC845/perifericoTemporizado/PerifericoTemporizado.o
- .debug_line    0x000032b5      0x65b ./Drivers_LPC845/esp8266/ESP8266.o
- .debug_line    0x00003910      0x260 ./Drivers_LPC845/dr_init/DR_Init.o
- .debug_line    0x00003b70      0x15f ./Drivers_LPC845/SerialCom/bufferCirc.o
- .debug_line    0x00003ccf      0x4de ./Drivers_LPC845/SerialCom/serialCom.o
- .debug_line    0x000041ad      0x9c6 ./Drivers_LPC845/I2C/I2C.o
- .debug_line    0x00004b73      0x663 ./Drivers_LPC845/cr_cpp_config.o
- .debug_line    0x000051d6      0x111 ./Drivers_LPC845/cr_startup_lpc84x.o
+ .debug_line    0x0000173a      0x255 ./Utils/strings/strings.o
+ .debug_line    0x0000198f      0x164 ./Utils/queue/Queue.o
+ .debug_line    0x00001af3      0x1f5 ./Drivers_LPC845/timer/Timer.o
+ .debug_line    0x00001ce8      0x146 ./Drivers_LPC845/systick/Systick.o
+ .debug_line    0x00001e2e      0xef0 ./Drivers_LPC845/sensor/MAX30102.o
+ .debug_line    0x00002d1e      0x386 ./Drivers_LPC845/pinInt/PinInt.o
+ .debug_line    0x000030a4      0x21a ./Drivers_LPC845/perifericoTemporizado/PerifericoTemporizado.o
+ .debug_line    0x000032be      0x65b ./Drivers_LPC845/esp8266/ESP8266.o
+ .debug_line    0x00003919      0x260 ./Drivers_LPC845/dr_init/DR_Init.o
+ .debug_line    0x00003b79      0x15f ./Drivers_LPC845/SerialCom/bufferCirc.o
+ .debug_line    0x00003cd8      0x4de ./Drivers_LPC845/SerialCom/serialCom.o
+ .debug_line    0x000041b6      0x9c6 ./Drivers_LPC845/I2C/I2C.o
+ .debug_line    0x00004b7c      0x663 ./Drivers_LPC845/cr_cpp_config.o
+ .debug_line    0x000051df      0x111 ./Drivers_LPC845/cr_startup_lpc84x.o
 
 .debug_str      0x00000000    0x19efa
  .debug_str     0x00000000    0x19efa ./src/MdeMAX30102.o
