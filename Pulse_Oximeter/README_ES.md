@@ -165,20 +165,20 @@ Una vez realizados todos los pasos de instalación y configuración, se deben re
 ## Documentación
 Para mayor información y detalles se sugiere consultar los siguientes enlaces. También puede consultar la carpeta "DocumentsAndDatasheets" dentro de la carpeta "Pulse_Oximeter" en el repositorio de "University_Proyects"
 
-[Informe Técnico en ESP](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Informe_T%C3%A9cnico_PulseOximeter.pdf)
-[Informe Idea Fuerza en ESP](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Informe_Idea_Fuerza_PulseOximeter.pdf)
-[Technical Report in ENG](..................)
+- [Informe Técnico en ESP](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Informe_T%C3%A9cnico_PulseOximeter.pdf)
+- [Informe Idea Fuerza en ESP](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Informe_Idea_Fuerza_PulseOximeter.pdf)
+- [Technical Report in ENG](..................)
 
 Para más detalles técnicos, consulta las hojas de datos de los componentes:
 
-[Datasheet Module MAX30102](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Module_MAX30102_Datasheet.pdf)
-[Recommended Configurations Module MAX3010x](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Module_MAX3010x_ev_kits_recommended_configurations_and_operating_profiles.pdf)
-[Datasheet Module ESP8266](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Module_ESP8266_Datasheet.pdf)
-[Instruction Set ESP8266](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Module_esp8266_at_instruction_set_en.pdf)
-[Command Examples ES8266](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Module_esp8266_at_command_examples_en.pdf)
-[Datasheet Module LPC845](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/LPC84X_User_Manual.pdf)
-[Datasheet Breakout Board LPC845](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/LPC845_Breakout_board_User_Manual.pdf)
-[Schematic Breakout Board LPC845](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Schematic_LPC845_BRK_RevA.PDF)
+- [Datasheet Module MAX30102](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Module_MAX30102_Datasheet.pdf)
+- [Recommended Configurations Module MAX3010x](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Module_MAX3010x_ev_kits_recommended_configurations_and_operating_profiles.pdf)
+- [Datasheet Module ESP8266](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Module_ESP8266_Datasheet.pdf)
+- [Instruction Set ESP8266](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Module_esp8266_at_instruction_set_en.pdf)
+- [Command Examples ES8266](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Module_esp8266_at_command_examples_en.pdf)
+- [Datasheet Module LPC845](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/LPC84X_User_Manual.pdf)
+- [Datasheet Breakout Board LPC845](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/LPC845_Breakout_board_User_Manual.pdf)
+- [Schematic Breakout Board LPC845](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Schematic_LPC845_BRK_RevA.PDF)
 
 ## Fuentes De Consulta
 - [Foros de NXP en LPC845](https://community.nxp.com/t5/forums/searchpage/tab/message?advanced=false&allow_punctuation=true&q=LPC845)
