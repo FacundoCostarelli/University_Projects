@@ -14,9 +14,11 @@ Incluye una interfaz gráfica Qt para visualización de datos.
 2. [Uso](#uso)
 3. [Problemas Comunes](#problemas-comunes)
 4. [Documentación](#documentación)
-5. [Contribución](#contribución)
-6. [Licencia](#licencia)
-7. [Autores](#autores)
+5. [Fuentes De Consulta](#fuentes-de-consulta)
+6. [Contribución](#contribución)
+7. [Licencia](#licencia)
+8. [Autores](#autores)
+9. [Reconocimientos Y Colaboraciones](#reconocimientos-y-colaboraciones)
 
 ---
 
@@ -27,6 +29,7 @@ Se deja también un link a una lista de reproducción de un canal de youtube con
 
 **Requisitos previos:**
 - Microcontrolador LPC845 y sensor MAX30102.
+- Módulo de hardware de acople de sensores diseñado en kicad.
 - Módulo ESP8266 configurado con comandos AT.
 - Fuente de alimentación de 3.3V.
 - Software necesario:
@@ -159,7 +162,7 @@ Una vez realizados todos los pasos de instalación y configuración, se deben re
 	-Descripción: Dificultades con el patrón de comunicación, comandos AT, y uso de funciones bloqueantes.
 	-Solución: Implementación de una máquina de estados para manejar respuestas "OK\r\n" y un sistema de encolamiento para transmitir mensajes.
 
-## Documentacion
+## Documentación
 Para mayor información y detalles se sugiere consultar los siguientes enlaces. También puede consultar la carpeta "DocumentsAndDatasheets" dentro de la carpeta "Pulse_Oximeter" en el repositorio de "University_Proyects"
 
 [Informe Técnico en ESP](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Informe_T%C3%A9cnico_PulseOximeter.pdf)
@@ -177,7 +180,7 @@ Para más detalles técnicos, consulta las hojas de datos de los componentes:
 [Datasheet Breakout Board LPC845](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/LPC845_Breakout_board_User_Manual.pdf)
 [Schematic Breakout Board LPC845](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Schematic_LPC845_BRK_RevA.PDF)
 
-## Fuentes de Consulta
+## Fuentes De Consulta
 - [Foros de NXP en LPC845](https://community.nxp.com/t5/forums/searchpage/tab/message?advanced=false&allow_punctuation=true&q=LPC845)
 - [Foros de StackOverflow](https://stackoverflow.com/)
 - [Chat GPT PLUS](https://chatgpt.com/)
@@ -188,7 +191,7 @@ Es recomendable enviar incluso bloques de código que funcionen y pedir ayuda co
 No es recomendable copiar y pegar ya que seguramente no funcione el código brindado en C y C++ por ser aplicado en el microcontrolador específico.
 Si es recomendable tomar como referencia la estructura de código brindada, líneas de código y funciones específicas aunque con modificaciones necesarias según el datasheet del microcontrolador.
 
-## Contribucion
+## Contribución
 
 Toda colaboración es bienvenida. Sigue estos pasos para contribuir:
 
@@ -210,7 +213,7 @@ Puedes usar, modificar y distribuir este proyecto respetando los términos de la
 - Facundo Costarelli
 - Ezequiel Lagatche
 
-## Reconocimentos, colaboracione y participaciones
+## Reconocimientos Y Colaboraciones
 - Laboratorio de Bio Ingeniería UTN BA [Sitio web UTN BA-GBIO](https://www.frba.utn.edu.ar/gibio/) y []
 - Prof Doctor Ing Leandro Cymberknop(Electrónica en UTN BA)
 - Prof Ing Mariana Prieto(Electrónica en UTN BA)
