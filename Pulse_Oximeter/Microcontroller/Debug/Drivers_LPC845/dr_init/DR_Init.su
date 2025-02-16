@@ -1,2 +1,0 @@
-../Drivers_LPC845/dr_init/DR_Init.cpp:26:6:void InicializarPLL()	8	static
-../Drivers_LPC845/dr_init/DR_Init.cpp:88:6:void recorridoPTs()	16	static

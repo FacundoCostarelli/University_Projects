@@ -211,7 +211,7 @@ Puedes usar, modificar y distribuir este proyecto respetando los términos de la
 
 ## Autores
 - Facundo Costarelli
-- Ezequiel Lagatche
+
 
 ## Reconocimientos Y Colaboraciones
 - Laboratorio de Bio Ingeniería UTN BA [Sitio web UTN BA-GBIO](https://www.frba.utn.edu.ar/gibio/) y []
@@ -223,6 +223,7 @@ Puedes usar, modificar y distribuir este proyecto respetando los términos de la
 - Estudiante de Ing Maximiliano(Electrónica en UTN BA)
 - Estudiante de Ing Matias(Electrónica en UTN BA)
 - Estudiante de Ing Franco Callero(Informática y Sistemas en UTN BA)
+- Estudiante de Ing Ezequiel Lagatche(Electrónica en UTN BA)
 - Estudiante de Ing Guido Rodriguez(Electrónica en UBA)
 
 **Abreviaciones:**
