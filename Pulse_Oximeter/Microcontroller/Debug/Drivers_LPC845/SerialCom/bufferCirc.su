@@ -1,0 +1,4 @@
+../Drivers_LPC845/SerialCom/bufferCirc.cpp:24:1:bufferCirc::bufferCirc(uint8_t)	16	static
+../Drivers_LPC845/SerialCom/bufferCirc.cpp:59:6:void bufferCirc::push(uint8_t)	16	static
+../Drivers_LPC845/SerialCom/bufferCirc.cpp:96:9:int16_t bufferCirc::pop()	24	static
+../Drivers_LPC845/SerialCom/bufferCirc.cpp:134:6:bool bufferCirc::hayLugar()	16	static

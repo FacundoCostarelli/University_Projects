@@ -1,0 +1,23 @@
+../src/../Drivers_LPC845/I2C/I2C.h:45:7:constexpr I2C::I2C(const I2C&)	16	static
+../src/MAX30102.cpp:22:1:MAX30102::MAX30102(I2C_Type*, mode_t, uint8_t)	64	static
+../src/MAX30102.cpp:31:6:void MAX30102::ConfiguracionSensorMAX30102(I2C)	32	static
+../src/MAX30102.cpp:104:6:void MAX30102::readRegisterMAX30102(uint8_t, uint8_t*)	32	static
+../src/MAX30102.cpp:120:6:void MAX30102::readRegisterMAX30102NBytes(uint8_t, uint8_t)	24	static
+../src/MAX30102.cpp:129:6:void MAX30102::writeRegisterMAX30102(uint8_t, uint8_t)	24	static
+../src/MAX30102.cpp:139:6:void MAX30102::readFifoData(int32_t*)	40	static
+../src/MAX30102.cpp:196:6:bool MAX30102::continue_reading()	16	static
+../src/MAX30102.cpp:201:6:void MAX30102::reset_samples_counter()	16	static
+../src/MAX30102.cpp:206:6:void MAX30102::maxim_sort_indices_descend(int32_t*, int32_t*, int32_t)	40	static
+../src/MAX30102.cpp:223:6:void MAX30102::maxim_sort_ascend(int32_t*, int32_t)	40	static
+../src/MAX30102.cpp:241:6:void MAX30102::maxim_remove_close_peaks(int32_t*, int32_t*, int32_t*, int32_t)	48	static
+../src/MAX30102.cpp:270:6:void MAX30102::maxim_peaks_above_min_height(int32_t*, int32_t*, int32_t*, int32_t, int32_t)	40	static
+../src/MAX30102.cpp:300:6:void MAX30102::maxim_find_peaks(int32_t*, int32_t*, int32_t*, int32_t, int32_t, int32_t, int32_t)	40	static
+../src/MAX30102.cpp:315:6:void MAX30102::maxim_heart_rate_and_oxygen_saturation(uint32_t*, int32_t, uint32_t*, int32_t*, int8_t*, int32_t*, int8_t*)	216	static
+../src/MAX30102.cpp:473:9:int16_t MAX30102::available()	24	static
+../src/MAX30102.cpp:483:6:void MAX30102::nextSample()	16	static
+../src/MAX30102.cpp:492:10:uint32_t MAX30102::getFIFORed()	16	static
+../src/MAX30102.cpp:497:10:uint32_t MAX30102::getFIFOIR()	16	static
+../src/MAX30102.cpp:503:11:uint32_t* MAX30102::getArrayIRValues()	16	static
+../src/MAX30102.cpp:507:11:uint32_t* MAX30102::getArrayRValues()	16	static
+../src/MAX30102.cpp:512:6:void MAX30102::resetFifoWrite()	16	static
+../src/MAX30102.cpp:516:6:void MAX30102::getFifoReadAndWrite(uint8_t*, uint8_t*)	24	static

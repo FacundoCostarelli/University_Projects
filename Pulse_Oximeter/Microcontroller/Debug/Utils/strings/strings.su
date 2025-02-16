@@ -1,0 +1,4 @@
+../Utils/strings/strings.cpp:28:6:static void Cadenas::enteroACadena(uint8_t, uint8_t*)	32	static
+../Utils/strings/strings.cpp:74:7:static void Cadenas::concatenarCadena(uint8_t*, const uint8_t*)	32	static
+../Utils/strings/strings.cpp:112:7:static void Cadenas::copiarCadena(uint8_t*, const uint8_t*)	24	static
+../Utils/strings/strings.cpp:148:9:static uint8_t Cadenas::longitudCadena(const uint8_t*)	24	static

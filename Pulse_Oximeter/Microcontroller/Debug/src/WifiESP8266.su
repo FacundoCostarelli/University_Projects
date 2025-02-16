@@ -1,0 +1,12 @@
+../src/WifiESP8266.cpp:13:1:Wifi_ESP8266::Wifi_ESP8266(serialCom*)	16	static
+../src/WifiESP8266.cpp:21:10:uint16_t Wifi_ESP8266::longitudCadena(const uint8_t*)	24	static
+../src/WifiESP8266.cpp:29:6:void Wifi_ESP8266::copiarCadena(uint8_t*, const uint8_t*)	32	static
+../src/WifiESP8266.cpp:38:6:void Wifi_ESP8266::concatenarCadena(uint8_t*, const uint8_t*)	40	static
+../src/WifiESP8266.cpp:49:6:void Wifi_ESP8266::enteroACadena(int32_t, uint8_t*)	48	static
+../src/WifiESP8266.cpp:82:6:void Wifi_ESP8266::enviarComandoAT(const uint8_t*, uint16_t)	32	static
+../src/WifiESP8266.cpp:88:6:bool Wifi_ESP8266::recibirRespuestaAT(uint8_t*, uint16_t, const uint8_t*, uint16_t)	40	static
+../src/WifiESP8266.cpp:107:6:bool Wifi_ESP8266::reiniciar()	128	static
+../src/WifiESP8266.cpp:113:6:bool Wifi_ESP8266::probarConexion()	128	static
+../src/WifiESP8266.cpp:119:6:bool Wifi_ESP8266::configurarModoWiFi(uint8_t)	160	static
+../src/WifiESP8266.cpp:130:6:bool Wifi_ESP8266::conectarWiFi(const uint8_t*, const uint8_t*)	344	static
+../src/WifiESP8266.cpp:143:6:bool Wifi_ESP8266::obtenerIP(uint8_t*, uint16_t)	168	static
