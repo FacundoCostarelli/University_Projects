@@ -48,8 +48,7 @@ Se deja también un link a una lista de reproducción de un canal de youtube con
 	[MCUXpresso IDE](https://nxp.flexnetoperations.com/control/frse/product?entitlementId=715761407&lineNum=1&authContactId=185187057&authPartyId=208677767)
 	- Seguir los pasos de instalación dados por el propio instalador del IDE
 
-     **Configurar proyecto opción 1:** [Video Configuración proyecto opción 1](...............) 
-	  
+     **Configurar proyecto opción 1:** --> [Video Configuración proyecto opción 1](...............) 
 	  - Generar un archivo .zip a partir de la carpeta Microcontroller con el mismo nombre que la carpeta y guardarla en el escritorio u otro lado que puedas.
 	  - Abrir el MCUXPRESSO IDE, seleccionar el workspace deseado. Tipicamente viene por default con la ruta dada como
 		C:\Users\nombre_usuario_de_tu_pc\Documents\MCUXpressoIDE_11.10.0_3148\workspace
@@ -63,7 +62,7 @@ Se deja también un link a una lista de reproducción de un canal de youtube con
 	  - El proyecto está ahora abierto con todas las configuraciones y las carpetas con archivos .cpp y .h  .
 	  - Compilar con el simbolo de "Martillo" ubicado en la barra superior, verificar que no hay errores e ignorar Warnings.
 
-     **Configurar proyecto opción 2:**
+     **Configurar proyecto opción 2:** --> [Video Configuración proyecto opción 2](...............)
 	  - Abrir el MCUXPRESSO IDE, seleccionar el workspace deseado. Tipicamente viene por default con la ruta dada como
 	  C:\Users\nombre_usuario_de_tu_pc\Documents\MCUXpressoIDE_11.10.0_3148\workspace
 	  - Crear un nuevo proyecto desde "File"-->"New"-->"Create a C/C++ project" y elegir en "Target" el "LPC84x"-->"LPC845".
