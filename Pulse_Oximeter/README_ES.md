@@ -40,7 +40,7 @@ Se deja también un link a una lista de reproducción de un canal de youtube con
 
 **Pasos de instalación:**
   1. Clonar el repositorio:
-       git clone https://github.com/FacundoCostarelli/University_Proyects.git
+       git clone https://github.com/FacundoCostarelli/University_Proyects/tree/master/Pulse_Oximeter
        cd Pulse_Oximeter
   2. Configurar paquete de software del LPC845 y MCUXpresso IDE pre-ejecución del programa:
 
