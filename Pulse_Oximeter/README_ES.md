@@ -56,12 +56,12 @@ Se deja también un link a una lista de reproducción de un canal de youtube con
         - Buscar la ventana que dice "Create or import a project". Tipicamente está en la esquina inferior izquierda.
         - Seleccionar "Import project(s) from file system".
         - Elegir "Project archive (zip)" y dar click en Browse.
-	- Buscar en Browse, el archivo .zip generado en el 1er paso.
+		- Buscar en Browse, el archivo .zip generado en el 1er paso.
         - Dar click en next y en la siguiente ventana debe aparecer un cuadro blanco con el nombre del proyecto como SPO2_HR
-	  y justo al lado una caja con un tick de okey.
+	  	y justo al lado una caja con un tick de okey.
         - Dar click en finish y luego en el próximo cartel de modificar las configuraciones dar en "Yes to all".
-	- El proyecto está ahora abierto con todas las configuraciones y las carpetas con archivos .cpp y .h  .
-	- Compilar con el simbolo de "Martillo" ubicado en la barra superior, verificar que no hay errores e ignorar Warnings.
+		- El proyecto está ahora abierto con todas las configuraciones y las carpetas con archivos .cpp y .h  .
+		- Compilar con el simbolo de "Martillo" ubicado en la barra superior, verificar que no hay errores e ignorar Warnings.
 
       **Configurar proyecto opción 2:**
 	- Abrir el MCUXPRESSO IDE, seleccionar el workspace deseado. Tipicamente viene por default con la ruta dada como
