@@ -43,10 +43,12 @@ Se deja también un link a una lista de reproducción de un canal de youtube con
        git clone https://github.com/FacundoCostarelli/University_Proyects.git
        cd Pulse_Oximeter
   2. Configurar paquete de software del LPC845 y MCUXpresso IDE pre-ejecución del programa:
+
       **Instalación MCUXPRESSO IDE:**
         - Entrar a la página de NXP official y en descargar el MCUXpresso IDE en la versión mas reciente con link 
 	[MCUXpresso IDE](https://nxp.flexnetoperations.com/control/frse/product?entitlementId=715761407&lineNum=1&authContactId=185187057&authPartyId=208677767)
 	- Seguir los pasos de instalación dados por el propio instalador del IDE
+
       **Configurar proyecto opción 1:** 
       	- Generar un archivo .zip a partir de la carpeta Microcontroller con el mismo nombre que la carpeta y guardarla en el escritorio u otro lado que puedas.
       	- Abrir el MCUXPRESSO IDE, seleccionar el workspace deseado. Tipicamente viene por default con la ruta dada como
@@ -60,6 +62,7 @@ Se deja también un link a una lista de reproducción de un canal de youtube con
         - Dar click en finish y luego en el próximo cartel de modificar las configuraciones dar en "Yes to all".
 	- El proyecto está ahora abierto con todas las configuraciones y las carpetas con archivos .cpp y .h  .
 	- Compilar con el simbolo de "Martillo" ubicado en la barra superior, verificar que no hay errores e ignorar Warnings.
+
       **Configurar proyecto opción 2:**
 	- Abrir el MCUXPRESSO IDE, seleccionar el workspace deseado. Tipicamente viene por default con la ruta dada como
 	  C:\Users\nombre_usuario_de_tu_pc\Documents\MCUXpressoIDE_11.10.0_3148\workspace
@@ -85,13 +88,15 @@ Se deja también un link a una lista de reproducción de un canal de youtube con
 	- Se deben añadir todas las carpetas y subcarpetas mencionadas una a la vez y luego dar "Apply and close. Para cada carpeta se repite el proceso.
 	- Compilar con el simbolo de "Martillo" ubicado en la barra superior y verificar que no hay errores e ignorar Warnings.
   3. Configurar la interfaz Qt y el QT IDE pre-ejecución del programa:
+
       **Instalacion de QT:**
 	- Entrar en la página oficial del QT y descargar la versión mas reciente de acuerdo con este link
 	[QT IDE](     )
 	- Para la descarga e instalación debe considerar SOLAMENTE los siguientes paquetes de software:
 	  Supongamos que instala la versión xxxxxx ... ... ... ... ...
+
       **Configurar proyecto opción 1:**
-	- 
+	 
   4. Configurar SSID y dirección IP de WIFI del ESP8266
 	- Recordar que este proyecto utiliza una red wifi donde el celular trabaja como servidor en modo hotspot con roaming data donde el ESP8266 y el PC tipo notebook son clientes. 
 	- Configurar telefono movil o celular en modo hotspot y asegurarsede tener data roaming.
