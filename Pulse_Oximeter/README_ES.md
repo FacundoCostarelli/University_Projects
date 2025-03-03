@@ -43,12 +43,12 @@ Se deja también un link a una lista de reproducción de un canal de youtube con
        git clone https://github.com/FacundoCostarelli/University_Proyects/tree/master/Pulse_Oximeter
   2. Configurar paquete de software del LPC845 y MCUXpresso IDE pre-ejecución del programa:
 
-      **Instalación MCUXPRESSO IDE:**
+     **Instalación MCUXPRESSO IDE:**
         - Entrar a la página de NXP official y en descargar el MCUXpresso IDE en la versión mas reciente con link 
 	[MCUXpresso IDE](https://nxp.flexnetoperations.com/control/frse/product?entitlementId=715761407&lineNum=1&authContactId=185187057&authPartyId=208677767)
-	- Seguir los pasos de instalación dados por el propio instalador del IDE
+		- Seguir los pasos de instalación dados por el propio instalador del IDE
 
-      **Configurar proyecto opción 1:** 
+     **Configurar proyecto opción 1:** 
       	- Generar un archivo .zip a partir de la carpeta Microcontroller con el mismo nombre que la carpeta y guardarla en el escritorio u otro lado que puedas.
       	- Abrir el MCUXPRESSO IDE, seleccionar el workspace deseado. Tipicamente viene por default con la ruta dada como
 	  C:\Users\nombre_usuario_de_tu_pc\Documents\MCUXpressoIDE_11.10.0_3148\workspace
@@ -62,27 +62,26 @@ Se deja también un link a una lista de reproducción de un canal de youtube con
 		- El proyecto está ahora abierto con todas las configuraciones y las carpetas con archivos .cpp y .h  .
 		- Compilar con el simbolo de "Martillo" ubicado en la barra superior, verificar que no hay errores e ignorar Warnings.
 
-      **Configurar proyecto opción 2:**
+     **Configurar proyecto opción 2:**
 	- Abrir el MCUXPRESSO IDE, seleccionar el workspace deseado. Tipicamente viene por default con la ruta dada como
 	  C:\Users\nombre_usuario_de_tu_pc\Documents\MCUXpressoIDE_11.10.0_3148\workspace
 	- Crear un nuevo proyecto desde "File"-->"New"-->"Create a C/C++ project" y elegir en "Target" el "LPC84x"-->"LPC845".
 	- Dar click en "next >" y en la ventana de "Wizard selection page" elegir "C++ project".
 	- En "Project name" dar un nombre, por ejemplo "SPO2_HR" y dejar con el tick la casilla de "Use default location". Ya que
           necesitamos que se cree el proyecto en el worksapace cuya ruta es dada por default por el MCUXPRESSO IDE durante la instalación del IDE.
-        - En "Wizar properties page" desactivamos la casilla de "Enable use of RomDivie library by compiled code" y damos en "Next >".
-        - En "Micro Trace Buffer Enable" desactivamos la casilla de "Enable definition of buffer array for MTB".
-        - En "Code Read Protection (CRP)" desactivamos la casilla de "Enable linker support for CRP".
-	- Estos últimos 3 pasos es necesario desactivar estos casilleros ya que no se usan en el proyecto y en caso de querer usarlo, añaden consumo de memoria y recursos del microcontrolador
-          y este consumo no es deseado.
+      - En "Wizar properties page" desactivamos la casilla de "Enable use of RomDivie library by compiled code" y damos en "Next >".
+      - En "Micro Trace Buffer Enable" desactivamos la casilla de "Enable definition of buffer array for MTB".
+      - En "Code Read Protection (CRP)" desactivamos la casilla de "Enable linker support for CRP".
+	- Estos últimos 3 pasos es necesario desactivar estos casilleros ya que no se usan en el proyecto y en caso de querer usarlo, añaden consumo de memoria y recursos del microcontrolador y este consumo no es deseado.
 	- El resto de opciones deben quedar en la configuración por default.
 	- Dar click en "Finish" y esperar a que el IDE configure lo necesario.
 	- Luego debe aparecer a la izquierda en la ventana de "Projects" nuestro proyecto generado con su nombre y sub carpetas.
-        - Ahora debemos borrar la carpeta "src" generada por default.
+      - Ahora debemos borrar la carpeta "src" generada por default.
 	- Descargar las carpetas "src", "Drivers_LPC845" y "Utils" del repositorio. Podemos descargar todo el repositorio o solo las carpetas individuales. Solo usamos estas carpetas mencionadas ahora.
 	- Copiar y pegar dando click derecho en el nombre del proyecto, las carpetas "src", "Drivers_LPC845" y "Utils" ubicadas en la carpeta Microcontroller en el repositorio de "Universiy_Projects".
 	- Dar click derecho en la carpeta del proyecto y elegir "Properties", luego seleccionar "C/C++ Build"-->"settings" y de "MCU C++ Compiler"-->"Includes".
 	- En "Includes" elegir "Include paths" y luego "add"(tiene un simbolo de una hoja con un +". Se abre la ventana "Add directoty path" y elegir workspace.
-	- Luego vemos que aparece la ventana "Folder selection". Buscar la carpeta general del proyecto de nombre "SPO2_HR". Dar click y elegir cada carpeta y sub carpeta, una por vez. Estas son
+	- Luego vemos que aparece la ventana "Folder selection". Buscar la carpeta general del proyecto de nombre "SPO2_HR". Dar click y elegir cada carpeta y sub carpeta, una por vez. Estas son:
 	  "src", "Drivers_LPC845","dr_init", "esp8266", "gpio", "I2C", "perifericoTemporizado", "pinInt", "sensor", "SerialCom", "systick", "timer", "Utils", "queue", "strings".
 	- Se deben añadir todas las carpetas y subcarpetas mencionadas una a la vez y luego dar "Apply and close. Para cada carpeta se repite el proceso.
 	- Compilar con el simbolo de "Martillo" ubicado en la barra superior y verificar que no hay errores e ignorar Warnings.
