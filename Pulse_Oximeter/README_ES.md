@@ -86,9 +86,9 @@ Se deja también un link a una lista de reproducción de un canal de youtube con
   3. Configurar la interfaz Qt y el QT IDE pre-ejecución del programa:
 
       **Instalacion de QT:**
-	- Entrar en la página oficial del QT y descargar la versión mas reciente de acuerdo con este link
-	[QT IDE](     )
-	- Para la descarga e instalación debe considerar SOLAMENTE los siguientes paquetes de software:
+	  - Entrar en la página oficial del QT y descargar la versión mas reciente de acuerdo con este link
+	  [QT IDE](     )
+	  - Para la descarga e instalación debe considerar SOLAMENTE los siguientes paquetes de software:
 	  Supongamos que instala la versión xxxxxx ... ... ... ... ...
 
       **Configurar proyecto opción 1:**
