@@ -89,24 +89,20 @@ Se deja también un link a una lista de reproducción de un canal de youtube con
 	  - Entrar en la página oficial del QT y descargar la versión mas reciente de acuerdo con este link
 	  [QT IDE](     )
 	  - Para la descarga e instalación debe considerar SOLAMENTE los siguientes paquetes de software:
-	  Supongamos que instala la versión xxxxxx ... ... ... ... ...
+	    - Supongamos que instala la versión xxxxxx ... ... ... ... ...
 
       **Configurar proyecto opción 1:**
 	 
   4. Configurar SSID y dirección IP de WIFI del ESP8266
-	- Recordar que este proyecto utiliza una red wifi donde el celular trabaja como servidor en modo hotspot con roaming data donde el ESP8266 y el PC tipo notebook son clientes. 
-	- Configurar telefono movil o celular en modo hotspot y asegurarsede tener data roaming.
-	- Conectar PC tipo notebook o cualquier PC con red de wifi al telefono.
-	- En MCUXpresso IDE, buscamos el proyecto SPO2_HR y luego "Drivers_LPC845"-->"esp8266"-->"ESP8266.h" buscamos la sección comentada como "Configuración de conexión y servidor TCP". 
-	  Allí, buscamos la linea 22 y modificamos el "#define WIFI_SSID "MIRED" por el nombre de nuestra red de wifi del celular en modo hotspot. No puede contener espacios ni caracteres especiales
-          O simplemente dejamos este nombre y configuramos nuestro telefono en modo hotspot colocando el nombre de "MIRED".
-	- Buscamos la linea 24 y modificamos el "#define TCP_HOST "192.168.116.150", en particular la dirección IP debe ser modificada segun la que aparece asociada al PC conectado en el celular. 
-	  Esto se ve dentro del modo hotspot desde el celular. 
+	  - Recordar que este proyecto utiliza una red wifi donde el celular trabaja como servidor en modo hotspot con roaming data donde el ESP8266 y el PC tipo notebook son clientes. 
+	  - Configurar telefono movil o celular en modo hotspot y asegurarsede tener data roaming.
+	  - Conectar PC tipo notebook o cualquier PC con red de wifi al telefono.
+	  - En MCUXpresso IDE, buscamos el proyecto SPO2_HR y luego "Drivers_LPC845"-->"esp8266"-->"ESP8266.h" buscamos la sección comentada como "Configuración de conexión y servidor TCP". Allí, buscamos la linea 22 y modificamos el "#define WIFI_SSID "MIRED" por el nombre de nuestra red de wifi del celular en modo hotspot. No puede contener espacios ni caracteres especiales, o simplemente dejamos este nombre y configuramos nuestro telefono en modo hotspot colocando el nombre de "MIRED".
+	  - Buscamos la linea 24 y modificamos el "#define TCP_HOST "192.168.116.150", en particular la dirección IP debe ser modificada segun la que aparece asociada al PC conectado en el celular. Esto se ve dentro del modo hotspot desde el celular. 
   5. Ensamblar hardware y ejecutar paquete de software del LPC845 y la aplicación de interfaz de QT
-	- Calibrar el móduo regulador DC-DC mini360 de color verde debajo de donde va el LPC845. Para esto girar el pequeño tornillo gris con un destornillador paleta o cruz de punta pequeña.
-	  Se deben alcanzar 3,3V a la salida del regulador. Para verificarlo, conectar una fuente de tensión directa a la entrada y medir con un voltimetro la tensión de salida en los bornes del regulador mientras se gira el tornillo en simultaneo.
-	- Colocar modulos wifi, sensor MAX30102 y microcontrolador en la placa previamente construida. Se deben colocar en las tiras de pines correspondientes como indica el plano esquemático de Kicad. 
-	  El plano se y el modelado 3D se puede ver en archivo PDF de nombre "oximeter_max30102_LPC845" o en el siguiente link [PulseOximeter Hardware](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/Hardware/oximeter_max30102_LPC845.pdf)
+	  - Calibrar el móduo regulador DC-DC mini360 de color verde debajo de donde va el LPC845. Para esto girar el pequeño tornillo gris con un destornillador paleta o cruz de punta pequeña. Se deben alcanzar 3,3V a la salida del regulador. Para verificarlo, conectar una fuente de tensión directa a la entrada y medir con un voltimetro la tensión de salida en los bornes del regulador mientras se gira el tornillo en simultaneo.
+	  - Colocar modulos wifi, sensor MAX30102 y microcontrolador en la placa previamente construida. Se deben colocar en las tiras de pines correspondientes como indica el plano esquemático de Kicad. 
+	  - El plano se y el modelado 3D se puede ver en archivo PDF de nombre "oximeter_max30102_LPC845" o en el siguiente link [PulseOximeter Hardware](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/Hardware/oximeter_max30102_LPC845.pdf)
 	
 
 
