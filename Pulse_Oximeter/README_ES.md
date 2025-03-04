@@ -135,29 +135,29 @@ Una vez realizados todos los pasos de instalación y configuración, se deben re
 
 ## Problemas comunes
   1. Problemas con dispositivos durante la investigación:
-	- Descripción: Dificultad para encontrar dispositivos económicos, fáciles de programar y con soporte técnico adecuado.
-	- Solución: Colaboración con el laboratorio GBIO, que proporcionó el sensor MAX30102 y el módulo WiFi ESP8266, ambos previamente utilizados con éxito por otros estudiantes.
+	  - Descripción: Dificultad para encontrar dispositivos económicos, fáciles de programar y con soporte técnico adecuado.
+	  - Solución: Colaboración con el laboratorio GBIO, que proporcionó el sensor MAX30102 y el módulo WiFi ESP8266, ambos previamente utilizados con éxito por otros estudiantes.
   2. Ruido y falso contacto en el prototipo de hardware:
-	- Descripción: Problemas de ruido en la comunicación debido a cables largos en el protoboard y falso contacto entre módulos.
-	- Solución: Diseño de una PCB que fijó los módulos y utilizó pistas cortas. Se empleó una batería en lugar de una fuente de laboratorio.
+	  - Descripción: Problemas de ruido en la comunicación debido a cables largos en el protoboard y falso contacto entre módulos.
+	  - Solución: Diseño de una PCB que fijó los módulos y utilizó pistas cortas. Se empleó una batería en lugar de una fuente de laboratorio.
   3. Sobrecarga en la alimentación de los módulos:
-	- Descripción: Altas demandas de corriente del módulo WiFi causaron sobrecalentamiento y daños en el microcontrolador y el módulo WiFi.
-	- Solución: Separar las alimentaciones: el regulador alimenta al sensor MAX30102 y al ESP8266, mientras que el microcontrolador usa una conexión USB.
+	  - Descripción: Altas demandas de corriente del módulo WiFi causaron sobrecalentamiento y daños en el microcontrolador y el módulo WiFi.
+	  - Solución: Separar las alimentaciones: el regulador alimenta al sensor MAX30102 y al ESP8266, mientras que el microcontrolador usa una conexión USB.
   4. Configuración del módulo WiFi con adaptadores TTL:
-	- Descripción: El adaptador FTDI232 no funcionó correctamente, dificultando la visualización de comandos AT.
-	- Solución: Uso de la consola UART del IDE MCUXpresso para configurar el ESP8266.
+	  - Descripción: El adaptador FTDI232 no funcionó correctamente, dificultando la visualización de comandos AT.
+	  - Solución: Uso de la consola UART del IDE MCUXpresso para configurar el ESP8266.
   5. Sobrecorriente en el módulo WiFi:
-	- Descripción: Picos de corriente del ESP8266 superaban los 200 mA, causando inestabilidad.
-	-Solución: Uso de un regulador adecuado y un capacitor de 100 µF para amortiguar los picos.
+	  - Descripción: Picos de corriente del ESP8266 superaban los 200 mA, causando inestabilidad.
+	  - Solución: Uso de un regulador adecuado y un capacitor de 100 µF para amortiguar los picos.
   6. Problemas de comunicación I2C:
-	-Descripción: Dificultades para sincronizar el envío de direcciones y datos al sensor MAX30102.
-	-Solución: Introducir retrasos entre comandos, utilizar un analizador lógico para depuración, y consultar foros y bibliotecas de NXP.
+	  - Descripción: Dificultades para sincronizar el envío de direcciones y datos al sensor MAX30102.
+	  - Solución: Introducir retrasos entre comandos, utilizar un analizador lógico para depuración, y consultar foros y bibliotecas de NXP.
   7. Configuración compleja del sensor MAX30102:
-	-Descripción: Documentación poco clara sobre el uso de punteros FIFO y el orden de configuración.
-	-Solución: Realización de pruebas exhaustivas y consulta de proyectos previos para identificar el orden correcto.
+	  - Descripción: Documentación poco clara sobre el uso de punteros FIFO y el orden de configuración.
+	  - Solución: Realización de pruebas exhaustivas y consulta de proyectos previos para identificar el orden correcto.
   8. Problemas de programación del módulo WiFi:
-	-Descripción: Dificultades con el patrón de comunicación, comandos AT, y uso de funciones bloqueantes.
-	-Solución: Implementación de una máquina de estados para manejar respuestas "OK\r\n" y un sistema de encolamiento para transmitir mensajes.
+	  - Descripción: Dificultades con el patrón de comunicación, comandos AT, y uso de funciones bloqueantes.
+	  - Solución: Implementación de una máquina de estados para manejar respuestas "OK\r\n" y un sistema de encolamiento para transmitir mensajes.
 
 ## Documentación
 Para mayor información y detalles se sugiere consultar los siguientes enlaces. También puede consultar la carpeta "DocumentsAndDatasheets" dentro de la carpeta "Pulse_Oximeter" en el repositorio de "University_Proyects"
