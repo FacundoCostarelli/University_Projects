@@ -1,0 +1,2 @@
+04/03/2025  13:00:44	Paciente: COSTARELLI, Facundo                    	DNI: 42724683 	Sexo: Hombre       	Nivel de oxigeno: 83    	Heart rate: 154         
+04/03/2025  13:01:17	Paciente: COSTARELLI, Julian                       	DNI: 45789613 	Sexo: Hombre       	Nivel de oxigeno: 92    	Heart rate: 90         
