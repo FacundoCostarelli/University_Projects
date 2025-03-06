@@ -5,7 +5,7 @@
 /*
  * Historial.cpp
  *
- *  Created on: 20 Nov. 2024]
+ *  Created on: 20 Nov. 2024
  *      Author: Ezequiel Lagatche
  *		ESP --> Descripción: Implementación de la clase Historial que gestiona el almacenamiento,
  *      visualización y edición del historial de datos del sensor en la interfaz gráfica.
