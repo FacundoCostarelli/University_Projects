@@ -5,6 +5,8 @@ Desarrollo de un dispositivo prototipo de pulsioxímetro que combina software y 
 Este proyecto mide saturación de oxígeno en sangre (SPO2) y frecuencia cardíaca (Heart Rate) 
 utilizando el sensor MAX30102, el microcontrolador LPC845 y el módulo ESP8266 para transmisión WiFi hacia una PC. 
 Incluye una interfaz gráfica Qt para visualización de datos.
+[Youtube presentación PulseOximeter pt1](https://youtu.be/6Oj863C7EKM)
+[Youtube presentación PulseOximeter pt2](.............)
 
 ---
 
@@ -25,7 +27,7 @@ Incluye una interfaz gráfica Qt para visualización de datos.
 ## Instalación
 Se presenta una guía escrita de como realizar la instalación del software y la puesta en marcha del kit del Pulsioxímetro.
 Se deja también un link a una lista de reproducción de un canal de youtube con los videos explicativos de cada uno de los pasos de instalación.
-[Youtube tutorial PulseOximeter](.....................)
+[Youtube tutorial PulseOximeter](https://www.youtube.com/playlist?list=PLJ6_LB1a1MI06xPoo7MHM6bcKQjcWh7LC)
 
 **Requisitos previos:**
 - Microcontrolador LPC845 y sensor MAX30102.
@@ -211,7 +213,7 @@ Puedes usar, modificar y distribuir este proyecto respetando los términos de la
 
 
 ## Reconocimientos Y Colaboraciones
-- Laboratorio de Bio Ingeniería UTN BA [Sitio web UTN BA-GBIO](https://www.frba.utn.edu.ar/gibio/) y []
+- Laboratorio de Bio Ingeniería UTN BA [Sitio web UTN BA-GBIO](https://www.frba.utn.edu.ar/gibio/)
 - Prof Doctor Ing Leandro Cymberknop(Electrónica en UTN BA)
 - Prof Ing Mariana Prieto(Electrónica en UTN BA)
 - Prof Ing Jorge Escola(Electrónica en UTN BA)
