@@ -45,13 +45,13 @@ Se deja también un link a una lista de reproducción de un canal de youtube con
 	git clone https://github.com/FacundoCostarelli/University_Proyects/tree/master/Pulse_Oximeter
 2. Configurar paquete de software del LPC845 y MCUXpresso IDE pre-ejecución del programa:
 
-**Instalación MCUXPRESSO IDE:**
-- Entrar a la página de NXP official y en descargar el MCUXpresso IDE en la versión mas reciente con link 
-[MCUXpresso IDE](https://nxp.flexnetoperations.com/control/frse/product?entitlementId=715761407&lineNum=1&authContactId=185187057&authPartyId=208677767)
-- Seguir los pasos de instalación dados por el propio instalador del IDE
+	**Instalación MCUXPRESSO IDE:**
+	- Entrar a la página de NXP official y en descargar el MCUXpresso IDE en la versión mas reciente con link 
+	[MCUXpresso IDE](https://nxp.flexnetoperations.com/control/frse/product?entitlementId=715761407&lineNum=1&authContactId=185187057&authPartyId=208677767)
+	- Seguir los pasos de instalación dados por el propio instalador del IDE
 
-	**Configurar proyecto opción 1:** --> [Video Configuración proyecto opción 1](https://www.youtube.com/watch?v=mEhIXuK23LE) 
-	- Generar un archivo .zip a partir de la carpeta Microcontroller con el mismo nombre que la carpeta y guardarla en el escritorio u otro lado que puedas.
+   **Configurar proyecto opción 1:** --> [Video Configuración proyecto opción 1](https://www.youtube.com/watch?v=mEhIXuK23LE) 
+   - Generar un archivo .zip a partir de la carpeta Microcontroller con el mismo nombre que la carpeta y guardarla en el escritorio u otro lado que puedas.
 	- Abrir el MCUXPRESSO IDE, seleccionar el workspace deseado. Tipicamente viene por default con la ruta dada como
 	C:\Users\nombre_usuario_de_tu_pc\Documents\MCUXpressoIDE_11.10.0_3148\workspace
 	- Buscar la ventana que dice "Create or import a project". Tipicamente está en la esquina inferior izquierda.
