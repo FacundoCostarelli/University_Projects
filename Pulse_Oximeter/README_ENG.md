@@ -4,6 +4,8 @@
 Development of a prototype pulse oximeter device that combines basic software and hardware. 
 This project measures blood oxygen saturation (SPO2) and heart rate using the MAX30102 sensor, the LPC845 microcontroller, and the ESP8266 module for WiFi transmission to a PC. 
 It includes a Qt graphical interface for data visualization.
+[Youtube presentation PulseOximeter pt1](............)
+[Youtube presentation PulseOximeter pt2](............)
 
 ---
 
@@ -85,23 +87,26 @@ A link to a YouTube playlist with explanatory videos for each installation step 
 
     **QT Installation:**
     - Go to the official QT page and download the latest version from this link
-    [QT IDE](     )
-    - For download and installation, consider ONLY the following software packages:
-        - Suppose you install version xxxxxx ... ... ... ... ...
-
-    **Project Configuration Option 1:**
+    [QT IDE](https://www.qt.io/download-open-source)
+    - Scroll down the page and choose “Download the Qt Online Installer”.
+    - We select the latest version taking care of the selection of the GCC compiler or in case of Windows MinGW.
+    - For download and installation you should consider ONLY the following software packages:
+        ![QT Software Packages 1](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/QT_GraphicUserInterface/Software%20Packages%20ScreenShots/Picture1.jpeg)
+		![QT Software Packages 2](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/QT_GraphicUserInterface/Software%20Packages%20ScreenShots/Picture2.jpeg)
         
 4. Configure SSID and IP address of WIFI for ESP8266
     - Remember that this project uses a WiFi network where the mobile phone works as a server in hotspot mode with data roaming where the ESP8266 and the notebook PC are clients. 
     - Configure the mobile phone in hotspot mode and ensure data roaming is enabled.
     - Connect the notebook PC or any PC with WiFi to the phone.
     - In MCUXpresso IDE, find the SPO2_HR project and then "Drivers_LPC845"-->"esp8266"-->"ESP8266.h" look for the section commented as "Connection and TCP server configuration". There, find line 22 and modify the "#define WIFI_SSID "MYNETWORK" to the name of your WiFi network of the phone in hotspot mode. It cannot contain spaces or special characters, or simply leave this name and configure your phone in hotspot mode with the name "MYNETWORK".
-    - Find line 24 and modify the "#define TCP_HOST "192.168.116.150", specifically the IP address should be modified according to the one associated with the PC connected to the phone. This can be seen within the hotspot mode from the phone. 
+    - Find line 24 and modify the "#define TCP_HOST "192.168.116.150", specifically the IP address should be modified according to the one associated with the PC connected to the phone. This can be seen within the hotspot mode from the phone or from the laptop in "properties" of the wifi network and then in IPV4.
+
 5. Assemble hardware and execute the LPC845 software package and the Qt interface application
     - Calibrate the green mini360 DC-DC regulator module below where the LPC845 goes. To do this, turn the small gray screw with a small flat or cross screwdriver. 3.3V must be reached at the regulator output. To verify, connect a direct voltage source to the input and measure the output voltage at the regulator terminals with a voltmeter while turning the screw simultaneously.
     - Place WiFi modules, MAX30102 sensor, and microcontroller on the previously built board. They should be placed on the corresponding pin strips as indicated by the KiCad schematic. 
     - The schematic and 3D modeling can be seen in the PDF file named "oximeter_max30102_LPC845" or at the following link [PulseOximeter Hardware](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/Hardware/oximeter_max30102_LPC845.pdf)
-        
+
+---        
 
 ## Usage
 Once all installation and configuration steps are completed, the following steps should be performed:
@@ -127,8 +132,10 @@ Once all installation and configuration steps are completed, the following steps
     - The first SPO2 and HR data should be discarded from observation. The measurement process stabilization requires a few seconds of delay.
     - Data refresh is every half second. This can be modified.
     - When a data value is repeated multiple times in the measurement, the value is shown but not refreshed until a new change in the measurement appears, to avoid unnecessary data repetitions.
-- To save measurements, click "Save" in the interface to store the data locally in a file. 
-- A file storing each patient's data is obtained.
+    - To save measurements, click "Save" in the interface to store the data locally in a file. 
+    - A file storing each patient's data is obtained. The data of each patient can be modified from a txt notepad or from the interface in the "edit" button.
+
+---
 
 ## Common Issues
 1. Device issues during research:
@@ -156,11 +163,12 @@ Once all installation and configuration steps are completed, the following steps
     - Description: Difficulties with the communication pattern, AT commands, and use of blocking functions.
     - Solution: Implement a state machine to handle "OK\r\n" responses and a queuing system to transmit messages.
 
+---
+
 ## Documentation
 For more information and details, it is suggested to consult the following links. You can also check the "DocumentsAndDatasheets" folder within the "Pulse_Oximeter" folder in the "University_Proyects" repository.
 
-- [Technical Report in ESP](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Informe_T%C3%A9cnico_PulseOximeter.pdf)
-- [Idea Force Report in ESP](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Informe_Idea_Fuerza_PulseOximeter.pdf)
+- [Main Idea Report in ENG](..................)
 - [Technical Report in ENG](..................)
 
 For more technical details, consult the component datasheets:
@@ -174,6 +182,8 @@ For more technical details, consult the component datasheets:
 - [Datasheet Breakout Board LPC845](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/LPC845_Breakout_board_User_Manual.pdf)
 - [Schematic Breakout Board LPC845](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Schematic_LPC845_BRK_RevA.PDF)
 
+---
+
 ## References
 - [NXP Forums on LPC845](https://community.nxp.com/t5/forums/searchpage/tab/message?advanced=false&allow_punctuation=true&q=LPC845)
 - [StackOverflow Forums](https://stackoverflow.com/)
@@ -184,6 +194,8 @@ It is necessary to send some files, ideas, and code developed by the programmer 
 It is recommended to send even working code blocks and ask for specific help in certain sections and then take the help.
 It is not recommended to copy and paste as the provided C and C++ code will likely not work when applied to the specific microcontroller.
 It is recommended to take the provided code structure, lines of code, and specific functions as a reference but with necessary modifications according to the microcontroller's datasheet.
+
+---
 
 ## Contribution
 
@@ -199,13 +211,18 @@ All contributions are welcome. Follow these steps to contribute:
     - git checkout -b feature/nueva-caracteristica
 5. Create a Pull Request describing your changes.
 
+---
+
 ## License
 This project is licensed under the GNU General Public License v3.0. 
 You can use, modify and distribute this project respecting the terms of the license
 
+---
+
 ## Authors
 - Facundo Costarelli
 
+---
 
 ## Acknowledgments And Collaborations
 - UTN BA Bioengineering Laboratory [UTN BA-GBIO website](https://www.frba.utn.edu.ar/gibio/)

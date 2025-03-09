@@ -93,21 +93,22 @@ Se deja también un link a una lista de reproducción de un canal de youtube con
 	  - Bajar en la página y elegir “Download the Qt Online Installer”.
 	  - Seleccionamos la última versión cuidando la selección del compilador GCC o en caso de Windows MinGW
 	  - Para la descarga e instalación debe considerar SOLAMENTE los siguientes paquetes de software:
-	    - Supongamos que instala la versión siguiente
-		![QT Software Packages](........)
-	 
+		![QT Software Packages 1](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/QT_GraphicUserInterface/Software%20Packages%20ScreenShots/Picture1.jpeg)
+		![QT Software Packages 2](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/QT_GraphicUserInterface/Software%20Packages%20ScreenShots/Picture2.jpeg)
+
   4. Configurar SSID y dirección IP de WIFI del ESP8266
 	  - Recordar que este proyecto utiliza una red wifi donde el celular trabaja como servidor en modo hotspot con roaming data donde el ESP8266 y el PC tipo notebook son clientes. 
 	  - Configurar telefono movil o celular en modo hotspot y asegurarsede tener data roaming.
 	  - Conectar PC tipo notebook o cualquier PC con red de wifi al telefono.
 	  - En MCUXpresso IDE, buscamos el proyecto SPO2_HR y luego "Drivers_LPC845"-->"esp8266"-->"ESP8266.h" buscamos la sección comentada como "Configuración de conexión y servidor TCP". Allí, buscamos la linea 22 y modificamos el "#define WIFI_SSID "MIRED" por el nombre de nuestra red de wifi del celular en modo hotspot. No puede contener espacios ni caracteres especiales, o simplemente dejamos este nombre y configuramos nuestro telefono en modo hotspot colocando el nombre de "MIRED".
-	  - Buscamos la linea 24 y modificamos el "#define TCP_HOST "192.168.116.150", en particular la dirección IP debe ser modificada segun la que aparece asociada al PC conectado en el celular. Esto se ve dentro del modo hotspot desde el celular. 
+	  - Buscamos la linea 24 y modificamos el "#define TCP_HOST "192.168.116.150", en particular la dirección IP debe ser modificada segun la que aparece asociada al PC conectado en el celular. Esto se ve dentro del modo hotspot desde el celular o desde la laptop en "propiedades" de la red wifi y luego en IPV4. 
+
   5. Ensamblar hardware y ejecutar paquete de software del LPC845 y la aplicación de interfaz de QT
 	  - Calibrar el móduo regulador DC-DC mini360 de color verde debajo de donde va el LPC845. Para esto girar el pequeño tornillo gris con un destornillador paleta o cruz de punta pequeña. Se deben alcanzar 3,3V a la salida del regulador. Para verificarlo, conectar una fuente de tensión directa a la entrada y medir con un voltimetro la tensión de salida en los bornes del regulador mientras se gira el tornillo en simultaneo.
 	  - Colocar modulos wifi, sensor MAX30102 y microcontrolador en la placa previamente construida. Se deben colocar en las tiras de pines correspondientes como indica el plano esquemático de Kicad. 
 	  - El plano se y el modelado 3D se puede ver en archivo PDF de nombre "oximeter_max30102_LPC845" o en el siguiente link [PulseOximeter Hardware](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/Hardware/oximeter_max30102_LPC845.pdf)
 	
-
+---
 
 ## Uso
 Una vez realizados todos los pasos de instalación y configuración, se deben realizar los siguientes pasos:
@@ -127,14 +128,16 @@ Una vez realizados todos los pasos de instalación y configuración, se deben re
 	...	
 	...	
  	...
-- Si hay problemas en la transmisión de datos, entonces hacer otro reset tantas veces como sea necesario
+- Si hay problemas en la transmisión de datos, entonces hacer otro reset tantas veces como sea necesario.
 - Visualizar los datos en la GUI en el QT. Observar en tiempo real los valores de SPO2 y frecuencia cardíaca procesados en la interfaz Qt.
 - Tener en cuenta que:
 	- Los primeros datos de SPO2 y HR deben descartarse de la observación. La estabilización del proceso de medición requiere de algunos segundos de demora.
-	- El refresco de datos es cada medio segundo. Esto puede ser modificado
+	- El refresco de datos es cada medio segundo. Esto puede ser modificado.
 	- Cuando un dato es repetido multiples veces en la medición, pues se muestra el valor del dato pero sin refrescar hasta que aparezca un nuevo cambio en la medición, para evitar repeticiones inecesarias de los datos.
-- Guardar mediciones, se debe dar click en "Guardar" en la interfaz para almacenar los datos localmente en un archivo. 
-- Se obtiene un archivo que almacena los datos de cada paciente
+	- Guardar mediciones, se debe dar click en "Guardar" en la interfaz para almacenar los datos localmente en un archivo. 
+	- Se obtiene un archivo que almacena los datos de cada paciente que puede ser modificado desde un block de notas txt o desde la interfaz en el botón de "editar".
+
+---
 
 ## Problemas comunes
   1. Problemas con dispositivos durante la investigación:
@@ -162,12 +165,13 @@ Una vez realizados todos los pasos de instalación y configuración, se deben re
 	  - Descripción: Dificultades con el patrón de comunicación, comandos AT, y uso de funciones bloqueantes.
 	  - Solución: Implementación de una máquina de estados para manejar respuestas "OK\r\n" y un sistema de encolamiento para transmitir mensajes.
 
+---
+
 ## Documentación
 Para mayor información y detalles se sugiere consultar los siguientes enlaces. También puede consultar la carpeta "DocumentsAndDatasheets" dentro de la carpeta "Pulse_Oximeter" en el repositorio de "University_Proyects"
 
 - [Informe Técnico en ESP](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Informe_T%C3%A9cnico_PulseOximeter.pdf)
 - [Informe Idea Fuerza en ESP](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Informe_Idea_Fuerza_PulseOximeter.pdf)
-- [Technical Report in ENG](..................)
 
 Para más detalles técnicos, consulta las hojas de datos de los componentes:
 
@@ -180,6 +184,8 @@ Para más detalles técnicos, consulta las hojas de datos de los componentes:
 - [Datasheet Breakout Board LPC845](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/LPC845_Breakout_board_User_Manual.pdf)
 - [Schematic Breakout Board LPC845](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Schematic_LPC845_BRK_RevA.PDF)
 
+---
+
 ## Fuentes De Consulta
 - [Foros de NXP en LPC845](https://community.nxp.com/t5/forums/searchpage/tab/message?advanced=false&allow_punctuation=true&q=LPC845)
 - [Foros de StackOverflow](https://stackoverflow.com/)
@@ -190,6 +196,8 @@ Es necesario enviar al chat algunos archivos, ideas y codigo desarrollado por el
 Es recomendable enviar incluso bloques de código que funcionen y pedir ayuda concreta en secciones específicas y a partir de allí tomar la ayuda.
 No es recomendable copiar y pegar ya que seguramente no funcione el código brindado en C y C++ por ser aplicado en el microcontrolador específico.
 Si es recomendable tomar como referencia la estructura de código brindada, líneas de código y funciones específicas aunque con modificaciones necesarias según el datasheet del microcontrolador.
+
+---
 
 ## Contribución
 
@@ -205,13 +213,18 @@ Toda colaboración es bienvenida. Sigue estos pasos para contribuir:
      - git push origin feature/nueva-caracteristica
   5. Crea un Pull Request describiendo tus cambios.
 
+---
+
 ## Licencia
 Este proyecto está licenciado bajo la Licencia Pública General GNU v3.0. 
 Puedes usar, modificar y distribuir este proyecto respetando los términos de la licencia.
 
+---
+
 ## Autores
 - Facundo Costarelli
 
+---
 
 ## Reconocimientos Y Colaboraciones
 - Laboratorio de Bio Ingeniería UTN BA [Sitio web UTN BA-GBIO](https://www.frba.utn.edu.ar/gibio/)
