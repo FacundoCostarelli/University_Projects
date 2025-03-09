@@ -4,8 +4,8 @@
 Development of a prototype pulse oximeter device that combines basic software and hardware. 
 This project measures blood oxygen saturation (SPO2) and heart rate using the MAX30102 sensor, the LPC845 microcontroller, and the ESP8266 module for WiFi transmission to a PC. 
 It includes a Qt graphical interface for data visualization.
-[Youtube presentation PulseOximeter pt1](............)
-[Youtube presentation PulseOximeter pt2](............)
+- [Youtube presentation PulseOximeter pt1](............)
+- [Youtube presentation PulseOximeter pt2](............)
 
 ---
 
