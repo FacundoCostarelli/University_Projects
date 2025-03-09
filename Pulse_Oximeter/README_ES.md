@@ -6,7 +6,7 @@ Este proyecto mide saturación de oxígeno en sangre (SPO2) y frecuencia cardía
 utilizando el sensor MAX30102, el microcontrolador LPC845 y el módulo ESP8266 para transmisión WiFi hacia una PC. 
 Incluye una interfaz gráfica Qt para visualización de datos.
 [Youtube presentación PulseOximeter pt1](https://youtu.be/6Oj863C7EKM)
-[Youtube presentación PulseOximeter pt2](.............)
+[Youtube presentación PulseOximeter pt2](https://www.youtube.com/watch?v=Ok4IE8EWSyQ)
 
 ---
 
@@ -50,7 +50,7 @@ Se deja también un link a una lista de reproducción de un canal de youtube con
 	[MCUXpresso IDE](https://nxp.flexnetoperations.com/control/frse/product?entitlementId=715761407&lineNum=1&authContactId=185187057&authPartyId=208677767)
 	- Seguir los pasos de instalación dados por el propio instalador del IDE
 
-     **Configurar proyecto opción 1:** --> [Video Configuración proyecto opción 1](...............) 
+     **Configurar proyecto opción 1:** --> [Video Configuración proyecto opción 1](https://www.youtube.com/watch?v=mEhIXuK23LE) 
 	  - Generar un archivo .zip a partir de la carpeta Microcontroller con el mismo nombre que la carpeta y guardarla en el escritorio u otro lado que puedas.
 	  - Abrir el MCUXPRESSO IDE, seleccionar el workspace deseado. Tipicamente viene por default con la ruta dada como
 		C:\Users\nombre_usuario_de_tu_pc\Documents\MCUXpressoIDE_11.10.0_3148\workspace
@@ -64,7 +64,7 @@ Se deja también un link a una lista de reproducción de un canal de youtube con
 	  - El proyecto está ahora abierto con todas las configuraciones y las carpetas con archivos .cpp y .h  .
 	  - Compilar con el simbolo de "Martillo" ubicado en la barra superior, verificar que no hay errores e ignorar Warnings.
 
-     **Configurar proyecto opción 2:** --> [Video Configuración proyecto opción 2](...............)
+     **Configurar proyecto opción 2:** --> [Video Configuración proyecto opción 2](https://www.youtube.com/watch?v=ol-p68hnu50)
 	  - Abrir el MCUXPRESSO IDE, seleccionar el workspace deseado. Tipicamente viene por default con la ruta dada como
 	  C:\Users\nombre_usuario_de_tu_pc\Documents\MCUXpressoIDE_11.10.0_3148\workspace
 	  - Crear un nuevo proyecto desde "File"-->"New"-->"Create a C/C++ project" y elegir en "Target" el "LPC84x"-->"LPC845".
@@ -88,12 +88,13 @@ Se deja también un link a una lista de reproducción de un canal de youtube con
   3. Configurar la interfaz Qt y el QT IDE pre-ejecución del programa:
 
       **Instalacion de QT:**
-	  - Entrar en la página oficial del QT y descargar la versión mas reciente de acuerdo con este link
-	  [QT IDE](     )
+	  - Entrar en la página oficial del QT y descargar la versión mas reciente siendo "open source" de acuerdo con este link
+	  [QT IDE](https://www.qt.io/download-open-source)
+	  - Bajar en la página y elegir “Download the Qt Online Installer”.
+	  - Seleccionamos la última versión cuidando la selección del compilador GCC o en caso de Windows MinGW
 	  - Para la descarga e instalación debe considerar SOLAMENTE los siguientes paquetes de software:
-	    - Supongamos que instala la versión xxxxxx ... ... ... ... ...
-
-      **Configurar proyecto opción 1:**
+	    - Supongamos que instala la versión siguiente
+		![QT Software Packages](........)
 	 
   4. Configurar SSID y dirección IP de WIFI del ESP8266
 	  - Recordar que este proyecto utiliza una red wifi donde el celular trabaja como servidor en modo hotspot con roaming data donde el ESP8266 y el PC tipo notebook son clientes. 
