@@ -207,7 +207,7 @@ All contributions are welcome. Follow these steps to contribute:
     - git checkout -b feature/new-feature
 3. Make your changes and commit:
     - git commit -m "Description of the changes made"
-4. Push to
+4. Push to:
     - git checkout -b feature/nueva-caracteristica
 5. Create a Pull Request describing your changes.
 
@@ -215,7 +215,7 @@ All contributions are welcome. Follow these steps to contribute:
 
 ## License
 This project is licensed under the GNU General Public License v3.0. 
-You can use, modify and distribute this project respecting the terms of the license
+You can use, modify and distribute this project respecting the terms of the license.
 
 ---
 
@@ -238,5 +238,5 @@ You can use, modify and distribute this project respecting the terms of the lice
 - Engineering Student Guido Rodriguez(Electrónics at UBA)
 
 **Abreviaciones:**
-UTN BA-->National Technological University of Buenos Aires
-UBA   -->University of Buenos Aires
+- UTN BA-->National Technological University of Buenos Aires.
+- UBA   -->University of Buenos Aires.

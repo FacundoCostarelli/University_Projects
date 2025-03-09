@@ -240,8 +240,7 @@ Puedes usar, modificar y distribuir este proyecto respetando los términos de la
 - Estudiante de Ing Guido Rodriguez(Electrónica en UBA)
 
 **Abreviaciones:**
-UTN BA-->Universidad Tecnológica Nacional de Buenos Aires
-
-UBA   -->Universidad de Buenos Aires
+- UTN BA-->Universidad Tecnológica Nacional de Buenos Aires.
+- UBA   -->Universidad de Buenos Aires.
 
 
