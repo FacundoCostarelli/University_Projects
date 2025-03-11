@@ -4,8 +4,8 @@
 Development of a prototype pulse oximeter device that combines basic software and hardware. 
 This project measures blood oxygen saturation (SPO2) and heart rate using the MAX30102 sensor, the LPC845 microcontroller, and the ESP8266 module for WiFi transmission to a PC. 
 It includes a Qt graphical interface for data visualization.
-- [Youtube presentation PulseOximeter pt1](............)
-- [Youtube presentation PulseOximeter pt2](............)
+- [Youtube presentation PulseOximeter pt1](https://youtu.be/URdDrjCLyfk)
+- [Youtube presentation PulseOximeter pt2](https://youtu.be/5oK6cyuanyA)
 
 ---
 
@@ -26,7 +26,7 @@ It includes a Qt graphical interface for data visualization.
 ## Installation
 A written guide on how to install the software and set up the Pulse Oximeter kit is provided.
 A link to a YouTube playlist with explanatory videos for each installation step is also included.
-[YouTube tutorial PulseOximeter](......................)
+[YouTube tutorial PulseOximeter](https://www.youtube.com/watch?v=URdDrjCLyfk&list=PLJ6_LB1a1MI0CGqnPWMbReCNobSWlScEj&pp=gAQB)
 
 **Prerequisites:**
 - LPC845 microcontroller and MAX30102 sensor.
@@ -49,7 +49,7 @@ A link to a YouTube playlist with explanatory videos for each installation step 
     [MCUXpresso IDE](https://nxp.flexnetoperations.com/control/frse/product?entitlementId=715761407&lineNum=1&authContactId=185187057&authPartyId=208677767)
     - Follow the installation steps provided by the IDE installer
 
-    **Project Configuration Option 1:** --> [Project Configuration Video Option 1](...............) 
+    **Project Configuration Option 1:** --> [Project Configuration Video Option 1](https://youtu.be/lj2HqsI22eU) 
     - Generate a .zip file from the Microcontroller folder with the same name as the folder and save it on the desktop or another location.
     - Open MCUXpresso IDE, select the desired workspace. Typically, it defaults to the path:
         C:\Users\your_pc_username\Documents\MCUXpressoIDE_11.10.0_3148\workspace
@@ -226,16 +226,16 @@ You can use, modify and distribute this project respecting the terms of the lice
 
 ## Acknowledgments And Collaborations
 - UTN BA Bioengineering Laboratory [UTN BA-GBIO website](https://www.frba.utn.edu.ar/gibio/)
-- Prof Doctor Ing Leandro Cymberknop(Electrónics at UTN BA)
-- Prof Ing Mariana Prieto(Electrónics at UTN BA)
-- Prof Ing Jorge Escola(Electrónics at UTN BA)
-- Engineering Student Juan(Electrónics at UTN BA)
-- Engineering Student Nahuel(Electrónics at UTN BA)
-- Engineering Student Maximiliano(Electrónics at UTN BA)
-- Engineering Student Matias(Electrónics at UTN BA)
-- Engineering Student Franco Callero(Informátics & Sistems at UTN BA)
-- Engineering Student Ezequiel Lagatche(Electrónics at UTN BA)
-- Engineering Student Guido Rodriguez(Electrónics at UBA)
+- Prof Doctor Ing Leandro Cymberknop            (Electrónics at UTN BA)
+- Prof Ing Mariana Prieto                       (Electrónics at UTN BA)
+- Prof Ing Jorge Escola                         (Electrónics at UTN BA)
+- Engineering Student Juan Lauría               (Electrónics at UTN BA)
+- Engineering Student Nahuel Contreras          (Electrónics at UTN BA)
+- Engineering Student Maximiliano Montenegro    (Electrónics at UTN BA)
+- Engineering Student Matias González Falbo     (Electrónics at UTN BA)
+- Engineering Student Franco Callero            (Informátics & Sistems at UTN BA)
+- Engineering Student Ezequiel Lagatche         (Electrónics at UTN BA)
+- Engineering Student Guido Rodriguez           (Electrónics at UBA)
 
 **Abreviaciones:**
 - UTN BA-->National Technological University of Buenos Aires.

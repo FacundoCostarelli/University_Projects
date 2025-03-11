@@ -226,16 +226,16 @@ Puedes usar, modificar y distribuir este proyecto respetando los términos de la
 
 ## Reconocimientos Y Colaboraciones
 - Laboratorio de Bio Ingeniería UTN BA [Sitio web UTN BA-GBIO](https://www.frba.utn.edu.ar/gibio/)
-- Prof Doctor Ing Leandro Cymberknop(Electrónica en UTN BA)
-- Prof Ing Mariana Prieto(Electrónica en UTN BA)
-- Prof Ing Jorge Escola(Electrónica en UTN BA)
-- Estudiante de Ing Juan(Electrónica en UTN BA)
-- Estudiante de Ing Nahuel(Electrónica en UTN BA)
-- Estudiante de Ing Maximiliano(Electrónica en UTN BA)
-- Estudiante de Ing Matias(Electrónica en UTN BA)
-- Estudiante de Ing Franco Callero(Informática y Sistemas en UTN BA)
-- Estudiante de Ing Ezequiel Lagatche(Electrónica en UTN BA)
-- Estudiante de Ing Guido Rodriguez(Electrónica en UBA)
+- Prof Doctor Ing Leandro Cymberknop			(Electrónica en UTN BA)
+- Prof Ing Mariana Prieto						(Electrónica en UTN BA)
+- Prof Ing Jorge Escola							(Electrónica en UTN BA)
+- Estudiante de Ing Juan Lauría					(Electrónica en UTN BA)
+- Estudiante de Ing Nahuel Contreras			(Electrónica en UTN BA)
+- Estudiante de Ing Maximiliano Montenegro		(Electrónica en UTN BA)
+- Estudiante de Ing Matias González Falbo		(Electrónica en UTN BA)
+- Estudiante de Ing Franco Callero				(Informática y Sistemas en UTN BA)
+- Estudiante de Ing Ezequiel Lagatche			(Electrónica en UTN BA)
+- Estudiante de Ing Guido Rodriguez				(Electrónica en UBA)
 
 **Abreviaciones:**
 - UTN BA-->Universidad Tecnológica Nacional de Buenos Aires.
