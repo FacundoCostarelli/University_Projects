@@ -168,8 +168,9 @@ Once all installation and configuration steps are completed, the following steps
 ## Documentation
 For more information and details, it is suggested to consult the following links. You can also check the "DocumentsAndDatasheets" folder within the "Pulse_Oximeter" folder in the "University_Proyects" repository.
 
-- [Main Idea Report in ENG](..................)
-- [Technical Report in ENG](..................)
+- [Technical Report in ENG](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/PulseOximeter_Technical_Report.pdf)
+- [Main Idea Report in ENG](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Pulse_Oximeter_Idea_Force_Report.pdf)
+
 
 For more technical details, consult the component datasheets:
 
