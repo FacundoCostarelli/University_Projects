@@ -120,12 +120,31 @@ Once all installation and configuration steps are completed, the following steps
     It can also have a continuous voltage value between 5V and 20V. A 5V laboratory power supply or a 9V battery is recommended.
 - Apply a reset to the LPC. Press and hold the reset button (black) on the LPC845 board for 2 seconds and release.
 - If everything goes well, and with some delay, a series of AT commands and "OK" responses from the module should be seen in the MCUXpresso IDE console.
-- If the information is being sent correctly, messages like:
-        ...
-        ...
-        ...	
-        ...	
-        ...
+- If the information is being sent correctly, this messages are expected:
+    AT
+    OK
+    AT+CWMODE=3	
+    OK	
+    AT+CWJAP="MIRED","123456789"
+    WIFI DISCONNECT
+    WIFI CONNECT
+    WIFI GOT IP
+    OK
+    AT+CIPSTART="TCP","192.168.197.150",5000
+    CONNECT
+    OK
+    AT+CIPSEND=1
+    OK
+    >
+    RECV 1 BYTES
+    SEND OK
+    AT+CIPSEND=3
+    OK
+    >
+    RECB 3 BYTES 
+
+    and so on......
+
 - If there are data transmission issues, then reset as many times as necessary.
 - View the data in the QT GUI. Observe real-time SPO2 and heart rate values processed in the Qt interface.
 - Keep in mind that:

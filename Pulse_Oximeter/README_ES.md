@@ -121,11 +121,29 @@ Una vez realizados todos los pasos de instalación y configuración, se deben re
 - Aplicar un reset al LPC. Debe pulsar 2 segundos y soltar al botón de reset(en color negro) de la placa del LPC845.
 - Si todo va bien ,y con cierta demora, en la consola del MCUXpresso IDE se debe ver en consola una serie de comandos AT y respuestas del tipo "OK" desde el módulo.
 - Si la información se está enviando correctamene pues se deben ver mensajes como:
-	...
-	...
-	...	
-	...	
- 	...
+	AT
+	OK
+	AT+CWMODE=3	
+	OK	
+	AT+CWJAP="MIRED","123456789"
+	WIFI DISCONNECT
+	WIFI CONNECT
+	WIFI GOT IP
+	OK
+	AT+CIPSTART="TCP","192.168.197.150",5000
+	CONNECT
+	OK
+	AT+CIPSEND=1
+	OK
+	>
+	RECV 1 BYTES
+	SEND OK
+	AT+CIPSEND=3
+	OK
+	>
+	RECB 3 BYTES 
+
+	y así consecutivamente......
 - Si hay problemas en la transmisión de datos, entonces hacer otro reset tantas veces como sea necesario.
 - Visualizar los datos en la GUI en el QT. Observar en tiempo real los valores de SPO2 y frecuencia cardíaca procesados en la interfaz Qt.
 - Tener en cuenta que:
