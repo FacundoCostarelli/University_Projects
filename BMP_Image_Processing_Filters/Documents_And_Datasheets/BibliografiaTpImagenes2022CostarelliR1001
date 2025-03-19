@@ -1,0 +1,42 @@
+Links de bibliografia usada para el TP de procesamiento de imagenes
+
+//Videos y apuntes de la catedra de Mariano Gonzalez
+https://aulasvirtuales.frba.utn.edu.ar/course/view.php?id=4381
+
+//Libro de consulta sobre teoria de bmp y distintos tipos de procesamiento
+https://homepages.inf.ed.ac.uk/rbf/BOOKS/PHILLIPS/cips2ed.pdf
+
+Datasheet de bmp y explicacion de el tipo de archivo bmp
+https://gibberlings3.github.io/iesdp/file_formats/ie_formats/bmp.htm
+
+//Explicacion y codigo de referencia para convertir RGB a Grayshadescale
+https://abhijitnathwani.github.io/blog/2018/01/08/rgbtogray-Image-using-C 
+
+//links de donde saque la formula de conversion rgb a greyscale. Seccion 1.1 en dynamsoft
+https://www.tutorialspoint.com/dip/grayscale_to_rgb_conversion
+https://www.dynamsoft.com/blog/insights/image-processing/image-processing-101-color-space-conversion/
+
+//Solucion al problema de padding porque me quedaba 1/3 de la imagen en el archivo de salida nada mas en la conversion RBG a grayscale
+https://stackoverflow.com/questions/54173733/convert-rgb-to-grayscale-in-bare-c
+
+//Explicacion y codigo de referencia para convertir grayscale a blanco y negro
+https://abhijitnathwani.github.io/blog/2018/01/07/Black-and-White-Image-using-C
+
+//Explicacion y codigo de referencia para rotar una imagen a 180 grados y 90 grados tanto a izquierda y derecha. 
+https://abhijitnathwani.github.io/blog/2018/01/08/rotate-Image-using-C
+
+//Explicacion y codigo de referencia para rotar una imagen a 90 grados tanto izquierda como derecha
+https://www.geeksforgeeks.org/turn-an-image-by-90-degree/
+
+//Teoria sobre deteccion de bordes y operadores 
+https://www.geeksforgeeks.org/image-edge-detection-operators-in-digital-image-processing/
+
+//Toeria y codigo de referencia sobre deteccion de bordes, filtros varios, bmp, etc
+https://www.udemy.com/course/image-processing-from-ground-uptm-in-c/
+
+//Explicacion y codigo de referencia para castear file descriptos a punteros a FILE y viceversa
+https://stackoverflow.com/questions/16094936/casting-to-a-file-pointer 
+
+//Link de donde obtuve idea de algortimo de tratar array en 1D como si fuera 2D
+https://www.geeksforgeeks.org/dynamically-allocate-2d-array-c/
+
