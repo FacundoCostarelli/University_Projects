@@ -26,91 +26,50 @@
 #define NEGRO 0
 #define UMBRAL 150
 
-/*ESP
-* @brief Proyecto creado en un único archivo main.c y un .h cuyo programa realiza un procesamiento de imagen BMP
+/**
+* ESP:
+* @brief Proyecto creado en un único archivo main.c y un .h cuyo programa realiza un procesamiento de imagen BMP.
 *
-* Este programa utiliza un codigo main.c como fuente principal donde se llama a las diversas funciones y se las utiliza. 
-* Este fuente a su vez, posee declaraciones de punteros que se utilizan en las diversas funciones. 
-* También dicho archivo fuente contiene las instrucciones de uso de:
-* - Comandos por argumento de main
-* - De la ejecución del archivo ejectuable
-* - De la imagen .bmp a procesar
-
-* En términos concretos, el programa realiza la lectura obligatoria del archivo de entrada bmp a traves de una funcion que lee el header, 
-* tabla de colores(si existiese) y la data imagen. Ademas printea dicho header y tabla de colores(si existiese) en pantalla a traves 
-* de otra funcion y finalmente y más importante es que posee un menu recursivo con diferentes opciones de procesamiento de imagenes donde
-* todos estos procesamientos son realizados a traves del llamado de diversas funciones.
-* El archivo .bmp de entrada puede ser del tipo:
-* - 1)Blanco y negro,
-* - 2)En escala de grises, osea en GrayshadeScale 
-* - 3)Color RGB
-* 
-* En particular las diferentes opciones de procesamiento en funcionamiento son:
-* - A)Copiar_imagen 
-*   Aplicable para los tipos de imagenes 1),2),3) y para tamanio de pixel de 2, 4, 8, 16, 24 y 32 bits.
-* 
-* - B)Conversion_RGB_a_Grayscale 
-*   Aplicable para los tipos de imagenes 3) mientras que para 2) y 1) tambien es posible pero es no recomendable 
-*   porque se adquiere un resultado distinto al buscado. Es aplicable para tamanio de pixel de 2, 4, 8, 16, 24 y 32 bits. 
-*   Posee un unico algoritmo de conversion de colores a grises llamado "The Weighted Method". 
-*   Este metodo tambien llamado "Metodo de luminosidad" consiste en "pesar" el color rojo, verde y azul de acuerdo a sus longitudes de onda "landa". 
-*   La formula es:
-*   Grayscale = 0.299R + 0.587G + 0.114B
-* 
-* - C)Conversion_Grayscale_a_BlancoyNegro 
-*   Aplicable para los tipos de imagenes 2) mientras que para 3) y 1) tambien es posile pero es no recomendable 
-*   porque se adquiere un resultado distinto al buscado. Es aplicable para tamanio de pixel de 2, 4, 8, 16, 24 y 32 bits.
-*   Posee un solo algoritmo de conversion de grises a blanco y negro llamado "binarizacion" que consiste en convertir el valor entero de cada byte a 0 o 1.
-*   Se toma byte a byte de data de imagen tal que el valor entero propiamente dicho de ese byte valga 0 o 1 donde 0 equivale al negro binario y 
-*   donde 1 equivale al blanco binario. Se usa ademas un valor entero de "Threshold" o tambien llamado "Umbral" tal que los valores enteros de bytes 
-*   que superen dicho umbral se les asigne el valor de 1 y los valores que no superen el umbral se les asigne el valor de 0. En el codigo se usan 
-*   3 macros, BLANCO para 1, NEGRO para 0 y UMBRAL para un valor entero definido por el programador ej: 150. Al cambiar este valor, cambia que 
-*   tan oscuro se ve el negro y que tan claro se ve el blanco en la imagen blanco y negro de salida.
-
-* - D)Rotacion_Imagen
-*   Aplicable para los tipos de imagenes 1),2) y 3). Es aplicable para tamanio de pixel de 2, 4, 8, 16, 24 y 32 bits.
-*   Posee un solo algoritmo de rotacion. La rotacion en un sentido u otro no es realizado en este programa a traves de la transformacion lineal 
-*   sino a partir de asignar cada pixel del array "BufferCopiaLocalIn" de 2 dimensiones, en el array "BufferCopiaLocalOut" de 2 dimensiobes 
-*   pero ubicando cada uno de ellos en las coordenadas "x e y" asociadas a los indexes "i e j" modificados matematicamente en los [] en el 
-*   array BufferCopiaLocalOut de 2 dimensiones durante la asignacion. Dicho proceso de asignacion se ejecuta a traves de 2 ciclos for por cada 
-*   case de rotacion debido a que los pixeles se encuentran ubicados en arreglos de 2 dimensiones.
-* 
-* - E)Deteccion de bordes lineal
-*   Aplicable para los tipos de imagenes 1),2) y 3). Es aplicable para tamanio de pixel de 2, 4, 8, 16, 24 y 32 bits. 
-*   Realiza la deteccion de bordes a partir de una mascara, es decir, un array de 2 dimensiones de 3x3 con valores pre-cargados. 
-*   Dicho algoritmo utiliza 4 ciclos for: 
-*   - El 1ero es para recorrer todas las filas.
-*   - El 2do para recorrer todas las columnas. 
-*   - El 3ero y el 4to que realizan cambio de valor en un pixel a otro valor y ademas se carga el nuevo valor del pixel en determinada 
-*     posicion del buffer de salida de data imagen. Este algoritmo utiliza el operador de "gradientes" el cual computa las derivadas 
-*     primeras en la imagen digital procesada.
-
-* Todos estas operaciones de procesamiento de imagenes fueron testeadas con exito de forma exhaustiva para "tamanio de pixel 
-* o profundidad de bit" de 24 bits osea cada pixel compuesto por 3bytes. El tamanio de pixel lo llamo en el codigo "Tampunto". 
-*
-* @attention 
-* En las funciones Lectura_Imagen y Copia_Imagen se usan files descriptors y por ende POSIX system calls (open, read, write, close, etc). 
-* En el resto de funciones se usan "streams" y por ende FILE pointers y las respectivas funciones para punteros a FILE(fopen, fread, fwrite, fclose, etc.)
-* Estas son del standard C. La finalidad de esta mezcla fue usar distintas sintaxis y recursos para resolver diversos problemas asociados al manejo
-* de archivos.
-
-* 
-
 */
 
-//ESP: Definicion de estructuras y uniones. 
-//ENG: Definition of structures and unions.
+/**
+* ENG:
+* @brief Project created in a single file main.c and a .h whose program performs BMP image processing.
+* 
+*/
+
+
+/**
+* ESP:
+* La directiva `#pragma pack(1)` se usa para cambiar la alineación predeterminada de estructuras, uniones y clases a 1 byte. Esto significa que el compilador
+* empaquetará los miembros de estas estructuras de datos con una alineación de 1 byte, lo que puede
+* reducir el tamaño de la estructura al eliminar los bytes de relleno. Sin embargo,
+* también puede generar pérdidas de rendimiento en algunas arquitecturas debido a accesos a memoria desalineados.
+*/
+
+/**
+ * ENG:
+ * The `#pragma pack(1)` directive is used to change the default alignment of 
+ * structures, unions, and classes to 1 byte. This means that the compiler will 
+ * pack the members of these data structures with a 1-byte alignment, which can 
+ * reduce the size of the structure by eliminating padding bytes. However, it 
+ * may also lead to performance penalties on some architectures due to 
+ * misaligned memory accesses.
+ */
+
 #pragma pack(1)
 
 
 
 
-/* ESP
+/**
+ * ESP:
  * @brief Estructura que define la cabecera de un archivo BMP.
  *        Contiene información sobre el tipo de archivo, tamaño, dimensiones, etc.
  */
 
-/* ENG
+/** 
+ * ENG:
  * @brief Structure that defines the header of a BMP file.
  *        Contains information about the file type, size, dimensions, etc.
  */
@@ -138,12 +97,14 @@ typedef struct Cabezera
 
 
 
-/* ESP
+/**
+ * ESP:
  * @brief Unión que define la tabla de colores de un archivo BMP.
  *        Contiene la paleta de colores del archivo.
  */
 
-/* ENG
+/**
+ * ENG:
  * @brief Union that defines the color table of a BMP file.
  *        Contains the color palette of the file.
  */
@@ -153,9 +114,31 @@ typedef union TablaColores
     unsigned char CantColoresPaleta[TamTotalColores];
 }Paleta_de_colores;
 
+
+
+
+/**
+ * ESP:
+ * La directiva `#pragma pack(4)` se usa para cambiar la alineación predeterminada de estructuras, uniones y clases a 4 bytes. Esto significa que el compilador
+ * empaquetará los miembros de estas estructuras de datos con una alineación de 4 bytes, lo que puede
+ * reducir el tamaño de la estructura al eliminar algunos bytes de relleno. Sin embargo,
+ * también puede generar pérdidas de rendimiento en algunas arquitecturas debido a accesos a memoria desalineados.
+ */
+
+/**
+ * ENG:
+ * The `#pragma pack(4)` directive is used to change the default alignment of 
+ * structures, unions, and classes to 4 bytes. This means that the compiler will 
+ * pack the members of these data structures with a 4-byte alignment, which can 
+ * reduce the size of the structure by eliminating some padding bytes. However, it 
+ * may also lead to performance penalties on some architectures due to 
+ * misaligned memory accesses.
+ */
+
 #pragma pack(4)
 
-//Declaracion de prototipos de funcion
+//ESP: Declaracion de prototipos de funcion.
+//ENG: Declaration of function prototypes.
 void Lectura_Imagen( DatosBMP **p, Paleta_de_colores **p1, unsigned char **BufferDataImagen, 
 char *NombreDeImagen, int *fd_in );
 int Impresion_Info_HeaderBMP(DatosBMP *p);
@@ -168,54 +151,83 @@ void Deteccion_de_Bordes_lineal(DatosBMP **p, Paleta_de_colores **p1, FILE **ptr
 
 
 
-int main( int argc, char *argv[] )
+
+/**
+ * ESP:
+ * @brief Función principal que realiza el procesamiento de imágenes BMP.
+ *        Lee un archivo BMP, imprime su información de encabezado, y ofrece un menú de opciones para procesar la imagen.
+ *        Las opciones incluyen copiar la imagen, convertir a escala de grises, convertir a blanco y negro,
+ *        rotar la imagen, y aplicar detección lineal de bordes.
+ * 
+ * @param argc Número de argumentos pasados al programa.
+ * @param argv Vector de cadenas que contiene los argumentos pasados al programa.
+ * 
+ * La función realiza las siguientes operaciones:
+ * 1. Lee la imagen BMP y almacena la información del encabezado, la tabla de colores (si existe) y los datos de la imagen.
+ * 2. Imprime la información del encabezado de la imagen BMP.
+ * 3. Ofrece un menú de opciones para procesar la imagen:
+ *    a. Copiar la imagen.
+ *    b. Convertir la imagen a escala de grises.
+ *    c. Convertir la imagen a blanco y negro.
+ *    d. Rotar la imagen.
+ *    e. Aplicar detección lineal de bordes.
+ * 4. Procesa la imagen según la opción seleccionada.
+ * 5. Libera la memoria dinámica utilizada.
+ * 6. Cierra los archivos abiertos.
+ */
+
+/**
+ * ENG:
+ * @brief Main function that performs BMP image processing.
+ *        Reads a BMP file, prints its header information, and offers a menu of options to process the image.
+ *        The options include copying the image, converting to grayscale, converting to black and white,
+ *        rotating the image, and performing linear edge detection.
+ * 
+ * @param argc Number of arguments passed to the program.
+ * @param argv Array of strings containing the arguments passed to the program.
+ * 
+ * The function performs the following operations:
+ * 1. Reads the BMP image and stores the header information, color table (if it exists), and image data.
+ * 2. Prints the BMP image header information.
+ * 3. Offers a menu of options to process the image:
+ *    a. Copy the image.
+ *    b. Convert the image to grayscale.
+ *    c. Convert the image to black and white.
+ *    d. Rotate the image.
+ *    e. Perform linear edge detection.
+ * 4. Processes the image according to the selected option.
+ * 5. Frees the used dynamic memory.
+ * 6. Closes the opened files.
+ */
+
+int main( int argc, char *argv[])
 {
-    //ESP: Creacion de un puntero "p" para almacenar la direccion asignada por la funcion "Lectura_Imagen" 
-    //a traves de malloc, asociada dicha direccion al bloque de memoria asignado para la estructura de DatosBMP y sus 
-    //miembros donde todos ellos son asociados a las distintas secciones del Header del archivo BMP.
-    //ENG: Creation of a pointer "p" to store the address obtained by the function "Lectura_Imagen"
-    //through malloc, associated that address to the memory block assigned to the structure DatosBMP and its
-    //members where all of them are associated with the different sections of the BMP file Header.
+    //ESP: Creacion de puntero "p" para almacenar direccion de estructura DatosBMP.
+    //ENG: Create pointer "p" to store address of DatosBMP structure.
     DatosBMP *p = NULL;
     
-    //ESP: Creacion de un puntero "p1" para almacenar la direccion asignada por la funcion "Lectura_Imagen" 
-    //a traves de malloc, asociada dicha direccion al bloque de memoria asignado para la union Paleta_de_Colores 
-    //y sus miembors donde todos ellos son asociados a la tabla de colores del archivo BMP.
-    //ENG: Creation of a pointer "p1" to store the address obtained by the function "Lectura_Imagen"
-    //through malloc, associated that address to the memory block assigned to the union Paleta_de_Colores
-    //and its members where all of them are associated with the color table of the BMP file.
+    //ESP: Creacion de puntero "p1" para almacenar la direccion de la tabla de colores.
+    //ENG: Create pointer "p1" to store the address of the color table.
     Paleta_de_colores *p1 = NULL;
     
-    //ESP: Creacion de un puntero "BufferDataImagen" para almacenar la direccion asignada por la funcion "Lectura_Imagen" 
-    //a traves de malloc, asociada dicha direccion al bloque de memoria asignado para la data de la imagen, 
-    //es decir, la informacion exclusivamente de la imagen y no la del header o tabla de colores, etc.
-    //ENG: Creation of a pointer "BufferDataImagen" to store the address obtained by the function "Lectura_Imagen"
-    //through malloc, associated that address to the memory block assigned to the image data,
-    //that is, the information exclusively of the image and not the header or color table, etc.
+    //ESP: Puntero para almacenar la data de la imagen.
+    //ENG: Pointer to store the image data.
     unsigned char *BufferDataImagen = NULL;
     
-    //ESP: Declaro una variable de file descripto que guardara un numero int asociado al "ARCHIVO DE ENTRADA" 
-    //que se abre con OPEN para luego leerlo y procesarlo. 
-    //ENG: Declaration of a file descriptor variable that will store an int number associated with the "INPUT FILE"
-    //that is opened with OPEN to then read it and process it.
-	int fd_in;
+    //ESP: Variable descriptor de archivo para el archivo de entrada.
+    //ENG: File descriptor variable for the input file.
+    int fd_in;
     
-    //ESP: Declaro una variable de file descripto que guardara un numero int asociado al "ARCHIVO DE SALIDA" que se abre 
-    //con OPEN para luego escribirlo y procesarlo.
-    //ENG: Declaration of a file descriptor variable that will store an int number associated with the "OUTPUT FILE"
-    //that is opened with OPEN to then write it and process it.
+    //ESP: Variable descriptor de archivo para el archivo de salida.
+    //ENG: File descriptor variable for the output file.
     int fd_out;
     
-    //ESP: Declaro una variable puntero simple a FILE que almacena la direccion de comienzo de un "ARCHIVO DE ENTRADA" 
-    //que se abre con fopen para luego leerlo y procesarlo.
-    //ENG: Declaration of a simple pointer variable to FILE that stores the start address of an "INPUT FILE"
-    //that is opened with fopen to then read it and process it.
+    //ESP: Puntero a FILE para abrir y leer un archivo de entrada.
+    //ENG: FILE pointer to open and read an input file.
     FILE *ptr_in = NULL;
 
-    //ESP: Declaro una variable puntero simple a FILE que almacena la direccion de comienzo de un "ARCHIVO DE SALIDA"
-    //que se abre con fopen para luego escribirlo y procesarlo.
-    //ENG: Declaration of a simple pointer variable to FILE that stores the start address of an "OUTPUT FILE"
-    //that is opened with fopen to then write it and process it.
+    //ESP: Declaro puntero a FILE para archivo de salida.
+    //ENG: Declare FILE pointer for output file.
     FILE *ptr_out = NULL;
     
     //ESP: Declaro una variable auxiliar para recibir lo que devuelve la funcion Impresion_Info_HeaderBMP().
@@ -224,7 +236,7 @@ int main( int argc, char *argv[] )
     
     //ESP: Proteccion contra cantidad insuficiente de argumentos de main.
     //ENG: Protection against insufficient number of main arguments.
-	if(argc<2)
+    if(argc<2)
     {
         printf("falta imagen\n");
         return(0);
@@ -291,7 +303,7 @@ int main( int argc, char *argv[] )
     {
         switch(decision)
         {
-            case 'A': case 'a':
+            case 'A': case 'a': //ESP: Copiar imagen. ENG: Copy image.
             
                 Copia_Imagen( &p, &p1, &BufferDataImagen, &fd_out );
                 
@@ -299,7 +311,7 @@ int main( int argc, char *argv[] )
                 
                 break;
                 
-            case 'B': case 'b':
+            case 'B': case 'b': //ESP: Conversion imagen RGB a Greyshade Scale. ENG: Conversion image RGB to Greyshade Scale.
                 
                 Conversion_RGB_a_Grayscale( &p, &p1, &ptr_in, &ptr_out, argv[1], &decision );
                 
@@ -307,7 +319,7 @@ int main( int argc, char *argv[] )
                 
                 break;
                 
-            case 'C': case 'c':
+            case 'C': case 'c': //ESP: Conversion Grayscale a BlancoyNegro. ENG: Conversion Grayscale to BlackandWhite.
                 
                 Conversion_Grayscale_a_BlancoyNegro( &p, &p1, &ptr_in, &ptr_out, argv[1], &decision );
                 
@@ -315,7 +327,7 @@ int main( int argc, char *argv[] )
                  
                  break;
             
-            case 'D': case 'd':
+            case 'D': case 'd': //ESP: Rotacion imagen. ENG: Image rotation.
                 
                 Rotacion_Imagen( &p, &p1, &ptr_in, &ptr_out, argv[1], &decision );
                 
@@ -323,7 +335,7 @@ int main( int argc, char *argv[] )
                 
                 break;
                 
-            case 'E': case 'e':
+            case 'E': case 'e': //ESP: Deteccion de bordes lineal. ENG: Linear edge detection.
                 
                 do{
                     printf("Elija una de las siguientes detecciones lineales\n\"1\"- Vertical\n\"2\"- Horizontal\n\"3\"- Diagonal Izquierda\n\"4\"- Diagonal Derecha\n");
@@ -382,7 +394,8 @@ int main( int argc, char *argv[] )
 
 
 
-/* ESP
+/** 
+ * ESP
  * @brief Lee una imagen de un archivo BMP en memoria, incluyendo el encabezado, la tabla de colores (si existe) y los datos de la imagen.
  *        Esta función utiliza llamadas al sistema POSIX y descriptores de archivos.
  * 
@@ -391,9 +404,20 @@ int main( int argc, char *argv[] )
  * @param BufferDataImagen Puntero a un puntero a un array de unsigned char donde se almacenarán los datos de la imagen.
  * @param NombreDeImagen Puntero a un array de char que contiene el nombre del archivo BMP a leer.
  * @param fd_in Puntero a un descriptor de archivo entero para el archivo de entrada.
+ *
+ * La función realiza las siguientes operaciones:
+ * 1. Solicita memoria dinámica para almacenar el encabezado y la tabla de colores (si existe).
+ * 2. Abre el archivo BMP de entrada utilizando la llamada al sistema open().
+ * 3. Lee el encabezado del archivo BMP y lo almacena en la estructura DatosBMP.
+ * 4. Si la imagen tiene una tabla de colores (profundidad de color <= 8), lee la tabla de colores y la almacena en la estructura Paleta_de_colores.
+ * 5. Solicita memoria dinámica para almacenar los datos de la imagen.
+ * 6. Lee los datos de la imagen del archivo BMP y los almacena en el buffer de datos de la imagen.
+ * 7. Imprime mensajes indicando la cantidad de bytes leídos en cada paso.
+ * 8. Imprime un mensaje indicando que la función se ejecutó exitosamente.
  */
 
-/* ENG
+/** 
+ * ENG
  * @brief Reads an image from a BMP file into memory, including the header, color table (if it exists), and image data.
  *        This function uses POSIX system calls and file descriptors.
  * 
@@ -402,6 +426,16 @@ int main( int argc, char *argv[] )
  * @param BufferDataImagen Pointer to a pointer to an unsigned char array where the image data will be stored.
  * @param NombreDeImagen Pointer to a char array containing the name of the BMP file to be read.
  * @param fd_in Pointer to an integer file descriptor for the input file.
+ *
+ * The function performs the following operations:
+ * 1. Allocates dynamic memory to store the header and color table (if it exists).
+ * 2. Opens the input BMP file using the open() system call.
+ * 3. Reads the BMP file header and stores it in the DatosBMP structure.
+ * 4. If the image has a color table (color depth <= 8), reads the color table and stores it in the Paleta_de_colores structure.
+ * 5. Allocates dynamic memory to store the image data.
+ * 6. Reads the image data from the BMP file and stores it in the image data buffer.
+ * 7. Prints messages indicating the number of bytes read at each step.
+ * 8. Prints a message indicating that the function was successfully called.
  */
 
 void Lectura_Imagen( DatosBMP **p, Paleta_de_colores **p1, unsigned char **BufferDataImagen, char *NombreDeImagen, int *fd_in )
@@ -447,12 +481,8 @@ void Lectura_Imagen( DatosBMP **p, Paleta_de_colores **p1, unsigned char **Buffe
     //ESP: Este ciclo do-while esta para proteger de lectura fallida del reader, en caso de que el reader leea menos bytes de lo esperado por ejemplo.
     //ENG: This do-while loop is to protect against failed reader reading, in case the reader reads fewer bytes than expected for example.
     do{
-        //ESP: Lectura del archivo bmp con funcion READ. Por proceso de lectura, la maquina copia todo el header del archivo y lo almacena en el espacio 
-        //de memoria asignado a la estructura. Luego se accedera a este espacio a traves de los distintos miembros de la estructura para acceder de a 
-        //grupos de bytes de acuerdo a las secciones del header.
-        //ENG: Reading of the bmp file with the READ function. By reading process, the machine copies the entire header of the file and stores it in the space
-        //of memory assigned to the structure. Then this space will be accessed through the different members of the structure to access groups of bytes according 
-        //to the sections of the header.
+        //ESP: Lectura del archivo bmp con READ, copiando el header al espacio de memoria asignado a la estructura.
+        //ENG: Reading the bmp file with READ, copying the header to the memory space assigned to the structure.
         bytesleidos = read(*fd_in,*p,TamCabezera);
         printf("Cantidad de bytes leidos de cabezera: %ld\n", bytesleidos);
         
@@ -492,12 +522,8 @@ void Lectura_Imagen( DatosBMP **p, Paleta_de_colores **p1, unsigned char **Buffe
         
     }
     
-    //ESP: Pido memoria dinamica para que durante otro proceso de lectura, entonces poder almacenar el resto de informacion del archivo que no son los 54 bytes 
-    //del header ya que estos estan alamcenados en la estructura. El resto de informacion puede ser la imagen mas otras cosas.
-    //La cantidad de memoria a pedir dependera del tamanio total del archivo menos el tamanio del header.
-    //ENG: I request dynamic memory so that during another reading process, I can then store the rest of the file information that is not the 54 bytes
-    //of the header since these are stored in the structure. The rest of the information can be the image plus other things.
-    //The amount of memory to request will depend on the total size of the file minus the size of the header.
+    //ESP: Pido memoria dinamica para almacenar el resto del archivo que no es el header.
+    //ENG: Allocate dynamic memory to store the rest of the file excluding the header.
     PunteroTemporal2 = (unsigned char *)malloc( ( (*p)->TamARchivo - TamCabezera ) * sizeof(unsigned char) );
     
     //ESP: Proteccion contra NULL de malloc.
@@ -512,10 +538,8 @@ void Lectura_Imagen( DatosBMP **p, Paleta_de_colores **p1, unsigned char **Buffe
     //ENG: Assignment to "BufferDataImagen" (from main), the start address of the memory block given by malloc for the image data.
     *BufferDataImagen = PunteroTemporal2;
 
-    //ESP: Realizo otro proceso de lectura pero ahora del resto del archivo donde la lectura de la maquina en este caso, consiste en copiar el resto del archivo 
-    //y escribirlo en memoria. En este caso ese resto de archivo se copiara en memoria asignada dinamicamente, es decir, en BufferDataImagen.
-    //ENG: I perform another reading process but now of the rest of the file where the machine reading in this case, consists of copying the rest of the file
-    //and write it to memory. In this case that rest of the file will be copied to memory assigned dynamically, that is, to BufferDataImagen.
+    //ESP: Leo el resto del archivo y lo copio en memoria dinámica asignada a BufferDataImagen.
+    //ENG: Read the rest of the file and copy it to dynamically allocated memory in BufferDataImagen.
     do{
        bytesleidos = read(*fd_in,*BufferDataImagen,(*p)->TamImg);
        printf("Cantidad de bytes leidos de la DATA Imagen: %ld\n", bytesleidos);
@@ -527,35 +551,44 @@ void Lectura_Imagen( DatosBMP **p, Paleta_de_colores **p1, unsigned char **Buffe
 
 
 
-/* ESP
+/** 
+ * ESP
  * @brief Escribe el encabezado y la tabla de colores (si existe) en un archivo de salida y abre un archivo BMP de entrada, reposicionando el offset.
  *        Esto a traves de punteros a FILE y uso de "streams".
- * 
- * Esta función abre un archivo BMP de entrada y reposiciona el offset al inicio de los datos de la imagen. Luego abre un archivo BMP de salida
- * con un nombre basado en la opción de menú seleccionada en la función principal. La función verifica la apertura exitosa de los archivos de 
- * entrada y salida. Copia el encabezado y la tabla de colores (si existe) del archivo de entrada al archivo de salida.
- * 
+ *
  * @param p Puntero a una estructura DatosBMP que contiene la información del archivo BMP.
  * @param p1 Puntero a una estructura Paleta_de_colores que contiene la información de la tabla de colores.
  * @param ptr_in Puntero al flujo del archivo de entrada.
  * @param ptr_out Puntero al flujo del archivo de salida.
  * @param NombreDeImagen Nombre del archivo BMP de entrada.
  * @param decision Opción de menú seleccionada en la función principal para determinar el nombre del archivo de salida.
+ *
+ * La función realiza las siguientes operaciones:
+ * 1. Abre el archivo BMP de entrada y reposiciona el offset al inicio de los datos de la imagen.
+ * 2. Abre un archivo BMP de salida con un nombre basado en la opción de menú seleccionada en la función principal.
+ * 3. Verifica la apertura exitosa de los archivos de entrada y salida.
+ * 4. Copia el encabezado y la tabla de colores (si existe) del archivo de entrada al archivo de salida.
+ * 5. Imprime un mensaje indicando que la función se ejecutó exitosamente.
  */
 
-/* ENG
+/** 
+ * ENG
  * @brief Writes the header and color table (if it exists) to an output file and opens an input BMP file, repositioning the offset.
- * 
- * This function opens an input BMP file and repositions the offset to the start of the image data. It then opens an output BMP file
- * with a name based on the menu option selected in the main function. The function checks for successful opening of the input and 
- * output files. It copies the header and color table (if it exists) from the input file to the output file.
- * 
+ *        This is done through FILE pointers and streams.
+ *
  * @param p Pointer to a DatosBMP structure containing BMP file information.
  * @param p1 Pointer to a Paleta_de_colores structure containing color table information.
  * @param ptr_in Pointer to the input file stream.
  * @param ptr_out Pointer to the output file stream.
  * @param NombreDeImagen Name of the input BMP file.
  * @param decision Menu option selected in the main function to determine the output file name.
+ *
+ * The function performs the following operations:
+ * 1. Opens the input BMP file and repositions the offset to the start of the image data.
+ * 2. Opens an output BMP file with a name based on the menu option selected in the main function.
+ * 3. Checks for successful opening of the input and output files.
+ * 4. Copies the header and color table (if it exists) from the input file to the output file.
+ * 5. Prints a message indicating that the function was successfully called.
  */
 
 void Escritura_Imagen_HeaderYTablaColores(DatosBMP **p, Paleta_de_colores **p1, FILE **ptr_in, FILE **ptr_out, char *NombreDeImagen, int *decision)
@@ -564,14 +597,8 @@ void Escritura_Imagen_HeaderYTablaColores(DatosBMP **p, Paleta_de_colores **p1, 
     //ENG: Opening of the input bmp file with the "fopen" function.
     *ptr_in = fopen(NombreDeImagen, "rb");
 
-    //ESP: Reposicionamiento del offset del archivo de entrada. En principio al abrir el archivo, dicho offset esta ubicado en el byte 0 y a traves de "fseek" 
-    //lo re-ubico en el nro de byte asociado al valor de InicioImagen almacenado dicho byte en la struct DatosBMP. 
-    //Esto lo hago porque en algunas funciones como "Conversion_RGB_a_Grayscale" se requiere trabajar con puntero a FILE de archivo de entrada para manipular 
-    //bytes de data de imagen y bytes de padding. Por lo que es necesario posicionar el offset del "stream" en la posicion adecuado dentro del bloque de informacion del archivo de entrada.
-    //ENG: Repositioning of the input file offset. Initially when opening the file, this offset is located at byte 0 and through "fseek"
-    //I relocate it in the byte number associated with the value of InicioImagen stored in that byte in the DatosBMP structure.
-    //I do this because in some functions like "Conversion_RGB_a_Grayscale" it is required to work with a pointer to the FILE of the input file to manipulate
-    //image data bytes and padding bytes. So it is necessary to position the "stream" offset at the appropriate position within the input file information block.
+    //ESP: Reposiciona el offset del archivo de entrada al InicioImagen en DatosBMP con "fseek" para manipular datos de imagen y padding.
+    //ENG: Repositions the input file offset to InicioImagen in DatosBMP using "fseek" to manipulate image data and padding.
     fseek(*ptr_in,(*p)->InicioImagen, SEEK_CUR );
         
     //ESP: Algoritmo de apertura de achivo de salida bmp con funcion "fopen", con distintos nombres segun opcion de menu ingresada en main.
@@ -593,16 +620,12 @@ void Escritura_Imagen_HeaderYTablaColores(DatosBMP **p, Paleta_de_colores **p1, 
         exit(-1);
     }
     
-    //ESP: Copiado de cabecera usando la funcion "fwrite" para realizar el copiado de todos los bytes del header almacenados en la struct DatosBMP. 
-    //Estos bytes ahora copiados se escriben en el archivo de salida.
-    //ENG: Copying of the header using the "fwrite" function to copy all the bytes of the header stored in the DatosBMP structure.
-    //These bytes now copied are written to the output file.
+    //ESP: Copiado del header de la estructura DatosBMP al archivo de salida usando "fwrite".
+    //ENG: Copy the header from the DatosBMP structure to the output file using "fwrite".
     fwrite(*p,sizeof(unsigned char),TamCabezera,*ptr_out);
     
-    //ESP: Copiado de tabla de colores(si existiese) usando la funcion "fwrite". Los bytes se encuentran en la struct Paleta_de_colores y estos bytes ahora 
-    //copiados se escriben en el archivo de salida y a continuacion de los bytes del header.
-    //ENG: Copying of the color table (if it exists) using the "fwrite" function. The bytes are in the Paleta_de_colores structure and these bytes now copied
-    //are written to the output file and after the header bytes.
+    //ESP: Copia la tabla de colores (si existe) al archivo de salida usando "fwrite".
+    //ENG: Copies the color table (if it exists) to the output file using "fwrite".
     if( (*p)->TamPunto <= 8 )
         fwrite(*p1,sizeof(unsigned char),TamTotalColores,*ptr_out);
     
@@ -654,23 +677,17 @@ void Copia_Imagen( DatosBMP **p, Paleta_de_colores **p1, unsigned char **BufferD
     //ENG: Opening of the output bmp file with the OPEN function. 
     *fd_out = open("copia.bmp", O_RDWR|O_CREAT,S_IRUSR|S_IWUSR);
 
-    //ESP: Copiado de cabecera usando la funcion WRITE para realizar el copiado de todos los bytes del header almacenados en la struct DatosBMP. 
-    //Estos bytes ahora copiados se escriben en el archivo de salida.
-    //ENG: Copying of the header using the WRITE function to copy all the bytes of the header stored in the DatosBMP structure.
-    //These bytes now copied are written to the output file.
+    //ESP: Copia la cabecera del archivo BMP al archivo de salida.
+    //ENG: Copies the BMP file header to the output file.
     write(*fd_out,*p,TamCabezera);
     
-    //ESP: Copiado de tabla de colores(si existiese) usando la funcion WRITE. Los bytes se encuentran en la struct Paleta_de_colores y 
-    //estos bytes ahora copiados se escriben en el archivo de salida y a continuacion de los bytes del header.
-    //ENG: Copying of the color table (if it exists) using the WRITE function. The bytes are in the Paleta_de_colores structure and
-    //these bytes now copied are written to the output file and after the header bytes.
+    //ESP: Copia la tabla de colores (si existe) al archivo de salida.
+    //ENG: Copies the color table (if it exists) to the output file.
     if( (*p)->TamPunto <= 8 )
         write(*fd_out,*p1,TamTotalColores);
     
-    //ESP: Copiado de la data de la imagen usando la funcion WRITE. Estos bytes se encuentran en un buffer de memoria dinamico temporal. 
-    //y estos bytes ahora copiados se escriben en el archivo de salida y a continuacion de la tabla de colores(si existiese) sino a continuacion de la informacion del header.
-    //ENG: Copying of the image data using the WRITE function. These bytes are in a temporary dynamic memory buffer.
-    //and these bytes now copied are written to the output file and after the color table (if it exists) otherwise after the header information. 
+    //ESP: Copia la data de la imagen desde el buffer temporal al archivo de salida.
+    //ENG: Copies the image data from the temporary buffer to the output file.
     write(*fd_out,*BufferDataImagen,( (*p)->TamARchivo ) - TamCabezera);
     
     printf("Se llamo exitosamente a la funcion \"Copia_Imagen\"\n.\n.\n.\n");
@@ -727,10 +744,8 @@ void Conversion_RGB_a_Grayscale(DatosBMP **p, Paleta_de_colores **p1, FILE **ptr
     //ENG: Declare 3 iteration variables for the for loop.
     int y, x;
     
-    //ESP: Llamo a funcion que escribe el header y tabla de colores en la imagen de salida y que usa archivo de entrada y cambia posicion de offset. 
-    //Todo con streams y punteros a FILE.
-    //ENG: I call a function that writes the header and color table to the output image and that uses the input file and changes the offset position.
-    //All with streams and FILE pointers.
+    //ESP: Llama a función que escribe el header y tabla de colores en la imagen de salida usando streams y punteros a FILE.
+    //ENG: Calls a function that writes the header and color table to the output image using streams and FILE pointers.
     Escritura_Imagen_HeaderYTablaColores(p, p1, ptr_in, ptr_out, NombreDeImagen, decision);
    
     //ESP: Declaro variables "stride=paso" y de "padding=relleno" y asigno sus valores en base a formulas para tamanio de pixel de 24 bits.
@@ -740,43 +755,8 @@ void Conversion_RGB_a_Grayscale(DatosBMP **p, Paleta_de_colores **p1, FILE **ptr
     printf("stride: %d\n", stride);
     printf("padding: %d\n", padding);
     
-    //ESP: Algoritmo que transforma cada pixel de color mezclado de RGB a un pixel de color de GrayshadeScale y que realiza proceso de "padding",
-    //es decir, relleno de bytes asociados al color negro al final de cada fila de bytes completada con informacion asociada a GrayshadeScale. 
-    //Para esto, se considera que cada pixel de color sera de 24 bit, entonces, tendra 3 bytes y donde cada byte esta asociado a un pequenio 
-    //pixel de un color distinto RGB siendo 1er byte equivalente a "pixel rojo", 2do byte equivalente a "pixel verde", 3er byte equivalente 
-    //a "pixel azul". Por lo que 3 pixeles pequenios de 8 bits cada uno, forman un pixel de color completo mezclado RGB de 24 bits. 
-    //Cada byte de 1 pixel de data de imagen, es tomado del archivo de entrada y almacenado en principio en un array "pixel" donde cada elemento 
-    //entonces sera un byte asociado a un color RGB. Luego a cada elemento del vector, es decir, a cada byte de cada color RGB lo multiplico 
-    //por una constante siendo para el rojo el 0.3, para el verde el 0.59 y para el azul el 0.11. Luego sumo los resultados de dicha multiplicacion 
-    //almacenandolos en una variable del tipo unsigned char llamada "gris". Despues, a traves de memset, se re-llena el array "pixel" por completo 
-    //con todos bytes(3 en total) asociados sus valores al valor del byte "gris" el cual fue obtenido en la linea anterior. Como siguiente paso, 
-    //se cargan esos bytes del array "pixel" ahora en el archivo de salida. Todos estos pasos se repiten para cada pixel de cada columna de la fila 
-    //de estudio del archivo de entrada. Al finalizar la carga de cada fila en el archivo de salida y justo antes de comenzar la carga de la siguiente 
-    //fila, se realiza entonces, un proceso de padding, es decir, un proceso de rellenado de nuevos pixeles todos con mismo valor constante. 
-    //Dicho proceso se realiza a traves de leer del archivo de entrada, 1 item de data de imagen de tamanio igual al valor entero de padding 
-    //y a partir de esto alamcenar dicho item de data, en el array "pixel" para luego tomar lo que hay en ese array y almacenarlo en el archivo de 
-    //salida justo a continuacion de la fila cargada. Todo este procesidimiento se hace 1 vez por cada fila cargada para poder evitar recortes en la imagen 
-    //y que al momento de aplicar filtros con mascaras se asegure que los valores de la mascara se "superpongan" todos en contacto con los distintos pixeles 
-    //produciendo las modificaciones pertinentes y que por ende evitar asi que haya zonas de imagen donde los valores de las mascaras se superponen con la nada lo cual genera problemas.
-   
-    //ENG: Algorithm that transforms each mixed RGB color pixel to a GrayshadeScale color pixel and that performs the "padding" process,
-    //that is, filling of bytes associated with the black color at the end of each row of bytes completed with GrayshadeScale information.
-    //For this, it is considered that each color pixel will be 24 bit, then, it will have 3 bytes and where each byte is associated with a small
-    //pixel of a different RGB color being the 1st byte equivalent to "red pixel", 2nd byte equivalent to "green pixel", 3rd byte equivalent
-    //to "blue pixel". So 3 small pixels of 8 bits each, form a complete RGB mixed color pixel of 24 bits.
-    //Each byte of 1 image data pixel, is taken from the input file and stored initially in an array "pixel" where each element
-    //then will be a byte associated with an RGB color. Then to each element of the vector, that is, to each byte of each RGB color
-    //I multiply it by a constant being for red 0.3, for green 0.59 and for blue 0.11. Then I add the results of that multiplication
-    //storing them in a variable of type unsigned char called "gray". Then, through memset, the array "pixel" is completely refilled
-    //with all bytes (3 in total) associated with their values to the value of the byte "gray" which was obtained in the previous line. As a next step,
-    //those bytes of the array "pixel" are now loaded into the output file. All these steps are repeated for each pixel of each column of the row
-    //of study of the input file. At the end of loading each row in the output file and just before starting the loading of the next
-    //row, a padding process is then performed, that is, a process of filling new pixels all with the same constant value.
-    //This process is done by reading from the input file, 1 image data item of size equal to the integer value of padding
-    //and from this store said image data item, in the "pixel" array and then take what is in that array and store it in the output file
-    //just after the loaded row. All this process is done 1 time for each loaded row to avoid cropping the image
-    //and that when applying filters with masks it is ensured that the mask values "overlap" all in contact with the different pixels
-    //producing the relevant modifications and thus avoiding that there are image areas where the mask values overlap with nothing which generates problems.
+    //ESP: Algoritmo que convierte cada pixel RGB a escala de grises y realiza el relleno de bytes al final de cada fila.
+    //ENG: Algorithm that converts each RGB pixel to grayscale and performs byte padding at the end of each row.
     unsigned char pixel[3];
     for ( y = 0; y < (*p)->Altura; ++y)
     {
@@ -850,22 +830,20 @@ void Conversion_RGB_a_Grayscale(DatosBMP **p, Paleta_de_colores **p1, FILE **ptr
 
 void Conversion_Grayscale_a_BlancoyNegro(DatosBMP **p, Paleta_de_colores **p1, FILE **ptr_in, FILE **ptr_out, char *NombreDeImagen, int *decision)
 {
-    //ESP: Declaro puntero simple que apuntara a la direccion de comienzo de un buffer local de memoria dinamico de datos unsigned char dado por malloc.
-    //ENG: Declare a simple pointer that will point to the start address of a local dynamic memory buffer of unsigned char data given by malloc.
+    //ESP: Declaro puntero simple para un buffer local de memoria dinámica de datos unsigned char.
+    //ENG: Declare a simple pointer for a local dynamic memory buffer of unsigned char data.
     unsigned char *BufferCopiaLocal = NULL;
 
-    //ESP: Declaro puntero simple temporal que recibe lo devuelto por malloc.
-    //ENG: Declare a temporary simple pointer that receives what malloc returns.
+    //ESP: Declaro puntero temporal que recibe lo devuelto por malloc.
+    //ENG: Declare a temporary pointer that receives what malloc returns.
     unsigned char *PunteroTemporalLocal = NULL;
     
     //ESP: Declaro variable iterador de para ciclo for.
     //ENG: Declare iterator variable for for loop.
     int i;
     
-    //ESP: Llamo a funcion que escribe el header y tabla de colores en la imagen de salida y que usa archivo de entrada y cambia posicion de offset.
-    //Todo con streams y punteros a FILE.
-    //ENG: Call function that writes the header and color table to the output image and uses the input file and changes the offset position.
-    //All with streams and FILE pointers.
+    //ESP: Escribe el header y la tabla de colores en la imagen de salida usando el archivo de entrada y cambia la posición del offset.
+    //ENG: Writes the header and color table to the output image using the input file and changes the offset position.
     Escritura_Imagen_HeaderYTablaColores(p, p1, ptr_in, ptr_out, NombreDeImagen, decision);
     
     //ESP: Pedido de memoria dinamico con malloc para almacenar la data imagen dinamicamente. 
@@ -888,14 +866,8 @@ void Conversion_Grayscale_a_BlancoyNegro(DatosBMP **p, Paleta_de_colores **p1, F
     //ENG: Reading in memory of the image data from the input file to the dynamic memory block pointed to by the simple pointer "BufferCopiaLocal".
     fread(BufferCopiaLocal,sizeof(unsigned char),(*p)->TamImg,*ptr_in);
     
-    //ESP: Algoritmo de "binarizacion" de pixeles en Grayshadescale. A traves de ciclo for, se evalua el valor entero de cada pixel, 
-    //si el valor supera el valor de umbral entonces se le asigna el valor entero de 1 asociado al blanco. Caso contrario se le asigna el valor de entero 0, 
-    //asociado al negro. Cada modificacion de valor de pixel se hace sobre pixeles almacenados en el bloque de memoria apuntado por BufferCopiaLocal. 
-    //Luego, una vez modificado este bloque de memoria dinamico local, se escribe toda esta informacion en el archivo de salida con la funcion "frwite".
-    //ENG: Pixel "binarization" algorithm in Grayshadescale. Using a for loop, the integer value of each pixel is evaluated.
-    //If the value exceeds the threshold, then it is assigned the integer value 1, associated with white. Otherwise, it is assigned the integer value 0,
-    //associated with black. Each pixel value modification is made to pixels stored in the memory block pointed to by BufferCopiaLocal.
-    //Then, once this local dynamic memory block has been modified, all this information is written to the output file using the "frwite" function.
+    //ESP: Algoritmo de binarización que convierte cada pixel de escala de grises a blanco o negro según un umbral.
+    //ENG: Binarization algorithm that converts each grayscale pixel to black or white based on a threshold.
     for( i = 0; i < (*p)->TamImg; i++ )
     {
         BufferCopiaLocal[i] = (BufferCopiaLocal[i]>UMBRAL)?BLANCO : NEGRO;
@@ -963,6 +935,7 @@ void Conversion_Grayscale_a_BlancoyNegro(DatosBMP **p, Paleta_de_colores **p1, F
  * 6. Closes the input and output files.
  * 7. Prints a message indicating that the function was successfully called.
  */
+
 void Rotacion_Imagen(DatosBMP **p, Paleta_de_colores **p1, FILE **ptr_in, FILE **ptr_out, char *NombreDeImagen, int *decision)
 {
     //ESP: Declaracion de array estatico de 2 dimensiones siendo AnchoXAlto, que almacena la data imagen del archivo de entrada.
@@ -1142,20 +1115,44 @@ void Rotacion_Imagen(DatosBMP **p, Paleta_de_colores **p1, FILE **ptr_in, FILE *
 
 void Deteccion_de_Bordes_lineal(DatosBMP **p, Paleta_de_colores **p1, FILE **ptr_in, FILE **ptr_out, char *NombreDeImagen, int *decision, int Mascara[][3])
 {
-    //Declaracion de array estatico de 1 dimension de TamImg, que almacena la data imagen del archivo de entrada
+    //ESP: Declaracion de array estatico de 1 dimension de TamImg, que almacena la data imagen del archivo de entrada.
+    //ENG: Declaration of a static array of 1 dimension of TamImg, which stores the image data from the input file.
     unsigned char BufferCopiaLocalIn[(*p)->TamImg];
-    //Declaracion de array estatico de 1 dimension de TamImg, que almacena la data imagen modificada para ser escrita en archivo de salida
+
+    //ESP: Declaracion de array estatico de 1 dimension de TamImg, que almacena la data imagen modificada para ser escrita en archivo de salida.
+    //ENG: Declaration of a static array of 1 dimension of TamImg, which stores the modified image data to be written to the output file.
     unsigned char BufferCopiaLocalOut[(*p)->TamImg];
-    //Declaracion de variables de iteracion para ciclo for
+    
+    //ESP: Declaracion de variables de iteracion para ciclo for.
+    //ENG: Declaration of iteration variables for for.
     int x,y,i,j,sum;
     
-    //Llamo a funcion que escribe el header y tabla de colores en la imagen de salida y que usa archivo de entrada y cambia posicion de offset. Todo con streams y punteros a FILE
+    //ESP: Llamo a funcion que escribe el header y tabla de colores en la imagen de salida y que usa archivo de entrada y cambia posicion de offset. 
+    //Todo con streams y punteros a FILE.
+    //ENG: I call a function that writes the header and color table to the output image and that uses the input file and changes the offset position.
+    //All with streams and FILE pointers.
     Escritura_Imagen_HeaderYTablaColores(p, p1, ptr_in, ptr_out, NombreDeImagen, decision);
     
-    //Lectura en memoria de la data imagen del archivo de entrada hacia el bloque de memoria estatico de 1 dimensiones BufferCopiaLocalIn
+    //ESP: Lectura en memoria de la data imagen del archivo de entrada hacia el bloque de memoria estatico de 1 dimensiones BufferCopiaLocalIn.
+    //ENG: Reading in memory of the image data from the input file to the static 1-dimensional memory block BufferCopiaLocalIn.
     fread(BufferCopiaLocalIn,sizeof(unsigned char),(*p)->TamImg,*ptr_in);
     
-    //Algoritmo que realiza la deteccion de bordes a partir de una mascara y operaciones de multiplicacion, donde esta mascara es un array de 2D de 3x3 con valores pre-cargados. Se busca evaluar que sucede con un "vecindario" de pixeles de 3x3 respecto a un pixel central. Dicho algoritmo utiliza 4 ciclos for. El 1ero y el 2do es para recorrer todas las filas y las columnas en busqueda de un pixel central siendo que la posicion de dicho pixel central de un vecindario este dado por "BufferCopiaLocalOut+x+(long)y * ((*p)->Ancho)". Luego el 3ero y el 4to que realizan una sumatoria de resultados dados por las operaciones de la linea 593 tal que se obtiene un valor resultante de todas las operacoiones de todos los pixeles de un "neighborhood" respecto al pixel central estudiado. Dicho valor resultante del vecindario se evalua al finalizar el 3er y 4to for, en la evaluacion se determina si el pixel central asumira el valor de "encendido o blanco(255)" o el valor de "apagado o negro(0)". Repitiendo esto sucesivamente para todos los pixeles de una imagen, se podra tener entonces los "bordes" o delineados bien marcados en la imagen de salida. Cabe aclarar que la imagen de estudio debe estar en escala de grises obligatoriamente.
+    //ESP: Algoritmo que realiza la deteccion de bordes a partir de una mascara y operaciones de multiplicacion, donde esta mascara es un array de 2D de 3x3 
+    //con valores pre-cargados. Se busca evaluar que sucede con un "vecindario" de pixeles de 3x3 respecto a un pixel central. Dicho algoritmo utiliza 4 ciclos for. 
+    //El 1ero y el 2do es para recorrer todas las filas y las columnas en busqueda de un pixel central siendo que la posicion de dicho pixel central de un vecindario 
+    //este dado por "BufferCopiaLocalOut+x+(long)y * ((*p)->Ancho)". Luego el 3ero y el 4to que realizan una sumatoria de resultados dados por las operaciones de la linea 593 
+    //tal que se obtiene un valor resultante de todas las operacoiones de todos los pixeles de un "neighborhood" respecto al pixel central estudiado. 
+    //Dicho valor resultante del vecindario se evalua al finalizar el 3er y 4to for, en la evaluacion se determina si el pixel central asumira el valor de "encendido o blanco(255)" 
+    //o el valor de "apagado o negro(0)". Repitiendo esto sucesivamente para todos los pixeles de una imagen, se podra tener entonces los "bordes" o delineados bien marcados en la imagen de salida. 
+    //Cabe aclarar que la imagen de estudio debe estar en escala de grises obligatoriamente.
+    //ENG: Algorithm that performs edge detection from a mask and multiplication operations, where this mask is a 3x3 2D array
+    //with pre-loaded values. The goal is to evaluate what happens to a 3x3 pixel "neighborhood" with respect to a central pixel. This algorithm uses 4 for loops.
+    //The 1st and 2nd loops are to traverse all rows and columns in search of a central pixel, with the position of said central pixel in a neighborhood
+    //being given by "BufferCopiaLocalOut+x+(long)y * ((*p)->Width)". Then the 3rd and 4th loops perform a summation of the results given by the operations on line 593
+    //such that a resulting value is obtained from all the operations on all the pixels in a "neighborhood" with respect to the central pixel being studied.
+    //This resulting neighborhood value is evaluated at the end of the 3rd and 4th for loops. This evaluation determines whether the center pixel will assume the value "on or white(255)"
+    //or the value "off or black(0)". By repeating this successively for all the pixels in an image, the "edges" or outlines can then be clearly defined in the output image.
+    //It should be noted that the study image must be in grayscale. 
 
     for(y = 1; y < (*p)->Altura-1; y++)
     {
@@ -1175,18 +1172,69 @@ void Deteccion_de_Bordes_lineal(DatosBMP **p, Paleta_de_colores **p1, FILE **ptr
         }
     }
     
-    //Escritura en archivo de salida de la data imagen modificada en el bloque de memoria BufferCopiaLocalOut de 2D.
+    //ESP: Escritura en archivo de salida de la data imagen modificada en el bloque de memoria BufferCopiaLocalOut de 2D.
+    //ENG: Writing to the output file the modified image data in the 2D BufferCopiaLocalOut memory block.
     fwrite(BufferCopiaLocalOut,sizeof(unsigned char),(*p)->TamImg,*ptr_out);
     
-    
-    //Cierro archivo de entrada y salida
+    //ESP: Cierro archivo de entrada y salida.
+    //ENG: I close the input and output file.
     fclose(*ptr_in);
     fclose(*ptr_out);
     
     printf("Se llamo exitosamente a la funcion \"Deteccion_de_Bordes_lineal\"\n.\n.\n.\n");
 }
 
-//Funcion que imprime en pantalla la informacion del header a traves del uso de estructura y sus miembros
+
+
+
+/** 
+ * ESP
+ * @brief Funcion que imprime en pantalla la informacion del header a traves del uso de estructura y sus miembros.
+ *
+ * @param p Puntero a la estructura DatosBMP que contiene la cabecera de la imagen.
+ *
+ * La función realiza las siguientes operaciones:
+ * 1. Imprime el tipo de archivo.
+ * 2. Imprime el tamaño del archivo.
+ * 3. Imprime los campos reservados.
+ * 4. Imprime el inicio de la imagen.
+ * 5. Imprime el tamaño total de la cabecera.
+ * 6. Imprime el ancho y la altura de la imagen.
+ * 7. Imprime el número de planos.
+ * 8. Imprime el tamaño del punto.
+ * 9. Imprime la compresión.
+ * 10. Imprime el tamaño de la imagen.
+ * 11. Imprime la resolución horizontal y vertical.
+ * 12. Imprime el tamaño de la tabla de colores.
+ * 13. Imprime el contador de colores.
+ *
+ * @return TRUE si la función se ejecutó exitosamente.
+ */
+
+/** 
+ * ENG
+ * @brief Function that prints the header information on the screen through the use of structure and its members.
+ *
+ * @param p Pointer to the DatosBMP structure containing the image header.
+ *
+ * The function performs the following operations:
+ * 1. Prints the file type.
+ * 2. Prints the file size.
+ * 3. Prints the reserved fields.
+ * 4. Prints the image start.
+ * 5. Prints the total header size.
+ * 6. Prints the image width and height.
+ * 7. Prints the number of planes.
+ * 8. Prints the point size.
+ * 9. Prints the compression.
+ * 10. Prints the image size.
+ * 11. Prints the horizontal and vertical resolution.
+ * 12. Prints the color table size.
+ * 13. Prints the color counter.
+ *
+ * @return TRUE if the function was successfully called.
+ */
+
 int Impresion_Info_HeaderBMP(DatosBMP *p)
 {
     printf("Tipo de Archivo: %c%c\n",p->TipoArchivo[0],p->TipoArchivo[1]);
@@ -1208,4 +1256,3 @@ int Impresion_Info_HeaderBMP(DatosBMP *p)
     
     return TRUE;
 }
-    
