@@ -18,6 +18,7 @@
 //ESP: Tamanio total maximo posible de cabezara bmp. 
 //ENG: Maximum possible size of bmp header.
 #define TamCabezera 54  
+
 //ESP: Tamanio total maximo posible de colores.
 //ENG: Maximum possible size of colors.  
 #define TamTotalColores 1024
@@ -942,21 +943,20 @@ void Rotacion_Imagen(DatosBMP **p, Paleta_de_colores **p1, FILE **ptr_in, FILE *
     //ENG: Declaration of a static array of 2 dimensions being WidthXHeight, which stores the image data from the input file.
     unsigned char BufferCopiaLocalIn[(*p)->Ancho][(*p)->Altura];
     
-    //ESP: Declaracion de array estatico de 2 dimensiones sinedo AnchoxAlto, que almacena la data imagen rotada para ser escrita en archivo de salida.
+    //ESP: Declaracion de array estatico de 2 dimensiones siendo AnchoxAlto, que almacena la data imagen rotada para ser escrita en archivo de salida.
     //ENG: Declaration of a static array of 2 dimensions being WidthxHeight, which stores the rotated image data to be written to the output file.
     unsigned char BufferCopiaLocalOut[(*p)->Ancho][(*p)->Altura];
     
     //ESP: Declaracion de variables de iteracion para for.
     //ENG: Declaration of iteration variables for for.
     int i,j;
+
     //ESP: Declaracion de variable que almacena valor de opcion para switchcase.
     //ENG: Declaration of variable that stores option value for switchcase.
     int decisionrotacion;
     
-    //ESP: Llamo a funcion que escribe el header y tabla de colores en la imagen de salida y que usa archivo de entrada y cambia posicion de offset. 
-    //Todo con streams y punteros a FILE.
-    //ENG: I call a function that writes the header and color table to the output image and that uses the input file and changes the offset position.
-    //All with streams and FILE pointers.
+    //ESP: Escribe el header y la tabla de colores en la imagen de salida usando el archivo de entrada.
+    //ENG: Writes the header and color table to the output image using the input file.
     Escritura_Imagen_HeaderYTablaColores(p, p1, ptr_in, ptr_out, NombreDeImagen, decision);
     
     //ESP: Lectura en memoria de la data imagen del archivo de entrada hacia el bloque de memoria estatico de 2 dimensiones BufferCopiaLocalIn.
@@ -969,32 +969,16 @@ void Rotacion_Imagen(DatosBMP **p, Paleta_de_colores **p1, FILE **ptr_in, FILE *
     scanf("%i",&decisionrotacion);
     __fpurge(stdin);
     
-    //ESP: Menu no recursivo de opciones de rotacion de imagen. La rotacion en un sentido u otro no lo hago a traves de transformacion lineal 
-    //sino a partir de asignar cada pixel del array BufferCopiaLocalIn de 2D en el array BufferCopiaLocalOut de 2D pero ubicando cada uno de ellos
-    //en las coordenadas x e y asociadas a los indexes "i e j" modificados matematicamente en array BufferCopiaLocalOut de 2D durante la asignacion.
-    //Dicho proceso de asignacion se ejecuta a traves de 2 ciclos for por cada case de rotacion debido a que los pixeles se encuentran ubicados en arreglos de 2D.
-    //ENG: Non-recursive menu of image rotation options. The rotation in one direction or another is not done through linear transformation
-    //but by assigning each pixel of the 2D array BufferCopiaLocalIn to the 2D array BufferCopiaLocalOut but placing each of them
-    //in the x and y coordinates associated with the "i and j" indexes modified mathematically in the 2D BufferCopiaLocalOut array during the assignment.
-    //This assignment process is executed through 2 for loops for each rotation case because the pixels are located in 2D arrays.
+    //ESP: Menu de opciones de rotacion de imagen asignando cada pixel del array BufferCopiaLocalIn al array BufferCopiaLocalOut en coordenadas modificadas.
+    //ENG: Menu of image rotation options assigning each pixel from BufferCopiaLocalIn to BufferCopiaLocalOut in modified coordinates.
 
 
-    //ESP: Es importante destacar que la rotacion solo funciona para imagenes cuya dimension en alto y ancho es la misma.
-    //Ej para la imagen de lena 512 x 512 funciona pero para la imagen de goldhill de 720x576 entonces no funciona y asi fuese de 576x720 tampoco funcionara.
-    //ENG: It is important to note that the rotation only works for images whose height and width dimension are the same.
-    //Eg for the 512 x 512 lena image it works but for the 720x576 goldhill image it does not work and even if it were 576x720 it will not work either.
+    //ESP: La rotación solo funciona para imágenes cuadradas (mismo alto y ancho).
+    //ENG: Rotation only works for square images (same height and width).
     switch(decisionrotacion)
     {
-        //ESP: Rotacion 90° a izquierda en imagen de salida. Si armo una matrix de 2D se puede ver que las filas de pixeles rotan en realidad hacia la derecha 
-        //pero en la imagen de salida el efecto visual es de rotacion a la izquierda. Esto tiene que ver con el margen de referencia que se tome de la imagen original. 
-        //En este caso, el margen de referencia a tomar seria el margen izquierdo de la imagen original, siguiendo la rotacion a derecha a nivel imagen, vemos que el margen 
-        //izquierdo pasa a ser el margen inferior en la imagen de salida indicando que hubo una rotacion de 90 grados a derecha respecto de esta referencia. Sin embargo, 
-        //a nivel matricial, el margen derecho de la matriz rota a izquierda 90 pasando a ser margen inferior en la matriz.
-        //ENG: 90° rotation to the left in the output image. If I build a 2D matrix I can see that the rows of pixels actually rotate to the right
-        //but in the output image the visual effect is of rotation to the left. This has to do with the reference margin that is taken from the original image.
-        //In this case, the reference margin to be taken would be the left margin of the original image, following the rotation to the right at the image level,
-        //we see that the left margin becomes the lower margin in the output image indicating that there was a 90 degree rotation to the right with respect to this reference.
-        //However, at the matrix level, the right margin of the matrix rotates to the left 90 becoming the lower margin in the matrix.
+        //ESP: Rotacion 90° a izquierda en imagen de salida, rotando filas de pixeles a la derecha a nivel matricial.
+        //ENG: 90° rotation to the left in the output image, rotating pixel rows to the right at the matrix level.
         case 1:  
             
             for( i = 0; i < (*p)->Ancho; i++)
@@ -1006,16 +990,9 @@ void Rotacion_Imagen(DatosBMP **p, Paleta_de_colores **p1, FILE **ptr_in, FILE *
             }
             
             break;
-        //ESP: Rotacion 90° a derecha + efecto espejo en imagen de salida. Si armo una matrix de 2D se puede ver que las filas de pixeles rotan en realidad hacia la izquierda 
-        //pero en la imagen de salida el efecto visual es de rotacion a la derecha. Esto tiene que ver con el margen de referencia que se tome de la imagen original. 
-        //En este caso, el margen de referencia a tomar seria el margen derecho de la imagen original, siguiendo la rotacion a izquierda con espejado a nivel imagen, 
-        //vemos que el margen derecho pasa a ser el margen superior de la imagen de salida indicando que hubo una rotacion de 90 grados a derecha con espejado respecto de esta referencia. 
-        //Sin embargo, a nivel matricial, el margen derecho de la matriz rota a derecha 90 y se espeja pasando a ser margen inferior en la matriz.
-        //ENG: 90° rotation to the right + mirror effect in the output image. If I build a 2D matrix I can see that the rows of pixels actually rotate to the left
-        //but in the output image the visual effect is of rotation to the right. This has to do with the reference margin that is taken from the original image.
-        //In this case, the reference margin to be taken would be the right margin of the original image, following the rotation to the left with mirroring at the image level,
-        //we see that the right margin becomes the upper margin of the output image indicating that there was a 90 degree rotation to the right with mirroring with respect to this reference.
-        //However, at the matrix level, the right margin of the matrix rotates to the right 90 and is mirrored becoming the lower margin in the matrix.
+
+        //ESP: Rotacion 90° a derecha con efecto espejo en la imagen de salida.
+        //ENG: 90° rotation to the right with mirror effect in the output image.
         case 2:  
             
             for( i = 0; i < (*p)->Ancho; i++)
@@ -1028,10 +1005,8 @@ void Rotacion_Imagen(DatosBMP **p, Paleta_de_colores **p1, FILE **ptr_in, FILE *
             
             break;
         
-        //Rotacion 180° a inversion. Si armo una matriz de 2D se puede ver que las filas superiores pasan a ocupar los lugares de las filas inferiores y viceversa pero sin modificar 
-        //la ubicaciones de las filas intermedias. En la imagen de salida se produce un efecto de inversion a 180 grados. Se puede pensar que en este caso a nivel imagen y a nivel 
-        //matricial se respeta la misma logica en cuanto a la referencia a tomar, siendo por ejemplo en este caso el margen superior de la imagen y a nivel martricial tambien. 
-        //Vemos que este margen superior pasa a ser el margen inferior y viceversa. Pero el centro de la imagen y de la matriz se mantiene sin modificaciones.
+        //ESP: Rotacion 180° invierte las filas superiores e inferiores sin modificar las intermedias.
+        //ENG: 180° rotation inverts the top and bottom rows without changing the middle ones.
         case 3: 
         
             for( i = 0; i < (*p)->Ancho; i++)
@@ -1043,12 +1018,16 @@ void Rotacion_Imagen(DatosBMP **p, Paleta_de_colores **p1, FILE **ptr_in, FILE *
             }
             
             break;
-            
-        case '\n' : case ' ': //ESP: Ignora estas entradas de teclado. ENG: Ignore these keyboard inputs.
+
+        //ESP: Ignora estas entradas de teclado. 
+        //ENG: Ignore these keyboard inputs.
+        case '\n' : case ' ': 
                    
             break;
-                
-        default: //ESP: Para todo el resto de caracteres tira un mensaje de error. ENG: For all other characters throw an error message.
+        
+        //ESP: Para todo el resto de caracteres tira un mensaje de error.
+        //ENG: For all other characters throw an error message.    
+        default: 
                    
                 printf("Se ingreso incorrectamente una opcion de rotacion\n");
                 printf("Ingrese devuelta una de las opciones: ");
@@ -1127,33 +1106,16 @@ void Deteccion_de_Bordes_lineal(DatosBMP **p, Paleta_de_colores **p1, FILE **ptr
     //ENG: Declaration of iteration variables for for.
     int x,y,i,j,sum;
     
-    //ESP: Llamo a funcion que escribe el header y tabla de colores en la imagen de salida y que usa archivo de entrada y cambia posicion de offset. 
-    //Todo con streams y punteros a FILE.
-    //ENG: I call a function that writes the header and color table to the output image and that uses the input file and changes the offset position.
-    //All with streams and FILE pointers.
+    //ESP: Escribe el header y la tabla de colores en la imagen de salida usando el archivo de entrada.
+    //ENG: Writes the header and color table to the output image using the input file.
     Escritura_Imagen_HeaderYTablaColores(p, p1, ptr_in, ptr_out, NombreDeImagen, decision);
     
     //ESP: Lectura en memoria de la data imagen del archivo de entrada hacia el bloque de memoria estatico de 1 dimensiones BufferCopiaLocalIn.
     //ENG: Reading in memory of the image data from the input file to the static 1-dimensional memory block BufferCopiaLocalIn.
     fread(BufferCopiaLocalIn,sizeof(unsigned char),(*p)->TamImg,*ptr_in);
     
-    //ESP: Algoritmo que realiza la deteccion de bordes a partir de una mascara y operaciones de multiplicacion, donde esta mascara es un array de 2D de 3x3 
-    //con valores pre-cargados. Se busca evaluar que sucede con un "vecindario" de pixeles de 3x3 respecto a un pixel central. Dicho algoritmo utiliza 4 ciclos for. 
-    //El 1ero y el 2do es para recorrer todas las filas y las columnas en busqueda de un pixel central siendo que la posicion de dicho pixel central de un vecindario 
-    //este dado por "BufferCopiaLocalOut+x+(long)y * ((*p)->Ancho)". Luego el 3ero y el 4to que realizan una sumatoria de resultados dados por las operaciones de la linea 593 
-    //tal que se obtiene un valor resultante de todas las operacoiones de todos los pixeles de un "neighborhood" respecto al pixel central estudiado. 
-    //Dicho valor resultante del vecindario se evalua al finalizar el 3er y 4to for, en la evaluacion se determina si el pixel central asumira el valor de "encendido o blanco(255)" 
-    //o el valor de "apagado o negro(0)". Repitiendo esto sucesivamente para todos los pixeles de una imagen, se podra tener entonces los "bordes" o delineados bien marcados en la imagen de salida. 
-    //Cabe aclarar que la imagen de estudio debe estar en escala de grises obligatoriamente.
-    //ENG: Algorithm that performs edge detection from a mask and multiplication operations, where this mask is a 3x3 2D array
-    //with pre-loaded values. The goal is to evaluate what happens to a 3x3 pixel "neighborhood" with respect to a central pixel. This algorithm uses 4 for loops.
-    //The 1st and 2nd loops are to traverse all rows and columns in search of a central pixel, with the position of said central pixel in a neighborhood
-    //being given by "BufferCopiaLocalOut+x+(long)y * ((*p)->Width)". Then the 3rd and 4th loops perform a summation of the results given by the operations on line 593
-    //such that a resulting value is obtained from all the operations on all the pixels in a "neighborhood" with respect to the central pixel being studied.
-    //This resulting neighborhood value is evaluated at the end of the 3rd and 4th for loops. This evaluation determines whether the center pixel will assume the value "on or white(255)"
-    //or the value "off or black(0)". By repeating this successively for all the pixels in an image, the "edges" or outlines can then be clearly defined in the output image.
-    //It should be noted that the study image must be in grayscale. 
-
+    //ESP: Algoritmo que realiza la detección de bordes en una imagen en escala de grises usando una máscara 3x3 y operaciones de multiplicación.
+    //ENG: Algorithm that performs edge detection on a grayscale image using a 3x3 mask and multiplication operations.
     for(y = 1; y < (*p)->Altura-1; y++)
     {
         for(x = 1; x < (*p)->Ancho-1; x++)

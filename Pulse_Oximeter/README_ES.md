@@ -1,10 +1,10 @@
 # Pulsioxímetro - Proyecto Integrado
 
-**Descripción breve:**  
+**Descripción Breve:**  
 Desarrollo de un dispositivo prototipo de pulsioxímetro que combina software y hardware básico. 
 Este proyecto mide saturación de oxígeno en sangre (SPO2) y frecuencia cardíaca (Heart Rate) utilizando el sensor MAX30102, el microcontrolador LPC845 y el módulo ESP8266 para transmisión WiFi hacia una PC. Incluye una interfaz gráfica Qt para visualización de datos.
-- [Youtube presentación PulseOximeter pt1](https://youtu.be/6Oj863C7EKM)
-- [Youtube presentación PulseOximeter pt2](https://www.youtube.com/watch?v=Ok4IE8EWSyQ)
+- [Youtube Presentación PulseOximeter pt1](https://youtu.be/6Oj863C7EKM)
+- [Youtube Presentación PulseOximeter pt2](https://www.youtube.com/watch?v=Ok4IE8EWSyQ)
 
 ---
 
@@ -25,9 +25,9 @@ Este proyecto mide saturación de oxígeno en sangre (SPO2) y frecuencia cardía
 ## Instalación
 Se presenta una guía escrita de como realizar la instalación del software y la puesta en marcha del kit del Pulsioxímetro.
 Se deja también un link a una lista de reproducción de un canal de youtube con los videos explicativos de cada uno de los pasos de instalación.
-[Youtube tutorial PulseOximeter](https://www.youtube.com/playlist?list=PLJ6_LB1a1MI06xPoo7MHM6bcKQjcWh7LC)
+[Youtube Tutorial PulseOximeter](https://www.youtube.com/playlist?list=PLJ6_LB1a1MI06xPoo7MHM6bcKQjcWh7LC)
 
-**Requisitos previos:**
+**Requisitos Previos:**
 - Microcontrolador LPC845 y sensor MAX30102.
 - Módulo de hardware de acople de sensores diseñado en kicad.
 - Módulo ESP8266 configurado con comandos AT.
@@ -38,7 +38,7 @@ Se deja también un link a una lista de reproducción de un canal de youtube con
   - [MCUXpresso IDE](https://www.nxp.com/design/software/development-software/mcuxpresso-integrated-development-environment-ide:MCUXpresso-IDE)
   - MCUXPRESSO IDE --> Version MCUXpresso IDE v11.10.0 [Build 3148] [2024-07-03] o mayor.
 
-**Pasos de instalación:**
+**Pasos De Instalación:**
 1. Clonar el repositorio:
 	git clone https://github.com/FacundoCostarelli/University_Proyects/tree/master/Pulse_Oximeter
 2. Configurar paquete de software del LPC845 y MCUXpresso IDE pre-ejecución del programa:
@@ -48,7 +48,7 @@ Se deja también un link a una lista de reproducción de un canal de youtube con
 	[MCUXpresso IDE](https://nxp.flexnetoperations.com/control/frse/product?entitlementId=715761407&lineNum=1&authContactId=185187057&authPartyId=208677767)
 	- Seguir los pasos de instalación dados por el propio instalador del IDE
 
-   **Configurar proyecto opción 1:** --> [Video Configuración proyecto opción 1](https://www.youtube.com/watch?v=mEhIXuK23LE) 
+   **Configurar Proyecto Opción 1:** --> [Video Configuración Proyecto Opción 1](https://www.youtube.com/watch?v=mEhIXuK23LE) 
    - Generar un archivo .zip a partir de la carpeta Microcontroller con el mismo nombre que la carpeta y guardarla en el escritorio u otro lado que puedas.
 	- Abrir el MCUXPRESSO IDE, seleccionar el workspace deseado. Tipicamente viene por default con la ruta dada como
 	C:\Users\nombre_usuario_de_tu_pc\Documents\MCUXpressoIDE_11.10.0_3148\workspace
@@ -62,7 +62,7 @@ Se deja también un link a una lista de reproducción de un canal de youtube con
 	- El proyecto está ahora abierto con todas las configuraciones y las carpetas con archivos .cpp y .h  .
 	- Compilar con el simbolo de "Martillo" ubicado en la barra superior, verificar que no hay errores e ignorar Warnings.
 
-	**Configurar proyecto opción 2:** --> [Video Configuración proyecto opción 2](https://www.youtube.com/watch?v=ol-p68hnu50)
+	**Configurar Proyecto Opción 2:** --> [Video Configuración Proyecto Opción 2](https://www.youtube.com/watch?v=ol-p68hnu50)
 	- Abrir el MCUXPRESSO IDE, seleccionar el workspace deseado. Tipicamente viene por default con la ruta dada como
 	C:\Users\nombre_usuario_de_tu_pc\Documents\MCUXpressoIDE_11.10.0_3148\workspace
 	- Crear un nuevo proyecto desde "File"-->"New"-->"Create a C/C++ project" y elegir en "Target" el "LPC84x"-->"LPC845".
@@ -85,7 +85,7 @@ Se deja también un link a una lista de reproducción de un canal de youtube con
 	- Compilar con el simbolo de "Martillo" ubicado en la barra superior y verificar que no hay errores e ignorar Warnings.
 3. Configurar la interfaz Qt y el QT IDE pre-ejecución del programa:
 
-	**Instalacion de QT:**
+	**Instalacion De QT:**
 	- Entrar en la página oficial del QT y descargar la versión mas reciente siendo "open source" de acuerdo con este link
 	[QT IDE](https://www.qt.io/download-open-source)
 	- Bajar en la página y elegir “Download the Qt Online Installer”.
@@ -111,7 +111,7 @@ Se deja también un link a una lista de reproducción de un canal de youtube con
 ## Uso
 Una vez realizados todos los pasos de instalación y configuración, se deben realizar los siguientes pasos:
 
-**Pasos de uso:**
+**Pasos De Uso:**
 - Conectar el microcontrolador con cable usb a la PC pero no conectar en la bornera ninguna fuente aún.
 - En MCUXpresso IDE compilar codigo con el simbolo del martillo y ejecutar el código con el botón de "Play =" y luego dar click en el botón cuadrado rojo de "terminate".
 - Abrir una terminal en el MCUXpresso IDE. Desde "Window"-->"show view"-->"other"-->"terminal"-->"open".
@@ -184,7 +184,7 @@ Una vez realizados todos los pasos de instalación y configuración, se deben re
 ---
 
 ## Documentación
-Para mayor información y detalles se sugiere consultar los siguientes enlaces. También puede consultar la carpeta "DocumentsAndDatasheets" dentro de la carpeta "Pulse_Oximeter" en el repositorio de "University_Proyects"
+Para mayor información y detalles se sugiere consultar los siguientes enlaces. También puede consultar la carpeta "Documents_And_Datasheets" dentro de la carpeta "Pulse_Oximeter" en el repositorio de "University_Proyects"
 
 - [Informe Técnico en ESP](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Informe_T%C3%A9cnico_PulseOximeter.pdf)
 - [Informe Idea Fuerza en ESP](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Informe_Idea_Fuerza_PulseOximeter.pdf)
@@ -207,7 +207,8 @@ Para más detalles técnicos, consulta las hojas de datos de los componentes:
 - [Foros de StackOverflow](https://stackoverflow.com/)
 - [Chat GPT PLUS](https://chatgpt.com/)
 
-Aclaración: Utilizamos principalmente los foros y algo de ayuda de la IA de ChatGPT. Es necesario mencionar que el chat gpt no funciona en general bien para la programación de microcontroladores.
+**Atención:** 
+Utilizamos principalmente los foros y algo de ayuda de la IA de ChatGPT. Es necesario mencionar que el chat gpt no funciona en general bien para la programación de microcontroladores.
 Es necesario enviar al chat algunos archivos, ideas y codigo desarrollado por el programador sin ayuda de la IA al menos en forma de prototipo para recibir ayuda clara de la IA. 
 Es recomendable enviar incluso bloques de código que funcionen y pedir ayuda concreta en secciones específicas y a partir de allí tomar la ayuda.
 No es recomendable copiar y pegar ya que seguramente no funcione el código brindado en C y C++ por ser aplicado en el microcontrolador específico.
