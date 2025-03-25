@@ -358,20 +358,28 @@ fseek(*ptr_in,(*p)->InicioImagen, SEEK_CUR );//Line 603
 
 ---
 
-## Documentación
-Para mayor información y detalles se sugiere consultar los siguientes enlaces. También puede consultar la carpeta "DocumentsAndDatasheets" dentro de la carpeta "BMP_Image_Processing_Filters" en el repositorio de "University_Proyects"
+## Documentación & Fuentes De Consulta
+Para mayor información y detalles se sugiere consultar los siguientes enlaces. También puede consultar la carpeta "Documents_And_Datasheets" dentro de la carpeta "BMP_Image_Processing_Filters" en el repositorio de "University_Proyects"
 
-
-
----
-
-## Fuentes De Consulta
-- [Fundamentos básicos del procesamiento deimágenes](https://github.com/FacundoCostarelli/University_Proyects/blob/master/BMP_Image_Processing_Filters/Documents_And_Datasheets/ESP_Fundamentos_Basicos_Procesamiento_Imagenes.pdf)
-- [](...)
-
+- Videos Y Apuntes De La Cátedra Informática I De Mariano Gonzalez.
+- [C_Language_PDFs - ESP](https://github.com/FacundoCostarelli/University_Proyects/tree/master/BMP_Image_Processing_Filters/Documents_And_Reference_Sources/C_Language_PDFs/ESP)
+- [Image_Processing_PDFs - ESP](https://github.com/FacundoCostarelli/University_Proyects/tree/master/BMP_Image_Processing_Filters/Documents_And_Reference_Sources/Image_Processing_PDFs/ESP)
+- [Procesamiento De Imágenes En C - Segunda Edición - Dwayne Phillips](https://homepages.inf.ed.ac.uk/rbf/BOOKS/PHILLIPS/cips2ed.pdf)
+- [BMP File Format](https://gibberlings3.github.io/iesdp/file_formats/ie_formats/bmp.htm)
+- [RGB To Grayscale Image Using C - Explicación Y Código De Ejemplo](https://abhijitnathwani.github.io/blog/2018/01/08/rgbtogray-Image-using-C)
+- [Fórmula De Conversión RGB A Grayscale](https://www.tutorialspoint.com/dip/grayscale_to_rgb_conversion)
+- [Fórmula De Conversión RGB A Grayscale](https://www.dynamsoft.com/blog/insights/image-processing/image-processing-101-color-space-conversion/)
+- [Solución Al Problema De Padding - Conversión RBG A Grayscale](https://stackoverflow.com/questions/54173733/convert-rgb-to-grayscale-in-bare-c)
+- [Grayscale To Black And white Image Using C - Explicación Y Código De Ejemplo](https://abhijitnathwani.github.io/blog/2018/01/07/Black-and-White-Image-using-C)
+- [Rotate Image Using C](https://abhijitnathwani.github.io/blog/2018/01/08/rotate-Image-using-C)
+- [Rotate A Rectangular Image By 90 Degrees Clockwise](https://www.geeksforgeeks.org/turn-an-image-by-90-degree/)
+- [Image Edge Detection Operators In Digital Image Processing](https://www.geeksforgeeks.org/image-edge-detection-operators-in-digital-image-processing/)
+- [{ C } Digital Image Processing From Ground Up™](https://www.udemy.com/course/image-processing-from-ground-uptm-in-c/)
+- [Casting to a File Pointer](https://stackoverflow.com/questions/16094936/casting-to-a-file-pointer)
+- [How to dynamically allocate a 2D array in C](https://www.geeksforgeeks.org/dynamically-allocate-2d-array-c/)
 
 **Atención:** 
-En este proyectó utilizé principalmente los foros de Stack Overflow, GeeksForGeeks, blogs, videos en Youtube, archivos PDF con explicaciones teóricas y prácticas de códigos ejemplos similares y un curso en Udemy llamado [{C} Digital Image Processing From Ground Up™](https://www.udemy.com/course/image-processing-from-ground-uptm-in-c/learn/lecture/13581094?start=0#overview). Es necesario mencionar que no fue permitido el uso de ninguna IA de ayuda y que todo el proyecto debía ser desarrollado en único archivo fuente ".c" junto a un único archivo ".h". 
+En este proyectó utilizé principalmente los foros de Stack Overflow, GeeksForGeeks, blogs, videos en Youtube, archivos PDF con explicaciones teóricas y prácticas de códigos ejemplos similares y un curso en Udemy llamado [{C} Digital Image Processing From Ground Up™](https://www.udemy.com/course/image-processing-from-ground-uptm-in-c/). Es necesario mencionar que no fue permitido el uso de ninguna IA de ayuda y que todo el proyecto debía ser desarrollado en único archivo fuente ".c" junto a un único archivo ".h". 
 
 ---
 
