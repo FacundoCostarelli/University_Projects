@@ -186,8 +186,8 @@ Una vez realizados todos los pasos de instalación y configuración, se deben re
 ## Documentación
 Para mayor información y detalles se sugiere consultar los siguientes enlaces. También puede consultar la carpeta "Documents_And_Datasheets" dentro de la carpeta "Pulse_Oximeter" en el repositorio de "University_Proyects"
 
-- [Informe Técnico en ESP](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Informe_T%C3%A9cnico_PulseOximeter.pdf)
-- [Informe Idea Fuerza en ESP](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Informe_Idea_Fuerza_PulseOximeter.pdf)
+- [Informe Técnico En ESP](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Informe_T%C3%A9cnico_PulseOximeter.pdf)
+- [Informe Idea Fuerza En ESP](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Informe_Idea_Fuerza_PulseOximeter.pdf)
 
 Para más detalles técnicos, consulta las hojas de datos de los componentes:
 
@@ -203,8 +203,9 @@ Para más detalles técnicos, consulta las hojas de datos de los componentes:
 ---
 
 ## Fuentes De Consulta
-- [Foros de NXP en LPC845](https://community.nxp.com/t5/forums/searchpage/tab/message?advanced=false&allow_punctuation=true&q=LPC845)
-- [Foros de StackOverflow](https://stackoverflow.com/)
+- Videos Y Apuntes De La Cátedra Informática II De Mariana Prieto Canalejo & Jorge Escola.
+- [Foros De NXP En LPC845](https://community.nxp.com/t5/forums/searchpage/tab/message?advanced=false&allow_punctuation=true&q=LPC845)
+- [Foros De StackOverflow](https://stackoverflow.com/)
 - [Chat GPT PLUS](https://chatgpt.com/)
 
 **Atención:** 
@@ -244,7 +245,7 @@ Puedes usar, modificar y distribuir este proyecto respetando los términos de la
 ---
 
 ## Reconocimientos Y Colaboraciones
-- Laboratorio de Bio Ingeniería UTN BA [Sitio web UTN BA-GBIO](https://www.frba.utn.edu.ar/gibio/)
+- Laboratorio de Bio Ingeniería UTN BA [Sitio Web UTN BA-GBIO](https://www.frba.utn.edu.ar/gibio/)
 - Prof Doctor Ing Leandro Cymberknop			(Electrónica en UTN BA)
 - Prof Ing Mariana Prieto						(Electrónica en UTN BA)
 - Prof Ing Jorge Escola							(Electrónica en UTN BA)
