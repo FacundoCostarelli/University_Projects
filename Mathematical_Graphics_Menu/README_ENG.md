@@ -51,19 +51,19 @@ Once the installation is complete, follow these steps to use the program:
 ---
 
 ## Common Issues
-1. **Compilation issues on non-Linux systems:**
+1. **Compilation Issues On Non-Linux Systems:**
    - Description: The `stdio_ext.h` file is specific to Linux.
    - Solution: Use a Linux operating system or WSL to compile and run the program.
 
-2. **Errors when entering the output file name:**
+2. **Errors When Entering The Output File Name:**
    - Description: If the file name exceeds 50 characters, it may cause errors.
    - Solution: Ensure that the file name does not exceed 50 characters.
 
-3. **Issues plotting in Octave:**
+3. **Issues Plotting In Octave:**
    - Description: Octave may not immediately plot the quadratic with its tangent line.
    - Solution: Click on the Octave window or minimize and maximize the window to force the graph to update.
 
-4. **Issues with the tangent graph:**
+4. **Issues With The Tangent Graph:**
    - Description: The shape of the tangent graph depends on several factors:
      - If the graph starts from -89 to 89 degrees.
      - The number of terms where a very large number beyond 30 results in "nan" in some values of the points vector.

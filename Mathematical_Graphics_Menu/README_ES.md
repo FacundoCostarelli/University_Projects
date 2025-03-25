@@ -1,6 +1,6 @@
 # Menú de Gráficas Matemáticas - Proyecto Integrado
 
-**Descripción breve:**  
+**Descripción Breve:**  
 Este proyecto permite al usuario graficar diferentes funciones matemáticas, incluyendo rectas, cuadráticas, polinomios, hipérbolas, módulos, logaritmos naturales con series de Taylor, seno, coseno y tangente con series de Maclaurin. Es posible calcular múltiples puntos, definir los coeficientes y cantidad de términos por entrada de comandos de main. El programa genera archivos de salida con los datos y comandos necesarios para graficar en Octave. Podremos graficar diversas funciones en una misma ventana particionada como matriz de hasta 9 subventanas. 
 
 En la siguiente playlist encontrarás todo lo necesario para poder ejecutar este proyecto y una demostración del funcionamiento del mismo.
@@ -25,11 +25,11 @@ En la siguiente playlist encontrarás todo lo necesario para poder ejecutar este
 ## Instalación
 Para instalar y ejecutar este proyecto, siga los siguientes pasos:
 
-**Requisitos previos:**
+**Requisitos Previos:**
 - Sistema operativo Linux o WSL(Windows Subsystem for Linux) ya que el proyecto utiliza la biblioteca `stdio_ext.h` específica de Linux.
 - Octave instalado para visualizar las gráficas generadas.
 
-**Pasos de instalación:**
+**Pasos De Instalación:**
 1. Clonar el repositorio:
     git clone
 2. Navegar al directorio del proyecto:
@@ -53,20 +53,20 @@ Una vez completada la instalación, siga estos pasos para usar el programa:
 
 ---
 
-## Problemas comunes
-1. **Problemas de compilación en sistemas no Linux:**
+## Problemas Comunes
+1. **Problemas De Compilación En Sistemas No Linux:**
    - Descripción: El archivo `stdio_ext.h` es específico de Linux.
    - Solución: Utilizar un sistema operativo Linux o WSL para compilar y ejecutar el programa.
 
-2. **Errores al ingresar el nombre del archivo de salida:**
+2. **Errores Al Ingresar El Nombre Del Archivo De Salida:**
    - Descripción: Si el nombre del archivo excede los 50 caracteres, puede causar errores.
    - Solución: Asegurarse de que el nombre del archivo no exceda los 50 caracteres.
 
-3. **Problemas al graficar en Octave:**
+3. **Problemas Al Graficar En Octave:**
    - Descripción: Octave puede no graficar inmediatamente la cuadrática con su recta tangente.
    - Solución: Hacer clic en la ventana de Octave o minimizar y maximizar la ventana para forzar la actualización de la gráfica.
 
-4. **Problemas con la gráfica de la tangente:**
+4. **Problemas Con La Gráfica De La Tangente:**
    - Descripción: La forma de la gráfica de la tangente depende de varios factores:
      - Si comienza la gráfica en -89 a 89 grados.
      - La cantidad de términos donde una cantidad muy grande pasados de los 30, arroja "nan" en algunos valores del vector de puntos.

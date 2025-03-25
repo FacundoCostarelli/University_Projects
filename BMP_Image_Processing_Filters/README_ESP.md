@@ -14,25 +14,24 @@ Este proyecto realiza el procesamiento de imágenes BMP, permitiendo la lectura,
 4. [Problemas Comunes](#problemas-comunes)
 5. [Algoritmos Implementados](#algoritmos-implementados)
 6. [Consideraciones Adicionales](#consideraciones-adicionales)
-7. [Documentación](#documentación)
-8. [Fuentes De Consulta](#fuentes-de-consulta)
-9. [Contribución](#contribución)
-10. [Licencia](#licencia)
-11. [Autores](#autores)
-12. [Reconocimientos Y Colaboraciones](#reconocimientos-y-colaboraciones)
+7. [Documentación & Fuentes De Consulta](#documentación--fuentes-de-consulta)
+8. [Contribución](#contribución)
+9. [Licencia](#licencia)
+10. [Autores](#autores)
+11. [Reconocimientos Y Colaboraciones](#reconocimientos-y-colaboraciones)
 
 ---
 
 ## Descripción Detallada
-* Este programa utiliza un código main.c como fuente principal, donde se llama a las diversas funciones y se las utiliza. 
+* Este programa utiliza un código `main.c` como fuente principal, donde se llama a las diversas funciones y se las utiliza. 
 * Este fuente a su vez, posee declaraciones de punteros que se utilizan en las diversas funciones. 
 * También dicho archivo fuente contiene las instrucciones de uso de:
-  - Comandos por argumento de main.
+  - Comandos por argumento de `main`.
   - De la ejecución del archivo ejecutable.
   - De la imagen.bmp a procesar.
 Dichas instrucciones, se presentan en pantalla durante la ejecución del programa. Debe leer atentamente los mensajes presentados al usuario.
 * En términos mas detallados, el programa realiza la lectura obligatoria del archivo de entrada BMP a través de una función que lee el header, tabla de colores (si existiese) y la data imagen. Además, imprime dicho header y tabla de colores (si existiese) en pantalla a través de otra función y finalmente y más importante es que posee un menú recursivo con diferentes opciones de procesamiento de imágenes donde todos estos procesamientos son realizados a través del llamado de diversas funciones.
-El archivo.bmp de entrada puede ser del tipo:
+El archivo `.bmp` de entrada puede ser del tipo:
 - 1) Blanco y negro,
 - 2) En escala de grises, o sea en GrayshadeScale 
 - 3) Color RGB
@@ -44,13 +43,13 @@ El archivo.bmp de entrada puede ser del tipo:
 - B) Conversión_RGB_a_Grayscale 
      Aplicable para los tipos de imágenes 3), mientras que para 2) y 1) también es posible, pero es no recomendable porque se adquiere un resultado distinto al buscado. Es aplicable para tamaño de pixel de 2, 4, 8, 16, 24 y 32 bits. Posee un único algoritmo de conversión de colores a grises llamado "The Weighted Method". Este método, también llamado "Metodo de luminosidad", consiste en "pesar" el color rojo, verde y azul de acuerdo a sus longitudes de onda "landa". 
      La fórmula es:
-     Grayscale = 0.299R + 0.587G + 0.114B
+     `Grayscale = 0.299R + 0.587G + 0.114B`
   
 - C) Conversión_Grayscale_a_BlancoyNegro 
      Aplicable para los tipos de imágenes 2), mientras que para 3) y 1) también es posible, pero no es recomendable porque se adquiere un resultado distinto al buscado. Es aplicable para tamaño de píxel de 2, 4, 8, 16, 24 y 32 bits. Posee un solo algoritmo de conversión de grises a blanco y negro llamado "binarización", que consiste en convertir el valor entero de cada byte a 0 o 1. Se toma byte a byte de data de imagen tal que el valor entero propiamente dicho de ese byte valga 0 o 1, donde 0 equivale al negro binario y donde 1 equivale al blanco binario. Se usa además un valor entero de "Threshold" o también llamado "umbral", tal que los valores enteros de bytes que superen dicho umbral se les asigne el valor de 1 y los valores que no superen el umbral se les asigne el valor de 0. En el código se usan 3 macros, BLANCO para 1, NEGRO para 0 y UMBRAL para un valor entero definido por el programador ej: 150. Al cambiar este valor, cambia qué tan oscuro se ve el negro y qué tan claro se ve el blanco en la imagen blanco y negro de salida.
 
 - D) Rotación_Imagen
-     Aplicable para los tipos de imágenes 1), 2) y 3). Es aplicable para tamaño de píxel de 2, 4, 8, 16, 24 y 32 bits. Posee un solo algoritmo de rotación. La rotación en un sentido u otro no es realizado en este programa a través de la transformación lineal, sino a partir de asignar cada píxel del array "BufferCopiaLocalIn" de 2 dimensiones, en el array "BufferCopiaLocalOut" de 2 dimensiones, pero ubicando cada uno de ellos en las coordenadas "x e y" asociadas a los indexes "i e j" que se van modificando según unas operaciones matemáticas durante la asignación de cada píxel en el array "BufferCopiaLocalOut" de 2D. Dicho proceso de asignación se ejecuta a través de 2 ciclos por por cada case de rotación debido a que los píxeles se encuentran ubicados en arreglos de 2 dimensiones.
+     Aplicable para los tipos de imágenes 1), 2) y 3). Es aplicable para tamaño de píxel de 2, 4, 8, 16, 24 y 32 bits. Posee un solo algoritmo de rotación. La rotación en un sentido u otro no es realizado en este programa a través de la transformación lineal, sino a partir de asignar cada píxel del array `BufferCopiaLocalIn` de 2 dimensiones, en el array `BufferCopiaLocalOut` de 2 dimensiones, pero ubicando cada uno de ellos en las coordenadas "x e y" asociadas a los indexes "i e j" que se van modificando según unas operaciones matemáticas durante la asignación de cada píxel en el array `BufferCopiaLocalOut` de 2D. Dicho proceso de asignación se ejecuta a través de 2 ciclos por por cada case de rotación debido a que los píxeles se encuentran ubicados en arreglos de 2 dimensiones.
 
 - E) Detección_De_Bordes_Lineal
     Aplicable para los tipos de imágenes 1), 2) y 3). Es aplicable para tamaño de píxel de 2, 4, 8, 16, 24 y 32 bits. Realiza la detección de bordes a partir de una máscara, es decir, un array de 2 dimensiones de 3x3 con valores pre-cargados. Dicho algoritmo utiliza 4 ciclos por: 
@@ -58,10 +57,10 @@ El archivo.bmp de entrada puede ser del tipo:
     - El 2.º para recorrer todas las columnas. 
     - El 3.º y el 4.º que realizan cambio de valor en un píxel a otro valor, y además se carga el nuevo valor del píxel en determinada posición del buffer de salida de data imagen. Este algoritmo utiliza el operador de "gradientes", el cual computa las derivadas primeras en la imagen digital procesada.
 
-* Todos estas operaciones de procesamiento de imagenes fueron testeadas con exito de forma exhaustiva para "tamanio de pixel o profundidad de bit" de 24 bits osea cada pixel compuesto por 3bytes. El tamanio de pixel lo llamo en el codigo "Tampunto". 
+* Todos estas operaciones de procesamiento de imagenes fueron testeadas con exito de forma exhaustiva para "tamanio de pixel o profundidad de bit" de 24 bits osea cada pixel compuesto por 3bytes. El tamanio de pixel lo llamo en el codigo `Tampunto`. 
 
 **Atención:** 
-En las funciones Lectura_Imagen y Copia_Imagen se usan files descriptors y por ende POSIX System Calls (open, read, write, close, etc). En el resto de funciones se usan "Streams" y por ende FILE pointers y las respectivas funciones para punteros a FILE(fopen, fread, fwrite, fclose, etc.). Estas son del Standard C. La finalidad de esta mezcla fue usar distintas sintaxis y recursos para resolver diversos problemas asociados al manejo de archivos.
+En las funciones `Lectura_Imagen` y `Copia_Imagen` se usan files descriptors y por ende POSIX System Calls (`open`, `read`, `write`, `close`, etc). En el resto de funciones se usan "Streams" y por ende FILE pointers y las respectivas funciones para punteros a FILE(`fopen`, `fread`, `fwrite`, `fclose`, etc.). Estas son del Standard C. La finalidad de esta mezcla fue usar distintas sintaxis y recursos para resolver diversos problemas asociados al manejo de archivos.
 
 ---
 
@@ -97,18 +96,18 @@ Una vez que el programa esté compilado, puede utilizarlo para procesar imágene
 
 ## Algoritmos Implementados
 
-### Algoritmo de Copiado de Imagen
+### Algoritmo De Copiado De Imagen
 
 **Explicación Detallada:**
-- Algoritmo que copia una imagen de entrada de forma tal que a la salida se tiene otra imagen con las mismas cualidades y características. Para esto, se abre un archivo de salida "copia.bmp" con permisos de lectura y escritura utilizando la función open. Si no existe previamente, se crea ese archivo de salida y se establecen los permisos de usuario para lectura y escritura.
+- Algoritmo que copia una imagen de entrada de forma tal que a la salida se tiene otra imagen con las mismas cualidades y características. Para esto, se abre un archivo de salida `copia.bmp` con permisos de lectura y escritura utilizando la función `open`. Si no existe previamente, se crea ese archivo de salida y se establecen los permisos de usuario para lectura y escritura.
 
 - Previamente habiendo realizado una lectura en memoria de toda la información de la imagen tal que quede almacenada en un buffer local dinámico, se realiza ahora un copiado de toda la información en el archivo de salida ya creado.
 
-- La copia comienza con la cabecera del archivo BMP desde la estructura "DatosBMP" hacia el archivo de salida utilizando la función write. La cabecera contiene información esencial sobre el archivo BMP, como el tipo de archivo, tamaño, y offset de inicio de la imagen.
+- La copia comienza con la cabecera del archivo BMP desde la estructura `DatosBMP` hacia el archivo de salida utilizando la función `write`. La cabecera contiene información esencial sobre el archivo BMP, como el tipo de archivo, tamaño, y offset de inicio de la imagen.
 
-- A continuación, se copia la tabla de colores (si existe). En concreto, si la profundidad de color dado por "TamPunto" es menor o igual a 8 bits, se copia la tabla de colores desde la estructura Paleta_de_colores hacia el archivo de salida utilizando la función write. La tabla de colores es necesaria para imágenes con una profundidad de color baja, ya que define los colores utilizados en la imagen.
+- A continuación, se copia la tabla de colores (si existe). En concreto, si la profundidad de color dado por `TamPunto` es menor o igual a 8 bits, se copia la tabla de colores desde la estructura `Paleta_de_colores` hacia el archivo de salida utilizando la función `write`. La tabla de colores es necesaria para imágenes con una profundidad de color baja, ya que define los colores utilizados en la imagen.
 
-- Después, se copia la data de la imagen desde el buffer temporal "BufferDataImagen" hacia el archivo de salida utilizando la función write. La cantidad de datos copiados debe ser igual al tamaño total del archivo menos el tamaño de la cabecera.
+- Después, se copia la data de la imagen desde el buffer temporal `BufferDataImagen` hacia el archivo de salida utilizando la función `write`. La cantidad de datos copiados debe ser igual al tamaño total del archivo menos el tamaño de la cabecera.
 
 **En Resumen:**
 - Este algoritmo copia una imagen tal que la copia es idéntica a la original. Para lograrlo, se abre o crea un archivo de salida indicando que es una copia. Luego, con una previa lectura de la información en un buffer local, se copia la información pertinente.
@@ -132,16 +131,16 @@ void Copia_Imagen( DatosBMP **p, Paleta_de_colores **p1, unsigned char **BufferD
      //....Código de impresión de mensajes de ejecución exitosa de la función.
 }
 ```
-### Algoritmo de Conversión RGB a Escala de Grises
+### Algoritmo De Conversión RGB A Escala de Grises
 
-**Explicación detallada:**
+**Explicación Detallada:**
 - Algoritmo que transforma cada píxel de color mezclado de RGB a un píxel de color de GrayshadeScale y que realiza proceso de "padding", es decir, relleno de bytes asociados al color negro al final de cada fila de bytes completada con información asociada a GrayshadeScale. 
 
 - Para esto, se considera como ejemplo que cada píxel de color es de 24 bit, entonces, tiene 3 bytes y donde cada byte está asociado a un pequeño píxel de un color distinto RGB siendo 1.º byte equivalente a "píxel rojo", 2.º byte equivalente a "píxel verde", 3.º byte equivalente a "píxel azul". Por lo que 3 píxeles pequeños de 8 bits cada uno, forman un píxel de color completo mezclado RGB de 24 bits.
 
 - Cada byte de 1 píxel de data de imagen, es tomado del archivo de entrada y almacenado en principio en un array "píxel" donde cada elemento entonces será un byte asociado a un color RGB diferente. Luego a cada elemento del vector, es decir, a cada byte de cada color RGB lo multiplico por una constante siendo para el rojo el 0.3, para el verde el 0.59 y para el azul el 0.11. Luego sumo los resultados de dicha multiplicación, lo que devuelve un valor que se almacena en una variable del tipo unsigned char llamada "gris".
 
-- Después, a través de memset, se rellena el array "pixel" por completo con todos bytes (3 en total) asociados sus valores al valor del byte "gris", el cual fue obtenido en la línea anterior. Como siguiente paso, se cargan esos bytes del array "pixel" ahora en el archivo de salida.
+- Después, a través de `memset`, se rellena el array "pixel" por completo con todos bytes (3 en total) asociados sus valores al valor del byte "gris", el cual fue obtenido en la línea anterior. Como siguiente paso, se cargan esos bytes del array "pixel" ahora en el archivo de salida.
 
 - Todos estos pasos se repiten para cada píxel de cada columna de la fila de estudio del archivo de entrada. Al finalizar la carga de cada fila en el archivo de salida y justo antes de comenzar la carga de la siguiente fila, se realiza entonces, un proceso de padding, es decir, un proceso de rellenado de nuevos píxeles todos con mismo valor constante. 
 
@@ -180,21 +179,21 @@ void Conversion_RGB_a_Grayscale(DatosBMP **p, Paleta_de_colores **p1, FILE **ptr
 }
 ```
 
-### Agoritmo de Conversión Escala de Grises a Blanco y Negro
+### Agoritmo De Conversión Escala De Grises A Blanco y Negro
 
 **Explicación Detallada:**
-- Algoritmo que convierte una imagen en Escala de Grises a Blanco y Negro, este es llamado "binarización" y consiste en convertir el valor entero de cada byte a 0 o 1. Dicho byte es el que forma parte de un píxel donde a través de un ciclo for, se evalúa el valor entero de cada píxel. 
+- Algoritmo que convierte una imagen en Escala de Grises a Blanco y Negro, este es llamado "binarización" y consiste en convertir el valor entero de cada byte a 0 o 1. Dicho byte es el que forma parte de un píxel donde a través de un ciclo `for`, se evalúa el valor entero de cada píxel. 
 
-- En particular, se toma byte a byte de data de imagen tal que el valor entero propiamente dicho de ese byte valga 0 o 1 donde 0 equivale al negro binario y donde 1 equivale al blanco binario. Cada modificación de valor de píxel se hace sobre píxeles almacenados en el bloque de memoria apuntado por "BufferCopiaLocal"
+- En particular, se toma byte a byte de data de imagen tal que el valor entero propiamente dicho de ese byte valga 0 o 1 donde 0 equivale al negro binario y donde 1 equivale al blanco binario. Cada modificación de valor de píxel se hace sobre píxeles almacenados en el bloque de memoria apuntado por `BufferCopiaLocal`
 
 - Se usa además un valor entero de "Threshold" o también llamado "Umbral", tal que los valores enteros de bytes que superen dicho umbral se les asigne el valor de 1 y los valores que no superen el umbral se les asigne el valor de 0.
 
-- En el código se usan 3 macros, BLANCO para 1, NEGRO para 0 y UMBRAL para un valor entero definido por el programador ej: 150. Al cambiar este valor, cambia qué tan oscuro se ve el negro y qué tan claro se ve el blanco en la imagen blanco y negro de salida.
+- En el código se usan 3 macros, `BLANCO` para 1, `NEGRO` para 0 y `UMBRAL` para un valor entero definido por el programador ej: 150. Al cambiar este valor, cambia qué tan oscuro se ve el negro y qué tan claro se ve el blanco en la imagen blanco y negro de salida.
 
 **En Resumen:**
 - Este algoritmo convierte una imagen en Escala de Grises a Blanco y Negro utilizando el método de "Binarizacion". Esto consiste en convertir el valor entero de cada byte que conforma un píxel, a 0 (negro) o 1 (blanco). Se utiliza un valor de "Threshold" como referencia para saber cuándo asignar a un píxel el valor de 0 o 1.
 
-- Luego, una vez modificado este bloque de memoria dinámico local, se escribe toda esta información en el archivo de salida con la función "frwite".
+- Luego, una vez modificado este bloque de memoria dinámico local, se escribe toda esta información en el archivo de salida con la función `frwite`.
 
 - Vemos a continuación la función pertinente y la sección de código relacionada con el algoritmo utilizado.
 ```c
@@ -214,7 +213,7 @@ void Conversion_Grayscale_a_BlancoyNegro(DatosBMP **p, Paleta_de_colores **p1, F
 ### Algoritmo de Rotación
 
 **Explicación Detallada:**
-- El algoritmo se basa en un menú no recursivo de opciones de rotación de imagen. El algoritmo propiamente dicho de la rotación en un sentido u otro no lo hago a través de transformación lineal, sino a partir de asignar cada píxel del array "BufferCopiaLocalIn" de 2D en el array "BufferCopiaLocalOut" de 2D, pero ubicando cada uno de ellos en las coordenadas "x e y" asociadas a los indexes "y e j" que se van modificando según unas operaciones matemáticas durante la asignación de cada píxel en el array "BufferCopiaLocalOut" de 2D.
+- El algoritmo se basa en un menú no recursivo de opciones de rotación de imagen. El algoritmo propiamente dicho de la rotación en un sentido u otro no lo hago a través de transformación lineal, sino a partir de asignar cada píxel del array `BufferCopiaLocalIn` de 2D en el array `BufferCopiaLocalOut` de 2D, pero ubicando cada uno de ellos en las coordenadas "x e y" asociadas a los indexes "y e j" que se van modificando según unas operaciones matemáticas durante la asignación de cada píxel en el array `BufferCopiaLocalOut` de 2D.
 
 - Dicho proceso de asignación se ejecuta a través de 2 ciclos por por cada case de rotación debido a que los píxeles se encuentran ubicados en arreglos de 2D. Es importante destacar que la rotación solo funciona para imágenes cuya dimensión en alto y ancho es la misma que para la imagen de "Lena" de 512 x 512. Pero para la imagen de "Goldhill" de 720x576, entonces no funciona y así fuese de 576x720, tampoco funcionará. Resulta que la rotación solo funciona para imágenes cuadradas (mismo, alto y ancho).
 
@@ -226,9 +225,9 @@ void Conversion_Grayscale_a_BlancoyNegro(DatosBMP **p, Paleta_de_colores **p1, F
 matricial, se respeta la misma lógica en cuanto a la referencia a tomar, siendo dicha referencia por ejemplo en este caso el margen superior de la imagen y a nivel matricial también. Vemos que este margen superior pasa a ser el margen inferior y viceversa. Pero el centro de la imagen en términos de píxeles y de la matriz se mantiene sin modificaciones.
 
 **En Resumen:**
-- Este algoritmo realiza una rotación de una imagen cuadrada. Se utiliza un menú no recursivo para elegir los tipos de rotación. Mientras que para rotar la imagen, se asigna cada píxel del array "BufferCopiaLocalIn" de 2D en el array "BufferCopiaLocalOut" de 2D de acuerdo a un par de coordenadas "x e y".
+- Este algoritmo realiza una rotación de una imagen cuadrada. Se utiliza un menú no recursivo para elegir los tipos de rotación. Mientras que para rotar la imagen, se asigna cada píxel del array `BufferCopiaLocalIn` de 2D en el array `BufferCopiaLocalOut` de 2D de acuerdo a un par de coordenadas "x e y".
 
-- Al par de coordenadas se les va aplicando unas operaciones matemáticas durante el proceso de asignación de píxeles al array "BufferCopiaLocalOut" de 2D. 
+- Al par de coordenadas se les va aplicando unas operaciones matemáticas durante el proceso de asignación de píxeles al array `BufferCopiaLocalOut` de 2D. 
 
 - Las rotaciones pueden ser de 3 tipos: 90° a Izquierda, 90° a Derecha y 180° & Inversión. Durante la rotación a derecha surge además un efecto espejo. Además, las rotaciones a nivel matricial en código siguen una lógica invertida con respecto al efecto visual obtenido. Esto se entiende mejor al observar el margen de referencia tomado de la imagen de entrada respecto de la salida.
 
@@ -351,7 +350,7 @@ En la siguiente función, se realiza un reposicionamiento del offset del comienz
 ```c 
 void Escritura_Imagen_HeaderYTablaColores(DatosBMP **p, Paleta_de_colores **p1, FILE **ptr_in, FILE **ptr_out, char *NombreDeImagen, int *decision)
 ```
-En principio al abrir el archivo, dicho offset está ubicado en el byte 0 y a través de "fseek" lo re-ubico en el nro de byte asociado al valor de "InicioImagen" almacenado dicho byte en la struct DatosBMP. Esto lo hago porque en algunas funciones, como "Conversion_RGB_a_Grayscale", se requiere trabajar con puntero a FILE de archivo de entrada para manipular bytes de data de imagen y bytes de "padding". Por lo que es necesario posicionar el offset del "stream" en la posición adecuado dentro del bloque de información del archivo de entrada.
+En principio al abrir el archivo, dicho offset está ubicado en el byte 0 y a través de `fseek` lo re-ubico en el nro de byte asociado al valor de "InicioImagen" almacenado dicho byte en la struct `DatosBMP`. Esto lo hago porque en algunas funciones, como `Conversion_RGB_a_Grayscale`, se requiere trabajar con puntero a FILE de archivo de entrada para manipular bytes de data de imagen y bytes de "padding". Por lo que es necesario posicionar el offset del "stream" en la posición adecuado dentro del bloque de información del archivo de entrada.
 ```c 
 fseek(*ptr_in,(*p)->InicioImagen, SEEK_CUR );//Line 603 
 ```
@@ -359,7 +358,7 @@ fseek(*ptr_in,(*p)->InicioImagen, SEEK_CUR );//Line 603
 ---
 
 ## Documentación & Fuentes De Consulta
-Para mayor información y detalles se sugiere consultar los siguientes enlaces. También puede consultar la carpeta "Documents_And_Datasheets" dentro de la carpeta "BMP_Image_Processing_Filters" en el repositorio de "University_Proyects"
+Para mayor información y detalles se sugiere consultar los siguientes enlaces. También puede consultar la carpeta "Documents_And_Datasheets" dentro de la carpeta "BMP_Image_Processing_Filters" en el repositorio de "University_Proyects".
 
 - Videos Y Apuntes De La Cátedra Informática I De Mariano Gonzalez.
 - [C_Language_PDFs - ESP](https://github.com/FacundoCostarelli/University_Proyects/tree/master/BMP_Image_Processing_Filters/Documents_And_Reference_Sources/C_Language_PDFs/ESP)
@@ -379,7 +378,7 @@ Para mayor información y detalles se sugiere consultar los siguientes enlaces. 
 - [How to dynamically allocate a 2D array in C](https://www.geeksforgeeks.org/dynamically-allocate-2d-array-c/)
 
 **Atención:** 
-En este proyectó utilizé principalmente los foros de Stack Overflow, GeeksForGeeks, blogs, videos en Youtube, archivos PDF con explicaciones teóricas y prácticas de códigos ejemplos similares y un curso en Udemy llamado [{C} Digital Image Processing From Ground Up™](https://www.udemy.com/course/image-processing-from-ground-uptm-in-c/). Es necesario mencionar que no fue permitido el uso de ninguna IA de ayuda y que todo el proyecto debía ser desarrollado en único archivo fuente ".c" junto a un único archivo ".h". 
+En este proyectó utilizé principalmente los foros de Stack Overflow, GeeksForGeeks, blogs, videos en Youtube, archivos PDF con explicaciones teóricas y prácticas de códigos ejemplos similares y un curso en Udemy llamado [{C} Digital Image Processing From Ground Up™](https://www.udemy.com/course/image-processing-from-ground-uptm-in-c/). Es necesario mencionar que no fue permitido el uso de ninguna IA de ayuda y que todo el proyecto debía ser desarrollado en único archivo fuente `.c` junto a un único archivo `.h`. 
 
 ---
 
@@ -400,13 +399,18 @@ Toda colaboración es bienvenida. Sigue estos pasos para contribuir:
 ---
 
 ## Licencia
+Este proyecto está licenciado bajo la Licencia Pública General GNU v3.0. Puedes usar, modificar y distribuir este proyecto respetando los términos de la licencia.
 
 ---
 
 ## Autores
+- Facundo Costarelli
 
 ---
 
 ## Reconocimientos Y Colaboraciones
+- Prof Ing Mariano Gonzalez               (Electrónica en UTN BA)
+- Estudiante de Ing Francisco Germaniez   (Electrónica en UTN BA)
 
----
+**Abreviaciones:**
+- UTN BA --> Universidad Tecnológica Nacional de Buenos Aires.
