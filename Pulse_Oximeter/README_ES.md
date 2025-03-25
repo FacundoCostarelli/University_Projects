@@ -3,8 +3,8 @@
 **Descripción Breve:**  
 Desarrollo de un dispositivo prototipo de pulsioxímetro que combina software y hardware básico. 
 Este proyecto mide saturación de oxígeno en sangre (SPO2) y frecuencia cardíaca (Heart Rate) utilizando el sensor MAX30102, el microcontrolador LPC845 y el módulo ESP8266 para transmisión WiFi hacia una PC. Incluye una interfaz gráfica Qt para visualización de datos.
-- [Youtube Presentación PulseOximeter pt1](https://youtu.be/6Oj863C7EKM)
-- [Youtube Presentación PulseOximeter pt2](https://www.youtube.com/watch?v=Ok4IE8EWSyQ)
+- [Youtube Presentación PulseOximeter PT1](https://youtu.be/6Oj863C7EKM)
+- [Youtube Presentación PulseOximeter PT2](https://www.youtube.com/watch?v=Ok4IE8EWSyQ)
 
 ---
 
@@ -258,7 +258,7 @@ Puedes usar, modificar y distribuir este proyecto respetando los términos de la
 - Estudiante de Ing Guido Rodriguez				(Electrónica en UBA)
 
 **Abreviaciones:**
-- UTN BA-->Universidad Tecnológica Nacional de Buenos Aires.
-- UBA   -->Universidad de Buenos Aires.
+- UTN BA  -->Universidad Tecnológica Nacional de Buenos Aires.
+- UBA     -->Universidad de Buenos Aires.
 
 

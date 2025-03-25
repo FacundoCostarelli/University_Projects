@@ -4,12 +4,12 @@
 Development of a prototype pulse oximeter device that combines basic software and hardware. 
 This project measures blood oxygen saturation (SPO2) and heart rate using the MAX30102 sensor, the LPC845 microcontroller, and the ESP8266 module for WiFi transmission to a PC. 
 It includes a Qt graphical interface for data visualization.
-- [Youtube presentation PulseOximeter pt1](https://youtu.be/URdDrjCLyfk)
-- [Youtube presentation PulseOximeter pt2](https://youtu.be/5oK6cyuanyA)
+- [Youtube Presentation PulseOximeter PT1](https://youtu.be/URdDrjCLyfk)
+- [Youtube Presentation PulseOximeter PT2](https://youtu.be/5oK6cyuanyA)
 
 ---
 
-## Table of Contents
+## Table Of Contents
 
 1. [Installation](#installation)
 2. [Usage](#usage)
@@ -19,14 +19,14 @@ It includes a Qt graphical interface for data visualization.
 6. [Contribution](#contribution)
 7. [License](#license)
 8. [Authors](#authors)
-9. [Acknowledgments and Collaborations](#acknowledgments-and-collaborations)
+9. [Acknowledgments And Collaborations](#acknowledgments-and-collaborations)
 
 ---
 
 ## Installation
 A written guide on how to install the software and set up the Pulse Oximeter kit is provided.
 A link to a YouTube playlist with explanatory videos for each installation step is also included.
-[YouTube tutorial PulseOximeter](https://www.youtube.com/watch?v=URdDrjCLyfk&list=PLJ6_LB1a1MI0CGqnPWMbReCNobSWlScEj&pp=gAQB)
+[YouTube Tutorial PulseOximeter](https://www.youtube.com/watch?v=URdDrjCLyfk&list=PLJ6_LB1a1MI0CGqnPWMbReCNobSWlScEj&pp=gAQB)
 
 **Prerequisites:**
 - LPC845 microcontroller and MAX30102 sensor.
@@ -187,8 +187,8 @@ Once all installation and configuration steps are completed, the following steps
 ## Documentation
 For more information and details, it is suggested to consult the following links. You can also check the "DocumentsAndDatasheets" folder within the "Pulse_Oximeter" folder in the "University_Proyects" repository.
 
-- [Technical Report in ENG](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/PulseOximeter_Technical_Report.pdf)
-- [Main Idea Report in ENG](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Pulse_Oximeter_Idea_Force_Report.pdf)
+- [Technical Report In ENG](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/PulseOximeter_Technical_Report.pdf)
+- [Main Idea Report In ENG](https://github.com/FacundoCostarelli/University_Proyects/blob/master/Pulse_Oximeter/DocumentsAndDatasheets/Pulse_Oximeter_Idea_Force_Report.pdf)
 
 
 For more technical details, consult the component datasheets:
@@ -205,7 +205,8 @@ For more technical details, consult the component datasheets:
 ---
 
 ## References
-- [NXP Forums on LPC845](https://community.nxp.com/t5/forums/searchpage/tab/message?advanced=false&allow_punctuation=true&q=LPC845)
+- Videos and Notes from the Computer Science II Chair by Mariana Prieto Canalejo & Jorge Escola.
+- [NXP Forums On LPC845](https://community.nxp.com/t5/forums/searchpage/tab/message?advanced=false&allow_punctuation=true&q=LPC845)
 - [StackOverflow Forums](https://stackoverflow.com/)
 - [Chat GPT PLUS](https://chatgpt.com/)
 
@@ -245,7 +246,7 @@ You can use, modify and distribute this project respecting the terms of the lice
 ---
 
 ## Acknowledgments And Collaborations
-- UTN BA Bioengineering Laboratory [UTN BA-GBIO website](https://www.frba.utn.edu.ar/gibio/)
+- UTN BA Bioengineering Laboratory [UTN BA-GBIO Website](https://www.frba.utn.edu.ar/gibio/)
 - Prof Doctor Ing Leandro Cymberknop            (Electrónics at UTN BA)
 - Prof Ing Mariana Prieto                       (Electrónics at UTN BA)
 - Prof Ing Jorge Escola                         (Electrónics at UTN BA)
@@ -257,6 +258,6 @@ You can use, modify and distribute this project respecting the terms of the lice
 - Engineering Student Ezequiel Lagatche         (Electrónics at UTN BA)
 - Engineering Student Guido Rodriguez           (Electrónics at UBA)
 
-**Abreviaciones:**
-- UTN BA-->National Technological University of Buenos Aires.
-- UBA   -->University of Buenos Aires.
+**Abbreviations:**
+- UTN BA  -->National Technological University of Buenos Aires.
+- UBA     -->University of Buenos Aires.
