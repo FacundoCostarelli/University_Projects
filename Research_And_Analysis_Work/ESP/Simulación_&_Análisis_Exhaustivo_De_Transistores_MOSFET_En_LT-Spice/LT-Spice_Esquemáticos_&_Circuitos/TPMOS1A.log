@@ -1,0 +1,31 @@
+LTspice 24.0.12 for Windows
+Circuit: * C:\Users\Facun\Desktop\ltspiceTPMOS\TPMOS1A.asc
+Start Time: Mon Jul 15 11:42:13 2024
+solver = Normal
+Maximum thread count: 8
+
+
+
+.step temp=27°C
+
+
+
+.step temp=42°C
+
+
+
+.step temp=57°C
+
+
+
+.step temp=72°C
+
+
+
+.step temp=87°C
+tnom = 27
+temp = 100
+method = modified trap
+.step temp=100°C
+Total elapsed time: 0.477 seconds.
+
