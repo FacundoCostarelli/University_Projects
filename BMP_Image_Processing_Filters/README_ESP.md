@@ -2,7 +2,7 @@
 
 **Descripción Breve:**  
 Este proyecto realiza el procesamiento de imágenes BMP, permitiendo la lectura, escritura y manipulación de archivos BMP. Utiliza un enfoque modular para facilitar la implementación de diversas funciones de procesamiento de imágenes.
-- [Youtube Presentación Procesaminto de Imágenes BMP ](.........)
+- [Youtube Presentación Procesamiento de Imágenes BMP ](.........)
 
 ---
 

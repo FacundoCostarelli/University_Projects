@@ -1,0 +1,52 @@
+LTspice 24.0.12 for Windows
+Circuit: * C:\Users\Facun\Desktop\Tp 1 Lt Spice\1_c_Diodo_Zemer_Analisis_temp_e_Is_diferentes_.asc
+Start Time: Sat May 18 11:11:18 2024
+solver = Normal
+Maximum thread count: 8
+
+
+
+.step temp=0°C
+.OP point found by inspection.
+
+
+
+.step temp=20°C
+
+
+
+.step temp=40°C
+
+
+
+.step temp=60°C
+
+
+
+.step temp=80°C
+
+
+
+.step temp=100°C
+
+
+
+.step temp=120°C
+
+
+
+.step temp=140°C
+
+
+
+.step temp=200°C
+
+
+
+.step temp=250°C
+tnom = 27
+temp = 300
+method = modified trap
+.step temp=300°C
+Total elapsed time: 0.707 seconds.
+
