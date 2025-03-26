@@ -1,0 +1,169 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>script_c4</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2023-11-02"><meta name="DC.source" content="script_c4.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">Script_c4</a></li><li><a href="#2">Desarrollo del programa para resoluci&oacute;n de la EDO 2do orden</a></li></ul></div><h2>Script_c4<a name="1"></a></h2><pre class="codeinput">clc; <span class="comment">% Limpia Command Window</span>
+clear; <span class="comment">% Limpia Workspace al liberar memoria (variables)</span>
+close <span class="string">all</span>; <span class="comment">% Cierra todas las figura</span>
+</pre><h2>Desarrollo del programa para resoluci&oacute;n de la EDO 2do orden<a name="2"></a></h2><pre class="codeinput">dt = 0.01; <span class="comment">% Creo diferencial de tiempo</span>
+ti = -1; tf=15; <span class="comment">% Creo variables de tiempo inicial y final</span>
+t = ti: dt : tf; <span class="comment">% Creo un vector temporal</span>
+
+x = @(t) esc(t); <span class="comment">% Defino funcion an&oacute;nima para se&ntilde;al x con t como parametro de entrada</span>
+
+<span class="comment">% Caso 1: Amortiguamiento Cr&iacute;tico</span>
+R = 4;  L = 2;  C = 0.5; <span class="comment">% Defino las constantes del circuito RLC serie</span>
+[t_caso1, vc_caso1] = f_resRLC(R, L, C, t, x); <span class="comment">% Calculo de t y vc a traves de la funci&oacute;n f_resRLC</span>
+
+max_vc_caso1 = max(vc_caso1); <span class="comment">% Creo variables que almacenan los m&aacute;ximos y m&iacute;nimos. As&iacute; puedo modificar genericamente los limites del eje horizontal para graficar mejor</span>
+min_vc_caso1 = min(vc_caso1);
+
+figure;
+plot(t, x(t), t_caso1, vc_caso1); grid <span class="string">on</span>; axis([t(1) t(end) min_vc_caso1-1 max_vc_caso1+1]); <span class="comment">% Gr&aacute;fico Caso 1 de la se&ntilde;al vc(t) e x(t)</span>
+title(<span class="string">'Tensi&oacute;n de capacitor y se&ntilde;al de entrada'</span>);
+xlabel(<span class="string">'t[seg]'</span>); legend(<span class="string">'x_{(t)}'</span>, <span class="string">'v_c'</span>);
+
+
+<span class="comment">% Caso 2: Sobreamortiguado</span>
+R = 6;  L = 2;  C = 0.5; <span class="comment">% Defino las constantes del circuito RLC serie</span>
+[t_caso2, vc_caso2] = f_resRLC(R, L, C, t, x); <span class="comment">% Calculo de t y vc a traves de la funci&oacute;n f_resRLC</span>
+
+max_vc_caso2 = max(vc_caso2); <span class="comment">% Creo variables que almacenan los m&aacute;ximos y m&iacute;nimos. As&iacute; puedo modificar genericamente los limites del eje horizontal para graficar mejor</span>
+min_vc_caso2 = min(vc_caso2);
+
+figure;
+plot(t, x(t), t_caso2, vc_caso2); grid <span class="string">on</span>; axis([t(1) t(end) min_vc_caso2-1 max_vc_caso2+1]); <span class="comment">% Gr&aacute;fico Caso 2 de la se&ntilde;al vc(t) e x(t)</span>
+title(<span class="string">'Tensi&oacute;n de capacitor y se&ntilde;al de entrada'</span>);
+xlabel(<span class="string">'t[seg]'</span>); legend(<span class="string">'x_{(t)}'</span>, <span class="string">'v_c'</span>);
+
+<span class="comment">% Caso 3: Subamortiguado</span>
+R = 2;  L = 2;  C = 0.5; <span class="comment">% Defino las constantes del circuito RLC serie</span>
+[t_caso3, vc_caso3] = f_resRLC(R, L, C, t, x); <span class="comment">% Calculo de t y vc a traves de la funci&oacute;n f_resRLC</span>
+
+max_vc_caso3 = max(vc_caso3); <span class="comment">% Creo variables que almacenan los m&aacute;ximos y m&iacute;nimos. As&iacute; puedo modificar genericamente los limites del eje horizontal para graficar mejor</span>
+min_vc_caso3 = min(vc_caso3);
+
+figure;
+plot(t, x(t), t_caso3, vc_caso3); grid <span class="string">on</span>; axis([t(1) t(end) min_vc_caso3-1 max_vc_caso3+1]); <span class="comment">% Gr&aacute;fico Caso 3 de la se&ntilde;al vc(t) e x(t)</span>
+title(<span class="string">'Tensi&oacute;n de capacitor y se&ntilde;al de entrada'</span>);
+xlabel(<span class="string">'t[seg]'</span>); legend(<span class="string">'x_{(t)}'</span>, <span class="string">'v_c'</span>);
+</pre><img vspace="5" hspace="5" src="script_c4_01.png" style="width:560px;height:420px;" alt=""> <img vspace="5" hspace="5" src="script_c4_02.png" style="width:560px;height:420px;" alt=""> <img vspace="5" hspace="5" src="script_c4_03.png" style="width:560px;height:420px;" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Script_c4
+clc; % Limpia Command Window
+clear; % Limpia Workspace al liberar memoria (variables)
+close all; % Cierra todas las figura
+
+%% Desarrollo del programa para resolución de la EDO 2do orden
+
+dt = 0.01; % Creo diferencial de tiempo
+ti = -1; tf=15; % Creo variables de tiempo inicial y final
+t = ti: dt : tf; % Creo un vector temporal  
+
+x = @(t) esc(t); % Defino funcion anónima para señal x con t como parametro de entrada
+
+% Caso 1: Amortiguamiento Crítico
+R = 4;  L = 2;  C = 0.5; % Defino las constantes del circuito RLC serie 
+[t_caso1, vc_caso1] = f_resRLC(R, L, C, t, x); % Calculo de t y vc a traves de la función f_resRLC
+
+max_vc_caso1 = max(vc_caso1); % Creo variables que almacenan los máximos y mínimos. Así puedo modificar genericamente los limites del eje horizontal para graficar mejor
+min_vc_caso1 = min(vc_caso1);
+
+figure;
+plot(t, x(t), t_caso1, vc_caso1); grid on; axis([t(1) t(end) min_vc_caso1-1 max_vc_caso1+1]); % Gráfico Caso 1 de la señal vc(t) e x(t)
+title('Tensión de capacitor y señal de entrada'); 
+xlabel('t[seg]'); legend('x_{(t)}', 'v_c');
+
+
+% Caso 2: Sobreamortiguado
+R = 6;  L = 2;  C = 0.5; % Defino las constantes del circuito RLC serie 
+[t_caso2, vc_caso2] = f_resRLC(R, L, C, t, x); % Calculo de t y vc a traves de la función f_resRLC
+
+max_vc_caso2 = max(vc_caso2); % Creo variables que almacenan los máximos y mínimos. Así puedo modificar genericamente los limites del eje horizontal para graficar mejor
+min_vc_caso2 = min(vc_caso2);
+
+figure;
+plot(t, x(t), t_caso2, vc_caso2); grid on; axis([t(1) t(end) min_vc_caso2-1 max_vc_caso2+1]); % Gráfico Caso 2 de la señal vc(t) e x(t)
+title('Tensión de capacitor y señal de entrada'); 
+xlabel('t[seg]'); legend('x_{(t)}', 'v_c');
+
+% Caso 3: Subamortiguado
+R = 2;  L = 2;  C = 0.5; % Defino las constantes del circuito RLC serie  
+[t_caso3, vc_caso3] = f_resRLC(R, L, C, t, x); % Calculo de t y vc a traves de la función f_resRLC
+
+max_vc_caso3 = max(vc_caso3); % Creo variables que almacenan los máximos y mínimos. Así puedo modificar genericamente los limites del eje horizontal para graficar mejor
+min_vc_caso3 = min(vc_caso3);
+
+figure;
+plot(t, x(t), t_caso3, vc_caso3); grid on; axis([t(1) t(end) min_vc_caso3-1 max_vc_caso3+1]); % Gráfico Caso 3 de la señal vc(t) e x(t)  
+title('Tensión de capacitor y señal de entrada'); 
+xlabel('t[seg]'); legend('x_{(t)}', 'v_c');
+
+
+
+##### SOURCE END #####
+--></body></html>
