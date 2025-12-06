@@ -1,4 +1,9 @@
 function [x_par, x_impar] = f_get_even_odd(n, x)
+%[ESP] Declaración de la función, recibe vector de índices y señal.
+%[ENG] Function declaration, receives index vector and signal.
+
+% Author: Facundo Costarelli
+
 %f_get_even_odd(n, x) descompone la señal x en su parte par e impar.
 %
 % Variables de entrada:
@@ -25,9 +30,19 @@ function [x_par, x_impar] = f_get_even_odd(n, x)
 % propuestas en el capítulo 1 pagina 27 del libro de Asys. Esto es:
 % x_par = 0.5 * (x[n] + x[-n])
 % x_impar = 0.5 * (x[n] - x[-n])
+% 
 
+%[ESP] Cálculo de la componente par usando la fórmula.
+%[ENG] Calculating the even component using the formula.
 % Señal par obtenida
 x_par = 0.5 * (x + fliplr(x));
+
+%[ESP] Cálculo de la componente impar usando la fórmula.
+%[ENG] Calculating the odd component using the formula.
 % Señal impar obtenida
 x_impar = 0.5 * (x - fliplr(x));
+
+end
+%[ESP] Fin de la función.
+%[ENG] End of the function.
 

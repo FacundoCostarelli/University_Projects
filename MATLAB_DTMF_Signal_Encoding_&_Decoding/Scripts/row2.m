@@ -1,4 +1,10 @@
 function Hd = row2(fs)
+
+% Author: Facundo Costarelli
+
+%[ESP] Declaración de la función, recibe la frecuencia de muestreo.
+%[ENG] Function declaration, receives the sampling frequency.
+
 %ROW2 Returns a discrete-time filter object.
 
 % MATLAB Code
@@ -8,23 +14,37 @@ function Hd = row2(fs)
 % FIR Window Bandpass filter designed using the FIR1 function.
 
 % All frequency values are in Hz.
+%[ESP] Asignación de la frecuencia de muestreo a la variable local.
+%[ENG] Assigning the sampling frequency to the local variable.
 Fs = fs;  % Sampling Frequency
 
-Fstop1 = 733;      % First Stopband Frequency
-Fpass1 = 751;      % First Passband Frequency
-Fpass2 = 790;      % Second Passband Frequency
-Fstop2 = 810;      % Second Stopband Frequency
-Dstop1 = 0.1;      % First Stopband Attenuation
-Dpass  = 0.1;      % Passband Ripple
-Dstop2 = 0.1;      % Second Stopband Attenuation
+%[ESP] Definición de todos los parámetros y especificaciones del filtro.
+%[ENG] Definition of all filter parameters and specifications.
+Fstop1 = 733;     % First Stopband Frequency
+Fpass1 = 751;     % First Passband Frequency
+Fpass2 = 790;     % Second Passband Frequency
+Fstop2 = 810;     % Second Stopband Frequency
+Dstop1 = 0.1;     % First Stopband Attenuation
+Dpass  = 0.1;     % Passband Ripple
+Dstop2 = 0.1;     % Second Stopband Attenuation
+
+%[ESP] Establecimiento de la bandera de escalado.
+%[ENG] Setting the scaling flag.
 flag   = 'scale';  % Sampling Flag
 
+%[ESP] Cálculo del orden del filtro y otros parámetros necesarios.
+%[ENG] Calculating the filter order and other necessary parameters.
 % Calculate the order from the parameters using KAISERORD.
 [N,Wn,BETA,TYPE] = kaiserord([Fstop1 Fpass1 Fpass2 Fstop2]/(Fs/2), [0 ...
-                             1 0], [Dstop1 Dpass Dstop2]);
+                           1 0], [Dstop1 Dpass Dstop2]);
 
+%[ESP] Cálculo de los coeficientes del filtro usando los parámetros obtenidos.
+%[ENG] Calculating the filter coefficients using the obtained parameters.
 % Calculate the coefficients using the FIR1 function.
 b  = fir1(N, Wn, TYPE, kaiser(N+1, BETA), flag);
+
+%[ESP] Creación del objeto de filtro de tiempo discreto para la salida.
+%[ENG] Creating the discrete-time filter object for the output.
 Hd = dfilt.dffir(b);
 
 % [EOF]

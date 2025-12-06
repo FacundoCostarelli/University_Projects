@@ -222,7 +222,6 @@ Si es recomendable tomar como referencia la estructura de código brindada, lín
 Toda colaboración es bienvenida. Sigue estos pasos para contribuir:
 
   1. Realiza un fork del repositorio.
-
   2. Crea una nueva rama para tu funcionalidad o corrección:
      - git checkout -b feature/nueva-caracteristica
   3. Realiza tus cambios y haz commit:
