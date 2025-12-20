@@ -1,0 +1,40 @@
+memory_initialization_radix=16;
+memory_initialization_vector=
+00310000
+00680000
+00000000
+00000000
+00000000
+00680001
+00000000
+002C0000
+00270001
+00000000
+002C0001
+00270001
+00000000
+002DFFFF
+00270001
+00000000
+00290001
+00000000;
+
+
+00310000    ; sat = 0                El tb en PORT_A colo 0x8000 y en PORT_B 0x7F00
+00600000    ;*(0x0000) = PORT       (SAT = 0)
+00000000    ;NOP                    (*(0x0000) = 0x8000, segun port A en TB)
+00000000    ;NOP
+00000000    ;NOP
+00600001    ;*(0x0001) = PORT
+00000000    ;NOP                    (*(0x0001) = 0x7F00, segun port B en TB)
+002C0000    ;ACC = *(0x0000)
+00270001    ;ACC = ACC + 1
+00000000    ;NOP                    (ACC = 0x0000, C = 0; Z = 1, OV = 0, N = 0 )
+002C0001    ;ACC = *(0x0001)
+00270001    ;ACC = ACC + 1
+00000000    ;NOP                    (ACC = 0x8000, C = 0; Z = 0, OV = 1, N = 1 )
+002DFFFF    ;ACC = 0xFFFF
+00270001    ;ACC = ACC + 1
+00000000    ;NOP                    (ACC = 0x0000, C = 1; Z = 1, OV = 0, N = 0 )
+00290001    ;ACC = ACC - 1
+00000000    ;NOP                    (ACC = 0xFFFF, C = 1; Z = 0, OV = 0, N = 1 )

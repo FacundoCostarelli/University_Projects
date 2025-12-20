@@ -1,0 +1,9 @@
+0.7
+2020.2
+Nov  8 2024
+22:36:57
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_13/guia_13/guia_13.gen/sources_1/ip/blockRamTest0/blockRamTest0_sim_netlist.vhdl,1753294355,vhdl,,,,blockramtest0;blockramtest0_blk_mem_gen_generic_cstr;blockramtest0_blk_mem_gen_prim_width;blockramtest0_blk_mem_gen_prim_wrapper_init;blockramtest0_blk_mem_gen_top;blockramtest0_blk_mem_gen_v8_4_9;blockramtest0_blk_mem_gen_v8_4_9_synth,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_13/guia_13/guia_13.srcs/sim_1/imports/guia_13_tb/FFT_N_V2_tb.vhd,1753381210,vhdl,,,,fft_n_v2_tb,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_13/guia_13/guia_13.srcs/sim_1/imports/guia_13_tb/blockRamTest0_tb.vhd,1753481516,vhdl,,,,blockramtest0_tb,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_13/guia_13/guia_13.srcs/sources_1/new/FFT.vhd,1753380371,vhdl,,,,fft,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_13/guia_13/guia_13.srcs/sources_1/new/FFT_N_V2.vhd,1753380444,vhdl,C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_13/guia_13/guia_13.srcs/sim_1/imports/guia_13_tb/FFT_N_V2_tb.vhd,,,fft_n_v2,,,,,,,,

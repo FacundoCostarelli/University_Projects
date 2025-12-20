@@ -1,0 +1,17 @@
+0.7
+2020.2
+Nov  8 2024
+22:36:57
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_10/guia_10/guia_10.srcs/sim_1/imports/guia_10_tb/detectorSecuencia_tb.vhd,1743444091,vhdl,,,,detectorsecuencia_tb,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_10/guia_10/guia_10.srcs/sim_1/imports/guia_10_tb/generadorSecuencia_tb.vhd,1743444091,vhdl,,,,generadorsecuencia_tb,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_10/guia_10/guia_10.srcs/sim_1/imports/guia_10_tb/lfsr_G_tb.vhd,1752877510,vhdl,,,,lfsr_g_tb,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_10/guia_10/guia_10.srcs/sim_1/imports/guia_10_tb/myCntJohnson_tb.vhd,1743444091,vhdl,,,,mycntjohnson_tb,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_10/guia_10/guia_10.srcs/sim_1/imports/guia_10_tb/myEdgeDetector_tb.vhd,1743444091,vhdl,,,,myedgedetector_tb,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_10/guia_10/guia_10.srcs/sim_1/imports/guia_10_tb/myShiftReg_tb.vhd,1743444091,vhdl,,,,myshiftreg_tb,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_10/guia_10/guia_10.srcs/sources_1/new/detectorSecuencia.vhd,1752708096,vhdl,,,,detectorsecuencia,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_10/guia_10/guia_10.srcs/sources_1/new/generadorSecuencia.vhd,1752713420,vhdl,,,,generadorsecuencia,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_10/guia_10/guia_10.srcs/sources_1/new/lfsr_G.vhd,1752944089,vhdl,,,,lfsr_g,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_10/guia_10/guia_10.srcs/sources_1/new/lfsr_g_cell.vhd,1752942952,vhdl,,,,lfsr_g_cell,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_10/guia_10/guia_10.srcs/sources_1/new/myCntJohnson.vhd,1752673288,vhdl,,,,mycntjohnson,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_10/guia_10/guia_10.srcs/sources_1/new/myEdgeDetector.vhd,1752712372,vhdl,,,,myedgedetector,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_10/guia_10/guia_10.srcs/sources_1/new/myShiftReg.vhd,1752714275,vhdl,,,,myshiftreg,,,,,,,,

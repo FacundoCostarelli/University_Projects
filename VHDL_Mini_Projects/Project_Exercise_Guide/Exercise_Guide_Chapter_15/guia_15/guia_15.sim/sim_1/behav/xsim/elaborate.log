@@ -1,0 +1,26 @@
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2024.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip -L xpm --snapshot alu_tb_behav xil_defaultlib.alu_tb -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package synopsys.attributes
+Compiling package ieee.std_logic_misc
+Compiling architecture behavioral of entity xil_defaultlib.myFFDREN [\myFFDREN(n=16)\]
+Compiling architecture behavioral of entity xil_defaultlib.myFFDRE [myffdre_default]
+Compiling architecture behavioral of entity xil_defaultlib.rot [rot_default]
+Compiling architecture behavioral of entity xil_defaultlib.Sumador_N_Bits_Cin_Cout [\Sumador_N_Bits_Cin_Cout(n=16)\]
+Compiling architecture behavioral of entity xil_defaultlib.Restador_N_Bits_Bin_Bout [\Restador_N_Bits_Bin_Bout(n=16)\]
+Compiling architecture structural of entity xil_defaultlib.SumadorRestador_N_Bits_SignedUnsigned_CinCoutOverflow [\SumadorRestador_N_Bits_SignedUn...]
+Compiling architecture behavioral of entity xil_defaultlib.miniAlu [minialu_default]
+Compiling architecture behavioral of entity xil_defaultlib.alu [alu_default]
+Compiling architecture behavioral of entity xil_defaultlib.alu_tb
+Built simulation snapshot alu_tb_behav

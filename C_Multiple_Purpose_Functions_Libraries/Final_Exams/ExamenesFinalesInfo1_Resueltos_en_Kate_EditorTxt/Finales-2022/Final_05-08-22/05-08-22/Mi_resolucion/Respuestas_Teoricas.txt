@@ -1,0 +1,44 @@
+1) Una libreria es un archivo que contiene codigo y datos compilados, ambos funcionales. Donde todo el contenido de este archivo sera incorporado a otros programas cuando sea requerido. En particular la libraria se forma por :
+- Una "interface" caracterizada por achivos .h. Aca dentro de estos .h se encuentran los prototipos de funciones, macros, etc
+- Una "implementacion" caracterizada por archivos .c. Estos deben ser pre-compilados o seran inaccesibles. Aca tenemos las definiciones de las funciones
+
+El formato de una libreria depende del sistema operativo y del compilador que se esten usando. Por ejemplo en UNIX y Linux, el formato de una libreria esta pensado a partir de uno o mas "archivos objeto" los cuales contienen "codigo objeto". Este codigo objeto es producido a la salida del compilador simepre que el lenguage de programacion no sea assembler, sino es diferente el proceso. Luego estos archivos objeto son agrupados de tal forma que construyen un unico archivo que sera la libreria, esto a apartir de utilizar un "archivador" el cual no se preocupa por la compresion de los archivos.
+
+Algunas ventajas son:
+-Facilitar la reutilizacion de codigo evitan tener que reescribir
+-Fomentar trabajo en equipo y fomentar abstraccion de implementacion para solo preocuparse en como usar cierto codigo
+-El codigo de una biblioteca es de uso general, lo que permite usar varias funciones para multiples casos
+-No es necesario preocuparse por como estan hechos los codigos en la biblioteca, sino simplemente usarlos
+
+En particular, para hablar de como se relaciona una libreria con archivos .h podemos pensar que cuando en nuestro codigo "incluimos" archivos .h, estamos diciendo al compilador que utilizaremos alguna/s bilbiotecas que contienen los codigos de los .h y de los .c asociados. De esta manera, en nuestro codigo al llamar a funciones como "printf", que no estan escritas en nuestro codigo por default, estas se ejecutaran exitosamente con todo su bloque de codigo asociado.
+Sin embargo, en caso de que no se incluyan los archivos .h, sucede que  al momento de compilar y llamar a funciones de bilbiotecas, surgiran errores de compilacion y mismo estas funciones al ser ejecutadas, no lo lograran exitosamente.
+
+Finalmente, una libreria puede ser linkeada al momento de generar el ejecutable, o bien se puede hacer referencia a las funciones que contiene en tiempo de ejecución; según estemos trabajando con librerías estáticas, compartidas o dinámicas
+
+2)
+a)
+LINEA 1...char *str = "Hola Mundo";
+LINEA 2...char str[100] = "Hola Mundo";
+
+En LINEA 1 se declara una variable llamada "str" la cual es un puntero a un tipo de dato "char". Ademas se produce una inicializacion, donde este puntero apunta a la direccion de comienzo de una constante la cual es una cadena de caracteres definida como "Hola Mundo".
+En LINEA 2 se declara una variable llamada "str" la cual es un "array" que puede almacenar 100 elementos del tipo de dato "char". Ademas se inicializa este array cargandole una cadena de caracteres llamada "Hola Mundo", donde ademas como ultimo elemento despues de la cadena, se carga el caracter \0 que indica "fin de cadena". El resto de elementos del array quedan disponibles para ser inicializados. Ademas el nombre de un array es un puntero a la direccion de comienzo del 1er elemento de dicho array.
+
+b)
+
+#include <string.h>
+int main(void)
+{
+char *str = "Hola Mundo";
+strcpy(str, "Hola");
+return 0;
+}
+
+No es correcto ya que str es un puntero apuntando a una constante “Hola Mundo”. La zona de memoria donde se encuentra esta constante esta protegida contra escritura y al momento de intentar escribirla con strcpy se producirá una violación de segmento.
+
+
+c)
+Referencia| direccion | valor
+y[3]      |     52    |   15
+y[6]      |     64    |   6
+y[-2]     |     32    |   11
+x[12]     |     68    |   -1

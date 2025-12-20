@@ -1,0 +1,22 @@
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2024.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip --snapshot miniAlu_tb_con_test_cases_behav xil_defaultlib.miniAlu_tb_con_test_cases -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package synopsys.attributes
+Compiling package ieee.std_logic_misc
+Compiling architecture behavioral of entity xil_defaultlib.Sumador_N_Bits_Cin_Cout [sumador_n_bits_cin_cout_default]
+Compiling architecture behavioral of entity xil_defaultlib.Restador_N_Bits_Bin_Bout [restador_n_bits_bin_bout_default]
+Compiling architecture structural of entity xil_defaultlib.SumadorRestador_N_Bits_SignedUnsigned_CinCoutOverflow [sumadorrestador_n_bits_signeduns...]
+Compiling architecture behavioral of entity xil_defaultlib.miniAlu [\miniAlu(data_bits=4)\]
+Compiling architecture behavioral of entity xil_defaultlib.minialu_tb_con_test_cases
+Built simulation snapshot miniAlu_tb_con_test_cases_behav

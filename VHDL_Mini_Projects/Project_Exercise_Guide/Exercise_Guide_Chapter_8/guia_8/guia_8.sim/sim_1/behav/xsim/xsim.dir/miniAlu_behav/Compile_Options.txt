@@ -1,0 +1,1 @@
+--incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "secureip" --snapshot "miniAlu_behav" "xil_defaultlib.miniAlu" -log "elaborate.log" 

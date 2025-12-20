@@ -1,0 +1,10 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../guia_8.srcs/sources_1/new/Restador_N_Bits_Bin_Bout.vhd" \
+"../../../../guia_8.srcs/sources_1/new/SumadorRestador_N_Bits_SignedUnsigned_CinCoutOverflow.vhd" \
+"../../../../guia_8.srcs/sources_1/new/Sumador_N_Bits_Cin_Cout.vhd" \
+"../../../../guia_8.srcs/sources_1/new/miniAlu.vhd" \
+"../../../../guia_8.srcs/sim_1/imports/Downloads/miniAlu_tb_con_test_cases.vhd" \
+
+# Do not sort compile order
+nosort

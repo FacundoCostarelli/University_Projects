@@ -1,0 +1,29 @@
+Punto 1.-
+En base a las siguientes declaraciones, indique cuales de las analogías presentes en la tabla son válidas al
+momento de acceder a una posición del Array,ya sea a la dirección (ubicación) o a su contenido (al dato en sí).
+
+
+#define NN 20
+short int Arr[NN];
+short int *p=vec;
+
+V/F
+A) p[10] = *(&Arr[10])...V
+B) &p [10] = *(p+10).....F
+C) &p [10] = (p+8+2).....V
+D) *Arr[10] = *(p+10)....F
+E) p+40 = Arr+40.........V
+F) Arr[10] = *Arr+10.....F
+G) &Arr[10] = (Arr+10)...V
+H) *(&Arr[10]) = *p+10...F
+
+2)
+
+A) func_pz (size-5, vec+5);......F
+B) func_pz (size-5, vec+=3 );....F
+C) func_pz (size+5 ,&vec[3]);....F
+D) func_pz (size-5,&(*vec+3) );..F
+E) func_pz (size-5, vec[3]);.....F
+F) func_pz (size-5, vec+3);......V
+
+

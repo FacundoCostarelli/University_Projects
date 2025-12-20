@@ -1,0 +1,24 @@
+1)Un thread es la minima unidad de flujo de instrucciones que tiene un programa y que a su vez es planificado por el kernel a traves del shceduler. Es decir, un conjunto o flujo de isntrucciones como el que sigue seria un ejemplo de thread.
+
+int a,b;
+a = 10;
+b = 20;
+suma = a + b;
+
+ En general un thread se lo asocia a una funcion, como por ejemplo con la funcion main(). Cualquier programa tiene al menos un thread, y en tal caso de tener procesos con un solo thread, este sera el asociado al flujo de instrucciones dado por main(). En otro caso, los threads pueden asociarse a varias funciones diferentes o iguales. Ej:
+
+ void work()
+ {
+    printf("Esta funcion se asocia a un thread\n");
+ }
+
+ 2)Para poder interconectar 2 procesos o programas en distintos servidores, se necesitan de 2 parametros para cada uno de ellos:
+ - Direccion IP: Es decir, la direccion en la red de la maquina
+ - Numero de puerto: Puerto fisico de la maquina por el cual se intercambian datos y donde dicho puerto estara asociado al proceso que se quiere interconectar respecto al resto de procesos de la maquina
+
+ 3)El SO sabe esto a traves de lo devuelto por la funcion accept() en el servidor. Lo devuelto sera un fd a un nuevo socket para realizar el intercambio de data con el cliente.
+
+ 4)El proposito es habilitar el socket servidor para poder recibir solicitudes de conexion de clientes las cuales quedaran en una cola de espera hasta que accept() las vaya aceptando.
+
+ 5)SIGKILL: Al invocar esta SIGNAL se ordena eliminar la ejecucion del proceso indicado tal que termina con este de forma inmediata sin dejarlo terminar su ejecucion normal.
+   SIGTERM: Al invocar esta SIGNAL se ordena finalizar de forma prioritaria la ejecucion del proceso indicado tal que termina de forma normal y correcta sin interrumpir lo que se venia ejecutandose respecto al proceso indicado.

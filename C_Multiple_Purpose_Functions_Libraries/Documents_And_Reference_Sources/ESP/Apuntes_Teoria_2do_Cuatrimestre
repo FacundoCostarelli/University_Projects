@@ -1,0 +1,16 @@
+//Teoria de Sistemas de Numeracion(repasar ppt y operaciones matematicas con estos)
+
+//Numeros binarios
+//Carry (c) es un flag que utiliza la computadora internamente como registro para almacenar un valor que sobre de sumar 2 numeros de un tipo de dato en particular. Ej dos datos int => lo que hacemos es sumar los 2 dando otro int, pero si la suma da un numero con algun digito sobrante que no entra en el nuevo dato int, ese digito se almacena en un registro interno de la maquina que se llama carry y que lo podrs usar para realizar otra operacion.
+
+//El "complemento a 2" se usa solamente para numeros negativos. Cuando el numero es positivio se lo deja como esta. El "complemento a 1" se usa para numeros negativos.
+//Complemento a 2 y a 1 se toma en los examenes. En un ejercicio de esto hay que saber el tamanio del dato. El complemento a 2 y a 1 es para poder encontrar la representacion decimal de un numero binario con singo negativo o tambien llamado "signado". Tambien en los examenes toman cuentas matematicas con esto. Tambien se toma flag aritmeticos los conceptos y que son dentro de un microprocesador
+//La suma de 2 numeros binarios positivos, si provoca un binario negativo => estoy fuera de escala
+//La suma de 2 numeros binarios negativos, si provoca un binario positivo => estoy fuera de escala
+//En el metodo "binario desplazado" => hay que usarlo para numeros binarios negativos y positivos
+
+//Signo y Magnitud: El bit MSB dice el signo del numero, si es 0 => es positivo, si es 1 => es negativo. 
+
+//Flag aritmeticos: Parity flag se usa mucho para chequear errores en transmision de seniales
+
+//Ver doxigen y makefile(ejecuta secuencialmente desde abajo hasta arriba)

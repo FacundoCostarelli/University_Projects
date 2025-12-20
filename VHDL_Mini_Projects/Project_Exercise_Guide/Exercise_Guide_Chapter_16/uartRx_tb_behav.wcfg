@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="uartRx_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="uartRx_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="611.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="1,457.000001 us"></ZoomEndTime>
+      <Cursor1Time time="1,262.000000 us"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="212"></NameColumnWidth>
+      <ValueColumnWidth column_width="92"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="21" />
+   <wvobject fp_name="/uartRx_tb/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uartRx_tb/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uartRx_tb/dataRd" type="logic">
+      <obj_property name="ElementShortName">dataRd</obj_property>
+      <obj_property name="ObjectShortName">dataRd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uartRx_tb/dataRx" type="array">
+      <obj_property name="ElementShortName">dataRx[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dataRx[7:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uartRx_tb/uut/registroRx" type="array">
+      <obj_property name="ElementShortName">registroRx[9:0]</obj_property>
+      <obj_property name="ObjectShortName">registroRx[9:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uartRx_tb/rx" type="logic">
+      <obj_property name="ElementShortName">rx</obj_property>
+      <obj_property name="ObjectShortName">rx</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uartRx_tb/uut/SamplingCounter_RxData/cnt_S_U" type="array">
+      <obj_property name="ElementShortName">cnt_S_U[13:0]</obj_property>
+      <obj_property name="ObjectShortName">cnt_S_U[13:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uartRx_tb/uut/RxBitsCounter/cnt_S_U" type="array">
+      <obj_property name="ElementShortName">cnt_S_U[3:0]</obj_property>
+      <obj_property name="ObjectShortName">cnt_S_U[3:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uartRx_tb/uut/sck_falling_edge_flag" type="logic">
+      <obj_property name="ElementShortName">sck_falling_edge_flag</obj_property>
+      <obj_property name="ObjectShortName">sck_falling_edge_flag</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uartRx_tb/baudRate" type="other">
+      <obj_property name="ElementShortName">baudRate</obj_property>
+      <obj_property name="ObjectShortName">baudRate</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uartRx_tb/sysClk" type="other">
+      <obj_property name="ElementShortName">sysClk</obj_property>
+      <obj_property name="ObjectShortName">sysClk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uartRx_tb/dataSize" type="other">
+      <obj_property name="ElementShortName">dataSize</obj_property>
+      <obj_property name="ObjectShortName">dataSize</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uartRx_tb/clk_period" type="other">
+      <obj_property name="ElementShortName">clk_period</obj_property>
+      <obj_property name="ObjectShortName">clk_period</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uartRx_tb/uut/state" type="other">
+      <obj_property name="ElementShortName">state</obj_property>
+      <obj_property name="ObjectShortName">state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uartRx_tb/uut/next_state" type="other">
+      <obj_property name="ElementShortName">next_state</obj_property>
+      <obj_property name="ObjectShortName">next_state</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uartRx_tb/uut/flag_sampling_cnt_M" type="logic">
+      <obj_property name="ElementShortName">flag_sampling_cnt_M</obj_property>
+      <obj_property name="ObjectShortName">flag_sampling_cnt_M</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uartRx_tb/uut/flag_sampling_cnt_M2" type="logic">
+      <obj_property name="ElementShortName">flag_sampling_cnt_M2</obj_property>
+      <obj_property name="ObjectShortName">flag_sampling_cnt_M2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uartRx_tb/uut/ena_sampling_cnt_ctl" type="logic">
+      <obj_property name="ElementShortName">ena_sampling_cnt_ctl</obj_property>
+      <obj_property name="ObjectShortName">ena_sampling_cnt_ctl</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uartRx_tb/uut/ena_RxBits_cnt_ctl" type="logic">
+      <obj_property name="ElementShortName">ena_RxBits_cnt_ctl</obj_property>
+      <obj_property name="ObjectShortName">ena_RxBits_cnt_ctl</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uartRx_tb/uut/ena_shift_register" type="logic">
+      <obj_property name="ElementShortName">ena_shift_register</obj_property>
+      <obj_property name="ObjectShortName">ena_shift_register</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uartRx_tb/uut/tc_rx_bits_flag" type="logic">
+      <obj_property name="ElementShortName">tc_rx_bits_flag</obj_property>
+      <obj_property name="ObjectShortName">tc_rx_bits_flag</obj_property>
+   </wvobject>
+</wave_config>

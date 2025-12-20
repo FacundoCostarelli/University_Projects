@@ -1,0 +1,14 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../guia_16.srcs/sources_1/new/SckRisingAndFallingEdgeDetector.vhd" \
+"../../../../guia_16.srcs/sources_1/imports/new/myCnt.vhd" \
+"../../../../guia_16.srcs/sources_1/imports/new/myShiftReg.vhd" \
+"../../../../guia_16.srcs/sources_1/new/myShiftReg_dir.vhd" \
+"../../../../guia_16.srcs/sources_1/imports/new/mySingleModuleCnt.vhd" \
+"../../../../guia_16.srcs/sources_1/new/uart.vhd" \
+"../../../../guia_16.srcs/sources_1/new/uartRx.vhd" \
+"../../../../guia_16.srcs/sources_1/new/uartTx.vhd" \
+"../../../../guia_16.srcs/sim_1/new/uart_tb.vhd" \
+
+# Do not sort compile order
+nosort

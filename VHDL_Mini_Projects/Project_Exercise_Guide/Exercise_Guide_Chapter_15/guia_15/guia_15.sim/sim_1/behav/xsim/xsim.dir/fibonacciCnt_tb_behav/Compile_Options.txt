@@ -1,0 +1,1 @@
+--incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "secureip" -L "xpm" --snapshot "fibonacciCnt_tb_behav" "xil_defaultlib.fibonacciCnt_tb" -log "elaborate.log" 

@@ -1,0 +1,1 @@
+blockRamTest0_sim_netlist.vhdl,vhdl,xil_defaultlib,../../../../guia_13.gen/sources_1/ip/blockRamTest0/blockRamTest0_sim_netlist.vhdl,

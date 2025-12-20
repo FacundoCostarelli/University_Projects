@@ -1,0 +1,26 @@
+#-----------------------------------------------------------
+# Vivado v2024.2 (64-bit)
+# SW Build 5239630 on Fri Nov 08 22:35:27 MST 2024
+# IP Build 5239520 on Sun Nov 10 16:12:51 MST 2024
+# SharedData Build 5239561 on Fri Nov 08 14:39:27 MST 2024
+# Start of session at: Tue Sep  2 18:30:55 2025
+# Process ID         : 8872
+# Current directory  : C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_16/guia_16/guia_16.sim/sim_1/behav/xsim
+# Command line       : vivado.exe -gui_launcher_event rodinguilauncherevent9500 C:\Users\Facun\Desktop\TD1_TPS_Locales\Exercise_Guide_Chapter_16\guia_16\guia_16.sim\sim_1\behav\xsim\uartRx_tb_behav.wdb
+# Log file           : C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_16/guia_16/guia_16.sim/sim_1/behav/xsim/vivado.log
+# Journal file       : C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_16/guia_16/guia_16.sim/sim_1/behav/xsim\vivado.jou
+# Running On         : DESKTOP-38PF9T6
+# Platform           : Windows Server 2016 or Windows 10
+# Operating System   : 19045
+# Processor Detail   : Intel(R) Core(TM) i5-1035G1 CPU @ 1.00GHz
+# CPU Frequency      : 1190 MHz
+# CPU Physical cores : 4
+# CPU Logical cores  : 8
+# Host memory        : 8334 MB
+# Swap memory        : 9663 MB
+# Total Virtual      : 17998 MB
+# Available Virtual  : 6908 MB
+#-----------------------------------------------------------
+start_gui
+open_wave_database {C:\Users\Facun\Desktop\TD1_TPS_Locales\Exercise_Guide_Chapter_16\guia_16\guia_16.sim\sim_1\behav\xsim\uartRx_tb_behav.wdb}
+close_sim

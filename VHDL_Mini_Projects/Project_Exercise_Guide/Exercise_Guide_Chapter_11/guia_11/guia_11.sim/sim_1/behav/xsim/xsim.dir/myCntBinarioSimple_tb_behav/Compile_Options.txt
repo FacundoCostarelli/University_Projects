@@ -1,0 +1,1 @@
+--incr --debug "typical" --relax --mt "2" -L "xil_defaultlib" -L "secureip" --snapshot "myCntBinarioSimple_tb_behav" "xil_defaultlib.myCntBinarioSimple_tb" -log "elaborate.log" 

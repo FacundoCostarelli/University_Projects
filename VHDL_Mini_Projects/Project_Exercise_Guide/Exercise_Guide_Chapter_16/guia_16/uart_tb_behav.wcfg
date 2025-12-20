@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="uart_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="uart_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="180.166666 us"></ZoomStartTime>
+      <ZoomEndTime time="5,965.166667 us"></ZoomEndTime>
+      <Cursor1Time time="5,001.000000 us"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="286"></NameColumnWidth>
+      <ValueColumnWidth column_width="93"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="14" />
+   <wvobject fp_name="/uart_tb/clk" type="logic">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uart_tb/rst" type="logic">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uart_tb/dataWr" type="logic">
+      <obj_property name="ElementShortName">dataWr</obj_property>
+      <obj_property name="ObjectShortName">dataWr</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uart_tb/dataTx" type="array">
+      <obj_property name="ElementShortName">dataTx[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dataTx[7:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uart_tb/ready" type="logic">
+      <obj_property name="ElementShortName">ready</obj_property>
+      <obj_property name="ObjectShortName">ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uart_tb/tx" type="logic">
+      <obj_property name="ElementShortName">tx</obj_property>
+      <obj_property name="ObjectShortName">tx</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uart_tb/dataRd" type="logic">
+      <obj_property name="ElementShortName">dataRd</obj_property>
+      <obj_property name="ObjectShortName">dataRd</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uart_tb/dataRx" type="array">
+      <obj_property name="ElementShortName">dataRx[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dataRx[7:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uart_tb/rx" type="logic">
+      <obj_property name="ElementShortName">rx</obj_property>
+      <obj_property name="ObjectShortName">rx</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uart_tb/clk_period" type="other">
+      <obj_property name="ElementShortName">clk_period</obj_property>
+      <obj_property name="ObjectShortName">clk_period</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uart_tb/baudRate" type="other">
+      <obj_property name="ElementShortName">baudRate</obj_property>
+      <obj_property name="ObjectShortName">baudRate</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uart_tb/sysClk" type="other">
+      <obj_property name="ElementShortName">sysClk</obj_property>
+      <obj_property name="ObjectShortName">sysClk</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uart_tb/DATA_SIZE" type="other">
+      <obj_property name="ElementShortName">DATA_SIZE</obj_property>
+      <obj_property name="ObjectShortName">DATA_SIZE</obj_property>
+   </wvobject>
+   <wvobject fp_name="/uart_tb/bit_period" type="other">
+      <obj_property name="ElementShortName">bit_period</obj_property>
+      <obj_property name="ObjectShortName">bit_period</obj_property>
+   </wvobject>
+</wave_config>

@@ -1,0 +1,62 @@
+Vivado Simulator v2024.2.0
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2024.2/bin/unwrapped/win64.o/xelab.exe --incr --debug typical --relax --mt 2 -L xil_defaultlib -L secureip -L xpm --snapshot microIO_tb_behav xil_defaultlib.microIO_tb -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+WARNING: [VRFC 10-3813] value in initialization depends on signal 'divisor_tx_bits' [C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/new/uartTx.vhd:76]
+WARNING: [VRFC 10-3813] value in initialization depends on signal 'p' [C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/imports/new/mySingleModuleCnt.vhd:33]
+WARNING: [VRFC 10-3813] value in initialization depends on signal 'divisor_rx_bits' [C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/new/uartRx.vhd:73]
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling package unisim.vcomponents
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_signed
+Compiling package ieee.std_logic_textio
+Compiling package ieee.vital_timing
+Compiling package ieee.vital_primitives
+Compiling package unisim.vpkg
+Compiling package ieee.std_logic_unsigned
+Compiling package ieee.math_real
+Compiling architecture behavioral of entity xil_defaultlib.myCntBinarioPl [mycntbinariopl_default]
+Compiling architecture gnd_v of entity unisim.GND [gnd_default]
+Compiling architecture rb36_internal_vhdl_v of entity unisim.RB36_INTERNAL_VHDL [\RB36_INTERNAL_VHDL(doa_reg=1,in...]
+Compiling architecture ramb36e1_v of entity unisim.RAMB36E1 [\RAMB36E1(doa_reg=1,init_00="000...]
+Compiling architecture structure of entity xil_defaultlib.pcMem_blk_mem_gen_prim_wrapper_init [pcmem_blk_mem_gen_prim_wrapper_i...]
+Compiling architecture structure of entity xil_defaultlib.pcMem_blk_mem_gen_prim_width [pcmem_blk_mem_gen_prim_width_def...]
+Compiling architecture structure of entity xil_defaultlib.pcMem_blk_mem_gen_generic_cstr [pcmem_blk_mem_gen_generic_cstr_d...]
+Compiling architecture structure of entity xil_defaultlib.pcMem_blk_mem_gen_top [pcmem_blk_mem_gen_top_default]
+Compiling architecture structure of entity xil_defaultlib.pcMem_blk_mem_gen_v8_4_9_synth [pcmem_blk_mem_gen_v8_4_9_synth_d...]
+Compiling architecture structure of entity xil_defaultlib.pcMem_blk_mem_gen_v8_4_9 [pcmem_blk_mem_gen_v8_4_9_default]
+Compiling architecture structure of entity xil_defaultlib.pcMem [pcmem_default]
+Compiling architecture behavioral of entity xil_defaultlib.pc [pc_default]
+Compiling architecture behavioral of entity xil_defaultlib.portIO [portio_default]
+Compiling architecture behavioral of entity xil_defaultlib.rot [rot_default]
+Compiling architecture behavioral of entity xil_defaultlib.alu [alu_default]
+Compiling architecture behavioral of entity xil_defaultlib.myCnt [\myCnt(m=9)\]
+Compiling architecture behavioral of entity xil_defaultlib.mySingleModuleCnt [mysinglemodulecnt_default]
+Compiling architecture behavioral of entity xil_defaultlib.myShiftReg_dir [myshiftreg_dir_default]
+Compiling architecture behavioral of entity xil_defaultlib.SckRisingAndFallingEdgeDetector [sckrisingandfallingedgedetector_...]
+Compiling architecture behavioral of entity xil_defaultlib.uartTx [\uartTx(baudrate=10000000)\]
+Compiling architecture behavioral of entity xil_defaultlib.myShiftReg [\myShiftReg(n=10)\]
+Compiling architecture behavioral of entity xil_defaultlib.uartRx [\uartRx(baudrate=10000000)\]
+Compiling architecture behavioral of entity xil_defaultlib.uart [\uart(baudrate=10000000)\]
+Compiling architecture rb18_internal_vhdl_v of entity unisim.RB18_INTERNAL_VHDL [\RB18_INTERNAL_VHDL(bram_size=18...]
+Compiling architecture ramb18e1_v of entity unisim.RAMB18E1 [\RAMB18E1(rdaddr_collision_hwcon...]
+Compiling architecture structure of entity xil_defaultlib.ramMem_blk_mem_gen_prim_wrapper_init [rammem_blk_mem_gen_prim_wrapper_...]
+Compiling architecture structure of entity xil_defaultlib.ramMem_blk_mem_gen_prim_width [rammem_blk_mem_gen_prim_width_de...]
+Compiling architecture structure of entity xil_defaultlib.ramMem_blk_mem_gen_generic_cstr [rammem_blk_mem_gen_generic_cstr_...]
+Compiling architecture structure of entity xil_defaultlib.ramMem_blk_mem_gen_top [rammem_blk_mem_gen_top_default]
+Compiling architecture structure of entity xil_defaultlib.ramMem_blk_mem_gen_v8_4_9_synth [rammem_blk_mem_gen_v8_4_9_synth_...]
+Compiling architecture structure of entity xil_defaultlib.ramMem_blk_mem_gen_v8_4_9 [rammem_blk_mem_gen_v8_4_9_defaul...]
+Compiling architecture structure of entity xil_defaultlib.ramMem [rammem_default]
+Compiling architecture behavioral of entity xil_defaultlib.uc [uc_default]
+Compiling architecture behavioral of entity xil_defaultlib.microIO [\microIO(uart_baudrate=10000000)...]
+Compiling architecture behavioral of entity xil_defaultlib.microio_tb
+Built simulation snapshot microIO_tb_behav

@@ -1,0 +1,22 @@
+0.7
+2020.2
+Nov  8 2024
+22:36:57
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.gen/sources_1/ip/pcMem/pcMem_sim_netlist.vhdl,1761860745,vhdl,,,,pcmem;pcmem_blk_mem_gen_generic_cstr;pcmem_blk_mem_gen_prim_width;pcmem_blk_mem_gen_prim_wrapper_init;pcmem_blk_mem_gen_top;pcmem_blk_mem_gen_v8_4_9;pcmem_blk_mem_gen_v8_4_9_synth,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.gen/sources_1/ip/ramMem/ramMem_sim_netlist.vhdl,1760035401,vhdl,,,,rammem;rammem_blk_mem_gen_generic_cstr;rammem_blk_mem_gen_prim_width;rammem_blk_mem_gen_prim_wrapper_init;rammem_blk_mem_gen_top;rammem_blk_mem_gen_v8_4_9;rammem_blk_mem_gen_v8_4_9_synth,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sim_1/new/microIO_tb.vhd,1761224227,vhdl,,,,microio_tb,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/imports/new/SckRisingAndFallingEdgeDetector.vhd,1766168084,vhdl,,,,sckrisingandfallingedgedetector,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/imports/new/myCnt.vhd,1766167128,vhdl,,,,mycnt,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/imports/new/myShiftReg.vhd,1766168309,vhdl,,,,myshiftreg,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/imports/new/myShiftReg_dir.vhd,1766167872,vhdl,,,,myshiftreg_dir,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/imports/new/mySingleModuleCnt.vhd,1766167238,vhdl,,,,mysinglemodulecnt,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/new/alu.vhd,1766066323,vhdl,,,,alu,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/new/microIO.vhd,1766033619,vhdl,,,,microio,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/new/myCntBinarioPl.vhd,1766067195,vhdl,,,,mycntbinariopl,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/new/pc.vhd,1766066639,vhdl,,,,pc,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/new/portIO.vhd,1766168852,vhdl,,,,portio,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/new/rot.vhd,1760036349,vhdl,C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/new/alu.vhd,,,rot,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/new/uart.vhd,1766067762,vhdl,,,,uart,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/new/uartRx.vhd,1766165812,vhdl,,,,uartrx,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/new/uartTx.vhd,1766165045,vhdl,,,,uarttx,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/new/uc.vhd,1766065385,vhdl,,,,uc,,,,,,,,

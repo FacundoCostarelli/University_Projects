@@ -1,0 +1,4 @@
+Cola simple 
+https://www.youtube.com/watch?v=x1PFzxU_nYs
+Servidor TCP/IP con explicacion de netcat chat
+https://www.youtube.com/watch?v=7F67EoEFRyc&list=PL4LXesmQ32Ne2W5H1--t2Qh5fMQ-WxXhu&index=53

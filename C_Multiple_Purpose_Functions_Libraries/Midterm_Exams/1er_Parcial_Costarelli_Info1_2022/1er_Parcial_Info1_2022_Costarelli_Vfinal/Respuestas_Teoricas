@@ -1,0 +1,73 @@
+2)Rta respecto de las diferencias, similitudes  y cuidados de las siguientes definiciones.
+
+Line1-char Cadena[100] = "Info 1";
+Line2-char Cadena[] = "Info 1";
+Line3-char *p1 = "Info 1";
+Line4-char *p2;
+
+En line1 se define un vector de caracteres llamado "Cadena" de tamanio 100, es decir, de 100 elementos donde en este se le carga el string "Info 1" incluyendo en el espacio de separacion. El resto de lugares se rellenan \0.
+Ademas el nombre del vector, es un puntero simple que apunta a la direccion de comienzo del 1er elemento , es decir, apunta al a direccion que contiene el caracter "I".
+
+En line2 se define un vector de caracteres llamado "Cadena" de tamanio acorde a la cantidad de caracteres del string que se va a cargar, en este caso tendra tamanio 6 ya que el string es de 6 caracteres contando el backspace como caracter. Nuevamente el nombre de este vector, es un puntero simple que apunta a la direccion de comienzo del 1er elemento el cual es "I"
+
+Hasta aca, las similitudes entre line1 y line2, son: Definicion o declaracion de arrays con el nombre cadena, carga de un string siendo este "Info 1", los nombres de ambos vectores estan asociados a un puntero simple que apunta a la direccion de comienzo del 1er elemento, es decir, "I". Ambos estan utilizando memoria estatica. Al momento de printear, se debe utilizar el %s y no %c ya que tenemos una cadena de varios caracteres y no uno solo. Al printear, se vera en pantalla de consola estos strings.  Las diferencias son: El vector de line1 es mas grande que el de line2 por lo que ocupa mas memoria, el resto del espacio que ocupa el array de line1 con \0 no esta siendo utilizado por otra cosa entonces ocupa memoria de mas, aunque se podria cargar eventualemtne un string de mayor tamanio en este mismo vector. El vector de line2 ocupa la memoria justa segun la cantidad de caracteres del string pre-cargado y se podria cargar otro string en la definicion o mismo eventualemente en el programa pero en este ultimo caso considerando el tamanio del 1er string cargado.
+Los cuidados a tener entre line1 y line2 es que el de line1 consume mas memoria estatica que luego no estara disponible para otro uso. El tamanio del array de line1 esta limitado por la cantidad de caracteres del string cargado en la declaracion por lo que en caso de querer modificar el contenido del vector con otro string, este debe ser igual o menor en cuanto a tamanio respecto del 1er string cargado previamente en la definicion sino habra errores. Lo mismo sucede con el array del line1, si se carga luego un string de mayor tamanio a 100 caracteres, entonces habra errores.
+
+En line3 se define un puntero simple "*p1" que busca guardar el string "Info 1" o lo que es lo mismo, apuntar a la direccion de comienzo del 1er elemento del string, entonces apunta a la direccion del elemento "I".
+
+En cuanto a las similitudes, son las mismas que las que hay entre line1 y line2. Las diferencias respecto a line1 y line2, es que line3, se usa una sintaxis distinta para trabajar con strings de caracteres tanto para la carga como para el printeo por ej. Los cuidados son: que por esto mismo es facil perder nocion de cuanta memoria se esta asignando al string.
+
+En line4 se declara un puntero "*p2" que apunta a alguna direccion direccion aleatoria que surge de la compilacion. La unica similitud que comparte este line4 con las otras, es que, se declara un puntero simple que apunta a una direccion. La diferencia es que apunta a algun lugar aleatorio y los cuidados son: que puede llegar a apuntar  lugares prohibidos o delciados para acceder y que al momento de acceder para escribir o leer a dicho lugar => surjan errores. Para evitar esto, hay que inicializarlo en NULL
+
+3) Diferencias y similitudes entre sizeof() y strlen().
+
+Similitudes: Ambas funciones son propias standard del lenguaje C, ambas buscan calcular "tamanios".
+Diferencias: sizeof() recibe una variable asociada a un tipo de dato, aunque tambien el tipo de dato individual; y devuelve un entero asociado a la cantidad de memoria que ocupa esa variable o tipo de dato. Ademas tiene una palabra resverda para usarse y no se requiere de libererias ni headers. El valor devuelto depende de la arquitectura de la computadora. strlen() recibe un array de caracteres y cuenta la cantidad de caracteres hasta encontrar el primer \0. Esta funcion ademas para usarla hay que incluir string.h y la libreria correspondiente en el codigo
+
+ejemplo:
+
+#include<stdio.h>
+#include<string.h>
+int main(void)
+{
+    char Cadena[] = "Info 1";
+    char *p1 = NULL;
+    printf("%li\n", sizeof(p1));//Devuelve un tamanio de 8bytes(Arquitectura usada de 64bits) 
+    printf("%li\n", strlen(Cadena));//Devuelve una cantidad de 6 caracteres o tamanio de string de 6 caracteres
+    
+    return 0;
+}
+
+4) Declaracion, definicion y llamado a funcion. Explicar cada uno y dar un ejemplo.
+La declaracion de una funcion, consiste en armar un prototipo o enunciado de la funcion a utilizar y hacerle saber al compilador que existe una funcion, cuales son los parametro que debera recibir esa funcion y que es lo que devolvera. Esta declaracion es solo una indicacion para el compilador de lo mencionado recien. No ocupa memoria la declaracion o prototipo. Esta informacion la debe saber el compilador antes de trabajar con la funcion ya que sini pueden haber problemas.
+La defincion, consiste en la construccion o desarrollo de la funcion, aca se escribe el codigo entre llaves de todo lo que va a realizar la funcion, manteniendo el prototipo de la declaracion original
+El llamado a funcion consiste en "invocar o utilizar" la funcion dentro del main o dentro de otra funcion distinta, donde la ejecucion del programa saltara secuencialmente desde la instruccion del llamado de la funcion hacia la funcion en si misma y su desarrollo para ejecutarla y luego continuar con el resto del codigo posterior al llamado de la funcion.
+
+Ejemplo:
+#include<stdio.h>
+//Declaracion de funcion o prototipado
+long double factorial( long double nrofactorial );
+
+int main(void)
+{
+    long double i = 5;
+    
+    //Llamado a funcion "factorial" dentro de la funcion principal "main" y pasada como parametro a la funcion printf para mostrar el resultado
+    printf("%Lf\n", factorial(i));
+
+    return 0; 
+}
+//Definicion de funcion
+//Funcion portable que calcula el factorial de un numero, cualquier numero que se le pase por copia, lo recibe, lo trabaja con el algoritmo de abajo y devuelve dicho numero trabajdo, es decir, devuelve el resultado de la operacion factorial. El algoritmo es sencillo, consiste en armar el factorial de un numero ej 5 de la sig forma: 1.1 + 1.1 . 2+ 1.1.2 . 3+ 1.1.2.3 . 4+ 1.1.2.3.4 . 5. El resultado final sera lo dado por 1.1.2.3.4.5
+long double factorial( long double nrofactorial ) 
+{
+    
+    long double factorial = 1, ninicial;
+    
+    for( ninicial = 1; ninicial <= nrofactorial; ninicial++ )
+    {
+        factorial *= ninicial;//calculo el factorial de 2*i+1 de la formula original de la sumatoria de f1 y lo mismo para el factorial de 2*i de la sumatoria de f2. Esta funcion propia factorial es reutilizable, ya que proviene de otro codigo. En caso de 0! entonces el cuerpo del "for" no se ejecuta ya que no se cumple la condicion y entonces se retorna factorial = 1
+    }
+    
+    return factorial;
+}

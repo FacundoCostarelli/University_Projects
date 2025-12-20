@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="impl_1" LaunchPart="xc7z010clg400-1" LaunchTime="1751657620">
+  <File Type="ROUTE-PWR" Name="miniAlu_power_routed.rpt"/>
+  <File Type="PA-TCL" Name="miniAlu.tcl"/>
+  <File Type="ROUTE-PWR-SUM" Name="miniAlu_power_summary_routed.pb"/>
+  <File Type="OPT-RQA-PB" Name="miniAlu_rqa_opted.pb"/>
+  <File Type="REPORTS-TCL" Name="miniAlu_reports.tcl"/>
+  <File Type="INIT-TIMING" Name="miniAlu_timing_summary_init.rpt"/>
+  <File Type="OPT-DCP" Name="miniAlu_opt.dcp"/>
+  <File Type="OPT-DRC" Name="miniAlu_drc_opted.rpt"/>
+  <File Type="OPT-METHODOLOGY-DRC" Name="miniAlu_methodology_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="miniAlu.hwdef"/>
+  <File Type="OPT-TIMING" Name="miniAlu_timing_summary_opted.rpt"/>
+  <File Type="PWROPT-DCP" Name="miniAlu_pwropt.dcp"/>
+  <File Type="PWROPT-DRC" Name="miniAlu_drc_pwropted.rpt"/>
+  <File Type="PWROPT-TIMING" Name="miniAlu_timing_summary_pwropted.rpt"/>
+  <File Type="PLACE-DCP" Name="miniAlu_placed.dcp"/>
+  <File Type="PLACE-IO" Name="miniAlu_io_placed.rpt"/>
+  <File Type="PLACE-CLK" Name="miniAlu_clock_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL" Name="miniAlu_utilization_placed.rpt"/>
+  <File Type="PLACE-UTIL-PB" Name="miniAlu_utilization_placed.pb"/>
+  <File Type="PLACE-CTRL" Name="miniAlu_control_sets_placed.rpt"/>
+  <File Type="PLACE-SIMILARITY" Name="miniAlu_incremental_reuse_placed.rpt"/>
+  <File Type="PLACE-PRE-SIMILARITY" Name="miniAlu_incremental_reuse_pre_placed.rpt"/>
+  <File Type="BG-BIN" Name="miniAlu.bin"/>
+  <File Type="PLACE-TIMING" Name="miniAlu_timing_summary_placed.rpt"/>
+  <File Type="ROUTE-PWR-RPX" Name="miniAlu_power_routed.rpx"/>
+  <File Type="PLACE-RQA-PB" Name="miniAlu_rqa_placed.pb"/>
+  <File Type="POSTPLACE-PWROPT-DCP" Name="miniAlu_postplace_pwropt.dcp"/>
+  <File Type="BITSTR-MSK" Name="miniAlu.msk"/>
+  <File Type="POSTPLACE-PWROPT-TIMING" Name="miniAlu_timing_summary_postplace_pwropted.rpt"/>
+  <File Type="PHYSOPT-DCP" Name="miniAlu_physopt.dcp"/>
+  <File Type="PHYSOPT-DRC" Name="miniAlu_drc_physopted.rpt"/>
+  <File Type="BITSTR-RBT" Name="miniAlu.rbt"/>
+  <File Type="PHYSOPT-TIMING" Name="miniAlu_timing_summary_physopted.rpt"/>
+  <File Type="ROUTE-ERROR-DCP" Name="miniAlu_routed_error.dcp"/>
+  <File Type="ROUTE-DCP" Name="miniAlu_routed.dcp"/>
+  <File Type="ROUTE-BLACKBOX-DCP" Name="miniAlu_routed_bb.dcp"/>
+  <File Type="ROUTE-DRC" Name="miniAlu_drc_routed.rpt"/>
+  <File Type="ROUTE-DRC-PB" Name="miniAlu_drc_routed.pb"/>
+  <File Type="ROUTE-DRC-RPX" Name="miniAlu_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC" Name="miniAlu_methodology_drc_routed.rpt"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-RPX" Name="miniAlu_methodology_drc_routed.rpx"/>
+  <File Type="ROUTE-METHODOLOGY-DRC-PB" Name="miniAlu_methodology_drc_routed.pb"/>
+  <File Type="ROUTE-RQS-PB" Name="miniAlu_rqs_routed.pb"/>
+  <File Type="ROUTE-STATUS" Name="miniAlu_route_status.rpt"/>
+  <File Type="ROUTE-STATUS-PB" Name="miniAlu_route_status.pb"/>
+  <File Type="ROUTE-TIMINGSUMMARY" Name="miniAlu_timing_summary_routed.rpt"/>
+  <File Type="ROUTE-TIMING-PB" Name="miniAlu_timing_summary_routed.pb"/>
+  <File Type="ROUTE-TIMING-RPX" Name="miniAlu_timing_summary_routed.rpx"/>
+  <File Type="ROUTE-SIMILARITY" Name="miniAlu_incremental_reuse_routed.rpt"/>
+  <File Type="ROUTE-CLK" Name="miniAlu_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="miniAlu_bus_skew_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW-PB" Name="miniAlu_bus_skew_routed.pb"/>
+  <File Type="ROUTE-BUS-SKEW-RPX" Name="miniAlu_bus_skew_routed.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-DCP" Name="miniAlu_postroute_physopt.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-BLACKBOX-DCP" Name="miniAlu_postroute_physopt_bb.dcp"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING" Name="miniAlu_timing_summary_postroute_physopted.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-PB" Name="miniAlu_timing_summary_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-TIMING-RPX" Name="miniAlu_timing_summary_postroute_physopted.rpx"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW" Name="miniAlu_bus_skew_postroute_physopted.rpt"/>
+  <File Type="BG-BIT" Name="miniAlu.bit"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-PB" Name="miniAlu_bus_skew_postroute_physopted.pb"/>
+  <File Type="POSTROUTE-PHYSOPT-BUS-SKEW-RPX" Name="miniAlu_bus_skew_postroute_physopted.rpx"/>
+  <File Type="BITSTR-NKY" Name="miniAlu.nky"/>
+  <File Type="BITSTR-BMM" Name="miniAlu_bd.bmm"/>
+  <File Type="BITSTR-MMI" Name="miniAlu.mmi"/>
+  <File Type="PDI-FILE" Name="miniAlu.pdi"/>
+  <File Type="BOOT-PDI-FILE" Name="miniAlu_boot.pdi"/>
+  <File Type="PL-PDI-FILE" Name="miniAlu_pld.pdi"/>
+  <File Type="RCFI_FILE" Name="miniAlu.rcfi"/>
+  <File Type="CFI_FILE" Name="miniAlu.cfi"/>
+  <File Type="RNPI_FILE" Name="miniAlu.rnpi"/>
+  <File Type="NPI_FILE" Name="miniAlu.npi"/>
+  <File Type="RBD_FILE" Name="miniAlu.rbd"/>
+  <File Type="BITSTR-LTX" Name="debug_nets.ltx"/>
+  <File Type="BITSTR-LTX" Name="miniAlu.ltx"/>
+  <File Type="BITSTR-SYSDEF" Name="miniAlu.sysdef"/>
+  <File Type="BG-BGN" Name="miniAlu.bgn"/>
+  <File Type="BG-DRC" Name="miniAlu.drc"/>
+  <File Type="RDI-RDI" Name="miniAlu.vdi"/>
+  <File Type="WBT-USG" Name="usage_statistics_webtalk.html"/>
+  <File Type="ROUTE-RQS" Name="miniAlu_routed.rqs"/>
+  <File Type="POSTROUTE-PHYSOPT-RQS" Name="miniAlu_postroute_physopted.rqs"/>
+  <File Type="ROUTE-RQS-RPT" Name="route_report_qor_suggestions_0.rpt"/>
+  <File Type="POSTROUTE-PHYSOPT-RQS-RPT" Name="postroute_physopt_report_qor_suggestions_0.rpt"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/new/Restador_N_Bits_Bin_Bout.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/SumadorRestador_N_Bits_SignedUnsigned_CinCoutOverflow.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Sumador_N_Bits_Cin_Cout.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/miniAlu.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/comparadorCa2.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/comparadorMag.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/comparador.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Restador_N_bits_Unsigned.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/SumadorRestador_N_Bits_Unsigned.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Sumador_N_Bits_Unsigned.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Sumador_N_Bits_Unsigned_Cin_Cout.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Restador_N_Bits_Unsigned_bin_bout.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Sumador_N_Bits_Signed.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Restador_N_Bits_Signed.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/SumadorRestador_N_Bits_Signed_Overflow.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Comparador_N_Bits_Signed.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Comparador_N_Bits_Unsigned.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/sat16a8.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/myDivMag8.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/myDiv8.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/SumadorRestador_N_Bits_Signed_Cin_BIn_Cout_BOut_Overflow.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="miniAlu"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="utils" Type="Utils" RelSrcDir="$PSRCDIR/utils_1" RelGenDir="$PGENDIR/utils_1">
+    <Filter Type="Utils"/>
+    <Config>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2024"/>
+    <Step Id="init_design"/>
+    <Step Id="opt_design"/>
+    <Step Id="power_opt_design"/>
+    <Step Id="place_design"/>
+    <Step Id="post_place_power_opt_design"/>
+    <Step Id="phys_opt_design"/>
+    <Step Id="route_design"/>
+    <Step Id="post_route_phys_opt_design"/>
+    <Step Id="write_bitstream"/>
+  </Strategy>
+</GenRun>

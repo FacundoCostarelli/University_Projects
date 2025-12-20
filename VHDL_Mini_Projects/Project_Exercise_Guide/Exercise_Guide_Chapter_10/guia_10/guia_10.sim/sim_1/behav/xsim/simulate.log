@@ -1,0 +1,4 @@
+Time resolution is 1 ps
+Failure: Error
+Time: 65 ns  Iteration: 1  Process: /lfsr_G_tb/testProc  File: C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_10/guia_10/guia_10.srcs/sim_1/imports/guia_10_tb/lfsr_G_tb.vhd
+$finish called at time : 65 ns : File "C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_10/guia_10/guia_10.srcs/sim_1/imports/guia_10_tb/lfsr_G_tb.vhd" Line 64

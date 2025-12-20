@@ -1,0 +1,33 @@
+1). Sobre Thread tilde las correctas:
+    ●A) pthread_join() bloquea el hilo en el cual se invoca a la espera de que el que se pone en el argumento
+    finalize.
+    ●B) pthread_join() NO bloquea el hilo en el cual se invoca a la espera de que el que se pone en el
+    argumento finalize.
+    ●C) Un thread , comparte con los otros thread del mismo proceso heap y stack.
+    ●D) Un thread , NO comparte con los otros thread del mismo proceso heap y stack.
+2). Sobre socket tilde las correctas:
+    ●A) Los únicos socket que existen son los tcp/ipv4.
+    ●B) Los socket tcp/ipv4 determinan una conexión utilizando 2 IP, y 2 puertos.
+    ●C) Los socket tcp/ipv4 determinan una conexión utilizando 1 IP, y 1 puertos.
+    ●D) Los socket tcp/ipv4 determinan una conexión utilizando 2 IP, y 4 puertos.
+    ●E) accept() es una función bloqueante , hasta que un cliente no se conecta , no se desbloquea.
+    ●F) connect() es la función que llama el código del cliente para conectarse a un servidor.
+    ●G) Una conexión tcp está completamente cerrada , si de cada lado se hace un close() sobre la conexión
+    establecida.
+
+1)A) V...Esto es porque pthread_join es una funcion que permite sincronizar threads. En particular, esto es que un thread "creador" pueda esperar a que otro thread "creado" termine primero para luego terminar el thread "creador".
+1)B) F...Justificado en A)
+1)C) F...Un thread comparte con otros threads, algunos recursos del proceso como DATA, FILE,HEAP,SIGNAL y CODE. En particular en DATA estan las variables NO automaticas, las variables globales, etc pero no el STACK. Por otro lado cada thread posee individualemente STACK, REG y PC.
+1)D) V...Justificado en C)
+
+2)A) F...Los sockets que existen son:
+-DATAGRAM: Son asociados con protocolo UDP
+-STREAM: Son asociados con protocolo TCP
+-ROW
+-Otros
+2)B) V...Ya que se requiere una IP para la maquina local que funciona como host servidor y una IP para la maquina que funciona como cliente, es decir, se necesita una IP en cada caso para poder identificar de forma unica a cada maquina en la red. Por otro lado, se necesita en cada maquina, cliente y servidor, un puerto logico por el cual enviar y recibir los datos. De esta manera se logra la comunicacion TCP entre cliente y servidor relacionando puerto a puerto con adicionalmente sabiendo la IP de cada maquina
+2)C) F...Justificado en B)
+2)D) F...Justificado en B)
+2)E) V...Una vez ejecutada, se queda esperando hasta recibir una solicitud de conexion por parte de un cliente a partir de que en dicha maquina se ejecuta la funcion connect(). Si no recibiese solicitud alguna, entonces se queda en espera. Sin embargo, se la puede finalizar con algun comando tipo SIGNAL ej sigkill o alguna alarma
+2)F) V...Ya que es la unica funcion que puede ser ejecutada en el cliente para lograr una solicitud de conexion hacia un servidor. Esto se debe a que el servidor solo recibe solicitudes de conexion y por ende no usa connect.
+2)G) V...Ya que el ejecutar close() en SOLAMENTE servidor o cliente podrian surgir memory leaks en la maquina que no ejecuto close y aparecer segmentation fault al utilizar accidentalmente algunas funciones de sockets sobre un file descripto asociado a un socket que fue cerrado o mismo hacer alguna otra operacion con este. Close() ademas de cerrar la conexion, libera la memoria dinamica usada.

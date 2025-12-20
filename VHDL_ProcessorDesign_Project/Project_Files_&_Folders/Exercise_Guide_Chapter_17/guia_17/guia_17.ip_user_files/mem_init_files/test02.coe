@@ -1,0 +1,14 @@
+memory_initialization_radix=16;
+memory_initialization_vector=
+00310000
+00320000
+00320000
+00320000
+00320000;
+
+
+00310000    ; sat = 0                El tb en PORT_A colo 0x8000 y en PORT_B 0x7F00
+00320000    ;ACC = ACC + 1
+00320000    ;ACC = ACC + 1
+00320000    ;ACC = ACC + 1
+00320000    ;ACC = ACC + 1

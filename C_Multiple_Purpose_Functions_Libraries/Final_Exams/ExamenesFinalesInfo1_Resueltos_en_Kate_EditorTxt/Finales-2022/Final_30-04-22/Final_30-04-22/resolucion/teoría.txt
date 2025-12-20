@@ -1,0 +1,53 @@
+1) *p -> 5
+
+2) m[3][1] -> -99
+
+3) *p+6 -> 11
+
+4) *(p+5) -> -9
+
+5)Para calcularlo hay que pensar que cada direccion pesa 4 bytes por suponerse una arquitectura de 32 bits. Y que entre una direccion hexadecimal y otra hay 4 bytes, es decir, un offset de 4, osea que a cada direccion se le suma 4 para pasar a la siguiente. Ademas, cada fila, tiene NIBBLE MSB diferente. Para la fila 0, por enunciado, corresponde b(1er nibble en la direccion hexadecimal), para la fila 1 corresponde "a", para la fila 2 corresponde "f", para la fila 3 corresponde "e". Es decir, hay un orden descendente
+
+Como nos movemos 4 lugares, de izq a der y despues de arriba hacia abajo entonces:
+ 0x b f f f f 0 0 0 0 
+ +	            16
+ ---------------------
+ 
+ donde 16 = f + 1
+ 0x b f f f f 0 0 0 0 
+ +	            f
+ 		    1
+---------------------
+ 0x a f f f f 0 0 1 0
+ 
+ la "a" aparece por el cambio de fila		    
+ 
+rta: &m[1][0] -> 0xaffff0010 (suponiendo enteros de 32bits)
+
+6) Suponiendo que consideramos el inicio de la matriz en fila [0] con el termino "la 1er fila", entonces rta: m[2][0]
+
+7) 
+opcion 1:
+
+   F=4 C=4, f=2, c=0
+   *(p + (f*C) + c)
+   *(p + (2*4) + 0)
+   *(p+8)
+
+opcion 2:
+
+*(*(m + fila) + columna) donde (m + fila) es un puntero doble y *(m + fila) es un puntero simple
+
+8)Una "pipe" es una "system call" que crea un link de comunicacion unidireccional entre 2 files descriptos. Se dice que en la "input" de la pipe se escribe informacion y en el "output" de la pipe se lee informacion. 
+
+Las pipes se usan para intercomunicar procesos "parent y child" donde uno de ellos comanda el input y otro el output. Habitualmente el proceso padre comanda el output y el proceso hijo el input. Tambien se puede usar entre 2 procesos hijos. Vemos que en sintesis se usa entre 2 procesos.
+
+9)prototipo para crear una pipe: int pipe(int pipefd[2]);
+
+Este prototipo recibe un array de 2 elementos llamado "pipefd". Esto significa que lo que se le pasa a la funcion es el nombre de un vector el cual es un puntero simple(un solo *) que apunta al 1er elemento de dicho array. En particular, los elementos de este array son 2 valores ints asociados a un file descripto cada uno. En este caso, el 1er elemento se asocia al input en  la pipe, es decir, un fd para escritura y el 2do al output de la pipe, es decir, un fd para la lectura en la pipe 
+
+10)
+
+Socket para UDP se los llama Socket Datagram y se usa en un contexto tal que se provee un flujo de datos bidireccional, no orientado a conexion, no secuenciado el orden de llegada de paquetes, posibilidad de perdida de paquetes y errores 
+
+Socket para TCP se los llama Socket Stream y se usan en un contexto tal que se provee un flujo de datos bidireccional, orientado a conexión, secuenciado el orden de llegada de paquetes, sin duplicación de paquetes y libre de errores

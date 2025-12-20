@@ -1,0 +1,19 @@
+0.7
+2020.2
+Nov  8 2024
+22:36:57
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_15/guia_15/guia_15.srcs/sim_1/new/alu_tb.vhd,1754013660,vhdl,,,,alu_tb,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_15/guia_15/guia_15.srcs/sim_1/new/companding_A_tb.vhd,1753810337,vhdl,,,,companding_a_tb,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_15/guia_15/guia_15.srcs/sim_1/new/fibonacciCnt_tb.vhd,1754967280,vhdl,,,,fibonaccicnt_tb,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_15/guia_15/guia_15.srcs/sources_1/new/Restador_N_Bits_Bin_Bout.vhd,1749737586,vhdl,,,,restador_n_bits_bin_bout,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_15/guia_15/guia_15.srcs/sources_1/new/SumadorRestador_N_Bits_SignedUnsigned_CinCoutOverflow.vhd,1749738632,vhdl,,,,sumadorrestador_n_bits_signedunsigned_cincoutoverflow,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_15/guia_15/guia_15.srcs/sources_1/new/Sumador_N_Bits_Cin_Cout.vhd,1748981093,vhdl,,,,sumador_n_bits_cin_cout,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_15/guia_15/guia_15.srcs/sources_1/new/alu.vhd,1757961755,vhdl,,,,alu,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_15/guia_15/guia_15.srcs/sources_1/new/companding_A.vhd,1753809991,vhdl,,,,companding_a,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_15/guia_15/guia_15.srcs/sources_1/new/fibonacciCnt.vhd,1755226409,vhdl,C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_15/guia_15/guia_15.srcs/sim_1/new/fibonacciCnt_tb.vhd,,,fibonaccicnt,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_15/guia_15/guia_15.srcs/sources_1/new/miniAlu.vhd,1749739670,vhdl,,,,minialu,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_15/guia_15/guia_15.srcs/sources_1/new/myEdgeDetector.vhd,1753804477,vhdl,,,,myedgedetector,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_15/guia_15/guia_15.srcs/sources_1/new/myFFDRE.vhd,1753842160,vhdl,,,,myffdre,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_15/guia_15/guia_15.srcs/sources_1/new/myFFDREN.vhd,1753841235,vhdl,,,,myffdren,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_15/guia_15/guia_15.srcs/sources_1/new/myFFD_RisingEdge_N_Bits.vhd,1750198834,vhdl,,,,myffd_risingedge_n_bits,,,,,,,,
+C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_15/guia_15/guia_15.srcs/sources_1/new/rot.vhd,1753844138,vhdl,,,,rot,,,,,,,,

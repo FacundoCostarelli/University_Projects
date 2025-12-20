@@ -1,0 +1,5 @@
+vhdl xil_defaultlib  \
+"../../../../guia_17.gen/sources_1/ip/ramMem/ramMem_sim_netlist.vhdl" \
+
+# Do not sort compile order
+nosort

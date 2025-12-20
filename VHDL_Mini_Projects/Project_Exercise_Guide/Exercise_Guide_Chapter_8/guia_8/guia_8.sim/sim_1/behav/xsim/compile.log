@@ -1,0 +1,4 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_8/guia_8/guia_8.srcs/sources_1/new/Restador_N_Bits_Bin_Bout.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'Restador_N_Bits_Bin_Bout'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_8/guia_8/guia_8.srcs/sources_1/new/SumadorRestador_N_Bits_SignedUnsigned_CinCoutOverflow.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'SumadorRestador_N_Bits_SignedUnsigned_CinCoutOverflow'

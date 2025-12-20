@@ -1,0 +1,51 @@
+1)Que diferencias hay entre un encabezado y una libreria?? Que informacion contienen cada uno??
+
+Biblioteca: El archivo que contiene el "cuerpo o definicion" de una o mas funciones, se llama "libreria". Se dice que una "libreria" es donde se encuentran las "implementaciones" de las funciones cuyos prototipos/declaraciones estan en los archivos header. Un archivo "library" posee la terminacion ".lib". Existen 2 tipos de librerias:
+
+    Librerias estaticas: Estas contienen codigo objeto tal que este sera linkeado con una aplicacion final de usuario, es decir, el programa disenado para el usuario final. Son usadas durante tiempo de compilacion por lo que cuando se ejecute el programa, durante el tiempo de ejecucion estas librerias estaran funcionando siempre, independientemente de si son requeridas o no, hasta que finalize el programa.
+
+    Librerias dinamicas: Estas son usadas durante tiempo de ejecucion, por lo que cuando se ejecute el programa, estas librerias solo estaran funcionando cuando se las requiera a medida que se va ejecutando el programa por lo que habra momentos donde se las invoca y momentos que no. Se dice que un programador(usuario final) puede compilar el codigo sin incluir en la compilacion a las librerias dinamicas.
+
+
+Encabezado: Un archivo de encabezado o "header" posee la extension ".h", este posee generalmente las declaraciones/prototipos de funciones,data types creados, variables globales, constantes o macros, estructuras y uniones. Ademas de lo mencionado, un archvio "header" puede contener dentro, otros archivos "header" a partir de "incluirlos" con los "header names" los cuales a us vez tendran lo mencionado anteriormente. Normalmente todo lo contendio en un header file es usado por "libraries"
+Un "header file" es utilizado en el "main code file" y otros codigos que trabajan cooperativamente, a partir de escribir la directiva de preprocesador "#include<header_file_name.h>"; Tiene como tarea instruir al compilador respecto a como realizar los diferentes llamados a funciones y donde buscar las respectivas funciones con sus respectivos parametros para ejecutarlas.
+
+
+
+
+2) Que es un proceso?? Caracterizarlo, indicando los estados que puede tomar.
+
+Proceso: Es un programa o codigo que se esta ejecutando en memoria, se dice que es una "entidad activa" a diferencia de un programa que es una "entidad pasiva".
+Sucede que al escribir un programa y compilarlo, el compilador crea un codigo binario. Se dira que tanto el codigo oroginal escrito como el codigo binario son ambos programas y seran "pasivos". Sin, embargo, al momento de "correr o ejecutar" el codigo binario, entonces dicho "codigo o programa en ejecucion en memoria" se convierte en un "proceso".
+
+Un unico programa puede crear muchos procesos cuando se "corre o ejecuta" dicho programa muchas veces. Por ejemplo, cuando se abre un file ".exe" o un file binario multiples veces, entonces multiples instancias comienzan y muchos procesos son creados
+
+Atributos o Caracteristicas de un proceso:
+-1)Process ID: Identificador unico de proceso. Este es asignado al proceso a traves del sistema operativo
+-2)Process State: Estado en el que se encuentra el procesos. Estos pueden ser: corriendo, listo, etc
+-3)CPU registers: Zonas de memoria interna del CPU destinadas al proceso. Estas zonas almacenan informacion del proceso mientras este esta dentro del CPU y liberan sus recursos cuando el proceso esta fuera del CPU
+-4)Informacion de cuenta: Info referida a la cantidad de CPU usada por el proceso durante la ejecucion. Muestra tambien los timepos limites, el ID de ejecucion, etc.
+-5)I/O informacion de estado: Info referida a dispositivos de entrada y salida que usa el proceso, archivos abiertos,etc
+-6)CPU informacion de schedulling: Info referida a la prioridad para correr un proceso respecto de otro y asignarle los time slots correspondientes
+
+Ademas un proceso posee un unico PCB(process control block) y todas las caracteristicas mencionadas son parte del PCB
+
+Estados de un proceso:
+
+-1) Nuevo(new):  Un proceso se encuentra en estado de creacion o ya esta creado como nuevo proceso.
+-2) Listo(ready): Luego de la creacion de un procesos, este pasa al estado "ready" por ejemplo para poder ser ejecutando
+-3) Correr(run): El proceso actual esta corriendo en la CPU. Solo un proceso a la vez puede correr en un "single processor"
+-4) Esperar(wait): El proceso se encuentra en estado de espera cuando este "pide" acceso a dispositivos I/O
+-5) Completado o terminado(complete or terminated): El proceso ha completado su ejecucion
+-6) Suspendido y listo(suspended y ready): Cuando la cola de procesos ready esta llena, entonces algunos procesos pasan al estado "suspended ready"
+-7) Suspendido y bloqueado(suspended block): Cuando la cola de procesos en estado de "suspended ready" se llena, entonces los procesos pasan a "suspended block"
+
+
+3) Dibuje un diagrama de bloques que permite comprender la interaccion entre un proceso cliente y servidor. El diagrama debe poder describir el funcionamiento del sistema. Detalle el funcionamiento de cada bloque.
+
+Detallamiento de la funcion o bloque del diagrama:
+
+Explicacion de interaccion entre un proceso clientev y un servidor:
+Tanto el cliente como el servidor deben crear un socket con la funcion socket() para poder comunicarse entre si. Luego se debe ejecutar bind() en el servidor obligatoriamente para poder darle un "nombre" al servidor, esto es, poder asignar y reservar un puerto logico concreto y conocido al servidor siendo que por dicho puerto se envien y reciban datos, asi como tambien asginarle al servidor, una direccion IP de red de la maquina local que funcionara como servidor. En cambio, en el cliente, bind() es opcional ya que sino se ejecuta, entonces el SO lo ejecuta automaticamente asignando un puerto libre al azar al cliente dandole asi su "nombre". Estos 2 pasos equivalen a "ABRIR EL CANAL DE COMUNICACION". Una vez creados los sockets cliente y servidor con sus respectivos "nombres", entonces se dice que el servidor ahora ejecuta listen() tal que su socket pueda recibir solicitudes de conexion de sockets clientes, esto es equivalente a "ESPERAR A RECIBIR SOLICITUDES". Despues de esto, el servidor llama a accept() quedandose ahora en estado de espera hasta que un cliente se conecte. Por otro lado, en el cliente se llama a connect() para intentar conectarse con el servidor. En dicho momento de intento de conexion, equivalente a "CONECTAR CON SERVIDOR", es cuando accept() recibe la solicitud de conexion, equivalente a "ACEPTAR PETICION", aceptandola y devolviendo asi un parametro que sera un nuevo identificador de socket asociado a un nuevo socket. Este nuevo socket es el que se usara para el intercambio de datos con el cliente que realizo dicha conexion. De esta manera se deja libre al socket original del servidor para poder seguir recibiendo solicitudes de conexion de otros clientes y pudiendo asi aceptarlas.
+
+Una vez establecida la conexion, se ejecutan las funciones send() y recv() tanto en servidor como cliente habiendo un flujo de datos bidereccional, esto es equivalente a "ENVIO Y RECEPCION DE DATOS" en cliente y servidor. Una vez que se realizo el intercambio de datos deseado, entonces se finaliza la comunicacion llamando a close() o shutdown(), esto es equivalente a "CERRAR CANAL DE COMUNICACION" tanto en cliente como servidor

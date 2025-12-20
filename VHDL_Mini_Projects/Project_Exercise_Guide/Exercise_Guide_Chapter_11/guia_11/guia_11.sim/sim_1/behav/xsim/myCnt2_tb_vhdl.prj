@@ -1,0 +1,8 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../guia_11.srcs/sources_1/new/myCnt2.vhd" \
+"../../../../guia_11.srcs/sources_1/new/myCntBinarioSimple.vhd" \
+"../../../../guia_11.srcs/sim_1/imports/guia_11_tb/myCnt2_tb.vhd" \
+
+# Do not sort compile order
+nosort

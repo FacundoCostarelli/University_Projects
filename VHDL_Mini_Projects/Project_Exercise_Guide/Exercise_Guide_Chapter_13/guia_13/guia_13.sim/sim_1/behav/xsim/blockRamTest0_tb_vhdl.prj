@@ -1,0 +1,7 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../guia_13.gen/sources_1/ip/blockRamTest0/blockRamTest0_sim_netlist.vhdl" \
+"../../../../guia_13.srcs/sim_1/imports/guia_13_tb/blockRamTest0_tb.vhd" \
+
+# Do not sort compile order
+nosort

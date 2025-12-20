@@ -1,0 +1,69 @@
+1)A)V..Porque un thread crea a otro thread pero siempre estando estos threads dentro del mismo proceso y por ende el proceso que se asocia con todos los threads, posee siempre el mismo process id. Por ejemplo, el main() es un thread y a partir de este se pueden crear otros threads siendo por ejemplo que haya un thread creado para una funcion llamada ej "work()". Pero todos estos threads estan dentro del mismo proceso y comparten algunos recursos de este proceso.
+
+1)B)V..Porque todos los threads comparten algunos recursos del proceso como la seccion de memoria DATA. En este lugar de memeoria se encuentran las variables globales, las variables NO automaticas creadas,  bloques de informacion creados  dinamicamente, etc. Tambien los threads comparten otros recursos como FILES, SIGNALS y CODE facilitando asi el intercambio de informacion entre los threads, el trabajo cooperativo entre los mismos, mejor perfomance y velocidad y reduccion en consumo de recursos de hardware de la maquina. Cabe destacar que, a su vez, cada thread tiene recursos propios como REGISTROS, PROGRAM COUNTER y STACK y dichos recursos son solamente usados por el thread que los consume..
+
+1)C)V..Porque un proceso hijo luego de finalizar puede entrar en estado Z(zombie), pero si desde el proceso padre se liberan los recursos correctamente del proceso hijo usando por ejempli exit(), entonces dicho proceso finaliza y ademas no entra en estado Z. Por otro lado, se puede "matar" a un proceso hijo a traves del proceso padre utilizando algun tipo de "Signal" como SIGKILL. En este caso, el proceso hijo "muere" siendo que finaliza y ademas no entra en estado Z.
+
+
+2)Explicacion de interaccion entre un proceso clientev y un servidor:
+Tanto el cliente como el servidor deben crear un socket con la funcion socket() para poder comunicarse entre si. Luego se debe ejecutar bind() en el servidor obligatoriamente para poder darle un "nombre" al servidor, esto es, poder asignar y reservar un puerto logico concreto y conocido al servidor siendo que por dicho puerto se envien y reciban datos, asi como tambien asginarle al servidor, una direccion IP de red de la maquina local que funcionara como servidor. En cambio, en el cliente, bind() es opcional ya que sino se ejecuta, entonces el SO lo ejecuta automaticamente asignando un puerto libre al azar al cliente dandole asi su "nombre". Estos 2 pasos equivalen a "ABRIR EL CANAL DE COMUNICACION". Una vez creados los sockets cliente y servidor con sus respectivos "nombres", entonces se dice que el servidor ahora ejecuta listen() tal que su socket pueda recibir solicitudes de conexion de sockets clientes, esto es equivalente a "ESPERAR A RECIBIR SOLICITUDES". Despues de esto, el servidor llama a accept() quedandose ahora en estado de espera hasta que un cliente se conecte. Por otro lado, en el cliente se llama a connect() para intentar conectarse con el servidor. En dicho momento de intento de conexion, equivalente a "CONECTAR CON SERVIDOR", es cuando accept() recibe la solicitud de conexion, equivalente a "ACEPTAR PETICION", aceptandola y devolviendo asi un parametro que sera un nuevo identificador de socket asociado a un nuevo socket. Este nuevo socket es el que se usara para el intercambio de datos con el cliente que realizo dicha conexion. De esta manera se deja libre al socket original del servidor para poder seguir recibiendo solicitudes de conexion de otros clientes y pudiendo asi aceptarlas.
+
+Una vez establecida la conexion, se ejecutan las funciones send() y recv() tanto en servidor como cliente habiendo un flujo de datos bidereccional, esto es equivalente a "ENVIO Y RECEPCION DE DATOS" en cliente y servidor. Una vez que se realizo el intercambio de datos deseado, entonces se finaliza la comunicacion llamando a close() o shutdown(), esto es equivalente a "CERRAR CANAL DE COMUNICACION" tanto en cliente como servidor.
+
+3)
+	Una unión ocupa lo que ocupa el mayor de sus elementos, una estructura generalmente ocupa la suma
+	de lo que ocupan sus elementos. Además, en una unión se puede acceder al mismo dato
+	llamándolo de distinta forma.
+	➢ Declaración:
+	○ union Un{
+	char U_letra;
+	char U_cadena[10];
+	} ;
+	○
+	struct Es{
+	char E_letra;
+	char E_cadena[10];
+	} ;
+	➢ Tamaños
+	○ union Un: 10Bytes
+	○ estructura Es: 11Bytes
+	➢ Ejemplo con nombres
+	○ Definición.
+	union Un U1;
+	struct Es E1;
+	○ Acceso
+	U1.U_letra
+	U1.Ucadena
+	E1.E_letra
+	E1.E_cadena
+	➢ Ejemplo con punteros
+	○ Definición.
+	union Un *PU;
+	struct Es *PE;
+	○ Asignación
+	PU=&U1;
+	PE=&E1;
+	○ Acceso
+	PU->U_letra
+	PU->Ucadena
+	PE->E_letra
+	PE->E_cadena
+
+
+Por otro lado un Campo de Bits es un conjunto contiguo de bits ubicado este en un espacio de memoria asignado por el Sistema Operativo. Este grupo de bits representara una "palabra de maquina". Los campos de bits se declaran, definen y se acceden a traves de estrcuturas o uniones. Se aplican los mismos conceptos mencionados en cuanto a definicion, accesso a campos por nombre y acceso a campos con punteros.
+Sin embargo, las principales diferencias se encuentran en "declaracion": Ej:
+
+- union UN{
+	unsigned int flag1 : 1;
+	unsigned int flag2 : 1;	
+};
+- struct ES{
+	unsigned int flag1 : 1;
+	unsigned int flag1 : 1;
+};
+
+El colocar " : 1 " luego de cada miembro de la estructura o union, implica que solamente dicho campo almacenara 1 bit de informacion. Ese valor podra ser 0 o 1. En forma general se puede colocar " : CTE " donde CTE es un valor constante como 1,2,3,4,5, etc el cual se asocia al "ancho del campo de bits". Entonces en tal caso de ej se tendria un miembro como  " unsigned int flag: 5; " lo que implica que la informacion del campo flag solamente puede ser representado con 5 bits de todos los bits que representarian normalmente un dato "unsigned int"
+Otras caracteristicas no menores son: se pueden realizar operaciones aritmeticas con los campos de bits, los campos de bits se asignan de izquierda a derecha o viceversa segun la maquina, algunas computadoras permiten que los campos de bits excedan el limite de una palabra y otras no, los campos de bits son generalmente declarados como enteros o variantes de enteros(int, unsigned int, etc), se suele usar uniones para trabajar con campos de bits, los campos de bits no son arrays ni punteros, no se puede trabajar con bits individuales ni con la direccion de cada bit ni con la direccion del campo de bit ya que el operador "&" no se puede usar, la cantidad de bits del campo de bits asociada a un miembro no puede superar a la cantidad de bits maxima que representa el tipo de dato asociado, el ancho del campo de bits puede ser como maximo 64 o 32 segun la arquitectura dee la maquina
+Finalmente, cabe mencionar, que el tamanio de una structura o union con campo de bits, sera el mismo tamanio que el tipo de dato mas grande asociado a algun campo de bits pero a su vez dependera del tamanio de palabra de maquina y de si hay huecos o mismo de si se producen saltos de palabra de maquina, rellenos de bits, etc. 
+ 
+

@@ -1,0 +1,7 @@
+Running: xsim.dir/conversorBinarioGray_tb_behav/xsimk.exe -simmode gui -wdb conversorBinarioGray_tb_behav.wdb -simrunnum 0 -socket 50425
+Design successfully loaded
+Design Loading Memory Usage: 27180 KB (Peak: 27180 KB)
+Design Loading CPU Usage: 921 ms
+Simulation completed
+Simulation Memory Usage: 27892 KB (Peak: 27892 KB)
+Simulation CPU Usage: 1000 ms

@@ -1,0 +1,66 @@
+Respuestas Teoricas
+
+Punto 1) Si la máquina se llama INFO-UX, la fecha del equipo es 15-MAY-2021, el usuario conectado
+en el equipo es Luis Aceto (ID de usuario LACETO) y el directorio en el que se encuentra en ese
+momento es INFO_1/Clase2 dentro del directorio personal, ¿cuál es el prompt que mostrará en la
+consola? (Se considera el prompt que configura el Sistema Operativo por defecto). Seleccione una
+opción:
+
+A.INFO-UX:/home/LACETO/INFO_1/Clase2$
+B.Luis.Aceto@INFO-UX:/home/Luis.Aceto/INFO_1/Clase2$
+C.Luis.Aceto@INFO-UX:~/INFO_1/Clase2$
+D.LACETO@INFO-UX:~/INFO_1/Clase2$
+E.2021-05-15@INFO-UX:~/INFO_1/Clase2$
+F.INFO-UX@LACETO:~/INFO_1/Clase2$
+G.Ninguna es correcta.
+
+RTAS: A)F, B)F, C)F, D)V, E)F, F)F, G)F
+
+Punto 2) Indique cuáles de las siguientes afirmaciones son verdaderas:
+
+A. Linux maneja los dispositivos como si fueran un archivo y el encargado de hacerlo para cada
+dispositivo es el device driver o controlador del dispositivo.
+B. Una desventaja del método de complemento a 1 para la representación de números signados
+es que tengo un doble cero.
+C. Todos los procesos tienen un solo proceso padre y pueden ser padres de un solo proceso
+hijos a la vez. Si quiero tener un segundo proceso hijo, debo esperar a que finalice el primero
+con la función wait.
+D. Para generar un ejecutable a partir de un archivo fuente en C debo realizar dos pasos. El
+primero es la compilación y el segundo es el linkeo o enlace.
+E. Para generar un programa en C puedo usar un procesador de texto como el word si me
+aseguro de no ponerle ningún formato como cambio de tamaño de letra o negrita.
+F. Los archivos en Linux manejan tres grupos de permisos, los correspondientes al dueño, a un
+grupo y al resto de los usuarios.
+G. No se puede establecer una conexión a través de un socket si ambos procesos se ejecutan
+en la misma máquina.
+H. El sistema de numeración está definido por la cantidad de símbolos que utiliza. Esta cantidad
+se llama BASE.
+I. El named pipe o FIFO es un método de IPC que permite vincular dos procesos que se
+ejecuten en la misma máquina aunque no estén relacionados como padre-hijo.
+J. La ventaja de trabajar con el sistema HEXADECIMAL es que la conversión desde binario es
+directa a partir de la agrupación de tres dígitos binarios.
+K. En el caso de Linux, la interfaz gráfica la puedo cambiar e incluso eliminarla.
+L. Los procesos se identifican con un número, y una vez que se asignó el número mayor, hay
+que reiniciar el equipo para volver el contador a 0.
+M. Si la máquina tiene la suficiente capacidad, puedo tener dos Sistemas Operativos controlando
+el hardware simultáneamente.
+N. El Sistema Operativo se conecta con el hardware a través de las system calls.
+O. En una conexión vía Socket, cuando un proceso servidor quiere aceptar la comunicación con
+un cliente, debe usar la función connect.
+
+
+RTAS: A)V, B)V, C)F, D)V, E)F, F)V, G)F, H)V, I)V, J)F, K)V, L)F, M)F, N)V, O)F
+
+Punto 3) ¿A que se denomina Kernel de un sistema operativo Linux? Seleccione una opción:
+
+
+A. A la interfaz que permite al usuario ingresar comandos.
+B. A la lista de comandos externos que pueden ser ejecutados por el sistema operativo.
+C. Al conjunto de programas que constituyen el Sistema Operativo propiamente dicho y a su
+correspondiente implementación de las System Calls.
+D. Al conjunto de políticas que definen la manera en que se almacenan los archivos en el disco
+rígido.
+E. Ninguna es correcta.
+
+RTAS: 
+A)F, B)F, C)V, D)F, E)F 

@@ -1,0 +1,36 @@
+1)Un thread es la minima unidad de flujo de instrucciones que tiene un programa y que a su vez es planificado por el kernel a traves del shceduler. Es decir, un conjunto o flujo de isntrucciones como el que sigue seria un ejemplo de thread.
+
+int a,b;
+a = 10;
+b = 20;
+suma = a + b;
+
+ En general un thread se lo asocia a una funcion, como por ejemplo con la funcion main(). Cualquier programa tiene al menos un thread, y en tal caso de tener procesos con un solo thread, este sera el asociado al flujo de instrucciones dado por main(). En otro caso, los threads pueden asociarse a varias funciones diferentes o iguales. Ej:
+
+ void work()
+ {
+    printf("Esta funcion se asocia a un thread\n");
+ }
+
+*//////////*Agregado rta 1)
+Se puede decir de forma mejor que un thread es un flujo de instrucciones que puede correr de manera independiente respecto a otros flujos de instrucciones o threads.
+Un thread es tambien la unidad basica de scheduling
+
+EL thread mas basico y obligatorio que existe es el thread main(). Los threads comparten algunos recursos del proceso como FILES,SIGNAL,DATA y CODE. Pero poseen recursos propios como PC, STACK, REG. Entre threads pueden trabajar cooperativamente y tener un flujo de informacion de entre ellos debido a que comparten algunos recursos del proceso
+
+Puede suceder que los threads se ejecuten en forma concurrente o en paralelo. 
+El 1er caso corresponde a la ejecucion de varios threads en un single core tal que virtualmente se estan ejecutando todos al mismo tiempo pero fisicamente se estan ejecutando los thread de uno a la vez con intercalacion entre threads y respectivos time slots para cada thread. Esto nos permite tener un proceso con mas de 1 thread y una mejora importane en la velocidad y performance
+ El 2do caso corresponde a la ejecucion de distintos threads repartidos en 2 o mas cores tal que se ejecutan al mismo tiempo. A su vez cada core tendra ejecucion en simultaneo o concurrencia. Ademas, cada thread tiene una planificacion diferente segun el scheduler tal que un thread se ejecuta en 1 core mientras que otro thread se ejecuta en otro core o tal que un thread se ejecuta en varios cores al mismo tiempo.
+ 
+  
+
+ 2)Para poder interconectar 2 procesos en distintos servidores, se necesitan de 2 parametros para cada uno de ellos:
+ - Direccion IP: Es decir, la direccion en la red de la maquina.
+ - Numero de puerto: Puerto logico de la maquina por el cual se intercambian datos y donde dicho puerto estara asociado al proceso que se quiere interconectar respecto al resto de procesos de la maquina.
+
+ 3)El SO lo sabe a traves de saber el puerto logico en el servidor
+
+ 4)El proposito es habilitar el socket servidor para poder recibir solicitudes de conexion de clientes las cuales quedaran en una cola de espera hasta que accept() las vaya aceptando.
+
+ 5)SIGKILL: Al invocar esta SIGNAL se ordena eliminar la ejecucion del proceso indicado tal que termina con este de forma inmediata sin dejarlo terminar su ejecucion normal.
+   SIGTERM: Al invocar esta SIGNAL se pide finalizar de forma prioritaria la ejecucion del proceso indicado tal que termina de forma normal y correcta sin interrumpir lo que se venia ejecutandose respecto al proceso indicado.

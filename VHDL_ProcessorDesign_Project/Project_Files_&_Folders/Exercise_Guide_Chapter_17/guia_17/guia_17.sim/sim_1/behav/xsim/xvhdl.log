@@ -1,0 +1,28 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/imports/new/SckRisingAndFallingEdgeDetector.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'SckRisingAndFallingEdgeDetector'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/new/alu.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'alu'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/new/microIO.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'microIO'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/imports/new/myCnt.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'myCnt'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/new/myCntBinarioPl.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'myCntBinarioPl'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/imports/new/myShiftReg.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'myShiftReg'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/imports/new/myShiftReg_dir.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'myShiftReg_dir'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/imports/new/mySingleModuleCnt.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'mySingleModuleCnt'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/new/pc.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'pc'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/new/portIO.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'portIO'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/new/uart.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'uart'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/new/uartRx.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'uartRx'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/new/uartTx.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'uartTx'
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/Facun/Desktop/TD1_TPS_Locales/Exercise_Guide_Chapter_17/guia_17/guia_17.srcs/sources_1/new/uc.vhd" into library xil_defaultlib
+INFO: [VRFC 10-3107] analyzing entity 'uc'

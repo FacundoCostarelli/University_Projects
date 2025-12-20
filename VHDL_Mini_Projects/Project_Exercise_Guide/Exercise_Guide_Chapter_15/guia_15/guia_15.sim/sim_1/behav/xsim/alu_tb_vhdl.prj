@@ -1,0 +1,14 @@
+# compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../guia_15.srcs/sources_1/new/Restador_N_Bits_Bin_Bout.vhd" \
+"../../../../guia_15.srcs/sources_1/new/SumadorRestador_N_Bits_SignedUnsigned_CinCoutOverflow.vhd" \
+"../../../../guia_15.srcs/sources_1/new/Sumador_N_Bits_Cin_Cout.vhd" \
+"../../../../guia_15.srcs/sources_1/new/alu.vhd" \
+"../../../../guia_15.srcs/sources_1/new/miniAlu.vhd" \
+"../../../../guia_15.srcs/sources_1/new/myFFDRE.vhd" \
+"../../../../guia_15.srcs/sources_1/new/myFFDREN.vhd" \
+"../../../../guia_15.srcs/sources_1/new/rot.vhd" \
+"../../../../guia_15.srcs/sim_1/new/alu_tb.vhd" \
+
+# Do not sort compile order
+nosort
