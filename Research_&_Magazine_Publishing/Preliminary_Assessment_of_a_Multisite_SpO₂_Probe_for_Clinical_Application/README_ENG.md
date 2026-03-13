@@ -1,9 +1,9 @@
 # Preliminary Assessment of a Multisite SpO₂ Probe for Clinical Application (nFISIO)
 
-[![DOI](https://doi.org/10.1007/978-3-032-06401-1_33)](https://doi.org/insert_doi_here)
-[![Print ISBN](978-3-032-06400-4)](#)
-[![Online ISBN](978-3-032-06401-1)](#)
-[![Conference](https://sabi.org.ar/congresos/)](#)
+[![DOI](https://img.shields.io/badge/DOI-Insert_DOI_Here-blue.svg)](https://doi.org/10.1007/978-3-032-06401-1_33)
+[![Print ISBN](https://img.shields.io/badge/ISBN-Insert_ISBN_Here-lightgrey.svg)](#978-3-032-06400-4)
+[![Online ISBN](https://img.shields.io/badge/ISBN-Insert_ISBN_Here-lightgrey.svg)](#978-3-032-06401-1)
+[![Conference](https://img.shields.io/badge/Congress-SABI_2025-success.svg)]([#978-3-032-06401-1](https://sabi.org.ar/congresos/))
 
 🎥 **[Watch the SABI 2025 Presentation Video on YouTube](https://www.youtube.com/watch?v=1K4XcBGGPJE)**
 
