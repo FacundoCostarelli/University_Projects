@@ -1,9 +1,9 @@
 # Evaluación Preliminar de una Sonda SpO₂ Multisitio para Aplicación Clínica (nFISIO)
 
-[![DOI](https://doi.org/10.1007/978-3-032-06401-1_33)](https://doi.org/10.1007/978-3-032-06401-1_33)
-[![Print ISBN](978-3-032-06400-4)](#)
-[![Online ISBN](978-3-032-06401-1)](#)
-[![Congreso](https://sabi.org.ar/congresos/)](#)
+[![DOI](https://img.shields.io/badge/DOI-10.1007%2F978--3--032--06401--1__33-blue.svg)](https://doi.org/10.1007/978-3-032-06401-1_33)
+[![Print ISBN](https://img.shields.io/badge/Print_ISBN-978--3--032--06400--4-lightgrey.svg)](#978-3-032-06400-4)
+[![Online ISBN](https://img.shields.io/badge/Online_ISBN-978--3--032--06401--1-lightgrey.svg)](#978-3-032-06401-1)
+[![Conference](https://img.shields.io/badge/Congress-SABI_2025-success.svg)](https://sabi.org.ar/congresos/)
 
 🎥 **[Mirá el video de la presentación en el SABI 2025 en YouTube](https://www.youtube.com/watch?v=1K4XcBGGPJE)**
 
