@@ -1,8 +1,30 @@
-//Asumo que string de entrada viene con todas MASYUSCULAS
-//Asumo que string de salida tiene espacio suficiente para almacenar la nueva encriptacion
-//Recibo un *src que apunta a la direccion de comienzo de un array de chars de origen
-//Recibo un *dst que apunta a la direccion de comienzo de un array de chars de destino
+/**
+ * ==========================================================================
+ * string_encrypt.c — String Encryption Functions
+ * ==========================================================================
+ * [ESP] Funciones de encriptación de strings:
+ *       - encriptar_letras: encripta letras mayúsculas con un
+ *         desplazamiento alfabético aleatorio (estilo cifrado César).
+ *       - encriptar_numeros: convierte dígitos decimales a octal y
+ *         reemplaza cada dígito octal con un símbolo especial.
+ *       - aleatorio_en_rango: genera un número aleatorio en un rango dado.
+ *
+ * [ENG] String encryption functions:
+ *       - encriptar_letras: encrypts uppercase letters with a random
+ *         alphabetical shift (Caesar cipher style).
+ *       - encriptar_numeros: converts decimal digits to octal and
+ *         replaces each octal digit with a special symbol.
+ *       - aleatorio_en_rango: generates a random number within a range.
+ *
+ * Materia / Subject: Informática 1 — UTNBA (2022)
+ * Autor / Author:    Facundo Costarelli
+ * ==========================================================================
+ */
 
+// [ESP] Supuestos: el string de entrada viene todo en MAYÚSCULAS.
+//       El string de salida tiene espacio suficiente para la encriptación.
+// [ENG] Assumptions: input string is all UPPERCASE.
+//       Output string has enough space for the encrypted result.
 /*Funcion que encripta strings de letras MAYUSCULAS sin modificar los strings numericos intermedios. Escribe dicha encriptacion en un   array de salida que puede ser auxiliar o no. La encriptacion se basa en un desplazamiento alfabetico aleatorio para cada caracter*/  
 /*Recibe un string de entrada "char *src" y un string de salida "char *dst"*/
 /*Esta funcion devuelve el valor de desplazamiento alfabetico*/

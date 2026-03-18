@@ -1,9 +1,28 @@
-/***Función que reciba un string correspondiente a un nombre de archivo, busca el
-último punto a la derecha y devuelve un string que corresponda al nombre original, agregada alguna frase ej
-“_decrypt” y la extensión original.***/
-//Ejemplo: Recibe el nombre "texto.txt" y debe retornar "texto_decrypt.txt"
-//Si el nombre no contiene punto, la frase se agregará al final y quedará sin punto.
-//El buffer_frase contiene en este ejemplo a _decrypt
+/**
+ * ==========================================================================
+ * file_rename.c — Filename Modifier with Suffix Insertion
+ * ==========================================================================
+ * [ESP] Función que recibe un nombre de archivo, busca el último punto
+ *       a la derecha y devuelve un nuevo nombre con una frase adicional
+ *       (ej: "_decrypt") insertada antes de la extensión original.
+ *       Ejemplo: "texto.txt" → "texto_decrypt.txt"
+ *
+ * [ENG] Function that receives a filename, finds the last dot on the right,
+ *       and returns a new name with an additional phrase (e.g., "_decrypt")
+ *       inserted before the original extension.
+ *       Example: "texto.txt" → "texto_decrypt.txt"
+ *
+ * Materia / Subject: Informática 1 — UTNBA (2022)
+ * Autor / Author:    Facundo Costarelli
+ * ==========================================================================
+ */
+
+// [ESP] Ejemplo: Recibe "texto.txt" y retorna "texto_decrypt.txt"
+// [ENG] Example: Receives "texto.txt" and returns "texto_decrypt.txt"
+// [ESP] Si el nombre no contiene punto, la frase se agrega al final.
+// [ENG] If the name has no dot, the phrase is appended at the end.
+// [ESP] buffer_frase contiene en este ejemplo "_decrypt"
+// [ENG] buffer_frase contains "_decrypt" in this example
 int ModificarNombreFileIn(char *Nombre_Archivo_In, char *Nombre_Archivo_Out)
 {
     size_t i = 0, j = 0;
@@ -15,7 +34,8 @@ int ModificarNombreFileIn(char *Nombre_Archivo_In, char *Nombre_Archivo_Out)
 
     if(flag == 1)
     {
-        //Inicializo los buffers con todos 0
+        // [ESP] Inicializo los buffers con todos 0
+        // [ENG] Initialize buffers with all zeros
         memset(buffer_nombre,'\0',sizeof(buffer_nombre));
         memset(buffer_extension,'\0',sizeof(buffer_extension));
         //memset(buffer_frase,'\0',sizeof(buffer_frase));
@@ -26,14 +46,16 @@ int ModificarNombreFileIn(char *Nombre_Archivo_In, char *Nombre_Archivo_Out)
 
     if(flag == EXITO )
     {
-        //Guardo el nombre del archivo In en un buffer hasta encontrar el "." en el nombre
+        // [ESP] Guardo el nombre del archivo In en un buffer hasta encontrar el "."
+        // [ENG] Store the input filename in a buffer until the "." is found
         for( i = 0; Nombre_Archivo_In[i] != '.'; i++ )
             buffer_nombre[i] = Nombre_Archivo_In[i];
 
 
        //printf("largo de la extension %lu\n",strlen(Nombre_Archivo_In+i));
 
-        //Guardo la extension en un buffer
+        // [ESP] Guardo la extensión en un buffer
+        // [ENG] Store the extension in a buffer
         for( j = 0; Nombre_Archivo_In[i] != '\0'; j++, i++ )
             buffer_extension[j] = Nombre_Archivo_In[i];
 
@@ -46,19 +68,24 @@ int ModificarNombreFileIn(char *Nombre_Archivo_In, char *Nombre_Archivo_Out)
 
     if( flag == EXITO )
     {
-        //Guardo en el array de salida el nuevo nombre con la nueva frase adicional y la extension original
+        // [ESP] Guardo en el array de salida el nuevo nombre completo
+        // [ENG] Store the complete new name in the output array
 
-        //Guardo nombre original en array de salida
+        // [ESP] Guardo nombre original en array de salida
+        // [ENG] Store original name in output array
         for( i = 0; i < strlen(buffer_nombre); i++ )
             Nombre_Archivo_Out[i] = buffer_nombre[i];
-        //Guardo frase concatenandola en array de salida
+        // [ESP] Guardo frase concatenándola en array de salida
+        // [ENG] Concatenate phrase into output array
         for( j = 0; j < strlen(buffer_frase); j++, i++ )
             Nombre_Archivo_Out[i] = buffer_frase[j];
-        //Guardo extension original concatenandola en array de salida
+        // [ESP] Guardo extensión original concatenándola en array de salida
+        // [ENG] Concatenate original extension into output array
         for( j = 0; j < strlen(buffer_extension); j++,i++ )
             Nombre_Archivo_Out[i] = buffer_extension[j];
 
-        //Guardo el caracter null como ultimo elemento para indicar fin de cadena
+        // [ESP] Guardo el carácter null como último elemento para indicar fin de cadena
+        // [ENG] Append null character as last element to indicate end of string
         Nombre_Archivo_Out[i] = '\0';
 
         flag = EXITO;

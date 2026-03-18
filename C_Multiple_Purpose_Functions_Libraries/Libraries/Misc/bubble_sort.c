@@ -1,3 +1,18 @@
+/**
+ * ==========================================================================
+ * bubble_sort.c — Generic Bubble Sort (void* Version)
+ * ==========================================================================
+ * [ESP] Implementación de ordenamiento burbuja ascendente usando void*.
+ *       Incluye driver de prueba que solicita 5 valores por teclado.
+ *
+ * [ENG] Ascending bubble sort implementation using void*.
+ *       Includes test driver that prompts for 5 keyboard values.
+ *
+ * Materia / Subject: Informática 1 — UTNBA (2022)
+ * Autor / Author:    Facundo Costarelli
+ * ==========================================================================
+ */
+
 #include <stdio.h>
 
 

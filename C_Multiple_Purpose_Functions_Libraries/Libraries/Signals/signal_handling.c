@@ -1,4 +1,27 @@
-/***************ALGORITMO SIMPLE PARA EL MANEJO DE SENALES PARA SALIR DE UN LOOP INFINITO POR TEMPORIZADOR*****************/
+/**
+ * ==========================================================================
+ * signal_handling.c — Signal Handling Algorithms (Simple & Complex)
+ * ==========================================================================
+ * [ESP] Algoritmos para manejo de señales POSIX:
+ *       - Simple: usa signal() + alarm() para salir de un loop infinito
+ *         por temporizador con SIGALRM.
+ *       - Complejo: usa sigaction() + select() para salir del loop
+ *         por teclado o por señal SIGUSR1, combinando monitoreo de
+ *         stdin con un temporizador.
+ *
+ * [ENG] POSIX signal handling algorithms:
+ *       - Simple: uses signal() + alarm() to exit an infinite loop
+ *         via timer with SIGALRM.
+ *       - Complex: uses sigaction() + select() to exit the loop
+ *         via keyboard or SIGUSR1 signal, combining stdin monitoring
+ *         with a timer.
+ *
+ * Materia / Subject: Informática 1 — UTNBA (2022)
+ * Autor / Author:    Facundo Costarelli
+ * ==========================================================================
+ */
+
+
 #define TEMPORIZADOR 30 //30 o cualquier otro valor, esto es en segundos
 #define TRUE 1
 #define FALSE 0

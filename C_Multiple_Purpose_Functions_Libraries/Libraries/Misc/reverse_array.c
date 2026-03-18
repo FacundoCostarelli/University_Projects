@@ -1,3 +1,18 @@
+/**
+ * ==========================================================================
+ * reverse_array.c — Integer Array Reversal Function
+ * ==========================================================================
+ * [ESP] Función que invierte el orden de los elementos de un array de enteros.
+ *       Incluye un programa driver de prueba.
+ *
+ * [ENG] Function that reverses the order of elements in an integer array.
+ *       Includes a test driver program.
+ *
+ * Materia / Subject: Informática 1 — UTNBA (2022)
+ * Autor / Author:    Facundo Costarelli
+ * ==========================================================================
+ */
+
 void Revertir_Int_Array(int *Array, int length)
 {
     int i = 0;

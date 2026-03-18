@@ -1,3 +1,19 @@
+/**
+ * ==========================================================================
+ * file_copy.c — Copy Source File Without Comment Lines
+ * ==========================================================================
+ * [ESP] Algoritmo que copia un archivo fuente .c eliminando las líneas
+ *       de comentarios (// y /* ... *​/). Lee carácter a carácter y
+ *       detecta las secuencias de comentarios para omitirlas.
+ *
+ * [ENG] Algorithm that copies a .c source file while removing comment
+ *       lines (// and /* ... *​/). Reads character by character and
+ *       detects comment sequences to skip them.
+ *
+ * Materia / Subject: Informática 1 — UTNBA (2022)
+ * Autor / Author:    Facundo Costarelli
+ * ==========================================================================
+ */
 
 /************************ALGORITMO PARA COPIAR UN ARHCIVO FUENTE.C SIN LAS LINEAS DE COMENTARIOS**************************/
 

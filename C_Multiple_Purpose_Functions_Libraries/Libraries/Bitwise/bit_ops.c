@@ -1,3 +1,23 @@
+/**
+ * ==========================================================================
+ * bit_ops.c — Bitwise Operation Utilities
+ * ==========================================================================
+ * [ESP] Funciones utilitarias para operaciones a nivel de bits:
+ *       - PrintBits: imprime la representación binaria y hexadecimal
+ *       - GetBit: obtiene el valor de un bit específico
+ *       - SetBit: establece un bit en ON u OFF
+ *       - SetToggle: invierte (toggle) el valor de un bit
+ *
+ * [ENG] Utility functions for bitwise operations:
+ *       - PrintBits: prints binary and hexadecimal representation
+ *       - GetBit: retrieves the value of a specific bit
+ *       - SetBit: sets a bit to ON or OFF
+ *       - SetToggle: toggles (inverts) the value of a bit
+ *
+ * Materia / Subject: Informática 1 — UTNBA (2022)
+ * Autor / Author:    Facundo Costarelli
+ * ==========================================================================
+ */
 
 #include<stdio.h>
 #define ON 1

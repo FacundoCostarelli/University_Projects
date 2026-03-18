@@ -1,3 +1,22 @@
+/**
+ * ==========================================================================
+ * bin_file_rw.c — Binary File Write Template with Structs
+ * ==========================================================================
+ * [ESP] Plantilla de ejemplo para crear y escribir un archivo binario
+ *       con datos de estructuras predefinidas usando fwrite().
+ *       Demuestra apertura en modo "wb", escritura de múltiples
+ *       registros y cierre del archivo.
+ *
+ * [ENG] Template example for creating and writing a binary file
+ *       with predefined struct data using fwrite().
+ *       Demonstrates opening in "wb" mode, writing multiple
+ *       records, and closing the file.
+ *
+ * Materia / Subject: Informática 1 — UTNBA (2022)
+ * Autor / Author:    Facundo Costarelli
+ * ==========================================================================
+ */
+
 #include<stdio.h>
 
 typedef /*<struct data>*/

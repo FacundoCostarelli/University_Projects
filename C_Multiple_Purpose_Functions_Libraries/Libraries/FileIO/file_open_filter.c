@@ -1,3 +1,26 @@
+/**
+ * ==========================================================================
+ * file_open_filter.c — File I/O, Struct Filtering & Linked List Patterns
+ * ==========================================================================
+ * [ESP] Colección de algoritmos/plantillas reutilizables para:
+ *       - Manejo de señales para salir de loops (SIGINT)
+ *       - Apertura de archivos binarios + lectura de estructuras en memoria
+ *       - Filtrado de estructuras por campo con listas simplemente enlazadas
+ *       - Implementación de PILA y COLA con listas simplemente enlazadas
+ *       - Funciones de alocación, enlazamiento, impresión y liberación
+ *
+ * [ENG] Collection of reusable algorithm/template patterns for:
+ *       - Signal handling to exit loops (SIGINT)
+ *       - Binary file opening + reading structs into memory
+ *       - Struct field filtering with singly linked lists
+ *       - Stack and Queue implementation with singly linked lists
+ *       - Allocation, linking, printing, and freeing functions
+ *
+ * Materia / Subject: Informática 1 — UTNBA (2022)
+ * Autor / Author:    Facundo Costarelli
+ * ==========================================================================
+ */
+
 /*ALGORITMO PARA TERMINAR EXITOSAMENE UN PROGRAMA EN LOOP CON SIGNAL DEL SHELL*/
     volatile sig_atomic_t stop;
     

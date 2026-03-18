@@ -1,3 +1,26 @@
+/**
+ * ==========================================================================
+ * doubly_linked.c — Doubly Linked List with Sorted Insertion
+ * ==========================================================================
+ * [ESP] Implementación de una lista doblemente enlazada con inserción
+ *       ordenada por DNI (de mayor a menor). Incluye funciones para:
+ *       - Insertar nodos (al inicio, final, o medio según el valor del DNI)
+ *       - Mostrar la lista en sentido directo e inverso
+ *       - Generar datos de prueba (struct info)
+ *       - Liberar todos los recursos de memoria dinámica
+ *
+ * [ENG] Implementation of a doubly linked list with sorted insertion
+ *       by DNI (largest to smallest). Includes functions for:
+ *       - Inserting nodes (at beginning, end, or middle depending on DNI value)
+ *       - Displaying the list in forward and reverse order
+ *       - Generating test data (struct info)
+ *       - Freeing all dynamic memory resources
+ *
+ * Materia / Subject: Informática 1 — UTNBA (2022)
+ * Autor / Author:    Facundo Costarelli
+ * ==========================================================================
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>

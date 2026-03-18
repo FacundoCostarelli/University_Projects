@@ -1,3 +1,28 @@
+/**
+ * ==========================================================================
+ * matrix_ops.c — Dynamic Matrix Operations Program
+ * ==========================================================================
+ * [ESP] Programa completo de operaciones matriciales con memoria dinámica.
+ *       Permite crear matrices dinámicamente, almacenarlas en un vector de
+ *       punteros triples, y realizar operaciones como suma y multiplicación.
+ *       Incluye un menú interactivo con las siguientes opciones:
+ *       1) Crear una matriz   2) Sumar matrices   3) Restar matrices
+ *       4) Multiplicar matrices   5) Reemplazar matrices   6) Salir
+ *       Todas las matrices se crean y liberan usando memoria dinámica.
+ *
+ * [ENG] Full matrix operations program using dynamic memory allocation.
+ *       Allows creating matrices dynamically, storing them in a triple
+ *       pointer vector, and performing operations like addition and
+ *       multiplication. Includes an interactive menu with options:
+ *       1) Create matrix   2) Add matrices   3) Subtract matrices
+ *       4) Multiply matrices   5) Replace matrices   6) Exit
+ *       All matrices are created and freed using dynamic memory.
+ *
+ * Materia / Subject: Informática 1 — UTNBA (2022)
+ * Autor / Author:    Facundo Costarelli
+ * ==========================================================================
+ */
+
 #include<stdio.h>
 #include<stdlib.h>
 #include <stdio_ext.h>

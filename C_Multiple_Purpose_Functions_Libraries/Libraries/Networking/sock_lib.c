@@ -1,3 +1,22 @@
+/**
+ * ==========================================================================
+ * sock_lib.c — TCP Socket Library (Implementation)
+ * ==========================================================================
+ * [ESP] Implementación de funciones de red TCP:
+ *       - conectar: establece conexión TCP con un servidor remoto
+ *       - Open_conection: crea y configura un socket servidor (bind + listen)
+ *       - Aceptar_pedidos: acepta una conexión entrante de un cliente
+ *
+ * [ENG] Implementation of TCP networking functions:
+ *       - conectar: establishes a TCP connection to a remote server
+ *       - Open_conection: creates and configures a server socket (bind + listen)
+ *       - Aceptar_pedidos: accepts an incoming client connection
+ *
+ * Materia / Subject: Informática 1 — UTNBA (2022)
+ * Autor / Author:    Facundo Costarelli
+ * ==========================================================================
+ */
+
 #include "sock-lib.h"
 
 

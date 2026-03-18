@@ -1,5 +1,26 @@
+/**
+ * ==========================================================================
+ * itostr_strtol.c — Integer ↔ String Conversion Functions
+ * ==========================================================================
+ * [ESP] Funciones y algoritmos para conversión entre enteros y strings:
+ *       - Uso de strtol() para convertir cadenas numéricas a enteros
+ *       - Uso de sprintf() para convertir enteros a cadenas en otra base
+ *       - IntToAnString: convierte un entero a formato string en base
+ *         2, 8, 10 o 16
+ *       - revertir: invierte el orden de caracteres de un string
+ *
+ * [ENG] Functions and algorithms for integer ↔ string conversion:
+ *       - Using strtol() to convert numeric strings to integers
+ *       - Using sprintf() to convert integers to strings in another base
+ *       - IntToAnString: converts an integer to string format in base
+ *         2, 8, 10, or 16
+ *       - revertir: reverses the character order of a string
+ *
+ * Materia / Subject: Informática 1 — UTNBA (2022)
+ * Autor / Author:    Facundo Costarelli
+ * ==========================================================================
+ */
 
-/*****************ALGORITMO PARA CONVERTIR UN CADENA DE CARACTERES NUMERICA EN UN VALOR ENTERO EN ALGUNA BASE Y DICHO VALOR ENTERO CAMBIARLO DE BASE NUEVAMENTE Y RE-CONVERTIRLO A FOMRATO STRING******************/
 
 /*PRIMERA PARTE-PRIMERA PARTE-PRIMERA PARTE-PRIMERA PARTE-PRIMERA PARTE-PRIMERA PARTE-PRIMERA PARTE-*/
 

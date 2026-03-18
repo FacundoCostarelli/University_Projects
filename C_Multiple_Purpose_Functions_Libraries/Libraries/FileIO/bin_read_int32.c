@@ -1,3 +1,22 @@
+/**
+ * ==========================================================================
+ * bin_read_int32.c — Binary File Reader for 32-bit Integers
+ * ==========================================================================
+ * [ESP] Función que lee un archivo binario de enteros de 4 bytes cuyo
+ *       largo es desconocido. Calcula la cantidad de enteros a partir
+ *       del tamaño del archivo, aloca un buffer dinámico y devuelve
+ *       los datos por referencia.
+ *
+ * [ENG] Function that reads a binary file of 4-byte integers whose
+ *       length is unknown. Calculates the number of integers from the
+ *       file size, allocates a dynamic buffer, and returns the data
+ *       by reference.
+ *
+ * Materia / Subject: Informática 1 — UTNBA (2022)
+ * Autor / Author:    Facundo Costarelli
+ * ==========================================================================
+ */
+
 /*****Función que recibe el nombre de un archivo. El archivo es del tipo binario y
 contiene una sucesión de números enteros de 4 bytes. No se conoce previamente su longitud.
 La función lee el archivo número por número y guarda los valores en un buffer dinamico de

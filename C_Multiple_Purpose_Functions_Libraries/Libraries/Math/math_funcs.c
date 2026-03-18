@@ -1,3 +1,23 @@
+/**
+ * ==========================================================================
+ * math_funcs.c — Mathematical Functions (without math.h)
+ * ==========================================================================
+ * [ESP] Funciones matemáticas personalizadas sin usar math.h.
+ *       Incluye una función de composición de funciones f(g(x)) que
+ *       calcula y almacena los pares (x, y) en un array 2D dinámico.
+ *       Recibe punteros a función como parámetros para generalizar
+ *       la composición.
+ *
+ * [ENG] Custom mathematical functions without math.h.
+ *       Includes a function composition f(g(x)) that calculates and
+ *       stores (x, y) pairs in a dynamic 2D array. Receives function
+ *       pointers as parameters to generalize the composition.
+ *
+ * Materia / Subject: Informática 1 — UTNBA (2022)
+ * Autor / Author:    Facundo Costarelli
+ * ==========================================================================
+ */
+
 /*Funciones matematicas para no utilizar math.h*/
 
 

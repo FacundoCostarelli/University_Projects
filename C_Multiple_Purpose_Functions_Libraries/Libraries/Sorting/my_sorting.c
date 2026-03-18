@@ -1,50 +1,73 @@
-#include"Mis_OrdenamientoFunciones.h"
+/**
+ * ==========================================================================
+ * my_sorting.c — Custom Sorting Functions Library (Implementation)
+ * ==========================================================================
+ * [ESP] Implementación del algoritmo de ordenamiento burbuja optimizado
+ *       para arrays de enteros. Incluye versiones ascendente y descendente.
+ *       Usa una bandera de intercambio para evitar iteraciones innecesarias
+ *       cuando el array ya está ordenado.
+ *
+ * [ENG] Implementation of an optimized Bubble Sort algorithm for integer
+ *       arrays. Includes ascending and descending versions.
+ *       Uses a swap flag to avoid unnecessary iterations when the array
+ *       is already sorted.
+ *
+ * Materia / Subject: Informática 1 — UTNBA (2022)
+ * Autor / Author:    Facundo Costarelli
+ * ==========================================================================
+ */
 
+#include"my_sorting.h"
+
+/**
+ * [ESP] Ordenamiento burbuja de mayor a menor (descendente).
+ *       Recibe un puntero al array de enteros y su largo.
+ *       Optimización: usa una bandera para detenerse cuando no hay más intercambios.
+ * [ENG] Bubble sort from largest to smallest (descending order).
+ *       Receives a pointer to the integer array and its length.
+ *       Optimization: uses a flag to stop when no more swaps occur.
+ */
 void Int_Ordenamiento_Burbuja_May_A_Men(int *Array, int largo)
 {
     int i = 0;
     int j = 0;
     int aux = 0;
-    //Supongo inicialmente que el array esta completamente ordenado
+
+    // [ESP] Supongo inicialmente que el array está completamente ordenado
+    // [ENG] Initially assume the array is fully sorted
     bool Ocurrencia_De_Intercambio = false;
-    /*El primer for esta asociado a la cantidad de veces que se recorre todo el vector para realizar un
-    "swap o intercambio"*/
+
     do
-    {   /*Asumo que todos los elementos del array estan totalmente ordenados luego de ejutar un intercambio en el bloque for e if
-          Luego con los ciclos for evaluo si es cierto
-          En caso de que haya algo que intercambiarse, se asgina "true" en el bloque if
-          Esta tecnica evita tener que recorrer el array "n = largo,  veces" cuando ya se encuentra completamente ordenado
-          tanto por pirmera vez como luego de algun intercambio o swap*/
+    {
+        // [ESP] Asumo que todos los elementos están ordenados después del último pase.
+        //       Si ocurre un intercambio, la bandera se activa.
+        //       Esto evita recorrer el array innecesariamente cuando ya está ordenado.
+        // [ENG] Assume all elements are sorted after the last pass.
+        //       If a swap occurs, the flag is set.
+        //       This avoids unnecessary traversals when the array is already sorted.
         Ocurrencia_De_Intercambio = false;
 
-        /*El segundo for esta asociado con la iteracion de valores para buscar 2 valores
-          para intercambiar o "swapear". Cada vez que un elemento queda completamente ordenado
-          en su lugar, ya no es necesario compararlo con los elementos consecutivos ya que estos tambien
-          estan ordenados y por lo tanto no es necesario recorrer todo el vector. Es por esto que
-          el segundo for se ejecuta siempre que j < (largo-1-i).
-          Si fuese (largo-1) entonces seguiria recorriendo elementos que ya estan ordenados y esto no es eficiente
-           */
+        // [ESP] Itero comparando pares adyacentes. Cada pase "burbujea"
+        //       el valor más pequeño al final, por eso se reduce el rango con (largo-1-i).
+        // [ENG] Iterate comparing adjacent pairs. Each pass "bubbles"
+        //       the smallest value to the end, hence the range is reduced by (largo-1-i).
         for(j = 0; j < (largo-1-i); j++)
         {
-            /*Pregunto si el valor en posicion actual j es mayor que el de la posicion siguiente j+1
-                en tal caso, realizo un swap*/
-            if(Array[j] < Array[j+1])//Como uso el "<" el ordenamiento es de mayor a menor
+            // [ESP] Si el valor actual es menor que el siguiente, intercambio (orden descendente)
+            // [ENG] If current value is less than the next, swap (descending order)
+            if(Array[j] < Array[j+1])
             {
-                /*Guardo el valor de la pos actual j en una variable aux*/
-                aux = Array[j];
-                /*Cpio el valor de la pos siguiente j+1 en el elemento de la pos actual j*/
-                Array[j] = Array[j+1];
-                /*Copio el valor de lo almacenado por aux en el elemento de la pos siguiente j+1*/
-                Array[j+1] = aux;
-                /*Al ejecutarse un intercambio, entonces seteo la variable indicada en true. Esto significa que
-                 ocurrio un intercambio y que no es posible saber en esta instancia que el siguiente elemento
-                 tambien este ordenado */
-                 Ocurrencia_De_Intercambio = true;
+                aux = Array[j];         // [ESP] Guardo valor actual / [ENG] Store current value
+                Array[j] = Array[j+1];  // [ESP] Copio el siguiente / [ENG] Copy next value
+                Array[j+1] = aux;       // [ESP] Restauro desde aux / [ENG] Restore from aux
+                Ocurrencia_De_Intercambio = true;
             }
         }
         i++;
     }while(Ocurrencia_De_Intercambio == true);
 
+    // [ESP] Impresión del resultado ordenado
+    // [ENG] Print the sorted result
     for( i = 0; i < largo; i ++ )
     {
         printf("Array [%d] = %d ",i,Array[i]);
@@ -53,51 +76,43 @@ void Int_Ordenamiento_Burbuja_May_A_Men(int *Array, int largo)
     return;
 }
 
+/**
+ * [ESP] Ordenamiento burbuja de menor a mayor (ascendente).
+ *       Misma lógica que la versión descendente pero con la comparación invertida.
+ * [ENG] Bubble sort from smallest to largest (ascending order).
+ *       Same logic as the descending version but with the comparison inverted.
+ */
 void Int_Ordenamiento_Burbuja_Men_A_May(int *Array, int largo)
 {
     int i = 0;
     int j = 0;
     int aux = 0;
-    //Supongo inicialmente que el array esta completamente ordenado
+
+    // [ESP] Bandera de intercambio: si no ocurren swaps, el array ya está ordenado
+    // [ENG] Swap flag: if no swaps occur, the array is already sorted
     bool Ocurrencia_De_Intercambio = false;
-    /*El primer for esta asociado a la cantidad de veces que se recorre todo el vector para realizar un
-    "swap o intercambio"*/
+
     do
-    {   /*Asumo que todos los elementos del array estan totalmente ordenados luego de ejutar un intercambio en el bloque for e if
-          Luego con los ciclos for evaluo si es cierto
-          En caso de que haya algo que intercambiarse, se asgina "true" en el bloque if
-          Esta tecnica evita tener que recorrer el array "n = largo,  veces" cuando ya se encuentra completamente ordenado
-          tanto por pirmera vez como luego de algun intercambio o swap*/
+    {
         Ocurrencia_De_Intercambio = false;
 
-        /*El segundo for esta asociado con la iteracion de valores para buscar 2 valores
-          para intercambiar o "swapear". Cada vez que un elemento queda completamente ordenado
-          en su lugar, ya no es necesario compararlo con los elementos consecutivos ya que estos tambien
-          estan ordenados y por lo tanto no es necesario recorrer todo el vector. Es por esto que
-          el segundo for se ejecuta siempre que j < (largo-1-i).
-          Si fuese (largo-1) entonces seguiria recorriendo elementos que ya estan ordenados y esto no es eficiente
-           */
         for(j = 0; j < (largo-1-i); j++)
         {
-            /*Pregunto si el valor en posicion actual j es mayor que el de la posicion siguiente j+1
-                en tal caso, realizo un swap*/
-            if(Array[j] > Array[j+1])//Como uso el ">" el ordenamiento es de menor a mayor
+            // [ESP] Si el valor actual es mayor que el siguiente, intercambio (orden ascendente)
+            // [ENG] If current value is greater than the next, swap (ascending order)
+            if(Array[j] > Array[j+1])
             {
-                 /*Guardo el valor de la pos actual j en una variable aux*/
                  aux = Array[j];
-                 /*Cpio el valor de la pos siguiente j+1 en el elemento de la pos actual j*/
                  Array[j] = Array[j+1];
-                 /*Copio el valor de lo almacenado por aux en el elemento de la pos siguiente j+1*/
                  Array[j+1] = aux;
-                 /*Al ejecutarse un intercambio, entonces seteo la variable indicada en true. Esto significa que
-                 ocurrio un intercambio y que no es posible saber en esta instancia que el siguiente elemento
-                 tambien este ordenado */
                  Ocurrencia_De_Intercambio = true;
             }
         }
         i++;
     }while(Ocurrencia_De_Intercambio == true);
 
+    // [ESP] Impresión del resultado ordenado
+    // [ENG] Print the sorted result
     for( i = 0; i < largo; i ++ )
     {
         printf("Array [%d] = %d ",i,Array[i]);

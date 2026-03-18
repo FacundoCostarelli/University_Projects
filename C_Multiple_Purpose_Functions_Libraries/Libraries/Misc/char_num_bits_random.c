@@ -1,5 +1,24 @@
+/**
+ * ==========================================================================
+ * char_num_bits_random.c — Random Number & Bit Generators
+ * ==========================================================================
+ * [ESP] Funciones para generar números aleatorios dentro de un rango:
+ *       - Versión para int
+ *       - Versión para unsigned char
+ *       - Generación de bits aleatorios (0 o 1)
+ *
+ * [ENG] Functions to generate random numbers within a range:
+ *       - Version for int
+ *       - Version for unsigned char
+ *       - Random bit generation (0 or 1)
+ *
+ * Materia / Subject: Informática 1 — UTNBA (2022)
+ * Autor / Author:    Facundo Costarelli
+ * ==========================================================================
+ */
 
-// Devuelve un número aleatorio entre minimo y maximo, incluyendo a minimo y maximo.
+// [ESP] Devuelve un número aleatorio entre minimo y maximo, incluyendo a minimo y maximo.
+// [ENG] Returns a random number between min and max, inclusive.
 //Se puede usar ints, char, unsigned char, etc. Solo hay que identificar el tipo de
 //dato de cada parametro y el retorno segun lo que se quiera hacer. EJ: Todo es INT, o todo es
 //unsigned char, o todo es char, etc.

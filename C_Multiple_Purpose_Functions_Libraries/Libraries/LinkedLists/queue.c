@@ -1,3 +1,22 @@
+/**
+ * ==========================================================================
+ * queue.c — Simple Queue (FIFO) Implementation
+ * ==========================================================================
+ * [ESP] Implementación de una Cola Simple (FIFO: First In, First Out)
+ *       usando una lista doblemente enlazada. Los nodos se insertan al
+ *       principio y se extraen al final, respetando el orden secuencial.
+ *       Incluye funciones de inserción, extracción, impresión y liberación.
+ *
+ * [ENG] Implementation of a Simple Queue (FIFO: First In, First Out)
+ *       using a doubly linked list. Nodes are inserted at the beginning
+ *       and extracted from the end, respecting sequential order.
+ *       Includes insertion, extraction, display, and resource freeing functions.
+ *
+ * Materia / Subject: Informática 1 — UTNBA (2022)
+ * Autor / Author:    Facundo Costarelli
+ * ==========================================================================
+ */
+
 #include<stdio.h>
 #include<stdio_ext.h>
 #include<stdlib.h>

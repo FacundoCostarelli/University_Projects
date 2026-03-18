@@ -1,3 +1,22 @@
+/**
+ * ==========================================================================
+ * stack.c — Stack (LIFO/FILO) Implementation
+ * ==========================================================================
+ * [ESP] Implementación de una Pila (FILO: First In, Last Out / LIFO: Last
+ *       In, First Out) usando una lista simplemente enlazada. Los nodos
+ *       se insertan (push) y se extraen (pop) al principio de la lista.
+ *       Incluye funciones de push, pop, impresión y liberación de recursos.
+ *
+ * [ENG] Implementation of a Stack (FILO: First In, Last Out / LIFO: Last
+ *       In, First Out) using a singly linked list. Nodes are pushed and
+ *       popped from the beginning of the list.
+ *       Includes push, pop, display, and resource freeing functions.
+ *
+ * Materia / Subject: Informática 1 — UTNBA (2022)
+ * Autor / Author:    Facundo Costarelli
+ * ==========================================================================
+ */
+
 #include<stdio.h>
 #include<stdio_ext.h>
 #include<stdlib.h>

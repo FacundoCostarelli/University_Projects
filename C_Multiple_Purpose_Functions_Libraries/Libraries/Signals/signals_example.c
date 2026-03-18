@@ -1,3 +1,22 @@
+/**
+ * ==========================================================================
+ * signals_example.c — Signal Handling with select() and Timers
+ * ==========================================================================
+ * [ESP] Ejemplo de manejo de señales POSIX con select().
+ *       Usa SIGUSR1 para salir de un loop principal, combinando
+ *       monitoreo de teclado (stdin) con un temporizador de 5 segundos.
+ *       Demuestra el uso de sigaction, fd_set, y struct timeval.
+ *
+ * [ENG] Example of POSIX signal handling with select().
+ *       Uses SIGUSR1 to exit a main loop, combining keyboard monitoring
+ *       (stdin) with a 5-second timer. Demonstrates usage of sigaction,
+ *       fd_set, and struct timeval.
+ *
+ * Materia / Subject: Informática 1 — UTNBA (2022)
+ * Autor / Author:    Facundo Costarelli
+ * ==========================================================================
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <signal.h>

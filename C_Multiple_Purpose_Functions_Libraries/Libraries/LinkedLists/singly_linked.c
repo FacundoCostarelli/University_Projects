@@ -1,4 +1,32 @@
-//Funcion generica que crea,cargar y enlaza un nodo donde alguno de los campos internos es una variable asociada a una estructura y NO un puntero a estructura, Esta funcion esta pensada para poder utilizar un nodo cuya "struct" es presentada de la siguiente manera
+/**
+ * ==========================================================================
+ * singly_linked.c — Singly Linked List Operations
+ * ==========================================================================
+ * [ESP] Implementación de operaciones para listas simplemente enlazadas.
+ *       Incluye dos versiones:
+ *       V1: Nodo con estructura Producto_t embebida — permite enlazar al
+ *           inicio, al final y en el medio de la lista.
+ *       V2: Nodo genérico con void* — permite almacenar cualquier tipo
+ *           de dato usando copia byte a byte con memoria dinámica.
+ *       Incluye también funciones de borrado, impresión y alocación.
+ *
+ * [ENG] Implementation of singly linked list operations.
+ *       Includes two versions:
+ *       V1: Node with embedded Producto_t struct — supports linking at
+ *           the beginning, end, and middle of the list.
+ *       V2: Generic node with void* — stores any data type using
+ *           byte-by-byte copying with dynamic memory.
+ *       Also includes deletion, printing, and allocation functions.
+ *
+ * Materia / Subject: Informática 1 — UTNBA (2022)
+ * Autor / Author:    Facundo Costarelli
+ * ==========================================================================
+ */
+
+// [ESP] Función genérica que crea, carga y enlaza un nodo cuyo campo interno
+//       es una variable del tipo "struct" (no un puntero a estructura).
+// [ENG] Generic function that creates, loads, and links a node whose internal
+//       field is a struct variable (not a pointer to a struct).
 /*
     typedef struct nodo
     {

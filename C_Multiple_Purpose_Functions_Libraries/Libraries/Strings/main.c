@@ -1,7 +1,28 @@
-#include"Mis_Funciones_Strings.h"
-//Driver para testear mis funciones de manejo de strings
+/**
+ * ==========================================================================
+ * main.c — Test Drivers for Custom String Functions
+ * ==========================================================================
+ * [ESP] Programa de prueba (driver) para verificar el funcionamiento de
+ *       las funciones de manejo de strings definidas en my_strings.h.
+ *       Cada bloque main() prueba una función distinta.
+ *       Descomentar el bloque deseado para ejecutar la prueba.
+ *
+ * [ENG] Test driver program to verify the behavior of the string
+ *       manipulation functions defined in my_strings.h.
+ *       Each main() block tests a different function.
+ *       Uncomment the desired block to run that test.
+ *
+ * Materia / Subject: Informática 1 — UTNBA (2022)
+ * Autor / Author:    Facundo Costarelli
+ * ==========================================================================
+ */
 
-//Driver para funcion Mi_StringCopyV1 y la V2
+#include"my_strings.h"
+
+/* -----------------------------------------------------------------------
+ * [ESP] Driver para Mi_StringCopyV1 y Mi_StringCopyV2
+ * [ENG] Driver for Mi_StringCopyV1 and Mi_StringCopyV2
+ * ----------------------------------------------------------------------- */
 /*
 int main()
 {
@@ -21,8 +42,11 @@ int main()
 }
 */
 
+/* -----------------------------------------------------------------------
+ * [ESP] Driver para Mi_StringConcatenate
+ * [ENG] Driver for Mi_StringConcatenate
+ * ----------------------------------------------------------------------- */
 /*
-//Driver para funcion Mi_StringConcatenate
 int main()
 {
     char s1[] = "abc";
@@ -37,8 +61,12 @@ int main()
     return 0;
 }
 */
+
+/* -----------------------------------------------------------------------
+ * [ESP] Driver para Mi_Stringmemset
+ * [ENG] Driver for Mi_Stringmemset
+ * ----------------------------------------------------------------------- */
 /*
-//Driver para funcion Mi_memset
 int main()
 {
     char Arr1[10];
@@ -61,8 +89,11 @@ int main()
 }
 */
 
+/* -----------------------------------------------------------------------
+ * [ESP] Driver para Analisis_Palindromo_String
+ * [ENG] Driver for Analisis_Palindromo_String (Palindrome Check)
+ * ----------------------------------------------------------------------- */
 /*
-//Driver para funcion Analisis_Palindromo_String
 int main()
 {
     //char string1[] = "not a palindromo";
@@ -78,8 +109,11 @@ int main()
 }
 */
 
+/* -----------------------------------------------------------------------
+ * [ESP] Driver para String_lowercase y String_uppercase
+ * [ENG] Driver for String_lowercase and String_uppercase
+ * ----------------------------------------------------------------------- */
 /*
-//Driver para funciones String_lowercase y String_uppercase
 int main()
 {
     char String[] = "HolA Como ESTaS HoY";
@@ -93,8 +127,11 @@ int main()
 }
 */
 
+/* -----------------------------------------------------------------------
+ * [ESP] Driver para Ordenamiento_Array_De_Strings
+ * [ENG] Driver for Ordenamiento_Array_De_Strings (String Array Sorting)
+ * ----------------------------------------------------------------------- */
 /*
-//Driver para funcion Ordenamiento_Array_De_Strings
 int main()
 {
     char Strings[10][100] =
