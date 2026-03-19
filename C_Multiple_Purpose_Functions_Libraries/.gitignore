@@ -1,0 +1,8 @@
+# Build artifacts
+*.o
+*.out
+*.dat
+
+# Qt build files
+*.pro.user
+build/
