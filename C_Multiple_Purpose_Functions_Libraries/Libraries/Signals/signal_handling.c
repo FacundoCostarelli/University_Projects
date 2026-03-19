@@ -1,69 +1,89 @@
 /**
- * ==========================================================================
- * signal_handling.c — Signal Handling Algorithms (Simple & Complex)
- * ==========================================================================
- * [ESP] Algoritmos para manejo de señales POSIX:
- *       - Simple: usa signal() + alarm() para salir de un loop infinito
- *         por temporizador con SIGALRM.
- *       - Complejo: usa sigaction() + select() para salir del loop
- *         por teclado o por señal SIGUSR1, combinando monitoreo de
- *         stdin con un temporizador.
+ * @file    signal_handling.c
+ * @brief   [ESP] Algoritmos de referencia para manejo de señales POSIX.
+ *          [ENG] Reference algorithms for POSIX signal handling.
  *
- * [ENG] POSIX signal handling algorithms:
- *       - Simple: uses signal() + alarm() to exit an infinite loop
- *         via timer with SIGALRM.
- *       - Complex: uses sigaction() + select() to exit the loop
- *         via keyboard or SIGUSR1 signal, combining stdin monitoring
- *         with a timer.
+ * @author  Facundo Costarelli
+ * @date    2022
+ * @course  Informática 1 — UTNBA
  *
- * Materia / Subject: Informática 1 — UTNBA (2022)
- * Autor / Author:    Facundo Costarelli
- * ==========================================================================
+ * [ESP] Contiene dos patrones de referencia:
+ *       1. Simple: signal() + alarm() para salir por temporizador
+ *       2. Complejo: sigaction() + select() para salir por teclado o señal
+ *
+ * [ENG] Contains two reference patterns:
+ *       1. Simple: signal() + alarm() to exit by timer
+ *       2. Complex: sigaction() + select() to exit by keyboard or signal
  */
 
+/* ===========================================================================
+ * [ESP] PATRÓN 1 — SIMPLE: SALIR POR TEMPORIZADOR CON SIGALRM
+ * [ENG] PATTERN 1 — SIMPLE: EXIT BY TIMER WITH SIGALRM
+ *
+ * [ESP] La función signal() asocia una señal con un handler.
+ *       La función alarm() le dice al SO que genere SIGALRM después
+ *       de N segundos. El handler cambia una variable global volátil
+ *       para que el loop principal termine.
+ *
+ * [ENG] The signal() function associates a signal with a handler.
+ *       The alarm() function tells the OS to generate SIGALRM after
+ *       N seconds. The handler changes a volatile global variable
+ *       so the main loop exits.
+ * =========================================================================== */
 
-#define TEMPORIZADOR 30 //30 o cualquier otro valor, esto es en segundos
-#define TRUE 1
+#define TEMPORIZADOR 30     /* [ESP] Segundos / [ENG] Seconds */
+#define TRUE  1
 #define FALSE 0
-//variable global del tipo  volatil
+
+/* [ESP] Variable global volátil: solo se modifica en el handler.
+         'volatile' impide que el compilador la optimice.
+         'sig_atomic_t' garantiza escritura atómica.
+   [ENG] Volatile global variable: only modified in the handler.
+         'volatile' prevents compiler optimization.
+         'sig_atomic_t' guarantees atomic write. */
 volatile sig_atomic_t flag = TRUE;
 
-//Funcion handler
+/* [ESP] Función handler — se ejecuta cuando llega la señal
+   [ENG] Handler function — executes when the signal arrives */
 void misenal(int a)
 {
-    printf("a = %d\n",a);
-    flag = FALSE
-    //alarm(5);//Puede descomentarse para recibir una SIGALRM repetidas veces
-    
+    printf("a = %d\n", a);
+    flag = FALSE;
+    /* alarm(5); */  /* [ESP] Descomentar para repetir / [ENG] Uncomment to repeat */
 }
 
-//Esto va en el main al principio
-//printf("%d\n", EINTR);	
-    signal(SIGALRM,misenal);
-    alarm(TEMPORIZADOR);
-    
-    /*BLOQUE DE CODIGO QUE HACE ALGO**/
-    
-//LOOP infinito     
-while( flag == TRUE)
-{
-        if( flag == FALSE )
+/* [ESP] Código a incluir en main():
+   [ENG] Code to include in main():
+
+    signal(SIGALRM, misenal);       // [ESP] Asociar SIGALRM con handler
+    alarm(TEMPORIZADOR);            // [ENG] Start timer
+
+    while (flag == TRUE)
+    {
+        // [ESP] Código principal del loop
+        // [ENG] Main loop code
+        if (flag == FALSE)
         {
-            /*BLOQUE DE CODIGO QUE HACE ALGO, EJ: cerrar conexion desde servidor, etc*/
+            // [ESP] Código de limpieza (cerrar conexiones, etc.)
+            // [ENG] Cleanup code (close connections, etc.)
         }
-        
-        /*BLOQUE DE CODIGO QUE HACE ALGO*/
-}
+    }
+    // [ESP] Liberar memoria y recursos
+    // [ENG] Free memory and resources
+*/
 
-/*****BLOQUE DE CODIGO DE LIMPIEZA DE MEMORIA***/
-    
-    
-//SIGALRM es una signal.
-//La funcion signal() recibe el nro de senal como 1er parametro y como 2do parametro recibe un puntero a funcion. Asi le dice al SO que ejecute una determinada funcion "handler" apuntada por el puntero que recibio 2do parametro. De esta manera, se atienda a la signal o interrupcion
-//Una vez dentro de la funcion hanlder, se busca cambiar el valor de una variable global volatil y ademas ejecutar la funcion alarm() que recibe como parametro un int asociado a una cantidad en segundos. alarm() le dice al SO que genere una senal, a traves de generar el valor int que ya se encuentra definido por la macro SIGALRM. Esta senal sera generada una vez que finalize el temporizador y sera repetido su disparo tantas veces como sea necesario hasta que con algun bloque de codigo, se deje de ejecutar alarm(). Tambien se puede ejecutar alarm() en el main solamente pero esto lo hara una unica vez 
-
-
-/***********ALGORITMO COMPLEJO DE MANEJO DE SENALES PARA SALIR DE UN LOOP INFINITO POR TECLADO O POR TEMPORIZADOR************/
+/* ===========================================================================
+ * [ESP] PATRÓN 2 — COMPLEJO: SALIR POR TECLADO O SEÑAL CON select()
+ * [ENG] PATTERN 2 — COMPLEX: EXIT BY KEYBOARD OR SIGNAL WITH select()
+ *
+ * [ESP] Usa sigaction() (más robusto que signal()) + select() para
+ *       monitorear simultáneamente el teclado y un temporizador.
+ *       select() bloquea hasta que hay actividad en stdin o el timer expira.
+ *
+ * [ENG] Uses sigaction() (more robust than signal()) + select() to
+ *       simultaneously monitor the keyboard and a timer.
+ *       select() blocks until there is activity on stdin or the timer expires.
+ * =========================================================================== */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -72,61 +92,91 @@ while( flag == TRUE)
 #include <sys/select.h>
 #include <termios.h>
 
-volatile sig_atomic_t flag = 0;
+volatile sig_atomic_t flag2 = 0;
 
-void signal_handler(int signum) {
-    flag = 1;
+void signal_handler(int signum)
+{
+    flag2 = 1;
 }
 
-int main() {
-    int resultado,maxfd;
-    fd_set readfds; //para guardar los fd que lee select.
+int main(void)
+{
+    int resultado, maxfd;
 
-    struct timeval timeout; //estructura para el timer de select.
-    struct sigaction sa;    //estructura para manejar la señal.
+    /* [ESP] fd_set: conjunto de descriptores de archivo para select()
+       [ENG] fd_set: file descriptor set for select() */
+    fd_set readfds;
 
+    /* [ESP] Configurar temporizador para select()
+       [ENG] Configure timer for select() */
+    struct timeval timeout;
+
+    /* [ESP] Configurar el handler con sigaction() (más seguro que signal())
+       [ENG] Configure the handler with sigaction() (safer than signal()) */
+    struct sigaction sa;
     sa.sa_handler = signal_handler;
     sigemptyset(&sa.sa_mask);
-    sa.sa_flags = 0;    //con esto no se quedo en select.
+    sa.sa_flags = 0;
 
-    if (sigaction(SIGUSR1, &sa, NULL) == -1) {
-        perror("Error al configurar el manejador de señales");
+    if (sigaction(SIGUSR1, &sa, NULL) == -1)
+    {
+        perror("[ESP] Error configurando handler / [ENG] Error configuring handler");
         exit(1);
     }
 
+    /* [ESP] maxfd: select() requiere el fd más alto + 1
+       [ENG] maxfd: select() requires the highest fd + 1 */
+    maxfd = STDIN_FILENO + 1;
 
-    maxfd = STDIN_FILENO + 1;  //select pide que se le de el maximo fd+1, por lo tanto en caso de usar el fd del socket hay que hacer new_fd+1.
+    while (!flag2)
+    {
+        /* [ESP] Reiniciar el conjunto de descriptores en cada iteración
+           [ENG] Reset the file descriptor set on each iteration */
+        FD_ZERO(&readfds);
+        FD_SET(STDIN_FILENO, &readfds);
 
-    while (!flag) {
-        // Configurar el conjunto de descriptores de archivo para select.
-        FD_ZERO(&readfds); //borrar la lista de fds.
-        FD_SET(STDIN_FILENO, &readfds); //ingresar la lista de fd al set.
-
-        // Configurar el temporizador para la salida de select cada 5 segundos.
+        /* [ESP] Temporizador: 5 segundos
+           [ENG] Timer: 5 seconds */
         timeout.tv_sec = 5;
         timeout.tv_usec = 0;
 
-        // Esperar hasta que se oprima una tecla o el temporizador expire.
-        resultado = select(maxfd, &readfds, NULL, NULL, &timeout); //escucho si se modifica algun fd de la lista o si se termian el timer.
-        if (resultado == -1) {
-            perror("Error en select");
+        /* [ESP] select() bloquea hasta:
+                 - Hay datos en algún fd del set, O
+                 - El temporizador expira, O
+                 - Llega una señal
+           [ENG] select() blocks until:
+                 - There is data on an fd in the set, OR
+                 - The timer expires, OR
+                 - A signal arrives */
+        resultado = select(maxfd, &readfds, NULL, NULL, &timeout);
+
+        if (resultado == -1)
+        {
+            perror("[ESP] Error en select / [ENG] Error in select");
             break;
-        } else if (resultado == 0) {
-            // El temporizador expiró, imprimir mensaje y regresar a select.
-            printf("Han pasado 5 segundos.\n");
+        }
+        else if (resultado == 0)
+        {
+            /* [ESP] Temporizador expiró sin actividad
+               [ENG] Timer expired without activity */
+            printf("[ESP] Han pasado 5 segundos.\n");
+            printf("[ENG] 5 seconds have passed.\n");
             continue;
         }
 
-        if (FD_ISSET(STDIN_FILENO, &readfds)) {
-            // Se oprimió una tecla, leerla y procesarla.
+        /* [ESP] Verificar si hay datos disponibles en stdin
+           [ENG] Check if data is available on stdin */
+        if (FD_ISSET(STDIN_FILENO, &readfds))
+        {
             char c;
             read(STDIN_FILENO, &c, 1);
-            printf("Se oprimió la tecla: %c\n", c);
+            printf("[ESP] Tecla presionada: %c\n", c);
+            printf("[ENG] Key pressed: %c\n", c);
         }
     }
 
-    printf("Se recibió la señal SIGUSR1, terminando el programa.\n");
+    printf("[ESP] Se recibio SIGUSR1, terminando programa.\n");
+    printf("[ENG] Received SIGUSR1, exiting program.\n");
 
     return 0;
 }
-

@@ -1,50 +1,56 @@
 /**
- * ==========================================================================
- * doubly_linked.c — Doubly Linked List with Sorted Insertion
- * ==========================================================================
- * [ESP] Implementación de una lista doblemente enlazada con inserción
- *       ordenada por DNI (de mayor a menor). Incluye funciones para:
- *       - Insertar nodos (al inicio, final, o medio según el valor del DNI)
- *       - Mostrar la lista en sentido directo e inverso
- *       - Generar datos de prueba (struct info)
- *       - Liberar todos los recursos de memoria dinámica
+ * @file    doubly_linked.c
+ * @brief   [ESP] Lista doblemente enlazada con inserción ordenada por DNI.
+ *          [ENG] Doubly linked list with sorted insertion by DNI.
  *
- * [ENG] Implementation of a doubly linked list with sorted insertion
- *       by DNI (largest to smallest). Includes functions for:
- *       - Inserting nodes (at beginning, end, or middle depending on DNI value)
- *       - Displaying the list in forward and reverse order
- *       - Generating test data (struct info)
- *       - Freeing all dynamic memory resources
+ * @author  Facundo Costarelli
+ * @date    2022
+ * @course  Informática 1 — UTNBA
  *
- * Materia / Subject: Informática 1 — UTNBA (2022)
- * Autor / Author:    Facundo Costarelli
- * ==========================================================================
+ * [ESP] Programa standalone que implementa una lista doblemente enlazada
+ *       donde los nodos se insertan manteniendo un orden descendente por DNI.
+ *       Incluye: inserción ordenada, recorrido directo e inverso, y
+ *       liberación de recursos.
+ *
+ * [ENG] Standalone program implementing a doubly linked list where nodes
+ *       are inserted maintaining descending order by DNI.
+ *       Includes: sorted insertion, forward and reverse traversal, and
+ *       resource deallocation.
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
 
+/**
+ * @brief [ESP] Estructura de datos interna del nodo (persona).
+ *        [ENG] Internal data structure of the node (person).
+ */
 struct info
 {
-    int dni;
-    char sexo;
-    char *nombre;
+    int dni;        /* [ESP] Documento de identidad / [ENG] ID number */
+    char sexo;      /* [ESP] Sexo ('M' o 'F')      / [ENG] Gender ('M' or 'F') */
+    char *nombre;   /* [ESP] Nombre (string)        / [ENG] Name (string) */
 };
 
+/**
+ * @brief [ESP] Nodo de lista doblemente enlazada.
+ *        [ENG] Doubly linked list node.
+ */
 struct nodo
 {
-    struct nodo *psig;
-    struct nodo *pant;
-    struct info *Info;
+    struct nodo *psig;  /* [ESP] Puntero al siguiente nodo / [ENG] Pointer to next node */
+    struct nodo *pant;  /* [ESP] Puntero al nodo anterior  / [ENG] Pointer to previous node */
+    struct info *Info;  /* [ESP] Puntero a datos internos  / [ENG] Pointer to internal data */
 };
 
-void InsertarNodo (struct nodo **Pini, struct info *dato);
-void MostrarLista (struct nodo *ini);
-struct info *GenerarNodo(int gdni, char gsexo, char * gnombre);
+/* [ESP] Declaraciones de funciones / [ENG] Function declarations */
+void InsertarNodo(struct nodo **Pini, struct info *dato);
+void MostrarLista(struct nodo *ini);
+struct info *GenerarNodo(int gdni, char gsexo, char *gnombre);
 void LiberarRecursos(struct nodo *ini);
 
-int main()
+int main(void)
 {
     srandom(time(NULL));
     struct nodo *pinicio = NULL;
@@ -52,15 +58,17 @@ int main()
     struct nodo *pfree = NULL;
     int i;
 
-    for( i = 0; i < 5; i ++)
+    /* [ESP] Crear 5 nodos con DNI aleatorio y nombre por defecto
+       [ENG] Create 5 nodes with random DNI and default name */
+    for (i = 0; i < 5; i++)
     {
-        printf("Se llego a la linea 34\n");
-
-        printf("Se generara un nuevo nodo #%d\n",i);
-        aux = GenerarNodo(random()%100,'M',NULL);
-        InsertarNodo(&pinicio,aux);
+        aux = GenerarNodo(random() % 100, 'M', NULL);
+        InsertarNodo(&pinicio, aux);
     }
-    printf("La lista doblemente enlazada se ha creado exitosamente\n");
+
+    printf("[ESP] Lista doblemente enlazada creada.\n");
+    printf("[ENG] Doubly linked list created.\n");
+
     pfree = pinicio;
     MostrarLista(pinicio);
     LiberarRecursos(pfree);
@@ -68,127 +76,152 @@ int main()
     return 0;
 }
 
+/**
+ * @brief [ESP] Inserta un nodo en la lista manteniendo orden descendente por DNI.
+ *        [ENG] Inserts a node maintaining descending order by DNI.
+ *
+ * [ESP] Tres casos posibles:
+ *       1. Lista vacía → crear primer nodo
+ *       2. DNI mayor que todos → insertar al principio
+ *       3. Otro → insertar en el medio o al final
+ *
+ * [ENG] Three possible cases:
+ *       1. Empty list → create first node
+ *       2. DNI greater than all → insert at beginning
+ *       3. Other → insert in the middle or at the end
+ */
 void InsertarNodo(struct nodo **Pini, struct info *dato)
 {
     struct nodo *aux = *Pini;
     struct nodo *aux2 = *Pini;
 
-    if(*Pini == NULL)
+    /* [ESP] Caso 1: Lista vacía — crear primer nodo
+       [ENG] Case 1: Empty list — create first node */
+    if (*Pini == NULL)
     {
-        printf("Lista vacia\n");
-        //Si entro a este if es porque la lista esta vacia. Entonces, se crea un nuevo nodo y el puntero inicial apunta a dicho nodo
         (*Pini) = (struct nodo *)malloc(sizeof(struct nodo));
-        //Luego se rellenan los campos del nodo
         (*Pini)->psig = NULL;
         (*Pini)->pant = NULL;
         (*Pini)->Info = dato;
-
     }
     else
     {
-        //Si entro aca es porque la lista no esta vacia. Entonces ya tengo al menos 1 o mas nodos.
-        printf("La lista NO esta vacia. Se insertara un nuevo nodo\n");
-        //Recorro la lista en busqueda del ultimo nodo tal que el nuevo nodo lo enlaze al final. Ademas se contempla un enlazamiento tal que los DNI quedan ordenados de mayor a menor. En caso del que el nuevo DNI del nuevo nodo sea mayor al DNI del nodo de comparacion actual, entonces se finaliza la busqueda y se hace un enlazamiento en el medio.
-
-        while( (aux!=NULL)&& ( (aux->Info->dni) > (dato->dni) ) )
+        /* [ESP] Recorrer la lista buscando la posición correcta.
+                 Avanzamos mientras aux no sea NULL y el DNI del nodo actual
+                 sea mayor que el DNI del dato a insertar.
+           [ENG] Traverse the list looking for the correct position.
+                 Advance while aux is not NULL and the current node's DNI
+                 is greater than the DNI of the data to insert. */
+        while ((aux != NULL) && (aux->Info->dni > dato->dni))
         {
-            aux2 = aux;//Aux2 apunta al anteultimo nodo independientemente de en que lugar termina la iteracion del while
-            aux = aux->psig;//Aux queda apuntando al ultimo nodo independientemente de en que lugar termina la iteracion del while
+            aux2 = aux;     /* [ESP] aux2 queda un paso atrás / [ENG] aux2 stays one step behind */
+            aux = aux->psig; /* [ESP] aux avanza / [ENG] aux advances */
         }
 
-        //Pregunto si el ultimo nodo de la lista es en realidad el 1er nodo de la lista. De ser cierto, esto indicaria que la Lista solo tenia 1 nodo y que el nodo a insertar seria el 2do nodo.
-        //Enlazamiento al principio
-        if( aux == *Pini)
+        /* [ESP] Caso 2: Insertar al principio (el nuevo DNI es el mayor)
+           [ENG] Case 2: Insert at beginning (new DNI is the largest) */
+        if (aux == *Pini)
         {
-            printf("aux == *Pini\n");
-            (*Pini)->pant = (struct nodo *)malloc(sizeof(struct nodo));//El nodo inicial de la lista, con su pant apunta a un nuevo nodo
-            ((*Pini)->pant)->psig = (*Pini);//Accedo al nuevo nodo creado y hago que su psig apunte al nodo inicial de la lista
-            ((*Pini)->pant)->pant = NULL;//Accedo al nuevo nodo creado y hago que su pant apunte a NULL
-            (*Pini) = (*Pini)->pant;//Pini apunta ahora al nuevo nodo creado siendo este ahora el nodo inicial de la lista
-            ((*Pini)->Info) = dato;//En el nuevo nodo creado cargao el dato
+            (*Pini)->pant = (struct nodo *)malloc(sizeof(struct nodo));
+            ((*Pini)->pant)->psig = (*Pini);
+            ((*Pini)->pant)->pant = NULL;
+            (*Pini) = (*Pini)->pant;
+            (*Pini)->Info = dato;
         }
-        //En caso de que la lista tenga mas de 1 nodo, entonces entro en este else
-        //Enlazamiento al final o en el medio segun convenga
         else
         {
-
-            //Pregunto si aux apunta un nodo NULL. De ser cierto... esto indicaria que llegamos al final de la lista donde aux2 apunta al anteultimo nodo y aux apunta al ultimo nodo que es un nodo del tipo NULL. Esto implica que el nuevo nodo lo vamos a enlazar al final
-            if(aux == NULL)//De cumplirse el if, entonces tenemos un enlazamiento al final
+            /* [ESP] Caso 3a: Insertar al final (aux == NULL)
+               [ENG] Case 3a: Insert at end (aux == NULL) */
+            if (aux == NULL)
             {
-                aux2->psig = (struct nodo *)malloc(sizeof(struct nodo));//El anteultimo nodo(que no es NULL) hago que apunte a un nuevo nodo creado con malloc a traves de que su psig apunte al nuevo nodo
-                (aux2->psig)->psig = NULL;//Accedo al nuevo nodo creado y hago que su psig apunte a un nodo NULL
-                (aux2->psig)->pant = aux2;//Accedo al nuevo nodo creado y hago que su pant apunte al anteultimo nodo apuntado por aux2
-                (aux2->psig)->Info = dato;//Accedo al nuevo nodo creado y cargo el dato
-                //Luego de todo esto, entonces el nuevo nodo creado es el anteultimo de la lista mientras que el ultimo nodo es NULL
+                aux2->psig = (struct nodo *)malloc(sizeof(struct nodo));
+                (aux2->psig)->psig = NULL;
+                (aux2->psig)->pant = aux2;
+                (aux2->psig)->Info = dato;
                 aux2 = aux2->psig;
-                aux = NULL;
             }
-            //En caso de no cumplirse el if, entonces se enlaza un nodo entre medio del nodo apuntado por aux(ultimo nodo en algun punto de la lista) y el nodo apuntado por aux2(nodo anterior al apuntado por aux en algun punto de la lista)
+            /* [ESP] Caso 3b: Insertar en el medio (entre aux2 y aux)
+               [ENG] Case 3b: Insert in the middle (between aux2 and aux) */
             else
             {
-                aux2->psig = (struct nodo *)malloc(sizeof(struct nodo));//El anteultimo nodo respecto del apuntado por aux, hago que apunte a un nuevo nodo creado con malloc a traves de que su psig apunte al nuevo nodo
-                aux->pant = aux2->psig;//El nodo apuntado por aux, ubicado en algun punto de la lista que no es al princpio ni al final, apunta con su pant al nuevo nodo creado
-                (aux2->psig)->psig = aux;//Accedo al nuevo nodo creado y hago que su psig apunte al nodo apuntado por aux
-                (aux2->psig)->pant = aux2;//Accedo al nuevo nodo creado y hago que su pant apunte al nodo apuntado por aux2
-                (aux2->psig)->Info = dato;//Accedo al nuevo nodo creado y cargo el dato
-                //Luego de todo esto, entonces el nuevo nodo creado es algun nodo intermedio de la lista ubicado entre 2 nodos cualesquiera
+                aux2->psig = (struct nodo *)malloc(sizeof(struct nodo));
+                aux->pant = aux2->psig;
+                (aux2->psig)->psig = aux;
+                (aux2->psig)->pant = aux2;
+                (aux2->psig)->Info = dato;
             }
-
         }
     }
 
-
     return;
 }
 
+/**
+ * @brief [ESP] Muestra la lista en sentido directo e inverso.
+ *        [ENG] Displays the list in forward and reverse order.
+ */
 void MostrarLista(struct nodo *ini)
 {
-
     struct nodo *aux;
 
-    printf("Se recorrera la lista en sentido directo\n");
-    while(ini != NULL)//Se recorre la lista en sentido directo, es decir, desde el inicio hacia el final
+    /* [ESP] Recorrido directo (inicio → final)
+       [ENG] Forward traversal (beginning → end) */
+    printf("\n[ESP] Recorrido directo / [ENG] Forward traversal:\n");
+    while (ini != NULL)
     {
-        printf("%d %c %s\n",ini->Info->dni, ini->Info->sexo, ini->Info->nombre);
+        printf("  DNI: %d | Sexo/Gender: %c | Nombre/Name: %s\n",
+               ini->Info->dni, ini->Info->sexo, ini->Info->nombre);
         aux = ini;
-        printf("ant: %p\nini: %p\n", ini->pant, ini);
         ini = ini->psig;
     }
-    //Una vez finalizado el recorrido en sentido directo sucedera que ini apunta un ultimo nodo NULL y que aux apunta a un anteultimo nodo NO NULL respecto del nodo apuntado por ini
-    printf("Se recorrera la lista en sentido inverso\n");
-    while(aux != NULL)//Se recorre la lista en sentido inverso, es decir, desde el final hacia el inicio
+
+    /* [ESP] Recorrido inverso (final → inicio), partiendo desde 'aux'
+             que quedó apuntando al último nodo válido.
+       [ENG] Reverse traversal (end → beginning), starting from 'aux'
+             which is pointing to the last valid node. */
+    printf("\n[ESP] Recorrido inverso / [ENG] Reverse traversal:\n");
+    while (aux != NULL)
     {
-        printf("%d %c %s\n",aux->Info->dni, aux->Info->sexo, aux->Info->nombre);
+        printf("  DNI: %d | Sexo/Gender: %c | Nombre/Name: %s\n",
+               aux->Info->dni, aux->Info->sexo, aux->Info->nombre);
         aux = aux->pant;
-        printf("aux: %p\n", aux);
     }
 
     return;
 }
 
-struct info *GenerarNodo(int gdni, char gsexo, char * gnombre)
+/**
+ * @brief [ESP] Genera una estructura info con datos de prueba.
+ *        [ENG] Generates an info struct with test data.
+ */
+struct info *GenerarNodo(int gdni, char gsexo, char *gnombre)
 {
-    struct info *datoaux = NULL;
-    datoaux = (struct info *)malloc(sizeof(struct info));
-    //Aca iria proteccion contra NULL de malloc
+    struct info *datoaux = (struct info *)malloc(sizeof(struct info));
     datoaux->dni = gdni;
     datoaux->sexo = gsexo;
     datoaux->nombre = "No definido";
     return datoaux;
 }
 
+/**
+ * @brief [ESP] Libera toda la memoria dinámica de la lista.
+ *        [ENG] Frees all dynamic memory from the list.
+ */
 void LiberarRecursos(struct nodo *ini)
 {
-     struct nodo *aux;
-     while(ini != NULL)
-     {
-         aux = ini;
-         ini = ini->psig;
-         free(aux->Info);
-         free(aux);
-     }
+    struct nodo *aux;
 
-     printf("Se liberaron los recursos correctamente\n");
-     return;
+    /* [ESP] Recorremos nodo por nodo, liberando primero los datos y luego el nodo
+       [ENG] Traverse node by node, freeing data first, then the node */
+    while (ini != NULL)
+    {
+        aux = ini;
+        ini = ini->psig;
+        free(aux->Info);
+        free(aux);
+    }
 
+    printf("[ESP] Recursos liberados.\n");
+    printf("[ENG] Resources freed.\n");
+    return;
 }

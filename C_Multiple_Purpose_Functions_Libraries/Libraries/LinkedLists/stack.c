@@ -1,173 +1,184 @@
 /**
- * ==========================================================================
- * stack.c — Stack (LIFO/FILO) Implementation
- * ==========================================================================
- * [ESP] Implementación de una Pila (FILO: First In, Last Out / LIFO: Last
- *       In, First Out) usando una lista simplemente enlazada. Los nodos
- *       se insertan (push) y se extraen (pop) al principio de la lista.
- *       Incluye funciones de push, pop, impresión y liberación de recursos.
+ * @file    stack.c
+ * @brief   [ESP] Pila (LIFO/FILO) con lista simplemente enlazada.
+ *          [ENG] Stack (LIFO/FILO) with singly linked list.
  *
- * [ENG] Implementation of a Stack (FILO: First In, Last Out / LIFO: Last
- *       In, First Out) using a singly linked list. Nodes are pushed and
- *       popped from the beginning of the list.
- *       Includes push, pop, display, and resource freeing functions.
+ * @author  Facundo Costarelli
+ * @date    2022
+ * @course  Informática 1 — UTNBA
  *
- * Materia / Subject: Informática 1 — UTNBA (2022)
- * Autor / Author:    Facundo Costarelli
- * ==========================================================================
+ * [ESP] Implementa una Pila (LIFO: Last In, First Out) usando una lista
+ *       simplemente enlazada. Los nodos se insertan (push) y se extraen
+ *       (pop) desde el principio de la lista. Incluye funciones de push,
+ *       pop, impresión y liberación de recursos.
+ *
+ * [ENG] Implements a Stack (LIFO: Last In, First Out) using a singly
+ *       linked list. Nodes are pushed and popped from the beginning of
+ *       the list. Includes push, pop, display, and resource freeing
+ *       functions.
  */
 
-#include<stdio.h>
-#include<stdio_ext.h>
-#include<stdlib.h>
-#include<string.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
+/**
+ * @brief [ESP] Estructura de datos (nombre + edad).
+ *        [ENG] Data structure (name + age).
+ */
 struct info
 {
-    char nombre[10];
-    int edad;
+    char nombre[10]; /* [ESP] Nombre / [ENG] Name */
+    int edad;        /* [ESP] Edad   / [ENG] Age  */
 };
 
+/**
+ * @brief [ESP] Nodo de lista simplemente enlazada para la pila.
+ *        [ENG] Singly linked list node for the stack.
+ */
 struct nodo
 {
-    struct info *pdato;
-    struct nodo *psig;
+    struct info *pdato; /* [ESP] Puntero a datos / [ENG] Pointer to data */
+    struct nodo *psig;  /* [ESP] Siguiente nodo  / [ENG] Next node */
 };
 
+/* [ESP] Declaraciones / [ENG] Declarations */
 void PushNodo(struct nodo **pinicial);
 void PopNodo(struct nodo **pinicial);
 void MostrarLista(struct nodo *pinicial);
 void LiberarLista(struct nodo **pinicial);
 
-
-
-//Una PILA consiste en un "apilamiento de datos" tal que el primero en entrar, es el ultimo en salir. Esto se conoce como FILO(First in Last Out). El equivalente a esto es pensar en LIFO(Last In First OUT) ya que en una pila, ademas, el ultimo en entrar, es el 1er dato en salir. Se suele usar esto con listas simplemente enlazadas ya que solo necesitamos un puntero al comienzo de la lista. Aunque tambien se puede usar con arrays.
-//Si trabajamos con una lista simplemente enlazada para trabajar con PILAS, entonces,se dice que cada nuevo nodo se agrega AL PRINCIPIO de la lista y cada extraccion tambien se hace AL PRINCIPIO de la lista hasta llegar al nodo deseado
-
-int main()
+int main(void)
 {
-    struct nodo *pINI = NULL;//Lista inicialmente vacia
+    struct nodo *pINI = NULL;
     int i, CantNodos;
 
-    printf("Ingrese la cantidad de nodos a crear: ");
+    printf("[ESP] Cantidad de nodos a crear: ");
+    printf("[ENG] Number of nodes to create: ");
     scanf("%d", &CantNodos);
-    __fpurge(stdin);
 
-    //Creo nodos y los enlazo tal que tengo una lista simplemente enlazada trabajando como una PILA
-    for( i = 0; i < CantNodos; i++ )
+    /* [ESP] Push: crear nodos y apilarlos
+       [ENG] Push: create nodes and stack them */
+    for (i = 0; i < CantNodos; i++)
         PushNodo(&pINI);
-    //Imprimo la lista creada
+
+    printf("\n[ESP] Pila con %d nodos:\n", CantNodos);
+    printf("[ENG] Stack with %d nodes:\n", CantNodos);
     MostrarLista(pINI);
-    //Extraigo un nodo
+
+    /* [ESP] Pop: extraer un nodo (el último que entró)
+       [ENG] Pop: extract a node (the last one pushed) */
     PopNodo(&pINI);
-    //Imprimo la lista creada
+    printf("\n[ESP] Pila despues de 1 pop:\n");
+    printf("[ENG] Stack after 1 pop:\n");
     MostrarLista(pINI);
-    //Extraigo un nodo
-    PopNodo(&pINI);
-    //Extraigo un nodo
-    PopNodo(&pINI);
-    //Libero los recursos
+
     LiberarLista(&pINI);
 
-    printf("El programa se ha ejecutado correctamente y se ham liberado todos los recursos\n");
-
-
+    printf("[ESP] Programa finalizado. Recursos liberados.\n");
+    printf("[ENG] Program finished. Resources freed.\n");
     return 0;
 }
 
+/**
+ * @brief [ESP] Push: inserta un nuevo nodo al principio de la pila.
+ *        [ENG] Push: inserts a new node at the top of the stack.
+ *
+ * [ESP] En una pila LIFO con lista simplemente enlazada:
+ *       - Push (insertar) se hace al PRINCIPIO
+ *       - Pop (extraer) se hace al PRINCIPIO
+ * [ENG] In a LIFO stack with singly linked list:
+ *       - Push (insert) is done at the BEGINNING
+ *       - Pop (extract) is done at the BEGINNING
+ */
 void PushNodo(struct nodo **pinicial)
 {
-     struct nodo *paux = *pinicial;
+    struct nodo *paux = NULL;
 
-    //Pregunto si la lista esta vacia. En caso de estarlo creo el 1er nodo y lo inserto
-    if((*pinicial) == NULL)
+    if ((*pinicial) == NULL)
     {
-         printf("La lista esta vacia. Se creara e insertara el 1er nodo de la PILA\n");
-        *pinicial = (struct nodo *)malloc(sizeof(struct nodo));//Creo dinamicamente el 1er nodo de la PILA
-        //Aca iria proteccion contra NULL de malloc
+        /* [ESP] Pila vacía: crear primer nodo
+           [ENG] Empty stack: create first node */
+        *pinicial = (struct nodo *)malloc(sizeof(struct nodo));
+        (*pinicial)->psig = NULL;
+        (*pinicial)->pdato = (struct info *)malloc(sizeof(struct info));
 
-        (*pinicial)->psig = NULL;//El puntero psig lo apunto a NULL
-        (*pinicial)->pdato = (struct info *)malloc(sizeof(struct info));//Creo la estructura dato de forma dinamica. Este dato estara ubicado dentro del nodo
-        //Aca iria proteccion contra NULL de malloc
-
-
-        //Cargo con informacion, proveniente del teclado, la estructura dato creada dinamicamente
-        printf("Ingrese un nombre\n");
-        scanf("%s",( (*pinicial)->pdato )->nombre);
-        __fpurge(stdin);
-
-        printf("Ingrese la edad\n");
-        scanf("%d", &( ( (*pinicial)->pdato )->edad ) );
-        __fpurge(stdin);
-
-
+        printf("[ESP] Nombre / [ENG] Name: ");
+        scanf("%s", ((*pinicial)->pdato)->nombre);
+        printf("[ESP] Edad / [ENG] Age: ");
+        scanf("%d", &(((*pinicial)->pdato)->edad));
     }
-    //Si la lista no esta vacia. Entonces creo el nuevo nodo y lo enlazo AL PRINCIPIO ya que en una PILA, simepre se hace de esta forma
     else
     {
-        printf("La lista NO esta vacia. Se creara e insertara un nuevo nodo AL PRINCIPIO de la PILA\n");
-        paux = (struct nodo *)malloc(sizeof(struct nodo));//Creo dinamicamente un nuevo nodo de la PILA
-        //Aca iria proteccion contra NULL de malloc
+        /* [ESP] Pila no vacía: crear nodo y enlazar al principio.
+                 El nuevo nodo apunta al nodo que antes era el tope.
+           [ENG] Non-empty stack: create node and link at the beginning.
+                 The new node points to what was previously the top. */
+        paux = (struct nodo *)malloc(sizeof(struct nodo));
+        paux->psig = *pinicial;
+        *pinicial = paux;
 
-         paux->psig = *pinicial;//Accedo al psig del nuevo nodo y hago que apunte al nodo inicial viejo de la lista
-         *pinicial = paux;//El puntero al nodo inicial viejo de la lista apunta ahora al nuevo nodo de la lista el cual sera a su vez el inicial de la lista
+        (*pinicial)->pdato = (struct info *)malloc(sizeof(struct info));
 
-         (*pinicial)->pdato = (struct info *)malloc(sizeof(struct info));//Creo dinamicamente la estructura dato. Esta se encuentra en el interior del nuevo nodo
-        //Aca iria proteccion contra NULL de malloc
-        //Cargo con informacion proveniente del teclado, la estructura dato creada dinamicamente
-        printf("Ingrese un nombre\n");
-        scanf("%s",( (*pinicial)->pdato )->nombre);
-        __fpurge(stdin);
-
-        printf("Ingrese la edad\n");
-        scanf("%d", &( ( (*pinicial)->pdato )->edad ) );
-        __fpurge(stdin);
-
-
+        printf("[ESP] Nombre / [ENG] Name: ");
+        scanf("%s", ((*pinicial)->pdato)->nombre);
+        printf("[ESP] Edad / [ENG] Age: ");
+        scanf("%d", &(((*pinicial)->pdato)->edad));
     }
-
-
 
     return;
 }
 
+/**
+ * @brief [ESP] Pop: extrae el nodo del tope de la pila (LIFO).
+ *        [ENG] Pop: extracts the node from the top of the stack (LIFO).
+ */
 void PopNodo(struct nodo **pinicial)
 {
     struct nodo *paux = NULL;
 
-    //Pregunto si la lista esta vacia.De ser cierto, actuo en consecuencia
-    if((*pinicial)==NULL)
+    if ((*pinicial) == NULL)
     {
-        printf("PILA vacia. No hay nada para extraer\n");
+        printf("[ESP] Pila vacia. Nada que extraer.\n");
+        printf("[ENG] Empty stack. Nothing to extract.\n");
     }
-    //Si la lista no esta vacia, entonces extraigo un nodo AL PRINCIPIO de la lista
     else
     {
-        paux = *pinicial;//Guardo en paux la direccion del 1er nodo de la PILA
-        printf("Extrayendo nombre: %s edad: %d\n", ((*pinicial)->pdato)->nombre, ((*pinicial)->pdato)->edad);//Extraigo dato
-        *pinicial = (*pinicial)->psig;//Accedo al psig del nodo actual a extraer y hago que el *pinicial apunte al siguiente nodo siendo que este ahora se convierta en el nodo inicial de la lista
+        /* [ESP] Guardar referencia al tope, avanzar pinicial, y liberar
+           [ENG] Save reference to top, advance pinicial, and free */
+        paux = *pinicial;
+        printf("[ESP] Extraido: %s, %d\n",
+               ((*pinicial)->pdato)->nombre, ((*pinicial)->pdato)->edad);
+        printf("[ENG] Extracted: %s, %d\n",
+               ((*pinicial)->pdato)->nombre, ((*pinicial)->pdato)->edad);
 
-        free(paux->pdato);//Libero la memoria del dato del nodo a extraer
-        free(paux);//Libero la memoria del nodo
+        *pinicial = (*pinicial)->psig;
 
-
+        free(paux->pdato);
+        free(paux);
     }
+
     return;
 }
 
+/**
+ * @brief [ESP] Muestra todos los nodos de la pila (tope → base).
+ *        [ENG] Displays all stack nodes (top → bottom).
+ */
 void MostrarLista(struct nodo *pinicial)
 {
     struct nodo *paux = pinicial;
 
-    if(pinicial == NULL)
+    if (pinicial == NULL)
     {
-        printf("Lista Vacia\n");
+        printf("[ESP] Pila vacia.\n[ENG] Empty stack.\n");
     }
     else
     {
-        while(paux != NULL)
+        while (paux != NULL)
         {
-            printf("Nombre: %s, edad: %d\n", (paux->pdato)->nombre, (paux->pdato)->edad);
+            printf("  [ESP/ENG] Nombre/Name: %s | Edad/Age: %d\n",
+                   (paux->pdato)->nombre, (paux->pdato)->edad);
             paux = paux->psig;
         }
     }
@@ -175,12 +186,18 @@ void MostrarLista(struct nodo *pinicial)
     return;
 }
 
+/**
+ * @brief [ESP] Libera toda la memoria dinámica de la pila.
+ *        [ENG] Frees all dynamic memory from the stack.
+ */
 void LiberarLista(struct nodo **pinicial)
 {
     struct nodo *pactual = *pinicial;
     struct nodo *psiguiente = NULL;
 
-    while(pactual != NULL)
+    /* [ESP] Recorrer liberando cada nodo y su estructura de datos
+       [ENG] Traverse freeing each node and its data structure */
+    while (pactual != NULL)
     {
         psiguiente = pactual->psig;
         free(pactual->pdato);
@@ -189,6 +206,5 @@ void LiberarLista(struct nodo **pinicial)
     }
 
     *pinicial = NULL;
-
     return;
 }

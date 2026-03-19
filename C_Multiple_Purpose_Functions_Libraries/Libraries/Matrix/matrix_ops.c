@@ -23,17 +23,7 @@
  * ==========================================================================
  */
 
-#include<stdio.h>
-#include<stdlib.h>
-#include <stdio_ext.h>
-
-double ** crearmatrizcondatos( double ***P, int filas, int columnas);
-//void cargamatriz( char ***P, int filas, int columnas );
-void cargamatrizconnumerosdouble( double ***P, int filas, int columnas );
-void mostrarmatriz( double ***P, int filas, int columnas );
-void liberarmatriz( double ***P, int filas );
-void multiplicarmatrizes( double ***P, double ***P1, double ***P2, int filas1, int columnas1, int filas2, int columnas2, char *PunteroaCantidadefilasmatricesresultantes );
-void sumarmatrices( double ***P, double ***P1, double ***P2, int filas1, int columnas1, int filas2, int columnas2, char *PunteroaCantidadefilasmatricessumadas );
+#include "matrix_ops.h"
 
 //Este programa permite crear matrices dinamicamente ,con datos predeterminadas; y guardarlas en un vector dinamico que se lo recorre con puntero triple. Las matrices seran punteros dobles tal que apuntan y permiten recorrer un array dinamico que almacena las filas. Estas filas a su vez son punteros simples tal que apuntan y permiten recorrer un array dinamico que almacena los datos guardados de cada posicion de la matriz
 

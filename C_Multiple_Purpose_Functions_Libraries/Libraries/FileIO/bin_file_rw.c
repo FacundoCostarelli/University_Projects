@@ -1,69 +1,82 @@
 /**
- * ==========================================================================
- * bin_file_rw.c — Binary File Write Template with Structs
- * ==========================================================================
- * [ESP] Plantilla de ejemplo para crear y escribir un archivo binario
- *       con datos de estructuras predefinidas usando fwrite().
- *       Demuestra apertura en modo "wb", escritura de múltiples
- *       registros y cierre del archivo.
+ * @file    bin_file_rw.c
+ * @brief   [ESP] Plantilla de escritura de archivos binarios con estructuras.
+ *          [ENG] Binary file write template with structs.
  *
- * [ENG] Template example for creating and writing a binary file
- *       with predefined struct data using fwrite().
- *       Demonstrates opening in "wb" mode, writing multiple
- *       records, and closing the file.
+ * @author  Facundo Costarelli
+ * @date    2022
+ * @course  Informática 1 — UTNBA
  *
- * Materia / Subject: Informática 1 — UTNBA (2022)
- * Autor / Author:    Facundo Costarelli
- * ==========================================================================
+ * [ESP] Código de referencia que demuestra cómo crear un archivo binario
+ *       y escribir múltiples registros de estructuras usando fwrite().
+ *       Las secciones marcadas con <NOMBRE_ESTRUCTURA> son placeholders
+ *       que deben reemplazarse por el tipo de estructura real.
+ *
+ * [ENG] Reference code demonstrating how to create a binary file and
+ *       write multiple struct records using fwrite(). Sections marked
+ *       with <NOMBRE_ESTRUCTURA> are placeholders that must be replaced
+ *       with the actual struct type.
  */
 
-#include<stdio.h>
+#include <stdio.h>
 
-typedef /*<struct data>*/
+/* [ESP] Definición de estructura de ejemplo — reemplazar por la real
+   [ENG] Example struct definition — replace with the actual one */
+typedef struct
 {
-	/*ESTO ES UN EJEMPLO*/
-    char nombreyapellido[80];
-    unsigned int codigoCliente;
-    float kws;
-}/*<NOMBRE_ESTRUCTURA>*/;
+    char nombreyapellido[80];   /* [ESP] Nombre y apellido / [ENG] Full name */
+    unsigned int codigoCliente; /* [ESP] Código de cliente / [ENG] Client code */
+    float kws;                  /* [ESP] Kilowatts consumidos / [ENG] Kilowatts consumed */
+} ClienteEjemplo;
 
+/**
+ * @brief [ESP] Programa ejemplo: crea un archivo binario con datos de clientes.
+ *        [ENG] Example program: creates a binary file with client data.
+ */
 int main(void)
 {
-    //Declaro un puntero a file del archivo binario de salida
     FILE *File_out = NULL;
 
-    //Creo la informacion que contendra el archivo de salida a partir de crear varias variables struct producto y cargarlas con datos predeterminados
-    /*<struct data>*/ var1 = { "Facundo Costarelli", 30, 90};
-    /*<struct data>*/ var2 = { "Juan Costarelli", 20, 150.5};
-    /*<struct data>*/ var3 = { "Silvia Bruno", 30, 180.9};
-    /*<struct data>*/ var4 = { "Jorge Costarelli", 15, 135};
-    /*<struct data>*/ var5 = { "Mariano Gonzales", 40, 200.50};
-    /*<struct data>*/ var6 = { "Marcelo Trujillo", 100, 3000.500};
-    /*<struct data>*/ var7 = { "Misael Cudeck", 80, 2000.435};
-    /*<struct data>*/ var8 = { "Federico Boa", 30, 1500.536};
+    /* [ESP] Crear datos de ejemplo con estructuras inicializadas
+       [ENG] Create sample data with initialized structs */
+    ClienteEjemplo var1 = {"Facundo Costarelli", 30, 90.0};
+    ClienteEjemplo var2 = {"Juan Costarelli", 20, 150.5};
+    ClienteEjemplo var3 = {"Silvia Bruno", 30, 180.9};
+    ClienteEjemplo var4 = {"Jorge Costarelli", 15, 135.0};
+    ClienteEjemplo var5 = {"Mariano Gonzales", 40, 200.50};
+    ClienteEjemplo var6 = {"Marcelo Trujillo", 100, 3000.500};
+    ClienteEjemplo var7 = {"Misael Cudeck", 80, 2000.435};
+    ClienteEjemplo var8 = {"Federico Boa", 30, 1500.536};
 
-    //Creo y abro el arhcivo de salida
+    /* [ESP] Abrir el archivo en modo escritura binaria ("wb")
+       [ENG] Open the file in binary write mode ("wb") */
     File_out = fopen("informacion.dat", "wb");
-    //Proteccion contra NULL
-    if(File_out == NULL)
+    if (File_out == NULL)
     {
-        printf("Hubo un error durante la apertura del arhcivo de salida binario\n");
+        printf("[ESP] Error en apertura de archivo binario de salida.\n");
+        printf("[ENG] Error opening binary output file.\n");
         return -1;
     }
 
-    //Escribo la informacion creada en el archivo de salida.
-    //Por cada fwrite habria que escribir una proteccion
-    fwrite(&var1, sizeof(/*<struct data>*/), 1, File_out);
-    fwrite(&var2, sizeof(/*<struct data>*/), 1, File_out);
-    fwrite(&var3, sizeof(/*<struct data>*/), 1, File_out);
-    fwrite(&var4, sizeof(/*<struct data>*/), 1, File_out);
-    fwrite(&var5, sizeof(/*<struct data>*/), 1, File_out);
-    fwrite(&var6, sizeof(/*<struct data>*/), 1, File_out);
-    fwrite(&var7, sizeof(/*<struct data>*/), 1, File_out);
-    fwrite(&var8, sizeof(/*<struct data>*/), 1, File_out);
+    /* [ESP] Escribir cada estructura al archivo binario con fwrite().
+             fwrite(ptr, tamaño, cantidad, archivo)
+       [ENG] Write each struct to the binary file with fwrite().
+             fwrite(ptr, size, count, file) */
+    fwrite(&var1, sizeof(ClienteEjemplo), 1, File_out);
+    fwrite(&var2, sizeof(ClienteEjemplo), 1, File_out);
+    fwrite(&var3, sizeof(ClienteEjemplo), 1, File_out);
+    fwrite(&var4, sizeof(ClienteEjemplo), 1, File_out);
+    fwrite(&var5, sizeof(ClienteEjemplo), 1, File_out);
+    fwrite(&var6, sizeof(ClienteEjemplo), 1, File_out);
+    fwrite(&var7, sizeof(ClienteEjemplo), 1, File_out);
+    fwrite(&var8, sizeof(ClienteEjemplo), 1, File_out);
 
-    //Cierro el archivo de salida
+    /* [ESP] Cerrar el archivo
+       [ENG] Close the file */
     fclose(File_out);
-    
+
+    printf("[ESP] Archivo binario creado exitosamente.\n");
+    printf("[ENG] Binary file created successfully.\n");
+
     return 0;
 }

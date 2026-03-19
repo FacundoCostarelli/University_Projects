@@ -1,200 +1,173 @@
 /**
- * ==========================================================================
- * string_encrypt.c — String Encryption Functions
- * ==========================================================================
- * [ESP] Funciones de encriptación de strings:
- *       - encriptar_letras: encripta letras mayúsculas con un
- *         desplazamiento alfabético aleatorio (estilo cifrado César).
- *       - encriptar_numeros: convierte dígitos decimales a octal y
- *         reemplaza cada dígito octal con un símbolo especial.
- *       - aleatorio_en_rango: genera un número aleatorio en un rango dado.
+ * @file    string_encrypt.c
+ * @brief   [ESP] Implementación de funciones de encriptación de strings.
+ *          [ENG] Implementation of string encryption functions.
  *
- * [ENG] String encryption functions:
- *       - encriptar_letras: encrypts uppercase letters with a random
- *         alphabetical shift (Caesar cipher style).
- *       - encriptar_numeros: converts decimal digits to octal and
- *         replaces each octal digit with a special symbol.
- *       - aleatorio_en_rango: generates a random number within a range.
- *
- * Materia / Subject: Informática 1 — UTNBA (2022)
- * Autor / Author:    Facundo Costarelli
- * ==========================================================================
+ * @author  Facundo Costarelli
+ * @date    2022
+ * @course  Informática 1 — UTNBA
  */
 
-// [ESP] Supuestos: el string de entrada viene todo en MAYÚSCULAS.
-//       El string de salida tiene espacio suficiente para la encriptación.
-// [ENG] Assumptions: input string is all UPPERCASE.
-//       Output string has enough space for the encrypted result.
-/*Funcion que encripta strings de letras MAYUSCULAS sin modificar los strings numericos intermedios. Escribe dicha encriptacion en un   array de salida que puede ser auxiliar o no. La encriptacion se basa en un desplazamiento alfabetico aleatorio para cada caracter*/  
-/*Recibe un string de entrada "char *src" y un string de salida "char *dst"*/
-/*Esta funcion devuelve el valor de desplazamiento alfabetico*/
-int encriptar_letras(const char *src, char *dst)
-{
-    int desplazamiento_alfabetico = aleatorio_en_rango(1,25);
-    //int desplazamiento_restante_hasta_Z = 0;
-    int desplazamiento_adicional = 0;
-    size_t i = 0;
+#include "string_encrypt.h"
 
-
-    for( i = 0; i < strlen(src); i++ )
-    {
-        if(src[i] == ' ' || ( (src[i] >= '0' && src[i] <= '9') || src[i] == '#' ))
-        {
-            dst[i] = src[i];
-        }
-        else
-        {
-            if(src[i] + desplazamiento_alfabetico > 'Z')
-            {
-                desplazamiento_adicional = (src[i] + desplazamiento_alfabetico) - 'Z';
-                //desplazamiento_restante_hasta_Z = 'Z' - src[i];
-                //desplazamiento_adicional = desplazamiento_alfabetico - desplazamiento_restante_hasta_Z;
-
-                dst[i] = 'A' + (desplazamiento_adicional-1);
-            }
-            else
-                dst[i] = src[i] + desplazamiento_alfabetico;
-        }
-    }
-
-    return desplazamiento_alfabetico;
-}
-
-//Para generar nros aleatorios tipo int
+/**
+ * @brief [ESP] Genera un número aleatorio entero dentro de un rango inclusivo.
+ *        [ENG] Generates a random integer within an inclusive range.
+ */
 int aleatorio_en_rango(int minimo, int maximo)
 {
     return minimo + rand() / (RAND_MAX / (maximo - minimo + 1) + 1);
 }
 
-/*Funcion que encripta strings de numeros convirtiendo estos de formato string a int decimal, convierte ese int decimal a int octal y finalmente lo convierte a formato string. Esta concatena las encriptaciones numericas con los arrays alfabeticos intermededios, en un array char de salida "dst" que puede ser o no de salida */  
-/*La encriptacion se basa en reemplazar cada digito del valor octal con un simbolo dado por la tabla en el switchcase. Ademas dicha encreptacion se escribe entre simbolos inicial y final "#" */
-//Recibe un array de entrada "char *src" y un array de salida "char *dst"
-//Funciona para todos los casos excepto aquellos en los que hay digito-letra-digioto-letra o letra-digito-letra-digito
-//Sucede que para los 2 casos menicinados, solo encripta algunos de los caracteres de esa secuencia especial
-void encriptar_numeros(/*const*/ char *src, char *dst)
+/**
+ * @brief [ESP] Encripta letras mayúsculas con un desplazamiento César aleatorio.
+ *        [ENG] Encrypts uppercase letters with a random Caesar shift.
+ */
+int encriptar_letras(const char *src, char *dst)
 {
-    size_t i = 0, j = 0, k = 0;
-    char buffer_aux[TXT_MAX_LEN];//buffer auxiliar que almacena un valor entero octal en formato de string de chars
-    int valor_decimal_IN = 0;
-    char *Fin_Cadena_Numerica = NULL;
+    /* [ESP] Generar un desplazamiento aleatorio entre 1 y 25 posiciones
+       [ENG] Generate a random shift between 1 and 25 positions */
+    int desplazamiento_alfabetico = aleatorio_en_rango(1, 25);
+    int desplazamiento_adicional = 0;
+    size_t i = 0;
 
-    //Inicializo aux con un valor cualquiera
-    //char aux = 'A';
-
-    //Algoritmo de encriptado. Recorro cada caracter de src y pregunto si esta entre 0 y 9
-    //En tal caso lo convierto a octal y voy escribiendo en dst el caracter de encriptacion asociado
-    //a cada digito del valor octal  los # al principio y fin del encriptado.
-    for( i = 0; i < strlen(src); i++ )
+    for (i = 0; i < strlen(src); i++)
     {
-
-        if( (src[i] >= '0' && src[i] <= '9') ) // || (aux >= '0' && aux <= '9')
+        /* [ESP] Si el carácter es un espacio, dígito o '#', se copia sin cambios
+           [ENG] If the character is a space, digit, or '#', copy it unchanged */
+        if (src[i] == ' ' || (src[i] >= '0' && src[i] <= '9') || src[i] == '#')
         {
-            //Limpio buffer_aux con todos 0
-            for( k = 0; k < TXT_MAX_LEN; k++ )
-            {
-                buffer_aux[k] = '\0';
-            }
-
-
-            //Metodo 1
-            //Convierto el valor numerico decimal de entrada en formato de caracteres en src a un valor entero decimal
-            valor_decimal_IN = (int)strtol(&src[i], &Fin_Cadena_Numerica, 10);
-            if(valor_decimal_IN == 0) printf("No hay digitos en formato string para convertir\n");
-
-            //Convierto el valor numerico int decimal a octal en formato de caracteres pasandolo a un array auxiliar
-            sprintf(buffer_aux, "%o", valor_decimal_IN);
-            printf("El valor entero a numero octal con sprintf queda como %s\n",buffer_aux);
-
-
-           //Metodo 2
-           //Convierto el valor numerico decimal de entrada en formato emtero una cadena de caracteres asociada
-           //IntToAnString(valor_decimal_IN, buffer_aux, 8);
-           //printf("El valor entero a numero octal con IntToAnString queda como %s\n",buffer_aux);
-
-           j = i;
-           dst[j] = '#';
-           j++;
-
-           for( k = 0; k < strlen(buffer_aux); k++ )
-           {
-               //aux = atoi(&buffer_aux[i]);
-               //switch ( aux )
-               switch( buffer_aux[k] )
-               {
-               case '0':
-                   dst[j] = '$';
-                   j++;
-                   break;
-               case '1':
-                   dst[j] = '%';
-                   j++;
-                   break;
-               case '2':
-                   dst[j] = '&';
-                   j++;
-                   break;
-               case '3':
-                   dst[j] = '*';
-                   j++;
-                   break;
-               case '4':
-                   dst[j] = '@';
-                   j++;
-                   break;
-               case '5':
-                   dst[j] = '!';
-                   j++;
-                   break;
-               case '6':
-                   dst[j] = '+';
-                   j++;
-                   break;
-               case '7':
-                   dst[j] = '=';
-                   j++;
-                   break;
-               default:
-                   break;
-               }
-           }
-           dst[j] =  '#';
-           //j++;
-           printf("Valor de j %lu\n",j);
-
-           printf("Encriptacion en funcion encriptar_numeros %s\n",dst);
-
-           //Cuento la cantidad de digitos que hay hasta el proximo dato no digito y dejo el iterador preparado para el proximo dato no
-           //digito
-           for( ; src[i] >= '0' && src[i] <= '9'; i++);
-
-           i++;
+            dst[i] = src[i];
         }
         else
         {
-           if(dst[i-1] == '#')
-           {
+            /* [ESP] Si el desplazamiento supera 'Z', hacemos wrap-around a 'A'.
+                     Ej: 'Y' + 3 = 'Y'(89) + 3 = 92 > 'Z'(90), excedente = 2 → 'B'
+               [ENG] If the shift exceeds 'Z', we wrap around to 'A'.
+                     E.g.: 'Y' + 3 = 'Y'(89) + 3 = 92 > 'Z'(90), excess = 2 → 'B' */
+            if (src[i] + desplazamiento_alfabetico > 'Z')
+            {
+                desplazamiento_adicional = (src[i] + desplazamiento_alfabetico) - 'Z';
+                dst[i] = 'A' + (desplazamiento_adicional - 1);
+            }
+            else
+            {
+                /* [ESP] Desplazamiento directo sin overflow
+                   [ENG] Direct shift without overflow */
+                dst[i] = src[i] + desplazamiento_alfabetico;
+            }
+        }
+    }
 
-               //Limpio buffer auxliar todos 0
-               for( k = 0; k < TXT_MAX_LEN; k++ )
-               {
-                   buffer_aux[k] = '\0';
-               }
+    /* [ESP] Terminamos el string destino con '\0'
+       [ENG] Null-terminate the destination string */
+    dst[i] = '\0';
 
-               j = i - 2;
-              // printf("Caracter de inicio de cadena a concatenar %c\n",src[j]);
-               for(k = 0 ; src[j] >= 'A' && src[j] <= 'Z'; k++,j++)
+    return desplazamiento_alfabetico;
+}
+
+/**
+ * @brief [ESP] Encripta dígitos numéricos sustituyéndolos por símbolos.
+ *        [ENG] Encrypts numeric digits by substituting them with symbols.
+ *
+ * [ESP] Tabla de sustitución (dígito octal → símbolo):
+ *       0→$  1→%  2→&  3→*  4→@  5→!  6→+  7→=
+ * [ENG] Substitution table (octal digit → symbol):
+ *       0→$  1→%  2→&  3→*  4→@  5→!  6→+  7→=
+ */
+void encriptar_numeros(char *src, char *dst)
+{
+    size_t i = 0, j = 0, k = 0;
+
+    /* [ESP] Buffer auxiliar para almacenar el valor octal como string
+       [ENG] Auxiliary buffer to store the octal value as a string */
+    char buffer_aux[TXT_MAX_LEN];
+    int valor_decimal_IN = 0;
+    char *Fin_Cadena_Numerica = NULL;
+
+    for (i = 0; i < strlen(src); i++)
+    {
+        /* [ESP] Detectamos si el carácter actual es un dígito (0–9)
+           [ENG] Detect if the current character is a digit (0–9) */
+        if (src[i] >= '0' && src[i] <= '9')
+        {
+            /* [ESP] Limpiar buffer auxiliar
+               [ENG] Clear auxiliary buffer */
+            for (k = 0; k < TXT_MAX_LEN; k++)
+                buffer_aux[k] = '\0';
+
+            /* [ESP] Convertir la secuencia de dígitos a entero decimal con strtol().
+                     &src[i] apunta al primer dígito de la secuencia.
+                     Fin_Cadena_Numerica recibirá la dirección del primer no-dígito.
+               [ENG] Convert the digit sequence to decimal integer with strtol().
+                     &src[i] points to the first digit of the sequence.
+                     Fin_Cadena_Numerica will receive the address of the first non-digit. */
+            valor_decimal_IN = (int)strtol(&src[i], &Fin_Cadena_Numerica, 10);
+
+            /* [ESP] Convertir el entero decimal a string octal con sprintf()
+               [ENG] Convert the decimal integer to octal string with sprintf() */
+            sprintf(buffer_aux, "%o", valor_decimal_IN);
+
+            /* [ESP] Escribir '#' como delimitador de inicio de sección encriptada
+               [ENG] Write '#' as the opening delimiter of the encrypted section */
+            j = i;
+            dst[j] = '#';
+            j++;
+
+            /* [ESP] Sustituir cada dígito octal por su símbolo correspondiente.
+                     La tabla de sustitución define un carácter único para cada dígito.
+               [ENG] Substitute each octal digit with its corresponding symbol.
+                     The substitution table defines a unique character for each digit. */
+            for (k = 0; k < strlen(buffer_aux); k++)
+            {
+                switch (buffer_aux[k])
+                {
+                case '0': dst[j] = '$'; j++; break;
+                case '1': dst[j] = '%'; j++; break;
+                case '2': dst[j] = '&'; j++; break;
+                case '3': dst[j] = '*'; j++; break;
+                case '4': dst[j] = '@'; j++; break;
+                case '5': dst[j] = '!'; j++; break;
+                case '6': dst[j] = '+'; j++; break;
+                case '7': dst[j] = '='; j++; break;
+                default: break;
+                }
+            }
+
+            /* [ESP] Escribir '#' como delimitador de fin de sección encriptada
+               [ENG] Write '#' as the closing delimiter of the encrypted section */
+            dst[j] = '#';
+
+            /* [ESP] Avanzar el índice 'i' para saltar los dígitos ya procesados.
+                     Buscamos el próximo carácter que no sea dígito.
+               [ENG] Advance index 'i' to skip already processed digits.
+                     We look for the next non-digit character. */
+            for ( ; src[i] >= '0' && src[i] <= '9'; i++);
+            i++;
+        }
+        else
+        {
+            /* [ESP] Para caracteres no-dígito: copiar directamente al destino.
+                     Se maneja el caso especial cuando el carácter anterior era '#'.
+               [ENG] For non-digit characters: copy directly to destination.
+                     Special case is handled when the previous character was '#'. */
+            if (i > 0 && dst[i - 1] == '#')
+            {
+                for (k = 0; k < TXT_MAX_LEN; k++)
+                    buffer_aux[k] = '\0';
+
+                j = i - 2;
+                for (k = 0; src[j] >= 'A' && src[j] <= 'Z'; k++, j++)
                     buffer_aux[k] = src[j];
 
-               //printf("buffer aux con solo letras: %s\n",buffer_aux);
-               strcat(dst,buffer_aux);
-
-           }
-           else
-               dst[i] = src[i];
+                strcat(dst, buffer_aux);
+            }
+            else
+            {
+                dst[i] = src[i];
+            }
         }
-
     }
 
     return;
 }
-

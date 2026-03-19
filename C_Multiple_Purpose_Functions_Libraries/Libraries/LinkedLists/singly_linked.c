@@ -1,440 +1,315 @@
 /**
- * ==========================================================================
- * singly_linked.c — Singly Linked List Operations
- * ==========================================================================
- * [ESP] Implementación de operaciones para listas simplemente enlazadas.
- *       Incluye dos versiones:
- *       V1: Nodo con estructura Producto_t embebida — permite enlazar al
- *           inicio, al final y en el medio de la lista.
- *       V2: Nodo genérico con void* — permite almacenar cualquier tipo
- *           de dato usando copia byte a byte con memoria dinámica.
- *       Incluye también funciones de borrado, impresión y alocación.
+ * @file    singly_linked.c
+ * @brief   [ESP] Implementación de operaciones para listas simplemente enlazadas.
+ *          [ENG] Implementation of singly linked list operations.
  *
- * [ENG] Implementation of singly linked list operations.
- *       Includes two versions:
- *       V1: Node with embedded Producto_t struct — supports linking at
- *           the beginning, end, and middle of the list.
- *       V2: Generic node with void* — stores any data type using
- *           byte-by-byte copying with dynamic memory.
- *       Also includes deletion, printing, and allocation functions.
+ * @author  Facundo Costarelli
+ * @date    2022
+ * @course  Informática 1 — UTNBA
  *
- * Materia / Subject: Informática 1 — UTNBA (2022)
- * Autor / Author:    Facundo Costarelli
- * ==========================================================================
+ * [ESP] Incluye dos versiones:
+ *       V1: Nodo con estructura Producto_t embebida — enlazar al inicio,
+ *           al final, en el medio, borrar nodo, e imprimir.
+ *       V2: Nodo genérico con void* — crear, cargar, enlazar e imprimir
+ *           con copia byte a byte para datos de cualquier tipo.
+ *
+ * [ENG] Includes two versions:
+ *       V1: Node with embedded Producto_t struct — link at beginning,
+ *           end, middle, delete node, and print.
+ *       V2: Generic node with void* — create, load, link, and print
+ *           with byte-by-byte copy for any data type.
  */
 
-// [ESP] Función genérica que crea, carga y enlaza un nodo cuyo campo interno
-//       es una variable del tipo "struct" (no un puntero a estructura).
-// [ENG] Generic function that creates, loads, and links a node whose internal
-//       field is a struct variable (not a pointer to a struct).
-/*
-    typedef struct nodo
-    {
-        Producto_t data;
-        Nodo_t *sig;
-    }Nodo_t;
+#include "lists.h"
+
+/* ===========================================================================
+ * [ESP] FUNCIONES COMPARTIDAS V1/V2
+ * [ENG] SHARED FUNCTIONS V1/V2
+ * =========================================================================== */
+
+/**
+ * @brief [ESP] Asigna memoria dinámica para un nuevo nodo.
+ *        [ENG] Allocates dynamic memory for a new node.
  */
-void Lista_Simplemente_Enlazada_V1(Nodo_t **ptr1erElemento,Nodo_t **Nodo_Actual,Producto_t data)
+void Allocalizar_Nuevo_Nodo(Nodo_t **Nuevo_Nodo)
+{
+    /* [ESP] malloc crea un bloque de memoria del tamaño de un Nodo_t.
+             Si falla (retorna NULL), terminamos el programa.
+       [ENG] malloc creates a memory block of Nodo_t size.
+             If it fails (returns NULL), we terminate the program. */
+    *Nuevo_Nodo = (Nodo_t *)malloc(sizeof(Nodo_t));
+    if (*Nuevo_Nodo == NULL)
+    {
+        printf("[ESP] Error en malloc para nuevo nodo.\n");
+        printf("[ENG] malloc error for new node.\n");
+        exit(-1);
+    }
+
+    return;
+}
+
+/* ===========================================================================
+ * [ESP] VERSIÓN 1: NODO CON DATO EMBEBIDO (Producto_t)
+ * [ENG] VERSION 1: NODE WITH EMBEDDED DATA (Producto_t)
+ * =========================================================================== */
+
+/**
+ * @brief [ESP] Wrapper V1: crea, carga y enlaza un nodo con menú interactivo.
+ *        [ENG] Wrapper V1: creates, loads, and links a node with interactive menu.
+ */
+void Lista_Simplemente_Enlazada_V1(Nodo_t **ptr1erElemento, Nodo_t **Nodo_Actual, Producto_t data)
 {
     Nodo_t *Nuevo_Nodo = NULL;
     int PosNodoIzq;
     int PosNodoDer;
+    int decision;
 
-    //Verifico si la lista esta vacia y en tal caso creo, cargo y agrego el 1er nodo de la lista
-    if(*ptr1erElemento == NULL)
+    /* [ESP] Si la lista está vacía, crear el primer nodo
+       [ENG] If the list is empty, create the first node */
+    if (*ptr1erElemento == NULL)
     {
-        printf("La lista se encuentra vacia\nSe creara el 1er nodo\n");
+        printf("[ESP] Lista vacia. Creando 1er nodo.\n");
+        printf("[ENG] Empty list. Creating 1st node.\n");
 
-        //Llamo a funcion que crea dinamicamente un nuevo nodo
         Allocalizar_Nuevo_Nodo(&Nuevo_Nodo);
 
-        //Cargar nodo
+        /* [ESP] Cargar datos y marcar como último nodo (sig = NULL)
+           [ENG] Load data and mark as last node (sig = NULL) */
         Nuevo_Nodo->data = data;
-        //Enlazamiento
         Nuevo_Nodo->sig = NULL;
 
-        //Retorno, por referencia, del puntero al nuevo nodo creado
+        /* [ESP] Actualizar punteros: inicio de lista y nodo actual
+           [ENG] Update pointers: list head and current node */
         *Nodo_Actual = Nuevo_Nodo;
         *ptr1erElemento = Nuevo_Nodo;
     }
     else
     {
+        /* [ESP] Si la lista no está vacía, elegir método de enlazamiento
+           [ENG] If the list is not empty, choose linking method */
         do
         {
-            //Si la lista no esta vacia, entonces creo un nuevo nodo, lo cargo y lo enlazo a la lista actual. Elijo ademas un metodo de enlazamiento
-            printf("Ingrese una de las siguientes opciones de enlazamiento de nodo\n-1)Enlazar al final\n-2)Enlazar al principio\n-3)Enlazar en el medio\n");
+            printf("[ESP] Opciones: 1)Final 2)Principio 3)Medio\n");
+            printf("[ENG] Options: 1)End 2)Beginning 3)Middle\n");
             scanf("%d", &decision);
-            __fpurge(stdin);
+        } while (decision < 1 || decision > 3);
 
-            if( decision < 1 || decision > 3)
-                printf("Ha ingresado mal una opcion. Intentelo nuevamente\n");
-        }while( decision < 1 || decision > 3);
-
-        switch(decision)
+        switch (decision)
         {
-            case 1:
-                Enlazar_Al_Final_Y_Cargar(ptr1erElemento,Nodo_Actual,data,&Nuevo_Nodo);
-                break;
-            case 2:
-                Enlazar_Al_Principio_Y_Cargar(ptr1erElemento,Nodo_Actual,data,&Nuevo_Nodo);
-                break;
-            case 3:
-
-                //Pedido de ingreso de nro de nodos entre los cuales se quiere enlazar al nuevo.
-                //Faltaria agregar proteccion contra posicion de nodos mal ingresados
-                printf("Usted va a ingresar un nro de posicion de nodos consecutivos entre los cuales quiere enlazar el nuevo nodo\nConsidere como posicion inicial 0\n");
-                printf("Ingrese solamente la posicion del nodo lateral izquierdo: ");
-                scanf("%d", &PosNodoIzq);
-                __fpurge(stdin);
-                PosNodoDer = PosNodoIzq + 1;
-                printf("La posicion del nodo lateral derecho consecutivo es: %d\n",PosNodoDer);
-                /*
-                printf("Ingrese la posicion del nodo lateral derecho: ");
-                scanf("%d", &PosNodoDer);
-                __fpurge(stdin);
-                */
-                Enlazar_En_El_Medio_Y_Cargar(ptr1erElemento,Nodo_Actual,data,&Nuevo_Nodo,PosNodoIzq,PosNodoDer);
-                break;
-            default:
-                break;
+        case 1:
+            Enlazar_Al_Final_Y_Cargar_V1(ptr1erElemento, Nodo_Actual, data, &Nuevo_Nodo);
+            break;
+        case 2:
+            Enlazar_Al_Principio_Y_Cargar_V1(ptr1erElemento, Nodo_Actual, data, &Nuevo_Nodo);
+            break;
+        case 3:
+            printf("[ESP] Ingrese posición del nodo izquierdo (desde 0): ");
+            printf("[ENG] Enter left node position (from 0): ");
+            scanf("%d", &PosNodoIzq);
+            PosNodoDer = PosNodoIzq + 1;
+            Enlazar_En_El_Medio_Y_Cargar_V1(ptr1erElemento, Nodo_Actual, data, &Nuevo_Nodo, PosNodoIzq, PosNodoDer);
+            break;
+        default:
+            break;
         }
     }
 
     return;
 }
 
-void Allocalizar_Nuevo_Nodo(Nodo_t **Nuevo_Nodo)
+/**
+ * @brief [ESP] Enlaza un nuevo nodo al final de la lista (COLA/FIFO).
+ *        [ENG] Links a new node at the end of the list (Queue/FIFO).
+ */
+void Enlazar_Al_Final_Y_Cargar_V1(Nodo_t **ptr1erElemento, Nodo_t **Nodo_Actual, Producto_t data, Nodo_t **Nuevo_Nodo)
 {
-    //Allocacion de memoria dinamica para un nuevo nodo y verificacion de error de malloc
-    *Nuevo_Nodo = (Nodo_t *)malloc(sizeof(Nodo_t));
-    if(*Nuevo_Nodo == NULL)
-    {
-        printf("Hubo un error con la creacion y asignacion de memoria dinamica para un nuevo nodo\n");
-        exit(-1);
-    }
-    else
-        printf("Se creo exitosamente y dinamicamente un nuevo nodo\n");
-
-    return;
-}
-
-void Enlazar_Al_Final_Y_Cargar_V1(Nodo_t **ptr1erElemento,Nodo_t **Nodo_Actual,Producto_t data,Nodo_t **Nuevo_Nodo)
-{
-    //Asignacion tal que el *Nodo_Actual apunta al 1er nodo de la lista
+    /* [ESP] Iniciar desde el primer nodo
+       [ENG] Start from the first node */
     *Nodo_Actual = *ptr1erElemento;
 
-    printf("Se creara, cargara y agregara un nuevo nodo al final de la lista\n");
-
-    //Llamo a funcion que crea dinamicamente un nuevo nodo
     Allocalizar_Nuevo_Nodo(Nuevo_Nodo);
 
-    //Busqueda del ultimo nodo en la lista
-    while( (*Nodo_Actual)->sig != NULL  )
+    /* [ESP] Recorrer la lista hasta encontrar el último nodo (sig == NULL)
+       [ENG] Traverse the list until the last node is found (sig == NULL) */
+    while ((*Nodo_Actual)->sig != NULL)
         (*Nodo_Actual) = (*Nodo_Actual)->sig;
 
-    //Enlazo nodo al final de la lista
+    /* [ESP] Enlazar el nuevo nodo al final
+       [ENG] Link the new node at the end */
     (*Nodo_Actual)->sig = *Nuevo_Nodo;
-    //Cargo el nuevo nodo
+
+    /* [ESP] Cargar datos en el nuevo nodo y marcar como último
+       [ENG] Load data into the new node and mark as last */
     (*Nuevo_Nodo)->data = data;
     (*Nuevo_Nodo)->sig = NULL;
-    //Retorno, por referencia, del puntero al nuevo nodo creado
+
+    /* [ESP] Actualizar nodo actual
+       [ENG] Update current node */
     *Nodo_Actual = *Nuevo_Nodo;
 
     return;
 }
 
-void Enlazar_Al_Principio_Y_Cargar_V1(Nodo_t **ptr1erElemento,Nodo_t **Nodo_Actual,Producto_t data,Nodo_t **Nuevo_Nodo)
+/**
+ * @brief [ESP] Enlaza un nuevo nodo al principio de la lista (PILA/LIFO).
+ *        [ENG] Links a new node at the beginning of the list (Stack/LIFO).
+ */
+void Enlazar_Al_Principio_Y_Cargar_V1(Nodo_t **ptr1erElemento, Nodo_t **Nodo_Actual, Producto_t data, Nodo_t **Nuevo_Nodo)
 {
-    //Asignacion tal que el *Nodo_Actual apunta al 1er nodo de la lista
     *Nodo_Actual = *ptr1erElemento;
 
-    printf("Se creara, cargara y agregara un nuevo nodo al principio de la lista\n");
-
-    //Llamo a funcion que crea dinamicamente un nuevo nodo
     Allocalizar_Nuevo_Nodo(Nuevo_Nodo);
 
-    //No busco ultimo nodo del final de lista ya que solo necesito el nodo inicial de la lista
-
-    //Enlazo nodo al princpio de la lista
+    /* [ESP] El nuevo nodo apunta al nodo que antes era el primero.
+             No necesitamos recorrer la lista.
+       [ENG] The new node points to what was previously the first node.
+             No need to traverse the list. */
     (*Nuevo_Nodo)->sig = *Nodo_Actual;
-    //Cargo el nuevo nodo
     (*Nuevo_Nodo)->data = data;
-    //Retorno, por referencia, del puntero al nuevo nodo creado
+
+    /* [ESP] Actualizar punteros
+       [ENG] Update pointers */
     *Nodo_Actual = *Nuevo_Nodo;
+    *ptr1erElemento = *Nuevo_Nodo;
 
     return;
 }
 
-void Enlazar_En_El_Medio_Y_Cargar_V1(Nodo_t **ptr1erElemento,Nodo_t **Nodo_Actual,Producto_t data,Nodo_t **Nuevo_Nodo,int PosNodoIzq, int PosNodoDer)
+/**
+ * @brief [ESP] Enlaza un nuevo nodo en el medio de la lista.
+ *        [ENG] Links a new node in the middle of the list.
+ */
+void Enlazar_En_El_Medio_Y_Cargar_V1(Nodo_t **ptr1erElemento, Nodo_t **Nodo_Actual, Producto_t data, Nodo_t **Nuevo_Nodo, int PosNodoIzq, int PosNodoDer)
 {
-    //Asignacion tal que el *Nodo_Actual apunta al 1er nodo de la lista
     *Nodo_Actual = *ptr1erElemento;
 
-    //Declaracion de 2 punteros auxiliares para apuntar a los nodos laterales que se enlazaran con el nodo intermedio creado
+    /* [ESP] Punteros auxiliares para ubicar los nodos laterales
+       [ENG] Auxiliary pointers to locate the neighboring nodes */
     Nodo_t *Nodo_Aux1 = *ptr1erElemento;
     Nodo_t *Nodo_Aux2 = *ptr1erElemento;
-
-    //Declaracion de variable de iteracion
     int i;
 
-    printf("Se creara, cargara y agregara un nuevo nodo en el medio de la lista siendo que se ubique entre el nodo: %d y el nodo:  %d\n", PosNodoIzq, PosNodoDer);
-
-    //Llamo a funcion que crea dinamicamente un nuevo nodo
     Allocalizar_Nuevo_Nodo(Nuevo_Nodo);
 
-    if(PosNodoIzq != 0)
+    /* [ESP] Recorrer hasta la posición del nodo izquierdo
+       [ENG] Traverse to the left node position */
+    if (PosNodoIzq != 0)
     {
-        //Recorro la lista en busqueda del nodo lateral izquierdo
-        for( i = 1; i < PosNodoIzq; i++ )
+        for (i = 1; i < PosNodoIzq; i++)
             Nodo_Aux1 = Nodo_Aux1->sig;
     }
-    //Recorro la lista en busqueda del nodo lateral derecho
-    for( i = 0; i < PosNodoDer; i++ )
+
+    /* [ESP] Recorrer hasta la posición del nodo derecho
+       [ENG] Traverse to the right node position */
+    for (i = 0; i < PosNodoDer; i++)
         Nodo_Aux2 = Nodo_Aux2->sig;
 
-    //Enlazo el nuevo nodo creado entre medio de los nodos laterales izquierdo y derecho respectivamente
+    /* [ESP] Insertar el nuevo nodo entre los nodos izquierdo y derecho:
+             NodoIzq → NuevoNodo → NodoDer
+       [ENG] Insert the new node between the left and right nodes:
+             LeftNode → NewNode → RightNode */
     Nodo_Aux1->sig = *Nuevo_Nodo;
     (*Nuevo_Nodo)->sig = Nodo_Aux2;
 
-    //Cargo el nuevo nodo
     (*Nuevo_Nodo)->data = data;
-    //Retorno, por referencia, del puntero al nuevo nodo creado
     *Nodo_Actual = *Nuevo_Nodo;
 
     return;
 }
 
-void BorrarNodo(Nodo_t **ptr1erElemento,Nodo_t **Nodo_Actual,//parametros de filtrado para borrar)
-{
-    //*Nodo_Actual seria equivalente a Nodo_t *Puntero_Nodo_aux
-    *Nodo_Actual = *ptr1erElemento;
-    Nodo_t *Nodo_Anterior = NULL;
-
-    if(*Nodo_Actual == NULL)
-    {
-        printf("Lista vacia, usted saldra del programa\n");
-        exit(-1);
-    }
-    else
-    {
-        while(*Nodo_Actual != NULL)
-        {
-            //Pregunto si el dato del campo elegido del nodo actual coincide con el parametro de borrado ingresado
-            if(*Nodo_Actual->/*parametro*/ == /*parametro*/)
-            {
-                //Pregunto si el nodo a borrar es el 1er nodo de la lista y en caso de V o F actuo en consecuncia
-                if(*Nodo_Actual == *ptr1erElemento)
-                {
-                    //Sabiendo que el nodo a borrar es el 1er nodo de la lista entonces, pregunto si es el nodo a borrar es ademas el UNICO nodo de la lista
-                    if(*Nodo_Actual->sig == NULL)
-                    {
-                        //Apunto el puntero inicial a NULL tal que la lista esta vacua
-                        *ptr1erElemento = NULL;
-                        //Libero la memoria dinamica consumida por el nodo
-                        free(*Nodo_Actual);
-                    }
-                    //Sabiendo que el nodo a borrar es el 1er nodo de la lista PERO que NO ES EL UNICO en la lista, actuo en consecuencia.
-                    else
-                    {
-                        //Apunto el puntero inicial al siguiente nodo consecutivo de la lista
-                        *ptr1erElemento = *Nodo_Actual->sig;
-                        //Libero la memoria dinamica consumida por el nodo
-                        free(*Nodo_Actual);
-                    }
-                }
-                //Sabiendo que el nodo a borrar NO ES EL 1ER NODO, entonces actuo en consecuencia
-                else
-                {
-                    //El nodo anterior respecto al que se va a borrar, "Salta el enlace" tal que se enlaza al nodo siguinete consecutivo al que se va a borrar
-                    Nodo_Anterior->sig = *Nodo_Actual->sig;
-                    //Libero la memoria dinamica consumida por el nodo
-                    free(*Nodo_Actual);
-                }
-            }
-                 Nodo_Anterior = *Nodo_Actual;
-                *Nodo_Actual = *Nodo_Actual->sig;
-
-
-        }
-    }
-
-    return;
-}
-
-//Funcion que imprime la informacion de cada nodo de una lista simplemente enlazada siempre y cuando cada nodo tenga una variable del tipo "struct" con sus respectivos campos
+/**
+ * @brief [ESP] Imprime todos los campos de cada nodo (V1: dato embebido).
+ *        [ENG] Prints all fields of each node (V1: embedded data).
+ */
 void Imprimir_Campos_EstructuraInterna_NodoV1(Nodo_t **ptr1erElemento)
 {
     Nodo_t *Nodo_Actual = *ptr1erElemento;
 
-    while(Nodo_Actual != NULL)
+    /* [ESP] Recorrer la lista e imprimir cada nodo
+       [ENG] Traverse the list and print each node */
+    while (Nodo_Actual != NULL)
     {
-        printf("Codigo producto: %d\n", Nodo_Actual->data.codigo_Producto);
-        printf("Proveedor: %s\n", Nodo_Actual->data.proveedor);
-        printf("Cantidad stock: %d\n", Nodo_Actual->data.cantidad_stock);
+        printf("[ESP/ENG] Codigo/Code: %d | Proveedor/Supplier: %s | Stock: %d\n",
+               Nodo_Actual->data.codigo_Producto,
+               Nodo_Actual->data.proveedor,
+               Nodo_Actual->data.cantidad_stock);
         Nodo_Actual = Nodo_Actual->sig;
     }
 
     return;
 }
 
+/* ===========================================================================
+ * [ESP] VERSIÓN 2: NODO GENÉRICO CON void*
+ * [ENG] VERSION 2: GENERIC NODE WITH void*
+ *
+ * [ESP] NOTA: Esta sección es código de referencia/plantilla.
+ *       Requiere la definición V2 de Nodo_t (con void* data) para compilar.
+ *       Ver lists.h para desactivar V1 y activar V2.
+ *
+ * [ENG] NOTE: This section is reference/template code.
+ *       Requires the V2 definition of Nodo_t (with void* data) to compile.
+ *       See lists.h to deactivate V1 and activate V2.
+ * =========================================================================== */
 
-//Funcion generica que crea un nodo donde alguno de los campos internos es un puntero a otra estructura
-//Esta funcion esta pensada para poder utilizar un nodo cuya "struct" es presentada de la siguiente manera
 /*
-    typedef struct nodo
-    {
-        void *data;
-        Nodo_t *sig;
-    }Nodo_t;
- */
-void Lista_Simplemente_Enlazada_V2(Nodo_t **ptr1erElemento,Nodo_t **Nodo_Actual,void *nueva_data, size_t tam_data)
+void Crear_Cargar_Enlazar_Nodo_V2(Nodo_t **ptr1erElemento, Nodo_t **Nodo_Actual, void *nueva_data, size_t tam_data)
 {
     Nodo_t *Nuevo_Nodo = NULL;
     int i;
-    //Verifico si la lista esta vacia y en tal caso creo, cargo y agrego el 1er nodo de la lista
-    if(*ptr1erElemento == NULL)
+
+    if (*ptr1erElemento == NULL)
     {
-        printf("La lista se encuentra vacia\nSe creara el 1er nodo\n");
-
-        //Llamo a funcion que crea dinamicamente un nuevo nodo
         Allocalizar_Nuevo_Nodo(&Nuevo_Nodo);
-        //Llamo a funcion que crea dinamicamente una nueva estructura
-        Allocalizar_Nueva_Estructura(&Nuevo_Nodo, tam_data);
 
-        // Copiado del contenido de lo apuntado por "void *nueva_data" hacia el bloque de memoria dinamico creado para la estructura interna del nodo.
-        // Assunmo que char pesa 1 byte y que copia de a 1 byte a la vez
-        for( i = 0; i < tam_data; i++ )
-            *(char *)(Nuevo_Nodo->data + i) = *(char *)(nueva_data + i);
+        // [ESP] Alocar memoria para la estructura interna del nodo
+        // [ENG] Allocate memory for the node's internal data structure
+        Nuevo_Nodo->data = (void *)malloc(tam_data);
+        if (Nuevo_Nodo->data == NULL)
+        {
+            printf("[ESP] Error en malloc para datos.\n");
+            printf("[ENG] malloc error for data.\n");
+            exit(-1);
+        }
 
-        //Enlazamiento
+        // [ESP] Copia byte a byte: asumimos que char ocupa 1 byte.
+        //       Copiamos tam_data bytes desde nueva_data hacia Nuevo_Nodo->data.
+        // [ENG] Byte-by-byte copy: assume char is 1 byte.
+        //       Copy tam_data bytes from nueva_data to Nuevo_Nodo->data.
+        for (i = 0; i < (int)tam_data; i++)
+            *((char *)(Nuevo_Nodo->data) + i) = *((char *)(nueva_data) + i);
+
         Nuevo_Nodo->sig = NULL;
-
-        //Retorno, por referencia, del puntero al nuevo nodo creado
         *Nodo_Actual = Nuevo_Nodo;
         *ptr1erElemento = Nuevo_Nodo;
+        return;
     }
 
-    //Si la lista no esta vacia, entonces creo un nuevo nodo, lo cargo y lo enlazo a la lista actual
-
-
-    printf("Se creara, cargara y agregara un nuevo nodo a la lista\n");
-    //Allocacion de memoria dinamica para un nuevo nodo
+    // [ESP] Lista no vacía: crear nuevo nodo y enlazar al principio
+    // [ENG] Non-empty list: create new node and link at the beginning
     Nuevo_Nodo = (Nodo_t *)malloc(sizeof(Nodo_t));
-    if(Nuevo_Nodo == NULL)
+    if (Nuevo_Nodo == NULL)
     {
-        printf("Hubo un error con la creacion y asignacion de memoria dinamica para un nuevo nodo\n");
+        printf("[ESP] Error en malloc.\n[ENG] malloc error.\n");
         exit(-1);
     }
 
-    // Opcion 1
-    // Copiado del contenido de lo apuntado por "void *nueva_data" hacia el bloque de memoria dinamico creado para la estructura interna del nodo.
-    // Assunmo que char pesa 1 byte y que copia de a 1 byte a la vez
-    for( i = 0; i < tam_data; i++ )
-        *(char *)(Nuevo_Nodo->data + i) = *(char *)(nueva_data + i);
+    Nuevo_Nodo->data = (void *)malloc(tam_data);
+    if (Nuevo_Nodo->data == NULL)
+    {
+        printf("[ESP] Error en malloc para datos.\n[ENG] malloc error for data.\n");
+        exit(-1);
+    }
 
-    // Opcion 2
-    // Copiado del contenido de lo apuntado por "void *data" hacia el bloque de memoria dinamico creado para la estructura interna del nodo.
-    // *(Nuevo_Nodo->data) = *nueva_data;
+    for (i = 0; i < (int)tam_data; i++)
+        *((char *)(Nuevo_Nodo->data) + i) = *((char *)(nueva_data) + i);
 
-    //Enlazamiento
+    // [ESP] Enlazar al principio (LIFO/Stack)
+    // [ENG] Link at the beginning (LIFO/Stack)
     Nuevo_Nodo->sig = *ptr1erElemento;
-    //Retorno, por referencia, del puntero al nuevo nodo creado
     *Nodo_Actual = Nuevo_Nodo;
     *ptr1erElemento = Nuevo_Nodo;
 
     return;
 }
-
-void Allocalizar_Nueva_Estructura(Nodo_t **Nuevo_Nodo, size_t tam_data)
-{
-    //Alocalizar memoria dinamica para una estructura interna del nodo y Cargar nodo
-    (*Nuevo_Nodo)->data = (void *)malloc(tam_data);
-    if((*Nuevo_Nodo)->data == NULL)
-    {
-        printf("Hubo un problema con la asignacion de memoria dinamica para la estructura interna del nuevo nodo\n");
-        exit(-1);
-    }
-    else
-        printf("Se ha creado exitosamente una estructura interna dinamicamente\n");
-
-    return;
-}
-
-
-//Funcion que imprime la informacion de cada nodo de una lista simplemente enlazada siempre y cuando cada nodo tenga un puntero a una "struct" con dicha estructura cargada con respectivos campos
-void Imprimir_Campos_EstructuraInterna_NodoV2(Nodo_t **ptr1erElemento)
-{
-    Nodo_t Nodo_Actual = *ptr1erElemento;
-
-    while(Nodo_Actual != NULL)
-    {
-        printf("Codigo producto: %d\n", Nodo_Actual->data->codigo_Producto);
-        printf("Proveedor: %s\n", Nodo_Actual->data->proveedor);
-        printf("Cantidad stock: %d\n", Nodo_Actual->data->cantidad_stock);
-        Nodo_Actual = Nodo_Actual->sig;
-    }
-
-    return;
-}
-
-/*
-
-//Funcion que recorre todos los nodos de una lista simplemente enlazada e imprime el contenido o data de cada uno. "fptr" es usado para acceder a otra funcion que imprime la informacion de los campos de una estructura interna de un nodo
-void ImprimirLista(Nodo_t *Nodo_Actual, void (*fptr)(void *))
-{
-    while(Nodo_Actual != NULL)
-    {
-        (*fptr)(Nodo_Actual->data);
-        Nodo_Actual = Nodo_Actual->sig;
-    }
-}
-
-void Imprimir_Campos_EstructuraInterna_Nodo(void *ptr)
-{
-    printf("Codigo producto: %d\n", *(int *)ptr);
-    printf("Proveedor: %s\n", (char *)ptr)
-}
-
-
-
-
-// Function to print an integer
-void printInt(void *n)
-{
-   printf(" %d", *(int *)n);
-}
-
-// Function to print nodes in a given linked list. fpitr is used
-   to access the function to be used for printing current node data.
-   Note that different data types need different specifier in printf()
-void printList(struct Node *node, void (*fptr)(void *))
-{
-    while (node != NULL)
-    {
-        (*fptr)(node->data);
-        node = node->next;
-    }
-}
-
-
-
-//Funcion generica que crea un nodo donde alguno de los campos internos es un puntero a otra estructura
-void push(struct Node** head_ref, void *new_data, size_t data_size)
-{
-    // Allocate memory for node
-    struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
-
-    new_node->data  = malloc(data_size);
-    new_node->next = (*head_ref);
-
-    // Copy contents of new_data to newly allocated memory.
-    // Assumption: char takes 1 byte.
-    int i;
-    for (i=0; i<data_size; i++)
-        *(char *)(new_node->data + i) = *(char *)(new_data + i);
-
-    // Change head pointer as new node is added at the beginning
-    (*head_ref)    = new_node
-}
-
 */

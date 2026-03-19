@@ -1,159 +1,114 @@
 /**
- * ==========================================================================
- * math_funcs.c — Mathematical Functions (without math.h)
- * ==========================================================================
- * [ESP] Funciones matemáticas personalizadas sin usar math.h.
- *       Incluye una función de composición de funciones f(g(x)) que
- *       calcula y almacena los pares (x, y) en un array 2D dinámico.
- *       Recibe punteros a función como parámetros para generalizar
- *       la composición.
+ * @file    math_funcs.c
+ * @brief   [ESP] Implementación de funciones matemáticas personalizadas.
+ *          [ENG] Implementation of custom mathematical functions.
  *
- * [ENG] Custom mathematical functions without math.h.
- *       Includes a function composition f(g(x)) that calculates and
- *       stores (x, y) pairs in a dynamic 2D array. Receives function
- *       pointers as parameters to generalize the composition.
- *
- * Materia / Subject: Informática 1 — UTNBA (2022)
- * Autor / Author:    Facundo Costarelli
- * ==========================================================================
+ * @author  Facundo Costarelli
+ * @date    2022
+ * @course  Informática 1 — UTNBA
  */
 
-/*Funciones matematicas para no utilizar math.h*/
+#include "math_funcs.h"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-
-Esto es lo que iria para usar las funciones que estan debajo mencionadas
-#include<stdio.h>
-#include<stdio_ext.h>
-#include<stdlib.h>
-
-#define ERROR -1
-#define EXITO 0
-
-float ** ComposicionDeFunciones(float(*ptr_fun1)(float),float(*ptr_fun2)(float));
-float NomFun1(float x);
-float NomFun2(float x);
-
-
-*/
-
-/*Funciones de ejemplo para formar la composicion de funciones*/
+/**
+ * @brief [ESP] Función de ejemplo #1: f(x) = x + 10.
+ *        [ENG] Example function #1: f(x) = x + 10.
+ */
 float NomFun1(float x)
 {
     return x + 10;
 }
 
+/**
+ * @brief [ESP] Función de ejemplo #2: g(x) = x * 15.50.
+ *        [ENG] Example function #2: g(x) = x * 15.50.
+ */
 float NomFun2(float x)
 {
     return x * 15.50;
 }
 
-
-//Funcion que realiza la composicion de 2 funciones, carga las abcisas y ordenadas en un array dinamico de 2 dimensiones y devuelve dicho array
-//Recibe 2 punteros a funcion, segun el orden en que se reciben se componen de una u otra forma.
-float ** ComposicionDeFunciones(float(*ptr_fun1)(float),float(*ptr_fun2)(float))
+/**
+ * @brief [ESP] Calcula la composición f(g(x)) y almacena resultados en un array 2D.
+ *        [ENG] Computes composition f(g(x)) and stores results in a 2D array.
+ */
+float **ComposicionDeFunciones(float (*ptr_fun1)(float), float (*ptr_fun2)(float))
 {
-    //Variables de enunciado
-    float Xmin = 0,Xmax = 0, x = 0;
+    /* [ESP] Variables para el rango y cantidad de puntos
+       [ENG] Variables for range and number of points */
+    float Xmin = 0, Xmax = 0, x = 0;
     int nro_de_puntos = 0;
-
-    //Otras variables
     int i = 0;
 
-    //Punteros para armar un array de 2D dinamico
+    /* [ESP] Puntero doble para el array 2D dinámico (filas × 2 columnas)
+       [ENG] Double pointer for the dynamic 2D array (rows × 2 columns) */
     float **Filas = NULL;
-    //float *Columnas = NULL;
 
-    //Pido los datos de Xmin, Xmax y nro_de_puntos
-    printf("Ingrese valor de abscisa minima: ");
-    scanf("%f",&Xmin);
-    __fpurge(stdin);
+    /* [ESP] Solicitar datos de entrada al usuario
+       [ENG] Request input data from the user */
+    printf("[ESP] Ingrese valor de abscisa minima / [ENG] Enter minimum x value: ");
+    scanf("%f", &Xmin);
 
-    printf("Ingrese valor de abscisa maxima: ");
+    printf("[ESP] Ingrese valor de abscisa maxima / [ENG] Enter maximum x value: ");
     scanf("%f", &Xmax);
-    __fpurge(stdin);
 
-    printf("Ingrese el nro de puntos obtener: ");
-    scanf("%d",&nro_de_puntos);
-    __fpurge(stdin);
+    printf("[ESP] Ingrese el nro de puntos / [ENG] Enter the number of points: ");
+    scanf("%d", &nro_de_puntos);
 
-    //Creo dinamicamente un array de 2 dimensiones. El nro de filas depende del nro de puntos
-    //EL nro de columnas son 2. Una para las absicas y otra para las ordenadas
-
-    Filas = (float **)malloc( (nro_de_puntos+1) * sizeof(float *));
-    if(Filas == NULL)
+    /* [ESP] Crear dinámicamente el array de punteros a filas.
+             Se aloca nro_de_puntos + 1 para incluir el centinela NULL al final.
+       [ENG] Dynamically create the array of row pointers.
+             Allocate nro_de_puntos + 1 to include the NULL sentinel at the end. */
+    Filas = (float **)malloc((nro_de_puntos + 1) * sizeof(float *));
+    if (Filas == NULL)
     {
-        printf("Error durante la asignacion de memoria dinamica para el array de ptrs a FIlas\n");
+        printf("[ESP] Error: memoria insuficiente para filas.\n");
+        printf("[ENG] Error: insufficient memory for rows.\n");
         exit(ERROR);
     }
 
-    //Cargo el ultimo elemento el array de punteros a filas con NULL para marcar el final del array
+    /* [ESP] El último elemento se marca como NULL (centinela de fin de array)
+       [ENG] The last element is marked as NULL (end-of-array sentinel) */
     Filas[nro_de_puntos] = NULL;
 
-    for( i = 0; i < nro_de_puntos; i++ )
+    /* [ESP] Para cada fila, alocar un array de 2 columnas: [x, f(g(x))]
+       [ENG] For each row, allocate a 2-column array: [x, f(g(x))] */
+    for (i = 0; i < nro_de_puntos; i++)
     {
-        Filas[i] = (float *)malloc( 2 * sizeof(float) );
-        if(Filas[i] == NULL)
+        Filas[i] = (float *)malloc(2 * sizeof(float));
+        if (Filas[i] == NULL)
         {
-            printf("Erro durante asignacion de memoria dinamica el array de 2 columnas en la fila %d\n",i);
+            printf("[ESP] Error: memoria insuficiente para fila %d.\n", i);
+            printf("[ENG] Error: insufficient memory for row %d.\n", i);
             exit(ERROR);
         }
     }
-    printf("Linea 65 ok\n");
-    for(x=Xmin,i = 0; x<=Xmax; x+= ((Xmax-Xmin)/nro_de_puntos) , i++)
+
+    /* [ESP] Calcular la composición f(g(x)) para cada punto en el rango [Xmin, Xmax].
+             El paso (step) entre puntos es (Xmax - Xmin) / nro_de_puntos.
+       [ENG] Compute the composition f(g(x)) for each point in range [Xmin, Xmax].
+             The step between points is (Xmax - Xmin) / nro_de_puntos. */
+    for (x = Xmin, i = 0; x <= Xmax; x += ((Xmax - Xmin) / nro_de_puntos), i++)
     {
-        if( Filas[i] == NULL )
+        /* [ESP] Protección: no escribir más allá del último elemento válido
+           [ENG] Guard: do not write past the last valid element */
+        if (Filas[i] == NULL)
             break;
-        else
-        {
-            Filas[i][0] = x;
-            Filas[i][1] = ptr_fun1(ptr_fun2(x));
-        }
+
+        Filas[i][0] = x;                       /* [ESP] Abscisa / [ENG] X value */
+        Filas[i][1] = ptr_fun1(ptr_fun2(x));    /* [ESP] Ordenada: f(g(x)) / [ENG] Y value: f(g(x)) */
     }
 
-    printf("Linea 75 ok\n");
-
-    printf("TABLA: X      |   Y\n");
-    //Imprimo la matriz para ver como queda cargada
-    for( i = 0; i < nro_de_puntos; i++ )
+    /* [ESP] Imprimir tabla de resultados
+       [ENG] Print results table */
+    printf("\n  X         |   Y = f(g(x))\n");
+    printf("------------|---------------\n");
+    for (i = 0; i < nro_de_puntos; i++)
     {
-        printf("       %.2f   |   %.2f\n",Filas[i][0],Filas[i][1]);
+        printf("  %8.2f  |   %8.2f\n", Filas[i][0], Filas[i][1]);
     }
 
-    //Una vez retornado el array 2D dinamico habria que realizar un free para las filas y columnas
-    //para liberar la memoria. Esto en otro scope.
+    /* [ESP] NOTA: El llamador debe liberar la memoria retornada.
+       [ENG] NOTE: The caller must free the returned memory. */
     return Filas;
 }
-
-/*Para llamarla en el main hay que paserle el nombre de 2 funciones a componerse y recibir lo devuelto en un puntero doble*/
-/*Para acceder a los datos habria que utilizar un ciclo for y usar le puntero doble con la sintaxis de un array
-de 2D ya que buscamos acceder a cada fila y luego a cada columna de esa fila. Esto es Filas[indicefila][indicecolumna]
-Esto es para poder imprimir los datos, leerlos, reescribir, etc*/
-/*FInalmente hay que liberar la memoria dinamica. Para ello primero liberar la memoria de las columnas y luego la
-memoria del array de punteros a filas. Hay que saber cual es la ultima fila y para buscarla el ultimo
-elemento de punteros a filas deberia ser NULL. Estos es:
-
-//Libero las columnas
-i = 0;
-for( i = 0; Filas[i] != NULL; i++ )
-    free(Filas[i]);
-    
-//Libero las filas
-free(Filas);
-*/  
-    
-

@@ -1,38 +1,46 @@
 /**
- * ==========================================================================
- * char_num_bits_random.c — Random Number & Bit Generators
- * ==========================================================================
- * [ESP] Funciones para generar números aleatorios dentro de un rango:
- *       - Versión para int
- *       - Versión para unsigned char
- *       - Generación de bits aleatorios (0 o 1)
+ * @file    char_num_bits_random.c
+ * @brief   [ESP] Implementación de generadores de números aleatorios.
+ *          [ENG] Implementation of random number generators.
  *
- * [ENG] Functions to generate random numbers within a range:
- *       - Version for int
- *       - Version for unsigned char
- *       - Random bit generation (0 or 1)
+ * @author  Facundo Costarelli
+ * @date    2022
+ * @course  Informática 1 — UTNBA
  *
- * Materia / Subject: Informática 1 — UTNBA (2022)
- * Autor / Author:    Facundo Costarelli
- * ==========================================================================
+ * [ESP] Nota: En C no se puede sobrecargar funciones (a diferencia de C++).
+ *       Por eso se usan nombres distintos para cada tipo de dato.
+ *
+ * [ENG] Note: C does not support function overloading (unlike C++).
+ *       That's why different names are used for each data type.
  */
 
-// [ESP] Devuelve un número aleatorio entre minimo y maximo, incluyendo a minimo y maximo.
-// [ENG] Returns a random number between min and max, inclusive.
-//Se puede usar ints, char, unsigned char, etc. Solo hay que identificar el tipo de
-//dato de cada parametro y el retorno segun lo que se quiera hacer. EJ: Todo es INT, o todo es
-//unsigned char, o todo es char, etc.
+#include "misc_utils.h"
 
-//Para generar nros aleatorios tipo int
-int aleatorio_en_rango(int minimo, int maximo)
+/**
+ * @brief [ESP] Genera un número aleatorio entero dentro de un rango.
+ *        [ENG] Generates a random integer within a range.
+ */
+int aleatorio_en_rango_int(int minimo, int maximo)
 {
-   return minimo + rand() / (RAND_MAX / (maximo - minimo + 1) + 1);
-}
-//Para generar nros aleatorios tipo unsigned char
-unsigned char aleatorio_en_rango(unsigned char minimo, unsigned char maximo)
-{
+    /* [ESP] Fórmula: minimo + rand() / (RAND_MAX / rango + 1)
+             Evita el sesgo modular (modulo bias) que ocurre con rand() % N.
+       [ENG] Formula: minimo + rand() / (RAND_MAX / range + 1)
+             Avoids modulo bias that occurs with rand() % N. */
     return minimo + rand() / (RAND_MAX / (maximo - minimo + 1) + 1);
 }
 
-//Para generar bits aleatorios entre 0 y 1 simplemente usar
-randbit = rand()%2;
+/**
+ * @brief [ESP] Genera un número aleatorio unsigned char dentro de un rango.
+ *        [ENG] Generates a random unsigned char within a range.
+ */
+unsigned char aleatorio_en_rango_uchar(unsigned char minimo, unsigned char maximo)
+{
+    /* [ESP] Misma fórmula, pero casteada a unsigned char (0–255).
+       [ENG] Same formula, but cast to unsigned char (0–255). */
+    return minimo + rand() / (RAND_MAX / (maximo - minimo + 1) + 1);
+}
+
+/* [ESP] Para generar bits aleatorios (0 o 1), simplemente usar:
+         int randbit = rand() % 2;
+   [ENG] To generate random bits (0 or 1), simply use:
+         int randbit = rand() % 2; */

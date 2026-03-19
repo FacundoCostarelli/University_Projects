@@ -1,96 +1,106 @@
 /**
- * ==========================================================================
- * file_copy.c — Copy Source File Without Comment Lines
- * ==========================================================================
- * [ESP] Algoritmo que copia un archivo fuente .c eliminando las líneas
- *       de comentarios (// y /* ... *​/). Lee carácter a carácter y
- *       detecta las secuencias de comentarios para omitirlas.
+ * @file    file_copy.c
+ * @brief   [ESP] Copia un archivo fuente .c eliminando líneas de comentarios.
+ *          [ENG] Copies a .c source file while removing comment lines.
  *
- * [ENG] Algorithm that copies a .c source file while removing comment
- *       lines (// and /* ... *​/). Reads character by character and
- *       detects comment sequences to skip them.
+ * @author  Facundo Costarelli
+ * @date    2022
+ * @course  Informática 1 — UTNBA
  *
- * Materia / Subject: Informática 1 — UTNBA (2022)
- * Autor / Author:    Facundo Costarelli
- * ==========================================================================
+ * [ESP] Código de referencia que demuestra cómo copiar un archivo fuente
+ *       carácter a carácter, detectando y omitiendo las secuencias de
+ *       comentarios // y /* ... *​/.
+ *
+ * [ENG] Reference code demonstrating how to copy a source file character
+ *       by character, detecting and skipping comment sequences
+ *       // and /* ... *​/.
  */
 
-/************************ALGORITMO PARA COPIAR UN ARHCIVO FUENTE.C SIN LAS LINEAS DE COMENTARIOS**************************/
-
-/*
-
-#include<stdio.h>
-#include<stdio_ext.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 #define ERROR -1
-#define EXITO 0
+#define EXITO  0
 
-
-int main(int argc, char** argv)
+/**
+ * @brief [ESP] Programa que copia un archivo .c sin sus comentarios.
+ *        [ENG] Program that copies a .c file without its comments.
+ *
+ * [ESP] Uso: ./ejecutable archivo_entrada.c
+ *       La salida se escribe en "copia.c"
+ * [ENG] Usage: ./executable input_file.c
+ *       Output is written to "copia.c"
+ */
+int main(int argc, char **argv)
 {
-    if( argc != 2 )
+    if (argc != 2)
     {
-        printf("Falta de argumentos.Re-ingresar segun <nombre_ejecutable> <nombre_archivo_in.c> \n");
+        printf("[ESP] Uso: <ejecutable> <archivo_entrada.c>\n");
+        printf("[ENG] Usage: <executable> <input_file.c>\n");
         return ERROR;
     }
 
     FILE *File_In = NULL;
     FILE *File_Out = NULL;
     char ch = '\0';
-    
-    //Apertura archivo IN y verificacion de error
-    File_In = fopen(argv[1],"r");
-    if(File_In == NULL)
+
+    /* [ESP] Abrir archivo de entrada en modo lectura
+       [ENG] Open input file in read mode */
+    File_In = fopen(argv[1], "r");
+    if (File_In == NULL)
     {
-        printf("Error en apertura de archivo de entrada\n");
+        printf("[ESP] Error en apertura de archivo de entrada.\n");
+        printf("[ENG] Error opening input file.\n");
         return ERROR;
     }
 
-    //Apertura archivo OUT y verificacion de error
-    File_Out = fopen("copia.c","w");
-    if(File_Out == NULL)
+    /* [ESP] Abrir/crear archivo de salida en modo escritura
+       [ENG] Open/create output file in write mode */
+    File_Out = fopen("copia.c", "w");
+    if (File_Out == NULL)
     {
-        printf("Error en apertura de arhcivo de salida\n");
+        printf("[ESP] Error en apertura de archivo de salida.\n");
+        printf("[ENG] Error opening output file.\n");
+        fclose(File_In);
         return ERROR;
     }
 
-//Lectura de caracteres de archivo IN siempre que sea != EOF
+    /* [ESP] Lectura carácter a carácter, omitiendo secuencias de comentarios
+       [ENG] Character-by-character reading, skipping comment sequences */
     ch = fgetc(File_In);
-    while(ch != EOF)
+    while (ch != EOF)
     {
-    	/******Algoritmo para saltaer caracteres de lineas de comentarios y las secuencias de comentarios como "//", "/*" y "*/" ******/
-        if(ch == '/')
+        if (ch == '/')
         {
             ch = fgetc(File_In);
-            if( ch == '*' )
+
+            if (ch == '*')
             {
-                for( ; ( (ch = fgetc(File_In)) != '*' ); );
-
-                //Guarda la ultima / de la secuencia (*)asterisco / de final de comentario
-                ch = fgetc(File_In);
-                //Guarda el proximo caracter que NO es comentario
-                ch = fgetc(File_In);
-
+                /* [ESP] Comentario de bloque: avanzar hasta encontrar '*​/'
+                   [ENG] Block comment: advance until '*​/' is found */
+                for ( ; (ch = fgetc(File_In)) != '*'; );
+                ch = fgetc(File_In); /* [ESP] Saltar '/' / [ENG] Skip '/' */
+                ch = fgetc(File_In); /* [ESP] Siguiente carácter válido / [ENG] Next valid char */
             }
-            else if( ch == '/')
+            else if (ch == '/')
             {
-                for( ; ( ch = fgetc(File_In) ) != '\n'; );
+                /* [ESP] Comentario de línea: avanzar hasta '\n'
+                   [ENG] Line comment: advance until '\n' */
+                for ( ; (ch = fgetc(File_In)) != '\n'; );
             }
         }
-        /*Escritura de caracteres de codigo en el arhcivo OUT*/
+
+        /* [ESP] Escribir carácter no-comentario en el archivo de salida
+           [ENG] Write non-comment character to the output file */
         fputc(ch, File_Out);
         ch = fgetc(File_In);
     }
-    
-    printf("\nLa copia fue realiza exitosamente\n.");
-    //Cierre de arhcivos
+
+    printf("[ESP] Copia realizada exitosamente.\n");
+    printf("[ENG] Copy completed successfully.\n");
+
     fclose(File_In);
     fclose(File_Out);
-    //getch();
 
-   return 0;
+    return EXITO;
 }
-
-*/
-
