@@ -1,0 +1,514 @@
+INFORMATICA 1 THEORY NOTES
+
+1) A thread is the minimum unit of instruction flow that a program has and that in turn is scheduled by the kernel through the scheduler. That is, a set or flow of instructions such as the following would be an example of a thread.
+
+int a,b;
+a = 10;
+b = 20;
+suma = a + b;
+
+In general, a thread is associated with a function, such as the main() function. Any program has at least one thread, and in the case of having processes with a single thread, this will be the one associated with the instruction flow given by main(). Otherwise, threads can be associated with several different or identical functions. Ex:
+
+ void work()
+ {
+    printf("This function is associated with a thread\n");
+ }
+
+*//////////*Added answer 1)
+It can be better stated that a thread is an instruction flow that can run independently with respect to other instruction flows or threads.
+A thread is also the basic unit of scheduling.
+
+The most basic and mandatory thread that exists is the main() thread. Threads share some process resources like FILES, SIGNAL, DATA, and CODE. But they have their own resources like PC, STACK, REG. Between threads they can work cooperatively and have an information flow between them because they share some process resources.
+
+It can happen that threads are executed concurrently or in parallel.
+The 1st case corresponds to the execution of several threads in a single core such that virtually they are all executing at the same time but physically the threads are executing one at a time with interleaving between threads and respective time slots for each thread. This allows us to have a process with more than 1 thread and a significant improvement in speed and performance.
+The 2nd case corresponds to the execution of different threads distributed in 2 or more cores such that they execute at the same time. In turn, each core will have simultaneous execution or concurrency. In addition, each thread has a different scheduling according to the scheduler such that one thread executes on 1 core while another thread executes on another core or such that a thread executes on several cores at the same time.
+
+2) In order to interconnect 2 processes in different servers, 2 parameters are needed for each of them:
+- IP Address: That is, the network address of the machine.
+- Port number: Logical port of the machine through which data is exchanged and where said port will be associated with the process to be interconnected with respect to the rest of the processes on the machine.
+
+3) The OS knows through knowing the logical port in the server.
+
+4) The purpose is to enable the server socket to receive connection requests from clients which will remain in a waiting queue until accept() accepts them.
+
+5) SIGKILL: When invoking this SIGNAL, it is ordered to finish the execution of the indicated process such that it ends immediately without letting it finish its normal execution.
+   SIGTERM: When invoking this SIGNAL, it is requested to finish the execution of the indicated process with priority such that it ends normally and correctly without interrupting what was being executed with respect to the indicated process.
+
+/*************************************************/
+
+1)A)T.. Because a thread creates another thread but these threads are always within the same process and therefore the process that is associated with all threads always has the same process id. For example, main() is a thread and from this one other threads can be created, for example, a thread created for a function called "work()". But all these threads are within the same process and share some resources of this process.
+
+1)B)T.. Because all threads share some process resources such as the DATA memory section. In this memory space are global variables, NO automatic variables created, information blocks dynamically created, etc. Threads also share other resources such as FILES, SIGNALS and CODE, thus facilitating the exchange of information between threads, cooperative work between them, better performance and speed, and a reduction in the consumption of machine hardware resources. It should be noted that, in turn, each thread has its own resources such as REGISTERS, PROGRAM COUNTER and STACK and these resources are only used by the thread that consumes them.
+
+1)C)T.. Because a child process after finishing can enter state Z (zombie), but if from the parent process the resources of the child process are correctly released using for example exit(), then said process ends and also does not enter state Z. On the other hand, a child process can be "killed" through the parent process using some type of "Signal" as SIGKILL. In this case, the child process "dies" being that it finishes and also does not enter state Z.
+
+2) Explanation of interaction between a client process and a server:
+Both the client and the server must create a socket with the socket() function in order to communicate with each other. Then bind() must be executed on the server mandatorily to give a "name" to the server, that is, to assign and reserve a concrete and known logical port to the server, through which data is sent and received, as well as assigning the server a network IP address of the local machine that will function as a server. However, in the client, bind() is optional since if it is not executed, then the OS executes it automatically assigning a random free port to the client, thus giving it its "name". These 2 steps are equivalent to "OPENING THE COMMUNICATION CHANNEL". Once the client and server sockets are created with their respective "names", then the server is said to execute listen() such that its socket can receive connection requests from client sockets, this is equivalent to "WAITING TO RECEIVE REQUESTS". After this, the server calls accept() and stays in a waiting state until a client connects. On the other hand, connect() is called on the client to attempt to connect to the server. At the moment of connection attempt, equivalent to "CONNECT WITH SERVER", it is when accept() receives the connection request, equivalent to "ACCEPT REQUEST", accepting it and thus returning a parameter that will be a new socket identifier associated with a new socket. This new socket is the one that will be used for exchanging data with the client that made the connection. In this way, the original server socket is left free to continue receiving connection requests from other clients and being able to accept them.
+
+Once the connection is established, the send() and recv() functions are executed both on the server and client with a bidirectional data flow, this is equivalent to "SENDING AND RECEIVING DATA" on client and server. Once the desired data exchange has taken place, then the communication is finalized by calling close() or shutdown(), this is equivalent to "CLOSING THE COMMUNICATION CHANNEL" on both client and server.
+
+3)
+    A union occupies the space of its largest element, a structure usually occupies the sum
+    of what its elements occupy. In addition, in a union the same data can be accessed
+    calling it in different ways.
+    ➢ Declaration:
+    ○ union Un{
+    char U_letter;
+    char U_string[10];
+    } ;
+    ○
+    struct Es{
+    char E_letter;
+    char E_string[10];
+    } ;
+    ➢ Sizes
+    ○ union Un: 10Bytes
+    ○ structure Es: 11Bytes
+    ➢ Example with names
+    ○ Definition.
+    union Un U1;
+    struct Es E1;
+    ○ Access
+    U1.U_letter
+    U1.Ustring
+    E1.E_letter
+    E1.E_string
+    ➢ Example with pointers
+    ○ Definition.
+    union Un *PU;
+    struct Es *PE;
+    ○ Assignment
+    PU=&U1;
+    PE=&E1;
+    ○ Access
+    PU->U_letter
+    PU->Ustring
+    PE->E_letter
+    PE->E_string
+
+On the other hand, a Bit Field is a contiguous set of bits located in a memory space assigned by the Operating System. This group of bits will represent a "machine word". Bit fields are declared, defined, and accessed through structures or unions. The same concepts mentioned apply regarding definition, field access by name, and field access with pointers.
+However, main differences are found in "declaration": Ex:
+
+- union UN{
+    unsigned int flag1 : 1;
+    unsigned int flag2 : 1;	
+};
+- struct ES{
+    unsigned int flag1 : 1;
+    unsigned int flag1 : 1;
+};
+
+Placing " : 1 " after each member of the structure or union implies that only that field will store 1 bit of information. That value could be 0 or 1. In general, " : CTE " can be placed where CTE is a constant value like 1, 2, 3, 4, 5, etc., which is associated with the "bit field width". Then in such a case there would be a member like " unsigned int flag: 5; " which implies that the information of the flag field can only be represented with 5 bits out of all the bits that would normally represent an "unsigned int" data type.
+Other minor features are: arithmetic operations can be performed with bit fields, bit fields are assigned from left to right or vice versa depending on the machine, some computers allow bit fields to exceed the limit of a word and others do not, bit fields are generally declared as integers or integer variants (int, unsigned int, etc.), unions are usually used to work with bit fields, bit fields are not arrays nor pointers, individual bits cannot be worked with nor the address of each bit nor the address of the bit field since the "&" operator cannot be used, the amount of bits of the bit field associated with a member cannot exceed the maximum amount of bits that represents the associated data type, the width of the bit field can be at most 64 or 32 according to the machine architecture.
+Finally, it is worth mentioning that the size of a structure or union with a bit field will be the same size as the largest data type associated with any bit field but at the same time will depend on the machine word size and if there are gaps or even if there are machine word leaps, bit paddings, etc.
+
+/*************************************************/
+
+1. Taking into account that a Keep alive is a communication mechanism that informs a
+process (P) the normal operation of a second process (H) and thus, in case that the
+process H stops for a longer time than expected, process P kills it to then execute
+a process H again and considering that our process P will only be pending on this it is
+requested:
+a) Propose what communication mechanisms you would use
+b) Propose a sequence of the mechanism (can rely on a diagram)
+c) What C functions would definitely be involved in process P.
+
+2. It is requested:
+a) Complete the following positive number calculation done in hexadecimal:
+	5_FA            5CFA 
+     +	              +
+        C4_7   == >     C4E7
+       ------          ------
+        _81_            9813
+b) If working with signed numbers using 2's complement, indicate what decimal number
+represents the 8A29h in:
+-A 16-bit system:
+-A 32-bit system:
+
+In general, to make it easy, we try to perform a subtraction between the next out-of-range number and the proposed signed hexadecimal number. This is to find the absolute value of the signed hexadecimal number. Then the decimal equivalent is obtained and finally multiplied by (-1).
+
+In 16 bits: 
+	   0x 10000
+	-  
+	   0x  8A29
+	  ----------
+	       75D7 Absolute value of original signed number
+	       Decimal value of absolute hexadecimal = (16^3*7+16^2*5+16^1*13+16^0*7) = 30,167
+	       Decimal value of signed hexadecimal = -30,167
+	       
+In 32 bits: Since the original hexadecimal number is signed, meaning the MSB bit = 1, then I extend the sign bit and fill with F to the left until having a 32-bit format:
+
+	   0x 100000000
+	-  
+	   0x  FFFF8A29
+	   ------------
+	       000075D7 Absolute value of original signed number
+	       Decimal value of absolute hexadecimal = (16^3*7+16^2*5+16^1*13+16^0*7) = 30,167
+	       Decimal value of signed hexadecimal = -30,167	       
+	       
+3. Differences and relationship between:
+a) Source file, object, binary.
+b) Program, process
+c) In socket: Process, port and IP
+
+a) SOURCE FILE: A file that contains code or instructions written in a language like C. These instructions tell the machine what to do. This file may possess other files of the same type. The source file will be compiled later by the compiler.
+
+   OBJECT FILE: Contains the same instructions as the source file but in a binary format which will be understandable for the computer and processor. This file is obtained as a result of the source file compilation but CANNOT yet run on the processor since it only forms a part of a final code. This type of file is subsequently linked with others of the same type and libraries through the linker.
+   
+   BINARY FILE: The final file that results from linking object files and libraries. The Binary File contains all binary instructions necessary for the machine and it is possible to run it on the processor.
+   
+b) PROGRAM: A set of instructions that instruct the computer on how to complete a task. They are written in a programming language like C. It is a passive entity since it performs no execution. Example: Code associated with the main source file main.c
+
+   PROCESS: A program executing in memory. It is an active entity since it is executing on the microprocessor. Example: When double-clicking on GOOGLE CHROME, a process is established, which involves executing in memory the program associated with the GOOGLE CHROME application.
+   
+c) In a sockets context we have:
+
+   PROCESS: The program executing in memory that we want to intercommunicate with another located on a different physical machine and which is unique regarding the rest of the processes on the machine.
+   
+   PORT: The logical place of the computer through which the data exchange between processes that are on different machines occurs. It allows distinguishing the process to be related from the rest of the processes on the same machine.
+   
+   IP: The network address of the physical machine participating in socket communication. It distinguishes said machine from others via a unique network identification.
+   
+   BONUS: In a TCP communication, it is mandatorily required to know the IP and PORT of each machine with its respective process to intercommunicate.
+   
+   /*************************************************/
+   
+*********True or False on Theory about LINUX, Operating Systems, Kernel, Processes, Sockets, Numbering Systems************
+
+/*************************************************/
+
+Point 1) If the machine is named INFO-UX, the equipment date is 15-MAY-2021, the user connected
+in the equipment is Luis Aceto (user ID LACETO) and the current directory is
+INFO_1/Clase2 inside the personal directory, what is the prompt that it will show in the
+console? (Consider the default Operating System prompt). Select an
+option:
+
+A.INFO-UX:/home/LACETO/INFO_1/Clase2$
+B.Luis.Aceto@INFO-UX:/home/Luis.Aceto/INFO_1/Clase2$
+C.Luis.Aceto@INFO-UX:~/INFO_1/Clase2$
+D.LACETO@INFO-UX:~/INFO_1/Clase2$
+E.2021-05-15@INFO-UX:~/INFO_1/Clase2$
+F.INFO-UX@LACETO:~/INFO_1/Clase2$
+G.None of the above.
+
+ANSWERS: A)F, B)F, C)F, D)T, E)F, F)F, G)F
+
+Point 2) Indicate which of the following statements are true:
+
+A. Linux manages devices as if they were a file and the one in charge of doing so for each
+device is the device driver or device controller.
+B. A disadvantage of the 1's complement method for representing signed numbers
+is that I have a double zero.
+C. All processes have a single parent process and can be parents of only one child process
+at a time. If I want to have a second child process, I must wait for the first to finish
+with the wait function.
+D. To generate an executable from a C source file I must perform two steps. The
+first is compilation and the second is linking.
+E. To generate a C program I can use a word processor like Word if I
+ensure I don't set any formats like font size changes or bold.
+F. Files in Linux handle three permission groups, those corresponding to the owner, a
+group, and the rest of the users.
+G. A connection cannot be established through a socket if both processes are running
+on the same machine.
+H. The numbering system is defined by the amount of symbols it uses. This amount
+is called BASE.
+I. The named pipe or FIFO is an IPC method that allows linking two processes
+running on the same machine even if they are not parent-child related.
+J. The advantage of working with the HEXADECIMAL system is that conversion from binary is
+direct based on grouping three binary digits.
+K. In the case of Linux, the graphical interface can be changed or even removed.
+L. Processes are identified with a number, and once the highest number is assigned, the
+equipment must be reset to return the counter to 0.
+M. If the machine has sufficient capacity, I can have two Operating Systems controlling
+hardware simultaneously.
+N. The Operating System connects to hardware through system calls.
+O. In a Socket connection, when a server process wants to accept communication with
+a client, it must use the connect function.
+
+
+ANSWERS: A)T, B)T, C)F, D)T, E)F, F)T, G)F, H)T, I)T, J)F, K)T, L)F, M)F, N)T, O)F
+
+Point 3) What is the Linux operating system Kernel? Select an option:
+
+A. The interface that allows the user to input commands.
+B. The list of external commands that can be executed by the operating system.
+C. The set of programs that make up the Operating System itself and its
+corresponding implementation of System Calls.
+D. The set of policies that define the way files are stored on the hard drive.
+E. None of the above.
+
+ANSWERS: 
+A)F, B)F, C)T, D)F, E)F 
+
+/*************************************************/
+
+1) What are the differences between a header and a library?? What information does each contain??
+
+Library: The file containing the "body or definition" of one or more functions is called a "library". It is said that a "library" is where the "implementations" of functions are found, whose prototypes/declarations are in header files. A "library" file has the ".lib" extension. There are 2 types of libraries:
+
+    Static Libraries: These contain object code such that it will be linked with a final user application, that is, the program designed for the end user. They are used during compilation time so when the program is executed, during runtime, these libraries will always be functioning, regardless of whether they are required or not, until the program ends.
+
+    Dynamic Libraries: These are used during runtime, so when the program executes, these libraries will only be functioning when required as the program execution progresses. Therefore, there will be times when they are invoked and times when they are not. It is said that a programmer (end user) can compile code without including dynamic libraries in the compilation.
+
+Header: A header file has the ".h" extension. It generally contains function declarations/prototypes, created data types, global variables, constants or macros, structures, and unions. Besides the aforementioned, a "header" file can contain inside it other "header" files by "including" them with "header names", which in turn will have the previously mentioned elements. Normally, everything contained in a header file is used by "libraries".
+A "header file" is utilized in the "main code file" and other cooperative codes by writing the preprocessor directive "#include <header_file_name.h>". Its task is to instruct the compiler regarding how to make different function calls and where to look for respective functions with their respective parameters to execute them.
+
+2) What is a process?? Characterize it, indicating the states it can take.
+
+Process: A program or code executing in memory, it is said to be an "active entity" unlike a program which is a "passive entity".
+Upon writing a program and compiling it, the compiler creates a binary code. Both the original written code and the binary code will be programs and will be "passive". However, when "running or executing" the binary code, then said "code or program executing in memory" becomes a "process".
+
+A single program can create many processes when that program is "run or executed" many times. For example, when an ".exe" file or binary file is opened multiple times, multiple instances start, and many processes are created.
+
+Process Attributes or Characteristics:
+-1) Process ID: Unique process identifier assigned to the process by the operating system.
+-2) Process State: Current state of the process (running, ready, etc.).
+-3) CPU registers: Internal CPU memory zones designated for the process. These zones store process information while inside the CPU and release resources when outside the CPU.
+-4) Account information: Info regarding the amount of CPU used by the process during execution. It also shows limits, execution ID, etc.
+-5) I/O state information: Info regarding input and output devices the process uses, opened files, etc.
+-6) CPU scheduling information: Info regarding priority for running a process compared to another and assigning corresponding time slots.
+
+Furthermore, a process has a single PCB (Process Control Block) and all the mentioned characteristics are part of the PCB.
+
+Process States:
+
+-1) New: A process is under creation or is already created as a new process.
+-2) Ready: After process creation, it passes to the "ready" state, for instance, to be executed.
+-3) Run: The current process is running in the CPU. Only one process at a time can run on a "single processor".
+-4) Wait: The process is in a waiting state when it "requests" access to I/O devices.
+-5) Complete or terminated: The process has completed its execution.
+-6) Suspended and ready (suspended ready): When the ready process queue is full, some processes enter the "suspended ready" state.
+-7) Suspended and blocked (suspended block): When the "suspended ready" process queue fills, processes move to "suspended block".
+
+3) Draw a block diagram that helps understand the interaction between a client and server process. The diagram must describe the system's operation. Detail each block's function.
+
+Function or diagram block detailing:
+
+Explanation of interaction between a client process and a server:
+Both client and server must create a socket via the socket() function to communicate. Then bind() must mandatorily execute on the server to assign a "name", assigning and reserving a concrete and known logical port for sending/receiving data, plus assigning a local network IP address acting as server. On the client, bind() is optional; if unexecuted, the OS auto-assigns a free random port. These 2 steps are "OPENING THE COMMUNICATION CHANNEL". Once client/server sockets are created with their "names", the server executes listen() to receive requests (WAITING TO RECEIVE REQUESTS). The server then calls accept(), awaiting a client connection. Meanwhile, the client calls connect() attempting connection (CONNECT WITH SERVER). When accept() receives the connection request (ACCEPT REQUEST), it accepts it and returns a parameter—a new socket identifier. This new socket handles data exchange with that client, freeing the original server socket for more connections.
+
+Once connected, send() and recv() are executed on both sides for bidirectional data flow (SENDING AND RECEIVING DATA). After the desired exchange, communication ends via close() or shutdown() (CLOSING THE COMMUNICATION CHANNEL).
+   
+/*************************************************/
+   
+Theoretical
+1) printf("%li",sizeof(chain));  // 10
+printf("%li",strlen(chain));     // 6
+printf("%li",sizeof(p));          // 8
+printf("%li",strlen(p));  	     // 6
+printf("%li",sizeof(*p));         // 1
+
+2) A union occupies the size of its largest element, a structure occupies the sum
+of its elements' sizes. Plus, a union can access the same data
+called differently.
+➢ Declaration:
+○ union Un{
+char U_letter;
+char U_string[10];
+} ;
+○
+struct Es{
+char E_letter;
+char E_string[10];
+} ;
+➢ Sizes
+○ union Un: 10Bytes
+○ structure Es: 11Bytes
+➢ Example with names
+○ Definition.
+union Un U1;
+struct Es E1;
+○ Access
+U1.U_letter
+U1.Ustring
+E1.E_letter
+E1.E_string
+➢ Example with pointers
+○ Definition.
+union Un *PU;
+struct Es *PE;
+○ Assignment
+PU=&U1;
+PE=&E1;
+○ Access
+PU->U_letter
+PU->Ustring
+PE->E_letter
+PE->E_string
+
+3) A75Dh-F363h
+a) If merely numbers in hexadecimal base, A75Dh is 
+42845 decimal and F363h is 62307, since 42845-62307 is -19462
+in hexadecimal it becomes -4C06h.
+b) If working in 16-bit, both data are negative numbers due to having
+their most significant bit. Thus, applying two's complement,
+A75Dh is -58A3h which in decimal is -22691 and F363h is -0C9Dh
+corresponding to -3229 in decimal leaving -22691-(-3229)=-19462 in
+decimal translating to -4C06h. Then, being a negative number,
+two's complement in 16 bits must be used for the final hexadecimal result,
+getting B3FAh.
+c) If working in 32-bit, what we actually have is 0000A75Dh and
+0000F363h, which are two positive numbers. Thus, like in
+case a, A75Dh is 42845 decimal and F363h is 62307 and
+since 42845-62307 is -19462, in hexadecimal it stays -4C06h,
+which being negative must have two's complement applied for its
+32-bit representation: FFFFB3FAh.   
+
+Given the following code:
+
+#define ROWS 4
+#define COLS 4
+int m[ROWS][COLS] = {
+{5, 6, 12, 56},
+{78, -9, 67, -88},
+{34, -2, 3, 45},
+{-3, -99, 233, 66} };
+int *p = m;
+Assuming the address where m is located is 0xbfff0000, complete the following table
+
+1) *p -> 5
+
+2) m[3][1] -> -99
+
+3) *p+6 -> 11
+
+4) *(p+5) -> -9
+
+5) To calculate it, think that each address weighs 4 bytes assuming a 32-bit architecture. Between one hexadecimal address and another there are 4 bytes, i.e., an offset of 4, meaning 4 is added to each address to move to the next. Also, every row has a different MSB NIBBLE. For row 0, it corresponds to b by definition (1st nibble in the hex address). For row 1 it corresponds to "a", row 2 corresponds to "f", row 3 corresponds to "e". That is, there is a descending order.
+
+As we move 4 spaces, from left to right and then top to bottom, then:
+ 0x b f f f f 0 0 0 0 
+ +	            16
+ ---------------------
+ 
+ where 16 = f + 1
+ 0x b f f f f 0 0 0 0 
+ +	            f
+ 		    1
+---------------------
+ 0x a f f f f 0 0 1 0
+ 
+ the "a" appears via the row change		    
+ 
+answer: &m[1][0] -> 0xaffff0010 (assuming 32-bit integers)
+
+Other questions:
+
+6) How would you access the 3rd row, 1st column element using m?
+7) And using p? Justify generalizing for a F(rows) x C(columns) matrix if wishing to access the element of
+row f and column c.
+8) What is a pipe and what are they used for?
+9) To create a pipe, a library function with the following prototype is used: int pipe(int pipefd[2]);
+What does the integer array passed as a parameter mean?
+10) Briefly explain the difference between a socket created for UDP protocol vs. TCP protocol and in what
+context would you use each.
+
+6) Assuming we consider the start of the matrix in row [0] as "the 1st row", then answer: m[2][0]
+
+7) 
+option 1:
+
+   F=4 C=4, f=2, c=0
+   *(p + (f*C) + c)
+   *(p + (2*4) + 0)
+   *(p+8)
+
+option 2:
+
+*(*(m + row) + column) where (m + row) is a double pointer and *(m + row) is a single pointer
+
+8) A "pipe" is a "system call" that creates a one-way communication link between 2 file descriptors. It is said that at the pipe "input" information is written and at the "output" information is read. 
+
+Pipes are used to intercommunicate "parent and child" processes where one commands input and the other output. Habitually the parent process commands output and child commands input. Also usable between 2 child processes. In short, it is used between 2 processes.
+
+9) Prototype for creating a pipe: int pipe(int pipefd[2]);
+
+This prototype takes a 2-element array called "pipefd". This means it's passed the name of an array which is a single pointer that points to the 1st element. The array elements are 2 int values associated with a file descriptor each. Here, the 1st element associates with the pipe's input (an fd for writing) and the 2nd with the output (an fd for reading). 
+
+10)
+
+Socket for UDP is called Datagram Socket and is used in a context providing a bidirectional, connectionless data flow, unordered arrive packages, possibility of package loss and errors. 
+
+Socket for TCP is called Stream Socket and is used in a context providing a bidirectional, connection-oriented data flow, ordered package arrival sequence, without duplicate packages and error-free.
+
+/*************************************************/
+
+1). Regarding Threads, check the correct options:
+    ●A) pthread_join() blocks the thread where it's invoked waiting for the passed argument thread to finish.
+    ●B) pthread_join() does NOT block the thread where it's invoked waiting for the passed argument thread to finish.
+    ●C) A thread shares heap and stack with other threads of the same process.
+    ●D) A thread does NOT share heap and stack with other threads of the same process.
+2). Regarding sockets, check the correct options:
+    ●A) The only existing sockets are tcp/ipv4.
+    ●B) tcp/ipv4 sockets determine a connection using 2 IPs, and 2 ports.
+    ●C) tcp/ipv4 sockets determine a connection using 1 IP, and 1 port.
+    ●D) tcp/ipv4 sockets determine a connection using 2 IPs, and 4 ports.
+    ●E) accept() is a blocking function, until a client connects, it doesn't unblock.
+    ●F) connect() is the function that the client code calls to connect to a server.
+    ●G) A TCP connection is completely closed, if from each side a close() is performed on the established connection.
+
+1)A) T... This is because pthread_join is a function that allows thread synchronization. Specifically, a "creator" thread can wait for a "created" thread to finish first and then end the "creator" thread.
+1)B) F... Justified in A)
+1)C) F... A thread shares with other threads some process resources like DATA, FILE, HEAP, SIGNAL, and CODE. Specifically, DATA stores NO automatic variables, global variables, etc., but not the STACK. Each thread has an individual STACK, REG and PC.
+1)D) T... Justified in C)
+
+2)A) F... The existing sockets are:
+-DATAGRAM: Associated with UDP protocol
+-STREAM: Associated with TCP protocol
+-RAW
+-Others
+2)B) T... Since it requires an IP for the local machine functioning as server host and an IP for the machine functioning as client, i.e., an IP is needed in each case to uniquely identify each machine on the network. Also, in each machine (client and server), an logical port is needed to send and receive data. This way TCP communication between client and server is achieved relating port to port with IP knowledge.
+2)C) F... Justified in B)
+2)D) F... Justified in B)
+2)E) T... Once executed, it waits to receive a connection request from a client running the connect() function. If no request is received, it waiting. However, it can be terminated with some SIGNAL like sigkill or an alarm.
+2)F) T... Since it is the only function that can be run on the client to achieve a connection request to a server. This is because the server only receives connection requests and thus doesn't use connect().
+2)G) T... Because executing close() on ONLY server or ONLY client could produce memory leaks in the machine that didn't execute close and lead to segmentation faults by accidentally invoking socket functions over a closed file descriptor. close() besides closing connection, frees dynamic memory.
+
+/*************************************************/
+
+1) A library is a file containing compiled code and data, both functional. Where everything inside this file is incorporated into other programs when required. Specifically, a library consists of:
+- An "interface" characterized by .h files. Within these .h files are function prototypes, macros, etc.
+- An "implementation" characterized by .c files. These must be pre-compiled or will be inaccessible. Here lie the function definitions.
+
+Library format relies on the OS and the compiler being used. In UNIX and Linux, for instance, a library format is thought of via one or more "object files" containing "object code". This object code is produced via the compiler provided the programming language isn't assembler. These object files are then gathered assembling a single file being the library via an "archiver" not concerning itself with file compression.
+
+Some pros:
+-Facilitate code reuse avoiding rewrite
+-Encourage teamwork and implementation abstraction to only focus on how to use certain code
+-Library code has general uses, letting multiple functions handle multiple cases
+-No need to worry about how the library's codes are built, just freely using them
+
+Focusing on how a library relates to .h files, when "including" .h files we tell the compiler to utilize libraries containing the .h and .c codes. It allows custom codes calling "printf", which aren't built-in internally, to execute smoothly.
+Otherwise, without .h inclusion, compilation errors arise when trying library function calls, nor can they successfully execute.
+
+Lastly, a library can be linked when generating executables, or call upon functions in runtime; depending on if dealing with static, shared, or dynamic libraries.
+
+2)
+a)
+LINE 1...char *str = "Hello World";
+LINE 2...char str[100] = "Hello World";
+
+In LINE 1 a variable named "str" is declared representing a pointer to "char". An initialization also occurs passing the address of an initialized constant "Hello World" array.
+In LINE 2 a variable named "str" is array-declared handling 100 "char" elements. The array is fed a character string named "Hello World", closing with \0 marking string's end. Remaining elements reside available. Array's name points to the address of said array's origin.
+
+b)
+
+#include <string.h>
+int main(void)
+{
+char *str = "Hello World";
+strcpy(str, "Hello");
+return 0;
+}
+
+Incorrect. Here, str is a pointer locked to a constant "Hello World". This space shields itself preventing overwrites. A memory segment violation happens if writing attempts run under strcpy.
+
+c)
+Reference| address   | value
+y[3]      |     52    |   15
+y[6]      |     64    |   6
+y[-2]     |     32    |   11
+x[12]     |     68    |   -1
+
+/*************************************************/

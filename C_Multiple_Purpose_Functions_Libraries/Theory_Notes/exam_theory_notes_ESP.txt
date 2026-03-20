@@ -1,0 +1,540 @@
+APUNTES TEORIA INFORMATICA 1 
+
+1)Un thread es la minima unidad de flujo de instrucciones que tiene un programa y que a su vez es planificado por el kernel a traves del shceduler. Es decir, un conjunto o flujo de isntrucciones como el que sigue seria un ejemplo de thread.
+
+int a,b;
+a = 10;
+b = 20;
+suma = a + b;
+
+ En general un thread se lo asocia a una funcion, como por ejemplo con la funcion main(). Cualquier programa tiene al menos un thread, y en tal caso de tener procesos con un solo thread, este sera el asociado al flujo de instrucciones dado por main(). En otro caso, los threads pueden asociarse a varias funciones diferentes o iguales. Ej:
+
+ void work()
+ {
+    printf("Esta funcion se asocia a un thread\n");
+ }
+
+*//////////*Agregado rta 1)
+Se puede decir de forma mejor que un thread es un flujo de instrucciones que puede correr de manera independiente respecto a otros flujos de instrucciones o threads.
+Un thread es tambien la unidad basica de scheduling
+
+EL thread mas basico y obligatorio que existe es el thread main(). Los threads comparten algunos recursos del proceso como FILES,SIGNAL,DATA y CODE. Pero poseen recursos propios como PC, STACK, REG. Entre threads pueden trabajar cooperativamente y tener un flujo de informacion de entre ellos debido a que comparten algunos recursos del proceso
+
+Puede suceder que los threads se ejecuten en forma concurrente o en paralelo. 
+El 1er caso corresponde a la ejecucion de varios threads en un single core tal que virtualmente se estan ejecutando todos al mismo tiempo pero fisicamente se estan ejecutando los thread de uno a la vez con intercalacion entre threads y respectivos time slots para cada thread. Esto nos permite tener un proceso con mas de 1 thread y una mejora importane en la velocidad y performance
+ El 2do caso corresponde a la ejecucion de distintos threads repartidos en 2 o mas cores tal que se ejecutan al mismo tiempo. A su vez cada core tendra ejecucion en simultaneo o concurrencia. Ademas, cada thread tiene una planificacion diferente segun el scheduler tal que un thread se ejecuta en 1 core mientras que otro thread se ejecuta en otro core o tal que un thread se ejecuta en varios cores al mismo tiempo.
+ 
+  
+
+ 2)Para poder interconectar 2 procesos en distintos servidores, se necesitan de 2 parametros para cada uno de ellos:
+ - Direccion IP: Es decir, la direccion en la red de la maquina.
+ - Numero de puerto: Puerto logico de la maquina por el cual se intercambian datos y donde dicho puerto estara asociado al proceso que se quiere interconectar respecto al resto de procesos de la maquina.
+
+ 3)El SO lo sabe a traves de saber el puerto logico en el servidor
+
+ 4)El proposito es habilitar el socket servidor para poder recibir solicitudes de conexion de clientes las cuales quedaran en una cola de espera hasta que accept() las vaya aceptando.
+
+ 5)SIGKILL: Al invocar esta SIGNAL se ordena eliminar la ejecucion del proceso indicado tal que termina con este de forma inmediata sin dejarlo terminar su ejecucion normal.
+   SIGTERM: Al invocar esta SIGNAL se pide finalizar de forma prioritaria la ejecucion del proceso indicado tal que termina de forma normal y correcta sin interrumpir lo que se venia ejecutandose respecto al proceso indicado.
+
+
+/*************************************************/
+
+1)A)V..Porque un thread crea a otro thread pero siempre estando estos threads dentro del mismo proceso y por ende el proceso que se asocia con todos los threads, posee siempre el mismo process id. Por ejemplo, el main() es un thread y a partir de este se pueden crear otros threads siendo por ejemplo que haya un thread creado para una funcion llamada ej "work()". Pero todos estos threads estan dentro del mismo proceso y comparten algunos recursos de este proceso.
+
+1)B)V..Porque todos los threads comparten algunos recursos del proceso como la seccion de memoria DATA. En este lugar de memeoria se encuentran las variables globales, las variables NO automaticas creadas,  bloques de informacion creados  dinamicamente, etc. Tambien los threads comparten otros recursos como FILES, SIGNALS y CODE facilitando asi el intercambio de informacion entre los threads, el trabajo cooperativo entre los mismos, mejor perfomance y velocidad y reduccion en consumo de recursos de hardware de la maquina. Cabe destacar que, a su vez, cada thread tiene recursos propios como REGISTROS, PROGRAM COUNTER y STACK y dichos recursos son solamente usados por el thread que los consume..
+
+1)C)V..Porque un proceso hijo luego de finalizar puede entrar en estado Z(zombie), pero si desde el proceso padre se liberan los recursos correctamente del proceso hijo usando por ejempli exit(), entonces dicho proceso finaliza y ademas no entra en estado Z. Por otro lado, se puede "matar" a un proceso hijo a traves del proceso padre utilizando algun tipo de "Signal" como SIGKILL. En este caso, el proceso hijo "muere" siendo que finaliza y ademas no entra en estado Z.
+
+
+2)Explicacion de interaccion entre un proceso clientev y un servidor:
+Tanto el cliente como el servidor deben crear un socket con la funcion socket() para poder comunicarse entre si. Luego se debe ejecutar bind() en el servidor obligatoriamente para poder darle un "nombre" al servidor, esto es, poder asignar y reservar un puerto logico concreto y conocido al servidor siendo que por dicho puerto se envien y reciban datos, asi como tambien asginarle al servidor, una direccion IP de red de la maquina local que funcionara como servidor. En cambio, en el cliente, bind() es opcional ya que sino se ejecuta, entonces el SO lo ejecuta automaticamente asignando un puerto libre al azar al cliente dandole asi su "nombre". Estos 2 pasos equivalen a "ABRIR EL CANAL DE COMUNICACION". Una vez creados los sockets cliente y servidor con sus respectivos "nombres", entonces se dice que el servidor ahora ejecuta listen() tal que su socket pueda recibir solicitudes de conexion de sockets clientes, esto es equivalente a "ESPERAR A RECIBIR SOLICITUDES". Despues de esto, el servidor llama a accept() quedandose ahora en estado de espera hasta que un cliente se conecte. Por otro lado, en el cliente se llama a connect() para intentar conectarse con el servidor. En dicho momento de intento de conexion, equivalente a "CONECTAR CON SERVIDOR", es cuando accept() recibe la solicitud de conexion, equivalente a "ACEPTAR PETICION", aceptandola y devolviendo asi un parametro que sera un nuevo identificador de socket asociado a un nuevo socket. Este nuevo socket es el que se usara para el intercambio de datos con el cliente que realizo dicha conexion. De esta manera se deja libre al socket original del servidor para poder seguir recibiendo solicitudes de conexion de otros clientes y pudiendo asi aceptarlas.
+
+Una vez establecida la conexion, se ejecutan las funciones send() y recv() tanto en servidor como cliente habiendo un flujo de datos bidereccional, esto es equivalente a "ENVIO Y RECEPCION DE DATOS" en cliente y servidor. Una vez que se realizo el intercambio de datos deseado, entonces se finaliza la comunicacion llamando a close() o shutdown(), esto es equivalente a "CERRAR CANAL DE COMUNICACION" tanto en cliente como servidor.
+
+3)
+	Una unión ocupa lo que ocupa el mayor de sus elementos, una estructura generalmente ocupa la suma
+	de lo que ocupan sus elementos. Además, en una unión se puede acceder al mismo dato
+	llamándolo de distinta forma.
+	➢ Declaración:
+	○ union Un{
+	char U_letra;
+	char U_cadena[10];
+	} ;
+	○
+	struct Es{
+	char E_letra;
+	char E_cadena[10];
+	} ;
+	➢ Tamaños
+	○ union Un: 10Bytes
+	○ estructura Es: 11Bytes
+	➢ Ejemplo con nombres
+	○ Definición.
+	union Un U1;
+	struct Es E1;
+	○ Acceso
+	U1.U_letra
+	U1.Ucadena
+	E1.E_letra
+	E1.E_cadena
+	➢ Ejemplo con punteros
+	○ Definición.
+	union Un *PU;
+	struct Es *PE;
+	○ Asignación
+	PU=&U1;
+	PE=&E1;
+	○ Acceso
+	PU->U_letra
+	PU->Ucadena
+	PE->E_letra
+	PE->E_cadena
+
+
+Por otro lado un Campo de Bits es un conjunto contiguo de bits ubicado este en un espacio de memoria asignado por el Sistema Operativo. Este grupo de bits representara una "palabra de maquina". Los campos de bits se declaran, definen y se acceden a traves de estrcuturas o uniones. Se aplican los mismos conceptos mencionados en cuanto a definicion, accesso a campos por nombre y acceso a campos con punteros.
+Sin embargo, las principales diferencias se encuentran en "declaracion": Ej:
+
+- union UN{
+	unsigned int flag1 : 1;
+	unsigned int flag2 : 1;	
+};
+- struct ES{
+	unsigned int flag1 : 1;
+	unsigned int flag1 : 1;
+};
+
+El colocar " : 1 " luego de cada miembro de la estructura o union, implica que solamente dicho campo almacenara 1 bit de informacion. Ese valor podra ser 0 o 1. En forma general se puede colocar " : CTE " donde CTE es un valor constante como 1,2,3,4,5, etc el cual se asocia al "ancho del campo de bits". Entonces en tal caso de ej se tendria un miembro como  " unsigned int flag: 5; " lo que implica que la informacion del campo flag solamente puede ser representado con 5 bits de todos los bits que representarian normalmente un dato "unsigned int"
+Otras caracteristicas no menores son: se pueden realizar operaciones aritmeticas con los campos de bits, los campos de bits se asignan de izquierda a derecha o viceversa segun la maquina, algunas computadoras permiten que los campos de bits excedan el limite de una palabra y otras no, los campos de bits son generalmente declarados como enteros o variantes de enteros(int, unsigned int, etc), se suele usar uniones para trabajar con campos de bits, los campos de bits no son arrays ni punteros, no se puede trabajar con bits individuales ni con la direccion de cada bit ni con la direccion del campo de bit ya que el operador "&" no se puede usar, la cantidad de bits del campo de bits asociada a un miembro no puede superar a la cantidad de bits maxima que representa el tipo de dato asociado, el ancho del campo de bits puede ser como maximo 64 o 32 segun la arquitectura dee la maquina
+Finalmente, cabe mencionar, que el tamanio de una structura o union con campo de bits, sera el mismo tamanio que el tipo de dato mas grande asociado a algun campo de bits pero a su vez dependera del tamanio de palabra de maquina y de si hay huecos o mismo de si se producen saltos de palabra de maquina, rellenos de bits, etc. 
+ 
+
+/*************************************************/
+
+1. Teniendo en cuenta que un Keep alive es un mecanismo de comunicación que informa a un
+proceso (P) el normal funcionamiento de un segundo proceso (H) y así, en el caso de que el
+proceso H se detenga por un tiempo mayor al esperado el proceso P lo mate para luego ejecutar
+nuevamente un poseso H y considerando que nuestro proceso P solo estará pendiente de esto se
+pide:
+a) Proponer que mecanismos de comunicación utilizaría
+b) Proponer una secuencia del mecanismo (puede apoyarse en un diagrama)
+c) Que funciones de C estarían involucradas si o si en el proceso P.
+
+2. Se pide:
+a) Completar la siguiente cuenta de números positivos realizada en hexadecimal:
+	5_FA            5CFA 
+     +	              +
+        C4_7   == >     C4E7
+       ------          ------
+        _81_            9813
+b) Si se trabaja con números signados usando complemento a 2, indicar que número decimal
+representa el 8A29h en:
+-Un sistema de 16bits:
+-Un sistema de 32bits:
+
+En general, para hacerlo facil, se busca realizar una resta entre el proximo numero fuera de rango y el numero hexadecimal signado propuesto. Esto es para encontrar el valor absoluto del numero hexadecimal signado. Luego se obtiene el equivalente en decimal y finalmente se multiplica por (-1)
+
+En 16 bits: 
+	   0x 10000
+	-  
+	   0x  8A29
+	  ----------
+	       75D7 Valor absoluto del numero original signado
+	       Valor decimal del hexadecimal absoluto = (16^3.7+16^2.5+16^1.13+16^0.7) = 30.167
+	       Valor decimal del hexadeimal signado  = -30.167
+	       
+En 32 bits: Como el nro original hexadecimal es signado, osea el bit MSB = 1, entonces extiendo el bit de signo y completo con F hacia la izquierda hasta tener formato de 32 bits:
+
+	   0x 100000000
+	-  
+	   0x  FFFF8A29
+	   ------------
+	       000075D7 Valor absoluto del numero original signado
+	       Valor decimal del hexadecimal absoluto = (16^3.7+16^2.5+16^1.13+16^0.7) = 30.167
+	       Valor decimal del hexadecimal signado = -30.167	       
+	       
+3. Diferencias y relación entre:
+a) Archivo fuente, objeto, binario.
+b) Programa, proceso
+c) En socket: Proceso, puerto e IP
+
+a) ARCHIVO FUENTE: Es un archivo que contiene el codigo o instrucciones escritas en algun lenguaje como el C. Estas instrucciones le dicen a la maquina que hacer. Este archivo puede poseer otros archvios del mismo tipo. El archivo fuente sera compilado posteriormente por el compilador
+
+   ARCHIVO OBJETO: Contiene las mismas instrucciones que del archivo fuente pero en formato binario lo cual sera entendible para la computadora y el procesador. Este archivo se obtiene como resultado de la compilacion del archivo fuente pero NO puede aun correr en el procesador ya que solo forma una parte de un codigo final. Este tipo de arhcivo es posteriormente enlazado con otros del mismo tipo y libreiras a traves del linker. 
+   
+   ARCHIVO BINARIO: Es el arhcivo final que resulta del enlazamiento de arhcivos objeto y librerias. El Archivo Binario posee todas las instrucciones en binario necesarias para la maquina y es posible correrlo en el procesador
+   
+b) PROGRAMA: Es un set de instrucciones que indican a la computadora como completar una tarea. Son escritas en algun lenguage de programacion como el C. Es una entidad pasiva ya que este realiza ninguna ejeucion. Ejemplo: Codigo asociado al arhcivo fuente principal mani.c
+
+   PROCESO: Es un programa en ejecucion en memoria. Es una entidad activa ya que esta ejecutandose en el microprocesador. Ejemplo: Cuando se hace doble click en GOOGLE CHROME, se establece un proceso, el cual consiste en ejecutar en memoria el programa asociado a la aplicacion GOOGLE CHROME 
+   
+c) En un contexto de sockets tenemos que:
+
+   PROCESO: Es el programa en ejecucion en memoria que queremos intercomunicar con otro ubicado en otra maquina fisica diferente y que es unico respecto del resto de procesos de la maquina.
+   
+   PUERTO: Es el lugar logico de la computadora por el cual se produce el intercambio de datos entre procesos que estan en diferentes masquinas. Permite distinguir al procesos que se quiere relacionar respecto del resto de processo en la misma maquina.
+   
+   IP: Es la direccion en la red de la maquina fisica que participa en una comunicacion con sockets. Disingue a dicha maquina respecto de otras a partir de unq identificacion unico en la red.
+   
+   BONUS: En una comunicacion TCP se requiere obligatoriamente saber la IP y el PUERTO de cada maquina con su respectivo proceso a intercomunicar.
+   
+   /*************************************************/
+   
+*********Verdadero y Falso de Teoria sobre LINUX, Sistemas Operativos, Kernel, Procesos, Sockets, Sistemas de Numeracion************
+
+/*************************************************/
+
+Punto 1) Si la máquina se llama INFO-UX, la fecha del equipo es 15-MAY-2021, el usuario conectado
+en el equipo es Luis Aceto (ID de usuario LACETO) y el directorio en el que se encuentra en ese
+momento es INFO_1/Clase2 dentro del directorio personal, ¿cuál es el prompt que mostrará en la
+consola? (Se considera el prompt que configura el Sistema Operativo por defecto). Seleccione una
+opción:
+
+A.INFO-UX:/home/LACETO/INFO_1/Clase2$
+B.Luis.Aceto@INFO-UX:/home/Luis.Aceto/INFO_1/Clase2$
+C.Luis.Aceto@INFO-UX:~/INFO_1/Clase2$
+D.LACETO@INFO-UX:~/INFO_1/Clase2$
+E.2021-05-15@INFO-UX:~/INFO_1/Clase2$
+F.INFO-UX@LACETO:~/INFO_1/Clase2$
+G.Ninguna es correcta.
+
+RTAS: A)F, B)F, C)F, D)V, E)F, F)F, G)F
+
+Punto 2) Indique cuáles de las siguientes afirmaciones son verdaderas:
+
+A. Linux maneja los dispositivos como si fueran un archivo y el encargado de hacerlo para cada
+dispositivo es el device driver o controlador del dispositivo.
+B. Una desventaja del método de complemento a 1 para la representación de números signados
+es que tengo un doble cero.
+C. Todos los procesos tienen un solo proceso padre y pueden ser padres de un solo proceso
+hijos a la vez. Si quiero tener un segundo proceso hijo, debo esperar a que finalice el primero
+con la función wait.
+D. Para generar un ejecutable a partir de un archivo fuente en C debo realizar dos pasos. El
+primero es la compilación y el segundo es el linkeo o enlace.
+E. Para generar un programa en C puedo usar un procesador de texto como el word si me
+aseguro de no ponerle ningún formato como cambio de tamaño de letra o negrita.
+F. Los archivos en Linux manejan tres grupos de permisos, los correspondientes al dueño, a un
+grupo y al resto de los usuarios.
+G. No se puede establecer una conexión a través de un socket si ambos procesos se ejecutan
+en la misma máquina.
+H. El sistema de numeración está definido por la cantidad de símbolos que utiliza. Esta cantidad
+se llama BASE.
+I. El named pipe o FIFO es un método de IPC que permite vincular dos procesos que se
+ejecuten en la misma máquina aunque no estén relacionados como padre-hijo.
+J. La ventaja de trabajar con el sistema HEXADECIMAL es que la conversión desde binario es
+directa a partir de la agrupación de tres dígitos binarios.
+K. En el caso de Linux, la interfaz gráfica la puedo cambiar e incluso eliminarla.
+L. Los procesos se identifican con un número, y una vez que se asignó el número mayor, hay
+que reiniciar el equipo para volver el contador a 0.
+M. Si la máquina tiene la suficiente capacidad, puedo tener dos Sistemas Operativos controlando
+el hardware simultáneamente.
+N. El Sistema Operativo se conecta con el hardware a través de las system calls.
+O. En una conexión vía Socket, cuando un proceso servidor quiere aceptar la comunicación con
+un cliente, debe usar la función connect.
+
+
+RTAS: A)V, B)V, C)F, D)V, E)F, F)V, G)F, H)V, I)V, J)F, K)V, L)F, M)F, N)V, O)F
+
+Punto 3) ¿A que se denomina Kernel de un sistema operativo Linux? Seleccione una opción:
+
+
+A. A la interfaz que permite al usuario ingresar comandos.
+B. A la lista de comandos externos que pueden ser ejecutados por el sistema operativo.
+C. Al conjunto de programas que constituyen el Sistema Operativo propiamente dicho y a su
+correspondiente implementación de las System Calls.
+D. Al conjunto de políticas que definen la manera en que se almacenan los archivos en el disco
+rígido.
+E. Ninguna es correcta.
+
+RTAS: 
+A)F, B)F, C)V, D)F, E)F 
+
+/*************************************************/
+
+
+1)Que diferencias hay entre un encabezado y una libreria?? Que informacion contienen cada uno??
+
+Biblioteca: El archivo que contiene el "cuerpo o definicion" de una o mas funciones, se llama "libreria". Se dice que una "libreria" es donde se encuentran las "implementaciones" de las funciones cuyos prototipos/declaraciones estan en los archivos header. Un archivo "library" posee la terminacion ".lib". Existen 2 tipos de librerias:
+
+    Librerias estaticas: Estas contienen codigo objeto tal que este sera linkeado con una aplicacion final de usuario, es decir, el programa disenado para el usuario final. Son usadas durante tiempo de compilacion por lo que cuando se ejecute el programa, durante el tiempo de ejecucion estas librerias estaran funcionando siempre, independientemente de si son requeridas o no, hasta que finalize el programa.
+
+    Librerias dinamicas: Estas son usadas durante tiempo de ejecucion, por lo que cuando se ejecute el programa, estas librerias solo estaran funcionando cuando se las requiera a medida que se va ejecutando el programa por lo que habra momentos donde se las invoca y momentos que no. Se dice que un programador(usuario final) puede compilar el codigo sin incluir en la compilacion a las librerias dinamicas.
+
+
+Encabezado: Un archivo de encabezado o "header" posee la extension ".h", este posee generalmente las declaraciones/prototipos de funciones,data types creados, variables globales, constantes o macros, estructuras y uniones. Ademas de lo mencionado, un archvio "header" puede contener dentro, otros archivos "header" a partir de "incluirlos" con los "header names" los cuales a us vez tendran lo mencionado anteriormente. Normalmente todo lo contendio en un header file es usado por "libraries"
+Un "header file" es utilizado en el "main code file" y otros codigos que trabajan cooperativamente, a partir de escribir la directiva de preprocesador "#include<header_file_name.h>"; Tiene como tarea instruir al compilador respecto a como realizar los diferentes llamados a funciones y donde buscar las respectivas funciones con sus respectivos parametros para ejecutarlas.
+
+
+2) Que es un proceso?? Caracterizarlo, indicando los estados que puede tomar.
+
+Proceso: Es un programa o codigo que se esta ejecutando en memoria, se dice que es una "entidad activa" a diferencia de un programa que es una "entidad pasiva".
+Sucede que al escribir un programa y compilarlo, el compilador crea un codigo binario. Se dira que tanto el codigo oroginal escrito como el codigo binario son ambos programas y seran "pasivos". Sin, embargo, al momento de "correr o ejecutar" el codigo binario, entonces dicho "codigo o programa en ejecucion en memoria" se convierte en un "proceso".
+
+Un unico programa puede crear muchos procesos cuando se "corre o ejecuta" dicho programa muchas veces. Por ejemplo, cuando se abre un file ".exe" o un file binario multiples veces, entonces multiples instancias comienzan y muchos procesos son creados
+
+Atributos o Caracteristicas de un proceso:
+-1)Process ID: Identificador unico de proceso. Este es asignado al proceso a traves del sistema operativo
+-2)Process State: Estado en el que se encuentra el procesos. Estos pueden ser: corriendo, listo, etc
+-3)CPU registers: Zonas de memoria interna del CPU destinadas al proceso. Estas zonas almacenan informacion del proceso mientras este esta dentro del CPU y liberan sus recursos cuando el proceso esta fuera del CPU
+-4)Informacion de cuenta: Info referida a la cantidad de CPU usada por el proceso durante la ejecucion. Muestra tambien los timepos limites, el ID de ejecucion, etc.
+-5)I/O informacion de estado: Info referida a dispositivos de entrada y salida que usa el proceso, archivos abiertos,etc
+-6)CPU informacion de schedulling: Info referida a la prioridad para correr un proceso respecto de otro y asignarle los time slots correspondientes
+
+Ademas un proceso posee un unico PCB(process control block) y todas las caracteristicas mencionadas son parte del PCB
+
+Estados de un proceso:
+
+-1) Nuevo(new):  Un proceso se encuentra en estado de creacion o ya esta creado como nuevo proceso.
+-2) Listo(ready): Luego de la creacion de un procesos, este pasa al estado "ready" por ejemplo para poder ser ejecutando
+-3) Correr(run): El proceso actual esta corriendo en la CPU. Solo un proceso a la vez puede correr en un "single processor"
+-4) Esperar(wait): El proceso se encuentra en estado de espera cuando este "pide" acceso a dispositivos I/O
+-5) Completado o terminado(complete or terminated): El proceso ha completado su ejecucion
+-6) Suspendido y listo(suspended y ready): Cuando la cola de procesos ready esta llena, entonces algunos procesos pasan al estado "suspended ready"
+-7) Suspendido y bloqueado(suspended block): Cuando la cola de procesos en estado de "suspended ready" se llena, entonces los procesos pasan a "suspended block"
+
+
+3) Dibuje un diagrama de bloques que permite comprender la interaccion entre un proceso cliente y servidor. El diagrama debe poder describir el funcionamiento del sistema. Detalle el funcionamiento de cada bloque.
+
+Detallamiento de la funcion o bloque del diagrama:
+
+Explicacion de interaccion entre un proceso clientev y un servidor:
+Tanto el cliente como el servidor deben crear un socket con la funcion socket() para poder comunicarse entre si. Luego se debe ejecutar bind() en el servidor obligatoriamente para poder darle un "nombre" al servidor, esto es, poder asignar y reservar un puerto logico concreto y conocido al servidor siendo que por dicho puerto se envien y reciban datos, asi como tambien asginarle al servidor, una direccion IP de red de la maquina local que funcionara como servidor. En cambio, en el cliente, bind() es opcional ya que sino se ejecuta, entonces el SO lo ejecuta automaticamente asignando un puerto libre al azar al cliente dandole asi su "nombre". Estos 2 pasos equivalen a "ABRIR EL CANAL DE COMUNICACION". Una vez creados los sockets cliente y servidor con sus respectivos "nombres", entonces se dice que el servidor ahora ejecuta listen() tal que su socket pueda recibir solicitudes de conexion de sockets clientes, esto es equivalente a "ESPERAR A RECIBIR SOLICITUDES". Despues de esto, el servidor llama a accept() quedandose ahora en estado de espera hasta que un cliente se conecte. Por otro lado, en el cliente se llama a connect() para intentar conectarse con el servidor. En dicho momento de intento de conexion, equivalente a "CONECTAR CON SERVIDOR", es cuando accept() recibe la solicitud de conexion, equivalente a "ACEPTAR PETICION", aceptandola y devolviendo asi un parametro que sera un nuevo identificador de socket asociado a un nuevo socket. Este nuevo socket es el que se usara para el intercambio de datos con el cliente que realizo dicha conexion. De esta manera se deja libre al socket original del servidor para poder seguir recibiendo solicitudes de conexion de otros clientes y pudiendo asi aceptarlas.
+
+Una vez establecida la conexion, se ejecutan las funciones send() y recv() tanto en servidor como cliente habiendo un flujo de datos bidereccional, esto es equivalente a "ENVIO Y RECEPCION DE DATOS" en cliente y servidor. Una vez que se realizo el intercambio de datos deseado, entonces se finaliza la comunicacion llamando a close() o shutdown(), esto es equivalente a "CERRAR CANAL DE COMUNICACION" tanto en cliente como servidor
+   
+/*************************************************/
+   
+   
+Teoricos
+1) printf("%li\n",sizeof(cadena));  // 10
+printf("%li\n",strlen(cadena));     // 6
+printf("%li\n",sizeof(p));          // 8
+printf("%li\n",strlen(p));  	     // 6
+printf("%li\n",sizeof(*p));         // 1
+
+
+2) Una unión ocupa lo que ocupa el mayor de sus elementos, una estructura ocupa la suma
+de lo que ocupan sus elementos. Además, en una unión se puede acceder al mismo dato
+llamándolo de distinta forma.
+➢ Declaración:
+○ union Un{
+char U_letra;
+char U_cadena[10];
+} ;
+○
+struct Es{
+char E_letra;
+char E_cadena[10];
+} ;
+➢ Tamaños
+○ union Un: 10Bytes
+○ estructura Es: 11Bytes
+➢ Ejemplo con nombres
+○ Definición.
+union Un U1;
+struct Es E1;
+○ Acceso
+U1.U_letra
+U1.Ucadena
+E1.E_letra
+E1.E_cadena
+➢ Ejemplo con punteros
+○ Definición.
+union Un *PU;
+struct Es *PE;
+○ Asignación
+PU=&U1;
+PE=&E1;
+○ Acceso
+PU->U_letra
+PU->Ucadena
+PE->E_letra
+PE->E_cadena3) A75Dh-F363h
+a) En el caso de tener simplemente números en base hexadecimal, el A75Dh es
+el 42845 decimal y el F363h es el 62307 y como 42845-62307 es -19462
+tenemos que en hexadecimal queda -4C06h.
+b) En el caso de trabajar en 16, los dos datos son números negativos por tener
+su bit más significativo por lo tanto tenemos que, aplicando complemento a 2,
+el A75Dh es el -58A3h que en decimal es -22691 y el F363h es -0C9Dh
+correspondiente al -3229 en decimal quedando -22691-(-3229)=-19462 en
+decimal que resulta ser -4C06h luego, por ser un número negativo, hay que
+usar complemento a 2 en 16 bit para el resultado final en hexadecimal: el
+62307 y como 42845-62307 es -19462 tenemos en hexadecimal B3FAh.
+c) En el caso de trabajar en 32 bit lo que tenemos realmente es 0000A75Dh y
+0000F363h, que son dos números positivos, de esta forma tenemos, igual
+que en el caso a que el A75Dh es el 42845 decimal y el F363h es el 62307 y
+como 42845-62307 es -19462 tenemos que en hexadecimal queda -4C06h,
+que al ser negativo hay que aplicarle complemento a dos para obtener su
+representación en 32 bits: FFFFB3FAh.   
+
+
+
+Dado el siguiente código:
+
+#define FILS 4
+#define COLS 4
+int m[FILS][COLS] = {
+{5, 6, 12, 56},
+{78, -9, 67, -88},
+{34, -2, 3, 45},
+{-3, -99, 233, 66} };
+int *p = m;
+Suponiendo que la dirección donde se ubica m es 0xbfff0000 complete la siguiente tabla
+
+1) *p -> 5
+
+2) m[3][1] -> -99
+
+3) *p+6 -> 11
+
+4) *(p+5) -> -9
+
+5)Para calcularlo hay que pensar que cada direccion pesa 4 bytes por suponerse una arquitectura de 32 bits. Y que entre una direccion hexadecimal y otra hay 4 bytes, es decir, un offset de 4, osea que a cada direccion se le suma 4 para pasar a la siguiente. Ademas, cada fila, tiene NIBBLE MSB diferente. Para la fila 0, por enunciado, corresponde b(1er nibble en la direccion hexadecimal), para la fila 1 corresponde "a", para la fila 2 corresponde "f", para la fila 3 corresponde "e". Es decir, hay un orden descendente
+
+Como nos movemos 4 lugares, de izq a der y despues de arriba hacia abajo entonces:
+ 0x b f f f f 0 0 0 0 
+ +	            16
+ ---------------------
+ 
+ donde 16 = f + 1
+ 0x b f f f f 0 0 0 0 
+ +	            f
+ 		    1
+---------------------
+ 0x a f f f f 0 0 1 0
+ 
+ la "a" aparece por el cambio de fila		    
+ 
+rta: &m[1][0] -> 0xaffff0010 (suponiendo enteros de 32bits)
+
+Otras preguntas:
+
+6)¿Cómo accedería al elemento de la tercera fila, primera columna usando m?
+7) ¿Y usando p? Justificar generalizando para una matriz de F(filas) x C(columnas) si se quiere acceder al elemento de
+la fila f y la columna c.
+8) ¿Qué es un pipe y para qué se utilizan?
+9) Para crear un pipe se utiliza una función de librería que tiene el siguiente prototipo int pipe(int pipefd[2]);
+¿Qué significa el array de enteros que se le pasa como argumento?
+10) Explique brevemente la diferecia entre un socket creado para utilizar el protocolo UDP y uno para TCP y en qué
+contexto utilizaría cada uno.
+
+
+
+6) Suponiendo que consideramos el inicio de la matriz en fila [0] con el termino "la 1er fila", entonces rta: m[2][0]
+
+7) 
+opcion 1:
+
+   F=4 C=4, f=2, c=0
+   *(p + (f*C) + c)
+   *(p + (2*4) + 0)
+   *(p+8)
+
+opcion 2:
+
+*(*(m + fila) + columna) donde (m + fila) es un puntero doble y *(m + fila) es un puntero simple
+
+8)Una "pipe" es una "system call" que crea un link de comunicacion unidireccional entre 2 files descriptos. Se dice que en la "input" de la pipe se escribe informacion y en el "output" de la pipe se lee informacion. 
+
+Las pipes se usan para intercomunicar procesos "parent y child" donde uno de ellos comanda el input y otro el output. Habitualmente el proceso padre comanda el output y el proceso hijo el input. Tambien se puede usar entre 2 procesos hijos. Vemos que en sintesis se usa entre 2 procesos.
+
+9)prototipo para crear una pipe: int pipe(int pipefd[2]);
+
+Este prototipo recibe un array de 2 elementos llamado "pipefd". Esto significa que lo que se le pasa a la funcion es el nombre de un vector el cual es un puntero simple(un solo *) que apunta al 1er elemento de dicho array. En particular, los elementos de este array son 2 valores ints asociados a un file descripto cada uno. En este caso, el 1er elemento se asocia al input en  la pipe, es decir, un fd para escritura y el 2do al output de la pipe, es decir, un fd para la lectura en la pipe 
+
+10)
+
+Socket para UDP se los llama Socket Datagram y se usa en un contexto tal que se provee un flujo de datos bidireccional, no orientado a conexion, no secuenciado el orden de llegada de paquetes, posibilidad de perdida de paquetes y errores 
+
+Socket para TCP se los llama Socket Stream y se usan en un contexto tal que se provee un flujo de datos bidireccional, orientado a conexión, secuenciado el orden de llegada de paquetes, sin duplicación de paquetes y libre de errores
+
+
+/*************************************************/
+
+
+1). Sobre Thread tilde las correctas:
+    ●A) pthread_join() bloquea el hilo en el cual se invoca a la espera de que el que se pone en el argumento
+    finalize.
+    ●B) pthread_join() NO bloquea el hilo en el cual se invoca a la espera de que el que se pone en el
+    argumento finalize.
+    ●C) Un thread , comparte con los otros thread del mismo proceso heap y stack.
+    ●D) Un thread , NO comparte con los otros thread del mismo proceso heap y stack.
+2). Sobre socket tilde las correctas:
+    ●A) Los únicos socket que existen son los tcp/ipv4.
+    ●B) Los socket tcp/ipv4 determinan una conexión utilizando 2 IP, y 2 puertos.
+    ●C) Los socket tcp/ipv4 determinan una conexión utilizando 1 IP, y 1 puertos.
+    ●D) Los socket tcp/ipv4 determinan una conexión utilizando 2 IP, y 4 puertos.
+    ●E) accept() es una función bloqueante , hasta que un cliente no se conecta , no se desbloquea.
+    ●F) connect() es la función que llama el código del cliente para conectarse a un servidor.
+    ●G) Una conexión tcp está completamente cerrada , si de cada lado se hace un close() sobre la conexión
+    establecida.
+
+1)A) V...Esto es porque pthread_join es una funcion que permite sincronizar threads. En particular, esto es que un thread "creador" pueda esperar a que otro thread "creado" termine primero para luego terminar el thread "creador".
+1)B) F...Justificado en A)
+1)C) F...Un thread comparte con otros threads, algunos recursos del proceso como DATA, FILE,HEAP,SIGNAL y CODE. En particular en DATA estan las variables NO automaticas, las variables globales, etc pero no el STACK. Por otro lado cada thread posee individualemente STACK, REG y PC.
+1)D) V...Justificado en C)
+
+2)A) F...Los sockets que existen son:
+-DATAGRAM: Son asociados con protocolo UDP
+-STREAM: Son asociados con protocolo TCP
+-ROW
+-Otros
+2)B) V...Ya que se requiere una IP para la maquina local que funciona como host servidor y una IP para la maquina que funciona como cliente, es decir, se necesita una IP en cada caso para poder identificar de forma unica a cada maquina en la red. Por otro lado, se necesita en cada maquina, cliente y servidor, un puerto logico por el cual enviar y recibir los datos. De esta manera se logra la comunicacion TCP entre cliente y servidor relacionando puerto a puerto con adicionalmente sabiendo la IP de cada maquina
+2)C) F...Justificado en B)
+2)D) F...Justificado en B)
+2)E) V...Una vez ejecutada, se queda esperando hasta recibir una solicitud de conexion por parte de un cliente a partir de que en dicha maquina se ejecuta la funcion connect(). Si no recibiese solicitud alguna, entonces se queda en espera. Sin embargo, se la puede finalizar con algun comando tipo SIGNAL ej sigkill o alguna alarma
+2)F) V...Ya que es la unica funcion que puede ser ejecutada en el cliente para lograr una solicitud de conexion hacia un servidor. Esto se debe a que el servidor solo recibe solicitudes de conexion y por ende no usa connect.
+2)G) V...Ya que el ejecutar close() en SOLAMENTE servidor o cliente podrian surgir memory leaks en la maquina que no ejecuto close y aparecer segmentation fault al utilizar accidentalmente algunas funciones de sockets sobre un file descripto asociado a un socket que fue cerrado o mismo hacer alguna otra operacion con este. Close() ademas de cerrar la conexion, libera la memoria dinamica usada.
+
+/*************************************************/
+
+
+1) Una libreria es un archivo que contiene codigo y datos compilados, ambos funcionales. Donde todo el contenido de este archivo sera incorporado a otros programas cuando sea requerido. En particular la libraria se forma por :
+- Una "interface" caracterizada por achivos .h. Aca dentro de estos .h se encuentran los prototipos de funciones, macros, etc
+- Una "implementacion" caracterizada por archivos .c. Estos deben ser pre-compilados o seran inaccesibles. Aca tenemos las definiciones de las funciones
+
+El formato de una libreria depende del sistema operativo y del compilador que se esten usando. Por ejemplo en UNIX y Linux, el formato de una libreria esta pensado a partir de uno o mas "archivos objeto" los cuales contienen "codigo objeto". Este codigo objeto es producido a la salida del compilador simepre que el lenguage de programacion no sea assembler, sino es diferente el proceso. Luego estos archivos objeto son agrupados de tal forma que construyen un unico archivo que sera la libreria, esto a apartir de utilizar un "archivador" el cual no se preocupa por la compresion de los archivos.
+
+Algunas ventajas son:
+-Facilitar la reutilizacion de codigo evitan tener que reescribir
+-Fomentar trabajo en equipo y fomentar abstraccion de implementacion para solo preocuparse en como usar cierto codigo
+-El codigo de una biblioteca es de uso general, lo que permite usar varias funciones para multiples casos
+-No es necesario preocuparse por como estan hechos los codigos en la biblioteca, sino simplemente usarlos
+
+En particular, para hablar de como se relaciona una libreria con archivos .h podemos pensar que cuando en nuestro codigo "incluimos" archivos .h, estamos diciendo al compilador que utilizaremos alguna/s bilbiotecas que contienen los codigos de los .h y de los .c asociados. De esta manera, en nuestro codigo al llamar a funciones como "printf", que no estan escritas en nuestro codigo por default, estas se ejecutaran exitosamente con todo su bloque de codigo asociado.
+Sin embargo, en caso de que no se incluyan los archivos .h, sucede que  al momento de compilar y llamar a funciones de bilbiotecas, surgiran errores de compilacion y mismo estas funciones al ser ejecutadas, no lo lograran exitosamente.
+
+Finalmente, una libreria puede ser linkeada al momento de generar el ejecutable, o bien se puede hacer referencia a las funciones que contiene en tiempo de ejecución; según estemos trabajando con librerías estáticas, compartidas o dinámicas
+
+2)
+a)
+LINEA 1...char *str = "Hola Mundo";
+LINEA 2...char str[100] = "Hola Mundo";
+
+En LINEA 1 se declara una variable llamada "str" la cual es un puntero a un tipo de dato "char". Ademas se produce una inicializacion, donde este puntero apunta a la direccion de comienzo de una constante la cual es una cadena de caracteres definida como "Hola Mundo".
+En LINEA 2 se declara una variable llamada "str" la cual es un "array" que puede almacenar 100 elementos del tipo de dato "char". Ademas se inicializa este array cargandole una cadena de caracteres llamada "Hola Mundo", donde ademas como ultimo elemento despues de la cadena, se carga el caracter \0 que indica "fin de cadena". El resto de elementos del array quedan disponibles para ser inicializados. Ademas el nombre de un array es un puntero a la direccion de comienzo del 1er elemento de dicho array.
+
+b)
+
+#include <string.h>
+int main(void)
+{
+char *str = "Hola Mundo";
+strcpy(str, "Hola");
+return 0;
+}
+
+No es correcto ya que str es un puntero apuntando a una constante “Hola Mundo”. La zona de memoria donde se encuentra esta constante esta protegida contra escritura y al momento de intentar escribirla con strcpy se producirá una violación de segmento.
+
+
+c)
+Referencia| direccion | valor
+y[3]      |     52    |   15
+y[6]      |     64    |   6
+y[-2]     |     32    |   11
+x[12]     |     68    |   -1
+
+
+/*************************************************/
+
+

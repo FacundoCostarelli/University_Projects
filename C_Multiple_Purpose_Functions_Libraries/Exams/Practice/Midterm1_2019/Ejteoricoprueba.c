@@ -1,15 +1,51 @@
+/**
+ * @file    Ejteoricoprueba.c
+ * @brief   [ESP] Prueba de concepto con punteros a arreglos.
+ *          [ENG] Proof of concept with pointers to arrays.
+ *
+ * @author  Facundo Costarelli
+ * @date    2019
+ * @course  Informática 1 — UTNBA
+ */
+
 #include<stdio.h>
 
+/**
+ * @brief [ESP] Función principal. Muestra operaciones con punteros.
+ *        [ENG] Main function. Demonstrates pointer operations.
+ *
+ * @return 0 [ESP] Si la ejecución es correcta. / [ENG] If execution is correct.
+ */
 int main(void)
 {
-    int vec[4] = { 2, 1, 4, 3 }; //Creacion de un vector de datos "int" de tamanio de "4" elementos donde ademas se elijen y cargan en el array, los elementos escritos predeterminadamente entre llaves
-    int *p;//declaracion de un puntero simple que apunta a algun lugar no inicializado
-    p = vec;//el puntero "p" ahora se le asigna a almacenar, la direccion de cominezo del vector, es decir, la direccion del 1er elemento del vector. Ya que el nombre de un vector, es otro puntero que apunta al 1er elemento de dicho array
-    printf("%d\n", *p);//se printea en pantalla de la consola shell el contenido de lo apuntado por "p", es decir, se printea el nro 2
-    p = (int *)(p+2);//el puntero "p" ahora se le asigna la direccion de otro puntero que es "(int*)(p+2)", esta sera una direccion que apunta a un dato int y en particular dicho dato es el nro "4"
-    printf("%d\n", *p);//se printea en pantalla de la consola shell el contenido de lo apuntado por "p", es decir, se printea el nro 4
-    p = (int *)(p+2);//si bien estas 2 proximas instruciones se escriben igual que las 2 anteriores, aca sucede que el puntero "p" se le asigna la direccion que almacena otro puntero que es "(int*)(p+2)", esta sera una direccion que apunta a un dato int pero ahora....en particular....apunta a un dato que esta fuera del array, es decir, un dato de valor conocido como "basura"
-    printf("%d\n", *p);//se printea en pantalla de la consola shell el contenido de lo apuntado por "p", es decir, se printea el valor int "basura" aleatorio
+    /* [ESP] Creación de un vector de datos "int" de tamaño "4" con elementos predeterminados.
+       [ENG] Creation of an "int" data vector of size "4" with default elements. */
+    int vec[4] = { 2, 1, 4, 3 }; 
+    
+    /* [ESP] Declaración de un puntero simple sin inicializar.
+       [ENG] Declaration of an uninitialized simple pointer. */
+    int *p;
+    
+    /* [ESP] El puntero "p" almacena la dirección del 1er elemento del vector.
+       [ENG] Pointer "p" stores the address of the 1st element of the vector. */
+    p = vec;
+    
+    /* [ESP] Se imprime el contenido apuntado por "p" (el nro 2).
+       [ENG] Prints the content pointed to by "p" (number 2). */
+    printf("%d\n", *p);
+    
+    /* [ESP] Se le asigna a "p" la dirección desplazada en 2 posiciones ints. Apunta al nro 4.
+       [ENG] "p" is assigned the address shifted by 2 int positions. Points to number 4. */
+    p = (int *)(p + 2);
+    printf("%d\n", *p);
+    
+    /* [ESP] Se desplaza "p" otras 2 posiciones. Ahora apunta fuera del array (basura).
+       [ENG] "p" is shifted another 2 positions. Now points outside the array (garbage). */
+    p = (int *)(p + 2);
+    
+    /* [ESP] Se imprime el valor int aleatorio (basura).
+       [ENG] Prints the random int value (garbage). */
+    printf("%d\n", *p);
     
     return 0;
 }

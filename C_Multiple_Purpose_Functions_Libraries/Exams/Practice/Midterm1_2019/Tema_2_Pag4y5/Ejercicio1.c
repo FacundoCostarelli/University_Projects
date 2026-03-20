@@ -1,19 +1,42 @@
+/**
+ * @file    Ejercicio1.c
+ * @brief   [ESP] Ejercicio 1 Tema 2: Conteo de valores superiores a un umbral estático.
+ *          [ENG] Exercise 1 Theme 2: Count of values above a static threshold.
+ *
+ * @author  Facundo Costarelli
+ * @date    2019
+ * @course  Informática 1 — UTNBA
+ */
+
 #include<stdio.h>
 #include<stdio_ext.h>
-//defino a traves de referencias simbolicas macro la long del vector, el valor de umbral
 
+/* [ESP] Defino macros para longitud y umbral
+   [ENG] Define macros for length and threshold */
 #define LONGITUD_ARRAY 15
 #define VALOR_UMBRAL 0
 
-//Este programa es lo mismo que el Ejercicio2 pero con la diferencia de que todo es "estatico". Es decir, el array tendra un tamanio pre-definido por el programador, ej, a traves de un #define. Esto hace que el "largo del array" este predefinido. Los elementos del array tambien seran pre-definidos (bien estatico). Luego, sucede lo mismo con el valor de umbral. Al momento de trabajar con la funcion ObtenerMayores, esta solo contara y mostrara el resultado, de la cantidad de valores que superan dicho umbral pre-fijado, no muestro cuales son los valores que superan dicho umbral, solo los cuento
-
-//Declaro los prototipos de funciones
-//Del enunciado el prototipo de la funcion es:
+/**
+ * @brief [ESP] Verifica cantidad de valores mayores al umbral en un array.
+ *        [ENG] Checks amount of values greater than threshold in an array.
+ *
+ * @param Array_de_datos [ESP] Vector de datos ints / [ENG] Array of ints
+ * @param Longitud_array [ESP] Tamaño del arreglo / [ENG] Size of array
+ * @param Valor_umbral   [ESP] Límite de control / [ENG] Control limit
+ * @return [ESP] Cantidad que supera umbral / [ENG] Count that exceeds threshold
+ */
 int ObtenerMayores( int *Array_de_datos, int Longitud_array, int Valor_umbral );
 
+/**
+ * @brief [ESP] Func. principal. Cuenta y muestra la cant de valores mayores al umbral.
+ *        [ENG] Main func. Counts and displays the amount of values above threshold.
+ *
+ * @return 0 [ESP] Si la ejecución es correcta. / [ENG] If execution is correct.
+ */
 int main(void)
 {
-    //Declaro las variables que son: un puntero simple que recorre un vector estatico de datos int y la cantidad de valores que superan el umbral ;
+    /* [ESP] Vector estático de datos int y contador
+       [ENG] Static vector of int data and counter */
     int Array_de_datos[LONGITUD_ARRAY] = { -10, -8, -7, -4, -3, -2, 0, 1, 2, 3, 20, 15, 23, 41, 10 };
     int Cantidad_de_valores_mayores_al_umbral;
     
@@ -26,10 +49,12 @@ int main(void)
 
 int ObtenerMayores( int *Array_de_datos, int Longitud_array, int Valor_umbral )
 {
-    //Declaro una variable de iteracion "i" y una variable de contador
+    /* [ESP] Declaro variable de iteración y contador
+       [ENG] Declare iteration variable and counter */
     int i, cont = 0;
     
-    //Uso ciclo de repeticion para comparar cada elemento del vector con el valor de umbral, en caso de superlo, se cuenta dicha "superacion". De no ser asi, no se cuenta. Tambien se printea en pantalla cuales son los valores que superan dicho umbral
+    /* [ESP] Compara ciclo a ciclo contra umbral. Suma a cont si supera.
+       [ENG] Compares cycle by cycle against threshold. Adds to cont if exceeds. */
     for( i = 0; i < (Longitud_array); i++ )
     {
         if( Array_de_datos[i] > Valor_umbral )
@@ -38,6 +63,7 @@ int ObtenerMayores( int *Array_de_datos, int Longitud_array, int Valor_umbral )
         }   
     }
     
-    //retorno al main la cantidad de valores que superar el umbral
+    /* [ESP] Retorno la cantidad de valores
+       [ENG] Return the amount of values */
     return cont;
 }

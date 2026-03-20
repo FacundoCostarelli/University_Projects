@@ -1,0 +1,54 @@
+1) Que diferencias hay entre un encabezado y una libreria?? Que informacion contienen cada uno??
+[ENG] What is the difference between a header and a library? What information do they each contain?
+
+Biblioteca: El archivo que contiene el "cuerpo o definicion" de una o mas funciones, se llama "libreria". Se dice que una "libreria" es donde se encuentran las "implementaciones" de las funciones cuyos prototipos/declaraciones estan en los archivos header. Un archivo "library" posee la terminacion ".lib". Existen 2 tipos de librerias:
+[ENG] Library: The file containing the "body or definition" of one or more functions is called a "library". It is where the "implementations" of functions, declared in header files, reside. A "library" file typically relies on ".lib" or ".so"/".a". There are two types:
+
+    Librerias estaticas: Estas contienen codigo objeto tal que este sera linkeado con una aplicacion final de usuario. Son usadas durante tiempo de compilacion por lo que estan integradas en el binario final y funcionan siempre, independientemente de si son requeridas o no, hasta que finalize el programa.
+    [ENG] Static Libraries: Contain compiled object code linked directly into the final application. They are used at compile time, integrated into the final binary file, therefore executing whenever required locally.
+
+    Librerias dinamicas: Estas son usadas durante tiempo de ejecucion, por lo que cuando se ejecute el programa, estas librerias solo estaran cargadas cuando el SO las requiera.
+    [ENG] Dynamic Libraries: Shared libraries loaded in runtime, taking memory only when invoked by the operating system.
+
+Encabezado: Un archivo de encabezado o "header" posee la extension ".h", este posee generalmente las declaraciones/prototipos de funciones, data types creados, variables globales, constantes o macros, estructuras y uniones. Normalmente todo lo contenido en un header file es usado para documentar o declarar las utilidades de las "libraries".
+[ENG] Header: A header file ends with a ".h" extension, broadly containing function declarations/prototypes, custom data types, global definitions, constants or macros, structures, and unions. They act as APIs mapping to library implementations.
+
+2) Que es un proceso?? Caracterizarlo, indicando los estados que puede tomar.
+[ENG] What is a process? Characterize it, indicating the states it can undertake.
+
+Proceso: Es un programa o codigo que se esta ejecutando en memoria, se dice que es una "entidad activa" a diferencia de un programa que es una "entidad pasiva". Al compilar un programa se crea un binario pasivo. Al correrlo, se genera un proceso activo.
+[ENG] Process: It is an executing program residing in memory, described as an "active entity", contrary to a typical program file acting as a "passive entity".
+
+Atributos o Caracteristicas de un proceso:
+[ENG] Process traits:
+-1) Process ID (PID): Identificador unico de proceso. / [ENG] Unique process identifier managed by the OS.
+-2) Process State: Estado en el que se encuentra. / [ENG] Current status (running, ready, etc).
+-3) CPU registers: Zonas de memoria interna del CPU destinadas al proceso. / [ENG] Internal CPU registers saving context limits.
+-4) Informacion de cuenta: Cantidad de CPU usada, tiempo, etc. / [ENG] Accounting information measuring resources used.
+-5) I/O informacion de estado: Dispositivos de E/S usados. / [ENG] I/O state allocating opened files/hardware requests.
+-6) CPU informacion de schedulling: Prioridad frente a otros procesos. / [ENG] Scheduling info dictating execution priorities.
+
+Estados de un proceso:
+[ENG] Process states:
+-1) Nuevo(new): Creacion del proceso. / [ENG] Under creation context.
+-2) Listo(ready): Preparado para ejecutar. / [ENG] Prepared to be dispatched.
+-3) Correr(run): En la CPU. / [ENG] Running in the processor natively.
+-4) Esperar(wait): Pide dispositivo I/O. / [ENG] Waiting for hardware or an event.
+-5) Completado o terminado(terminated): Fin de ejecucion. / [ENG] Execution concluded natively.
+-6) Suspendido y listo(suspended ready): En disco secundario listo. / [ENG] Swapped to secondary memory but ready.
+-7) Suspendido y bloqueado(suspended block): Bloqueado en disco. / [ENG] Swapped to secondary memory and blocked.
+
+3) Dibuje un diagrama de bloques que permite comprender la interaccion entre un proceso cliente y servidor. 
+[ENG] Draw a flowchart showcasing the interaction between client and server. 
+
+Explicacion de interaccion entre un proceso cliente y un servidor:
+[ENG] Client-server interaction breakdown:
+Tanto el cliente como el servidor deben crear un socket con la funcion socket(). Luego se debe ejecutar bind() en el servidor obligatoriamente para poder darle un puerto logico. En el cliente, bind() es opcional (el SO da uno temporal). 
+Esto equivale a "ABRIR EL CANAL DE COMUNICACION". 
+[ENG] Both require calling socket(). The server mandates calling bind() for attaching logical ports, while it's optional on the client. This builds the "COMMUNICATION CHANNEL".
+
+El servidor ejecuta listen() para "ESPERAR A RECIBIR SOLICITUDES", y accept() quedando bloqueado hasta que cliente conecte. El cliente usa connect() a su vez, que desencadena que el accept() del servidor destrabe y entregue un FD (File Descriptor) para dicho cliente.
+[ENG] The server executes listen() to wait for connections, and accept() halts until clients appear. Clients summon connect() mapping to the server, releasing the remote accept() block and returning an independent File Descriptor for interaction.
+
+Luego se ejecutan send() y recv() bidireccionales. Para terminar, close() o shutdown().
+[ENG] Bidirectional data flow acts via send() and recv(). To conclude, they employ close() or shutdown().

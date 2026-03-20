@@ -1,3 +1,16 @@
+/**
+ * @file    sock-lib.h
+ * @brief   [ESP] Cabecera de librería de sockets simplificada.
+ *          [ENG] Header of simplified sockets library.
+ *
+ * @author  Facundo Costarelli
+ * @date    2023
+ * @course  Informática 1 — UTNBA
+ */
+
+#ifndef SOCK_LIB_H
+#define SOCK_LIB_H
+
 #include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -10,11 +23,25 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 
-#define PORT 8010	/* El puerto donde se conectará, servidor */
-#define BACKLOG 10	/* Tamaño de la cola de conexiones recibidas */
+#define PORT 8010	/* [ESP] Puerto del servidor / [ENG] Server port */
+#define BACKLOG 10	/* [ESP] Cola de conexiones / [ENG] Connections queue size */
 
-int	conectar (int, char **);
+/**
+ * @brief [ESP] Conecta un cliente a un puerto y destino dados.
+ *        [ENG] Connects a client to a given port and destination.
+ */
+int conectar(int, char *);
 
-int	Open_conection (struct sockaddr_in *, int); /* Función que crea la conexión*/
+/**
+ * @brief [ESP] Crea y abre la conexión del servidor.
+ *        [ENG] Creates and opens the server connection.
+ */
+int Open_conection(struct sockaddr_in *, int);
 
-int	Aceptar_pedidos (int);	/* Función que acepta una conexión entrante*/
+/**
+ * @brief [ESP] Acepta una conexión entrante en el servidor.
+ *        [ENG] Accepts an incoming connection on the server.
+ */
+int Aceptar_pedidos(int);
+
+#endif /* SOCK_LIB_H */
